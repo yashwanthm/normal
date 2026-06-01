@@ -158,22 +158,21 @@
 
   /* LISTEN/FOLLOW */
   .links{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
   }
   .lk{
-    display:flex;align-items:center;justify-content:space-between;
-    gap:14px;
-    padding:18px 20px;
+    display:inline-flex;align-items:center;gap:10px;
+    padding:12px 18px;
     background:var(--ink-2);
     border:1px solid var(--rule);
-    transition:border-color .18s ease, color .18s ease;
+    color:var(--paper-dim);
+    font-family:var(--display);font-weight:500;font-size:14px;
+    transition:color .15s ease, border-color .15s ease, background .15s ease;
   }
-  .lk:hover{border-color:currentColor}
-  .lk .lk-left{display:flex;align-items:center;gap:12px;min-width:0}
-  .lk .name{font-family:var(--display);font-weight:500;font-size:16px}
-  .lk .handle{font-family:var(--mono);font-size:12px;color:var(--paper-dim);white-space:nowrap}
+  .lk:hover{border-color:currentColor;background:var(--ink)}
+  .lk svg{width:18px;height:18px;fill:currentColor;display:block;flex-shrink:0}
   .lk.spotify:hover{color:var(--v-lime)}
   .lk.soundcloud:hover{color:var(--v-vermilion)}
   .lk.bandcamp:hover{color:var(--v-cobalt)}
@@ -195,7 +194,6 @@
     .hero-photo{max-width:240px;justify-self:start}
     .sec{margin-top:64px}
     .releases{grid-template-columns:repeat(2,1fr);gap:14px}
-    .links{grid-template-columns:1fr}
     .masthead .meta{display:none}
   }
   @media (max-width:420px){
@@ -236,6 +234,19 @@
       <p class="lede">House music for the floor — built off late-night sets, weekly releases, and a love of warm bass that knows when to back off. Listen below.</p>
     </div>
     <div class="hero-photo" style="background-image:url('assets/profile.jpg')" role="img" aria-label="normal — portrait"></div>
+  </section>
+
+  <section class="sec" id="listen">
+    <div class="sec-head">
+      <h2>Listen &amp; Follow</h2>
+      
+    </div>
+    <div class="links">
+      <a class="lk spotify" href="https://open.spotify.com/artist/0ow5fWEBIvvrDVDai6No2a" target="_blank" rel="noopener"><svg><use href="#i-spotify"/></svg><span>Spotify</span></a>
+      <a class="lk soundcloud" href="https://soundcloud.com/normaldj" target="_blank" rel="noopener"><svg><use href="#i-soundcloud"/></svg><span>SoundCloud</span></a>
+      <a class="lk bandcamp" href="https://normaldj.bandcamp.com" target="_blank" rel="noopener"><svg><use href="#i-bandcamp"/></svg><span>Bandcamp</span></a>
+      <a class="lk instagram" href="https://instagram.com/normal.dj" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg><span>Instagram</span></a>
+    </div>
   </section>
 
   <section class="sec" id="releases">
@@ -304,27 +315,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="sec" id="listen">
-    <div class="sec-head">
-      <h2>Listen &amp; Follow</h2>
-      <div class="count">4 platforms</div>
-    </div>
-    <div class="links">
-      <a class="lk spotify" href="https://open.spotify.com/artist/0ow5fWEBIvvrDVDai6No2a" target="_blank" rel="noopener">
-        <span class="lk-left"><svg class="icon"><use href="#i-spotify"/></svg><span class="name">Spotify</span></span><span class="handle">normal →</span>
-      </a>
-      <a class="lk soundcloud" href="https://soundcloud.com/normaldj" target="_blank" rel="noopener">
-        <span class="lk-left"><svg class="icon"><use href="#i-soundcloud"/></svg><span class="name">SoundCloud</span></span><span class="handle">/normaldj →</span>
-      </a>
-      <a class="lk bandcamp" href="https://normaldj.bandcamp.com" target="_blank" rel="noopener">
-        <span class="lk-left"><svg class="icon"><use href="#i-bandcamp"/></svg><span class="name">Bandcamp</span></span><span class="handle">normaldj →</span>
-      </a>
-      <a class="lk instagram" href="https://instagram.com/normal.dj" target="_blank" rel="noopener">
-        <span class="lk-left"><svg class="icon"><use href="#i-instagram"/></svg><span class="name">Instagram</span></span><span class="handle">@normal.dj →</span>
-      </a>
     </div>
   </section>
 
