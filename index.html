@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>normal — house, made for the floor</title>
+<meta name="description" content="normal — house music, made for the floor. Listen on Spotify, SoundCloud, Bandcamp." />
+<meta name="theme-color" content="#14110D" />
+
+<meta property="og:title" content="normal" />
+<meta property="og:description" content="house, made for the floor." />
+<meta property="og:type" content="music.musician" />
+<meta property="og:image" content="assets/covers/intent.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --paper:#F4EFE6;
+    --paper-dim:rgba(244,239,230,0.65);
+    --paper-faint:rgba(244,239,230,0.35);
+    --ink:#14110D;
+    --ink-2:#1c1814;
+    --rule:rgba(244,239,230,0.15);
+    --v-vermilion:#EE3A24;
+    --v-cobalt:#1B49C7;
+    --v-yellow:#F5C932;
+    --v-lime:#7DD837;
+    --v-violet:#6F40C9;
+    --v-hotpink:#FF4F8B;
+    --display:"DM Sans",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+    --serif:"Newsreader",Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--display);
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(rgba(244,239,230,0.04) 1px, transparent 1px),
+      radial-gradient(rgba(244,239,230,0.025) 1px, transparent 1px);
+    background-size:3px 3px, 7px 7px;
+    background-position:0 0, 1px 2px;
+  }
+  a{color:inherit;text-decoration:none}
+
+  .wrap{max-width:980px;margin:0 auto;padding:32px 24px 80px}
+
+  /* MASTHEAD */
+  .masthead{
+    display:flex;align-items:baseline;justify-content:space-between;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:14px;margin-bottom:48px;
+    font-family:var(--mono);font-size:12px;
+    color:var(--paper-dim);text-transform:uppercase;letter-spacing:.08em;
+  }
+  .masthead .mark{font-family:var(--display);font-weight:700;font-size:14px;color:var(--paper);letter-spacing:.02em;text-transform:none}
+  .masthead .meta b{color:var(--paper)}
+
+  /* HERO */
+  .hero{
+    margin:56px 0 72px;
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero-text{min-width:0}
+  .hero-photo{
+    aspect-ratio:1/1;
+    background:#222 center/cover no-repeat;
+    border:1px solid var(--rule);
+    filter:saturate(.92) contrast(1.02);
+  }
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--v-yellow);margin-bottom:18px;
+  }
+  h1.tagline{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(34px, 5.4vw, 60px);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    margin:0 0 24px;
+    max-width:18ch;
+  }
+  h1.tagline em{font-style:italic;color:var(--v-yellow)}
+  .hero p.lede{
+    font-family:var(--display);
+    font-size:clamp(15px,1.6vw,18px);
+    color:var(--paper-dim);
+    max-width:54ch;margin:0;
+  }
+
+  /* SECTION HEAD */
+  .sec{margin-top:80px}
+  .sec-head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:10px;margin-bottom:24px;
+  }
+  .sec-head h2{
+    margin:0;font-family:var(--mono);font-size:12px;
+    text-transform:uppercase;letter-spacing:.18em;color:var(--paper);font-weight:500;
+  }
+  .sec-head .count{font-family:var(--mono);font-size:11px;color:var(--paper-faint)}
+
+  /* ICONS */
+  .icon{width:18px;height:18px;fill:currentColor;flex-shrink:0;display:block}
+  .icon-sm{width:13px;height:13px;fill:currentColor;flex-shrink:0;display:block}
+
+  /* RELEASES */
+  .releases{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  .release{
+    display:flex;flex-direction:column;
+    background:var(--ink-2);
+    border:1px solid var(--rule);
+    transition:border-color .18s ease;
+  }
+  .release:hover{border-color:var(--paper-faint)}
+  .release .art{
+    aspect-ratio:1/1;
+    background:#222 center/cover no-repeat;
+    border-bottom:1px solid var(--rule);
+  }
+  .release .body{padding:12px 14px 12px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .release .title{
+    font-family:var(--display);font-weight:700;font-size:15px;
+    color:var(--paper);margin:0;letter-spacing:-0.005em;
+  }
+  .release-actions{display:flex;gap:6px;margin-top:auto}
+  .r-act{
+    flex:1;
+    display:flex;align-items:center;justify-content:center;gap:6px;
+    padding:8px 6px;
+    border:1px solid var(--rule);
+    background:transparent;
+    font-family:var(--mono);font-size:10px;
+    text-transform:uppercase;letter-spacing:.1em;
+    color:var(--paper-dim);
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .r-act.sc:hover{color:var(--v-vermilion);border-color:var(--v-vermilion)}
+  .r-act.bc:hover{color:var(--v-cobalt);border-color:var(--v-cobalt)}
+
+  /* LISTEN/FOLLOW */
+  .links{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+  .lk{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:14px;
+    padding:18px 20px;
+    background:var(--ink-2);
+    border:1px solid var(--rule);
+    transition:border-color .18s ease, color .18s ease;
+  }
+  .lk:hover{border-color:currentColor}
+  .lk .lk-left{display:flex;align-items:center;gap:12px;min-width:0}
+  .lk .name{font-family:var(--display);font-weight:500;font-size:16px}
+  .lk .handle{font-family:var(--mono);font-size:12px;color:var(--paper-dim);white-space:nowrap}
+  .lk.spotify:hover{color:var(--v-lime)}
+  .lk.soundcloud:hover{color:var(--v-vermilion)}
+  .lk.bandcamp:hover{color:var(--v-cobalt)}
+  .lk.instagram:hover{color:var(--v-hotpink)}
+
+  /* FOOTER */
+  footer{
+    margin-top:96px;padding-top:18px;
+    border-top:1px solid var(--rule);
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:var(--mono);font-size:11px;color:var(--paper-faint);
+    text-transform:uppercase;letter-spacing:.12em;
+  }
+  footer a:hover{color:var(--paper-dim)}
+
+  @media (max-width:720px){
+    .wrap{padding:24px 20px 64px}
+    .hero{margin:40px 0 56px;grid-template-columns:1fr;gap:28px}
+    .hero-photo{max-width:240px;justify-self:start}
+    .sec{margin-top:64px}
+    .releases{grid-template-columns:repeat(2,1fr);gap:14px}
+    .links{grid-template-columns:1fr}
+    .masthead .meta{display:none}
+  }
+  @media (max-width:420px){
+    .releases{grid-template-columns:repeat(2,1fr)}
+    .release .body{padding:10px 12px 12px}
+    .release .title{font-size:14px}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-spotify" viewBox="0 0 24 24">
+    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12C24 5.4 18.66 0 12 0m5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02m1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2M19.32 10.86C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3"/>
+  </symbol>
+  <symbol id="i-soundcloud" viewBox="0 0 24 24">
+    <path d="M22.563 12.001c-.51 0-.999.1-1.447.282C20.728 8.464 17.488 5.456 13.547 5.456c-.962 0-1.91.197-2.764.535-.328.13-.413.262-.418.518V18.66c.005.27.213.494.488.522H22.56c2.029 0 3.674-1.622 3.674-3.622 0-1.999-1.645-3.62-3.674-3.62M9.464 6.715c-.236-.022-.456.105-.516.348L8.502 12l.446 6.51c.02.18.166.32.348.32.181 0 .328-.14.346-.32L10.13 12l-.488-4.937c-.02-.196-.183-.348-.378-.348M7.572 8.124c-.196.022-.348.196-.348.392L6.756 12l.468 5.41c.022.196.174.348.348.348.196 0 .348-.152.37-.348L8.46 12l-.512-3.484c-.022-.196-.174-.392-.376-.392M5.626 7.124c-.218 0-.392.174-.414.392L4.83 12l.382 5.474c.022.218.196.392.414.392s.392-.174.414-.392L6.46 12l-.42-4.484c-.022-.218-.196-.392-.414-.392M3.71 8.668c-.196 0-.348.174-.37.37L3 12l.34 3.484c.022.196.174.348.37.348.174 0 .326-.152.348-.348L4.07 12l-.348-2.962c-.022-.196-.174-.37-.37-.37m-1.892 1.41c-.174 0-.326.152-.348.348L1.18 12l.29 3.196c.022.174.174.326.348.326.174 0 .326-.152.348-.326L2.49 12l-.324-1.574c-.022-.196-.174-.348-.348-.348M.348 11.001C.152 11.001 0 11.153 0 11.349L0 12l.348 2.131c0 .196.152.348.348.348.196 0 .348-.152.348-.348L1.392 12l-.348-.651c0-.196-.152-.348-.348-.348"/>
+  </symbol>
+  <symbol id="i-bandcamp" viewBox="0 0 24 24">
+    <path d="M0 18.75l7.437-13.5H24L16.563 18.75z"/>
+  </symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072C2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+  </symbol>
+</svg>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="mark">normal</div>
+    <div class="meta">house · <b>made for the floor</b></div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="eyebrow">normal · house · dj &amp; producer</div>
+      <h1 class="tagline">To dance is a <em>privilege;</em> to make you do, <em>is mine.</em></h1>
+      <p class="lede">House music for the floor — built off late-night sets, weekly releases, and a love of warm bass that knows when to back off. Listen below.</p>
+    </div>
+    <div class="hero-photo" style="background-image:url('assets/profile.jpg')" role="img" aria-label="normal — portrait"></div>
+  </section>
+
+  <section class="sec" id="releases">
+    <div class="sec-head">
+      <h2>Releases</h2>
+      <div class="count">6 / 2026</div>
+    </div>
+    <div class="releases">
+      <div class="release">
+        <div class="art" style="background-image:url('assets/covers/cognite.jpg')"></div>
+        <div class="body">
+          <div class="title">cognite</div>
+          <div class="release-actions">
+            <a class="r-act sc" href="https://soundcloud.com/normaldj/cognite" target="_blank" rel="noopener" aria-label="cognite on SoundCloud"><svg class="icon-sm"><use href="#i-soundcloud"/></svg><span>SC</span></a>
+            <a class="r-act bc" href="https://normaldj.bandcamp.com/track/cognite" target="_blank" rel="noopener" aria-label="cognite on Bandcamp"><svg class="icon-sm"><use href="#i-bandcamp"/></svg><span>BC</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="release">
+        <div class="art" style="background-image:url('assets/covers/gain-it-easy.jpg')"></div>
+        <div class="body">
+          <div class="title">gain it easy</div>
+          <div class="release-actions">
+            <a class="r-act sc" href="https://soundcloud.com/normaldj/gain-it-easy" target="_blank" rel="noopener" aria-label="gain it easy on SoundCloud"><svg class="icon-sm"><use href="#i-soundcloud"/></svg><span>SC</span></a>
+            <a class="r-act bc" href="https://normaldj.bandcamp.com/track/gain-it-easy" target="_blank" rel="noopener" aria-label="gain it easy on Bandcamp"><svg class="icon-sm"><use href="#i-bandcamp"/></svg><span>BC</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="release">
+        <div class="art" style="background-image:url('assets/covers/break-it-down.jpg')"></div>
+        <div class="body">
+          <div class="title">break it down</div>
+          <div class="release-actions">
+            <a class="r-act sc" href="https://soundcloud.com/normaldj/break-it-down" target="_blank" rel="noopener" aria-label="break it down on SoundCloud"><svg class="icon-sm"><use href="#i-soundcloud"/></svg><span>SC</span></a>
+            <a class="r-act bc" href="https://normaldj.bandcamp.com/track/break-it-down" target="_blank" rel="noopener" aria-label="break it down on Bandcamp"><svg class="icon-sm"><use href="#i-bandcamp"/></svg><span>BC</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="release">
+        <div class="art" style="background-image:url('assets/covers/motor-city-moves.jpg')"></div>
+        <div class="body">
+          <div class="title">motor city moves</div>
+          <div class="release-actions">
+            <a class="r-act sc" href="https://soundcloud.com/normaldj/motor-city-moves" target="_blank" rel="noopener" aria-label="motor city moves on SoundCloud"><svg class="icon-sm"><use href="#i-soundcloud"/></svg><span>SC</span></a>
+            <a class="r-act bc" href="https://normaldj.bandcamp.com/track/motor-city-moves" target="_blank" rel="noopener" aria-label="motor city moves on Bandcamp"><svg class="icon-sm"><use href="#i-bandcamp"/></svg><span>BC</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="release">
+        <div class="art" style="background-image:url('assets/covers/foster-the-floor.jpg')"></div>
+        <div class="body">
+          <div class="title">foster the floor</div>
+          <div class="release-actions">
+            <a class="r-act sc" href="https://soundcloud.com/normaldj/foster-the-floor" target="_blank" rel="noopener" aria-label="foster the floor on SoundCloud"><svg class="icon-sm"><use href="#i-soundcloud"/></svg><span>SC</span></a>
+            <a class="r-act bc" href="https://normaldj.bandcamp.com/track/foster-the-floor" target="_blank" rel="noopener" aria-label="foster the floor on Bandcamp"><svg class="icon-sm"><use href="#i-bandcamp"/></svg><span>BC</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="release">
+        <div class="art" style="background-image:url('assets/covers/intent.jpg')"></div>
+        <div class="body">
+          <div class="title">intent</div>
+          <div class="release-actions">
+            <a class="r-act sc" href="https://soundcloud.com/normaldj/intent" target="_blank" rel="noopener" aria-label="intent on SoundCloud"><svg class="icon-sm"><use href="#i-soundcloud"/></svg><span>SC</span></a>
+            <a class="r-act bc" href="https://normaldj.bandcamp.com/track/intent" target="_blank" rel="noopener" aria-label="intent on Bandcamp"><svg class="icon-sm"><use href="#i-bandcamp"/></svg><span>BC</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="listen">
+    <div class="sec-head">
+      <h2>Listen &amp; Follow</h2>
+      <div class="count">4 platforms</div>
+    </div>
+    <div class="links">
+      <a class="lk spotify" href="https://open.spotify.com/artist/0ow5fWEBIvvrDVDai6No2a" target="_blank" rel="noopener">
+        <span class="lk-left"><svg class="icon"><use href="#i-spotify"/></svg><span class="name">Spotify</span></span><span class="handle">normal →</span>
+      </a>
+      <a class="lk soundcloud" href="https://soundcloud.com/normaldj" target="_blank" rel="noopener">
+        <span class="lk-left"><svg class="icon"><use href="#i-soundcloud"/></svg><span class="name">SoundCloud</span></span><span class="handle">/normaldj →</span>
+      </a>
+      <a class="lk bandcamp" href="https://normaldj.bandcamp.com" target="_blank" rel="noopener">
+        <span class="lk-left"><svg class="icon"><use href="#i-bandcamp"/></svg><span class="name">Bandcamp</span></span><span class="handle">normaldj →</span>
+      </a>
+      <a class="lk instagram" href="https://instagram.com/normal.dj" target="_blank" rel="noopener">
+        <span class="lk-left"><svg class="icon"><use href="#i-instagram"/></svg><span class="name">Instagram</span></span><span class="handle">@normal.dj →</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div>© normal · 2026</div>
+    <div><a href="https://instagram.com/normal.dj" target="_blank" rel="noopener">contact</a></div>
+  </footer>
+
+</div>
+</body>
+</html>
