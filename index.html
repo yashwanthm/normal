@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>normal — house, made for the floor</title>
-<meta name="description" content="normal — house music, made for the floor. Listen on Spotify, SoundCloud, Bandcamp." />
+<meta name="description" content="normal — house music, made for the floor. Listen on Spotify, Apple Music, SoundCloud, Bandcamp." />
 <meta name="theme-color" content="#14110D" />
 
 <meta property="og:title" content="normal" />
@@ -174,9 +174,10 @@
   .lk:hover{border-color:currentColor;background:var(--ink)}
   .lk svg{width:18px;height:18px;fill:currentColor;display:block;flex-shrink:0}
   .lk.spotify:hover{color:var(--v-lime)}
+  .lk.applemusic:hover{color:var(--v-hotpink)}
   .lk.soundcloud:hover{color:var(--v-vermilion)}
   .lk.bandcamp:hover{color:var(--v-cobalt)}
-  .lk.instagram:hover{color:var(--v-hotpink)}
+  .lk.instagram:hover{color:var(--v-violet)}
 
   /* FOOTER */
   footer{
@@ -208,6 +209,9 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-spotify" viewBox="0 0 24 24">
     <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12C24 5.4 18.66 0 12 0m5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02m1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2M19.32 10.86C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3"/>
+  </symbol>
+  <symbol id="i-applemusic" viewBox="0 0 24 24">
+    <path d="M19.5 2h-15A2.5 2.5 0 0 0 2 4.5v15A2.5 2.5 0 0 0 4.5 22h15a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 19.5 2zm-2.563 14.797c0 1.103-.984 1.953-2.156 1.953s-2.156-.85-2.156-1.953.984-1.953 2.156-1.953c.305 0 .59.06.844.165V9.366l-5.625 1.27v7.16c0 1.104-.984 1.954-2.156 1.954s-2.156-.85-2.156-1.953.984-1.953 2.156-1.953c.305 0 .59.058.844.164V7.875l8.25-1.875v10.797z"/>
   </symbol>
   <symbol id="i-soundcloud" viewBox="0 0 24 24">
     <path d="M22.563 12.001c-.51 0-.999.1-1.447.282C20.728 8.464 17.488 5.456 13.547 5.456c-.962 0-1.91.197-2.764.535-.328.13-.413.262-.418.518V18.66c.005.27.213.494.488.522H22.56c2.029 0 3.674-1.622 3.674-3.622 0-1.999-1.645-3.62-3.674-3.62M9.464 6.715c-.236-.022-.456.105-.516.348L8.502 12l.446 6.51c.02.18.166.32.348.32.181 0 .328-.14.346-.32L10.13 12l-.488-4.937c-.02-.196-.183-.348-.378-.348M7.572 8.124c-.196.022-.348.196-.348.392L6.756 12l.468 5.41c.022.196.174.348.348.348.196 0 .348-.152.37-.348L8.46 12l-.512-3.484c-.022-.196-.174-.392-.376-.392M5.626 7.124c-.218 0-.392.174-.414.392L4.83 12l.382 5.474c.022.218.196.392.414.392s.392-.174.414-.392L6.46 12l-.42-4.484c-.022-.218-.196-.392-.414-.392M3.71 8.668c-.196 0-.348.174-.37.37L3 12l.34 3.484c.022.196.174.348.37.348.174 0 .326-.152.348-.348L4.07 12l-.348-2.962c-.022-.196-.174-.37-.37-.37m-1.892 1.41c-.174 0-.326.152-.348.348L1.18 12l.29 3.196c.022.174.174.326.348.326.174 0 .326-.152.348-.326L2.49 12l-.324-1.574c-.022-.196-.174-.348-.348-.348M.348 11.001C.152 11.001 0 11.153 0 11.349L0 12l.348 2.131c0 .196.152.348.348.348.196 0 .348-.152.348-.348L1.392 12l-.348-.651c0-.196-.152-.348-.348-.348"/>
@@ -243,6 +247,7 @@
     </div>
     <div class="links">
       <a class="lk spotify" href="https://open.spotify.com/artist/0ow5fWEBIvvrDVDai6No2a" target="_blank" rel="noopener"><svg><use href="#i-spotify"/></svg><span>Spotify</span></a>
+      <a class="lk applemusic" href="https://music.apple.com/artist/normal/1804288244" target="_blank" rel="noopener"><svg><use href="#i-applemusic"/></svg><span>Apple Music</span></a>
       <a class="lk soundcloud" href="https://soundcloud.com/normaldj" target="_blank" rel="noopener"><svg><use href="#i-soundcloud"/></svg><span>SoundCloud</span></a>
       <a class="lk bandcamp" href="https://normaldj.bandcamp.com" target="_blank" rel="noopener"><svg><use href="#i-bandcamp"/></svg><span>Bandcamp</span></a>
       <a class="lk instagram" href="https://instagram.com/normal.dj" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg><span>Instagram</span></a>
