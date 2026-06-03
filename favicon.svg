@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="normal — favicon">
+  <rect width="64" height="64" rx="12" fill="#14110D"/>
+  <text
+    x="32" y="50"
+    text-anchor="middle"
+    font-family="system-ui, -apple-system, &quot;SF Pro Display&quot;, &quot;Segoe UI&quot;, &quot;DM Sans&quot;, sans-serif"
+    font-weight="700"
+    font-size="52"
+    letter-spacing="-2"
+    fill="#F4EFE6"
+  >n</text>
+</svg>
