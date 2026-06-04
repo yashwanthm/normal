@@ -3,8 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>normal — house, made for the floor</title>
-<meta name="description" content="normal — house music, made for the floor. Listen on Spotify, Apple Music, SoundCloud, Bandcamp." />
+<title>normal — house music from Bangalore by Yashwanth Maheshwaram</title>
+<meta name="description" content="normal is the house music project of Yashwanth Maheshwaram, based in Bangalore. Warm, groove-led house and Detroit-leaning dance music — built for the floor." />
+<meta name="author" content="Yashwanth Maheshwaram" />
+<meta name="keywords" content="normal, normal dj, Yashwanth Maheshwaram, Bangalore house music, deep house, Detroit house, Indian house producer, house music India, Normal Records" />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<link rel="canonical" href="https://yashwanthm.github.io/normal/" />
 <meta name="theme-color" content="#14110D" />
 
 <!-- Google tag (gtag.js) -->
@@ -23,14 +27,27 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 
-<meta property="og:title" content="normal" />
-<meta property="og:description" content="house, made for the floor." />
+<meta property="og:title" content="normal — house music from Bangalore" />
+<meta property="og:description" content="The house music project of Yashwanth Maheshwaram. Warm, groove-led house and Detroit-leaning dance music — built for the floor." />
 <meta property="og:type" content="music.musician" />
-<meta property="og:image" content="assets/covers/intent.jpg" />
+<meta property="og:site_name" content="normal" />
+<meta property="og:url" content="https://yashwanthm.github.io/normal/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:image" content="https://yashwanthm.github.io/normal/assets/covers/intent.jpg" />
+<meta property="og:image:width" content="3000" />
+<meta property="og:image:height" content="3000" />
+<meta property="og:image:alt" content="normal — cover art for the track 'intent'" />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="normal — house music from Bangalore" />
+<meta name="twitter:description" content="The house music project of Yashwanth Maheshwaram. Warm, groove-led house and Detroit-leaning dance music." />
+<meta name="twitter:image" content="https://yashwanthm.github.io/normal/assets/covers/intent.jpg" />
+<meta name="twitter:image:alt" content="normal — cover art" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="dns-prefetch" href="https://w.soundcloud.com" />
+<link rel="dns-prefetch" href="https://api-widget.soundcloud.com" />
+<link rel="preload" as="image" href="assets/profile.jpg" fetchpriority="high" />
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" rel="stylesheet" />
 
 <style>
@@ -78,7 +95,7 @@
     font-family:var(--mono);font-size:12px;
     color:var(--paper-dim);text-transform:uppercase;letter-spacing:.08em;
   }
-  .masthead .mark{font-family:var(--display);font-weight:700;font-size:14px;color:var(--paper);letter-spacing:.02em;text-transform:none}
+  .masthead .mark{margin:0;font-family:var(--display);font-weight:700;font-size:14px;color:var(--paper);letter-spacing:.02em;text-transform:none;display:inline}
   .masthead .meta b{color:var(--paper)}
 
   /* HERO */
@@ -91,16 +108,18 @@
   }
   .hero-text{min-width:0}
   .hero-photo{
+    width:100%;height:auto;
     aspect-ratio:1/1;
-    background:#222 center/cover no-repeat;
+    object-fit:cover;
+    background:var(--ink-2);
     border:1px solid var(--rule);
-    overflow:hidden;
+    display:block;
   }
   .eyebrow{
     font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
     color:var(--v-yellow);margin-bottom:18px;
   }
-  h1.tagline{
+  .tagline{
     font-family:var(--serif);
     font-weight:500;
     font-size:clamp(34px, 5.4vw, 60px);
@@ -109,7 +128,7 @@
     margin:0 0 24px;
     max-width:18ch;
   }
-  h1.tagline em{font-style:italic;color:var(--v-yellow)}
+  .tagline em{font-style:italic;color:var(--v-yellow)}
   .hero p.lede{
     font-family:var(--display);
     font-size:clamp(15px,1.6vw,18px);
@@ -157,6 +176,12 @@
     color:var(--paper-dim);
     margin:0;
   }
+  .r-date{
+    font-family:var(--mono);font-size:10.5px;
+    color:var(--paper-faint);
+    text-transform:uppercase;letter-spacing:.16em;
+    margin:-6px 0 0;
+  }
   .r-buy{
     align-self:flex-start;
     display:inline-flex;align-items:center;gap:10px;
@@ -173,6 +198,33 @@
     border:0;display:block;
     background:var(--ink-2);
   }
+
+  .r-facade{
+    width:100%;height:166px;
+    border:1px solid var(--rule);
+    background:var(--ink-2);
+    display:flex;align-items:center;
+    padding:0 22px;gap:18px;
+    cursor:pointer;
+    color:var(--paper);
+    text-align:left;
+    font:inherit;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .r-facade:hover{border-color:var(--v-vermilion);background:var(--ink)}
+  .r-facade:focus-visible{outline:2px solid var(--v-vermilion);outline-offset:2px}
+  .r-facade-play{
+    flex-shrink:0;
+    width:54px;height:54px;border-radius:50%;
+    background:var(--v-vermilion);
+    display:inline-flex;align-items:center;justify-content:center;
+    transition:transform .15s ease;
+  }
+  .r-facade-play svg{width:20px;height:20px;fill:var(--paper);margin-left:3px;display:block}
+  .r-facade:hover .r-facade-play{transform:scale(1.06)}
+  .r-facade-meta{display:flex;flex-direction:column;gap:5px;min-width:0}
+  .r-facade-eyebrow{font-family:var(--mono);font-size:10px;color:var(--paper-dim);text-transform:uppercase;letter-spacing:.16em}
+  .r-facade-title{font-family:var(--display);font-size:16px;font-weight:500;color:var(--paper);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .r-no-sc{
     display:flex;align-items:center;justify-content:center;
     height:166px;
@@ -211,9 +263,12 @@
   footer{
     margin-top:96px;padding-top:18px;
     border-top:1px solid var(--rule);
-    display:flex;justify-content:space-between;align-items:baseline;
     font-family:var(--mono);font-size:11px;color:var(--paper-faint);
     text-transform:uppercase;letter-spacing:.12em;
+  }
+  footer address{
+    font-style:normal;
+    display:flex;justify-content:space-between;align-items:baseline;gap:18px;flex-wrap:wrap;
   }
   footer a:hover{color:var(--paper-dim)}
 
@@ -227,6 +282,121 @@
     .masthead .meta{display:none}
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MusicGroup",
+      "@id": "https://yashwanthm.github.io/normal/#artist",
+      "name": "normal",
+      "alternateName": ["normal.dj", "normaldj"],
+      "url": "https://yashwanthm.github.io/normal/",
+      "image": "https://yashwanthm.github.io/normal/assets/profile.jpg",
+      "description": "normal is the house music project of Yashwanth Maheshwaram, based in Bangalore. Warm, groove-led house and Detroit-leaning dance music — built for the floor.",
+      "genre": ["House", "Deep House", "Detroit House", "Acid House"],
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Bangalore",
+        "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressCountry": "IN" }
+      },
+      "member": { "@id": "https://yashwanthm.github.io/normal/#person" },
+      "recordLabel": { "@type": "Organization", "name": "Normal Records" },
+      "sameAs": [
+        "https://soundcloud.com/normaldj",
+        "https://normaldj.bandcamp.com",
+        "https://music.apple.com/artist/normal/1804288244",
+        "https://open.spotify.com/artist/0ow5fWEBIvvrDVDai6No2a",
+        "https://instagram.com/normal.dj"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://yashwanthm.github.io/normal/#person",
+      "name": "Yashwanth Maheshwaram",
+      "alternateName": "normal",
+      "jobTitle": "Music Producer, DJ",
+      "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressCountry": "IN" },
+      "sameAs": [
+        "https://soundcloud.com/normaldj",
+        "https://instagram.com/normal.dj"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://yashwanthm.github.io/normal/#website",
+      "url": "https://yashwanthm.github.io/normal/",
+      "name": "normal",
+      "publisher": { "@id": "https://yashwanthm.github.io/normal/#artist" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "MusicRecording",
+      "name": "cognite",
+      "byArtist": { "@id": "https://yashwanthm.github.io/normal/#artist" },
+      "genre": "Acid House",
+      "duration": "PT6M43S",
+      "datePublished": "2026-05-19",
+      "isrcCode": "QZYB22562674",
+      "url": "https://normaldj.bandcamp.com/track/cognite",
+      "sameAs": "https://soundcloud.com/normaldj/cognite"
+    },
+    {
+      "@type": "MusicRecording",
+      "name": "gain it easy",
+      "byArtist": { "@id": "https://yashwanthm.github.io/normal/#artist" },
+      "genre": "Deep House",
+      "duration": "PT9M58S",
+      "datePublished": "2026-04-23",
+      "url": "https://normaldj.bandcamp.com/track/normal-gain-it-easy",
+      "sameAs": "https://soundcloud.com/normaldj/normal-gain-it-easy"
+    },
+    {
+      "@type": "MusicRecording",
+      "name": "break it down",
+      "byArtist": { "@id": "https://yashwanthm.github.io/normal/#artist" },
+      "genre": "House",
+      "duration": "PT7M13S",
+      "datePublished": "2026-06-01",
+      "url": "https://normaldj.bandcamp.com/track/normal-break-it-down",
+      "sameAs": "https://soundcloud.com/normaldj/break-it-down"
+    },
+    {
+      "@type": "MusicRecording",
+      "name": "motor city moves",
+      "byArtist": { "@id": "https://yashwanthm.github.io/normal/#artist" },
+      "genre": "Detroit House",
+      "duration": "PT6M58S",
+      "datePublished": "2025-03-24",
+      "isrcCode": "QM42K2511496",
+      "url": "https://normaldj.bandcamp.com/track/motor-city-moves",
+      "sameAs": "https://soundcloud.com/normaldj/motor-city-moves"
+    },
+    {
+      "@type": "MusicRecording",
+      "name": "foster the floor",
+      "byArtist": { "@id": "https://yashwanthm.github.io/normal/#artist" },
+      "genre": "House",
+      "duration": "PT6M59S",
+      "datePublished": "2026-04-01",
+      "isrcCode": "QT6XZ2521214",
+      "url": "https://normaldj.bandcamp.com/track/foster-the-floor",
+      "sameAs": "https://soundcloud.com/normaldj/foster-the-floor"
+    },
+    {
+      "@type": "MusicRecording",
+      "name": "intent",
+      "byArtist": { "@id": "https://yashwanthm.github.io/normal/#artist" },
+      "genre": "Deep House",
+      "duration": "PT9M42S",
+      "datePublished": "2025-12-10",
+      "isrcCode": "QZYB42584282",
+      "url": "https://normaldj.bandcamp.com/track/intent",
+      "sameAs": "https://soundcloud.com/normaldj/intent"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -251,17 +421,17 @@
 <div class="wrap">
 
   <header class="masthead">
-    <div class="mark">normal</div>
+    <h1 class="mark">normal</h1>
     <div class="meta">house · <b>made for the floor</b></div>
   </header>
 
   <section class="hero">
     <div class="hero-text">
       <div class="eyebrow">normal · house · dj &amp; producer</div>
-      <h1 class="tagline">To dance is a <em>privilege;</em> to make you do, <em>is mine.</em></h1>
+      <p class="tagline">To dance is a <em>privilege;</em> to make you do, <em>is mine.</em></p>
       <p class="lede">normal is the dance music moniker of <b>Yashwanth Maheshwaram</b>, based in Bangalore. House music built off late-night sets — warm, bright tones tuned to the floor.</p>
     </div>
-    <div class="hero-photo" style="background-image:url('assets/profile.jpg')" role="img" aria-label="normal — portrait"></div>
+    <img class="hero-photo" src="assets/profile.jpg" alt="normal — Yashwanth Maheshwaram" width="520" height="520" loading="eager" decoding="async" fetchpriority="high" />
   </section>
 
   <section class="sec" id="listen">
@@ -284,75 +454,163 @@
       <div class="count">6 / 2026</div>
     </div>
     <div class="releases">
-      <div class="release">
+      <article class="release">
         <div class="r-text">
           <h3 class="r-title">cognite</h3>
+            <time class="r-date" datetime="2026-05-19">Released 19 May 2026</time>
           <p class="r-desc">A quiet, methodical house workout — one idea, trusted to carry the floor.</p>
           <a class="r-buy" href="https://normaldj.bandcamp.com/track/cognite" target="_blank" rel="noopener" aria-label="Buy cognite on Bandcamp">
           <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
         </a>
         </div>
-        <iframe class="r-player" loading="lazy" allow="autoplay" title="cognite — SoundCloud player" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Fcognite&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
-      </div>
-      <div class="release">
+        <button class="r-facade" type="button" data-sc-url="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Fcognite&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false" aria-label="Play cognite on SoundCloud">
+          <span class="r-facade-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+          <span class="r-facade-meta">
+            <span class="r-facade-eyebrow">SoundCloud — tap to play</span>
+            <span class="r-facade-title">cognite</span>
+          </span>
+        </button>
+      </article>
+      <article class="release">
         <div class="r-text">
           <h3 class="r-title">gain it easy</h3>
+            <time class="r-date" datetime="2026-04-23">Released 23 Apr 2026</time>
           <p class="r-desc">Ten minutes of unhurried deep house — the kind of record a DJ buys to use, not to show off.</p>
           <a class="r-buy" href="https://normaldj.bandcamp.com/track/normal-gain-it-easy" target="_blank" rel="noopener" aria-label="Buy gain it easy on Bandcamp">
           <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
         </a>
         </div>
-        <iframe class="r-player" loading="lazy" allow="autoplay" title="gain it easy — SoundCloud player" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Fnormal-gain-it-easy&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
-      </div>
-      <div class="release">
+        <button class="r-facade" type="button" data-sc-url="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Fnormal-gain-it-easy&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false" aria-label="Play gain it easy on SoundCloud">
+          <span class="r-facade-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+          <span class="r-facade-meta">
+            <span class="r-facade-eyebrow">SoundCloud — tap to play</span>
+            <span class="r-facade-title">gain it easy</span>
+          </span>
+        </button>
+      </article>
+      <article class="release">
         <div class="r-text">
           <h3 class="r-title">break it down</h3>
+            <time class="r-date" datetime="2026-06-01">Released 1 Jun 2026</time>
           <p class="r-desc">Stripped, percussive house — a cut that runs on energy and restraint.</p>
           <a class="r-buy" href="https://normaldj.bandcamp.com/track/normal-break-it-down" target="_blank" rel="noopener" aria-label="Buy break it down on Bandcamp">
           <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
         </a>
         </div>
-        <iframe class="r-player" loading="lazy" allow="autoplay" title="break it down — SoundCloud player" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Fbreak-it-down&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
-      </div>
-      <div class="release">
+        <button class="r-facade" type="button" data-sc-url="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Fbreak-it-down&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false" aria-label="Play break it down on SoundCloud">
+          <span class="r-facade-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+          <span class="r-facade-meta">
+            <span class="r-facade-eyebrow">SoundCloud — tap to play</span>
+            <span class="r-facade-title">break it down</span>
+          </span>
+        </button>
+      </article>
+      <article class="release">
         <div class="r-text">
           <h3 class="r-title">motor city moves</h3>
+            <time class="r-date" datetime="2025-03-24">Released 24 Mar 2025</time>
           <p class="r-desc">A driving Detroit house groove that flirts with techno without leaving the floor behind.</p>
           <a class="r-buy" href="https://normaldj.bandcamp.com/track/motor-city-moves" target="_blank" rel="noopener" aria-label="Buy motor city moves on Bandcamp">
           <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
         </a>
         </div>
-        <iframe class="r-player" loading="lazy" allow="autoplay" title="motor city moves — SoundCloud player" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Fmotor-city-moves&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
-      </div>
-      <div class="release">
+        <button class="r-facade" type="button" data-sc-url="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Fmotor-city-moves&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false" aria-label="Play motor city moves on SoundCloud">
+          <span class="r-facade-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+          <span class="r-facade-meta">
+            <span class="r-facade-eyebrow">SoundCloud — tap to play</span>
+            <span class="r-facade-title">motor city moves</span>
+          </span>
+        </button>
+      </article>
+      <article class="release">
         <div class="r-text">
           <h3 class="r-title">foster the floor</h3>
+            <time class="r-date" datetime="2026-04-01">Released 1 Apr 2026</time>
           <p class="r-desc">This ain't for the background. This is floor music — and the floor don't owe you nothing.</p>
           <a class="r-buy" href="https://normaldj.bandcamp.com/track/foster-the-floor" target="_blank" rel="noopener" aria-label="Buy foster the floor on Bandcamp">
           <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
         </a>
         </div>
-        <iframe class="r-player" loading="lazy" allow="autoplay" title="foster the floor — SoundCloud player" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Ffoster-the-floor&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
-      </div>
-      <div class="release">
+        <button class="r-facade" type="button" data-sc-url="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Ffoster-the-floor&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false" aria-label="Play foster the floor on SoundCloud">
+          <span class="r-facade-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+          <span class="r-facade-meta">
+            <span class="r-facade-eyebrow">SoundCloud — tap to play</span>
+            <span class="r-facade-title">foster the floor</span>
+          </span>
+        </button>
+      </article>
+      <article class="release">
         <div class="r-text">
           <h3 class="r-title">intent</h3>
+            <time class="r-date" datetime="2025-12-10">Released 10 Dec 2025</time>
           <p class="r-desc">A deliberate groove that takes its time on purpose — house with the lights low.</p>
           <a class="r-buy" href="https://normaldj.bandcamp.com/track/intent" target="_blank" rel="noopener" aria-label="Buy intent on Bandcamp">
           <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
         </a>
         </div>
-        <iframe class="r-player" loading="lazy" allow="autoplay" title="intent — SoundCloud player" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Fintent&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
-      </div>
+        <button class="r-facade" type="button" data-sc-url="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Fintent&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false" aria-label="Play intent on SoundCloud">
+          <span class="r-facade-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+          <span class="r-facade-meta">
+            <span class="r-facade-eyebrow">SoundCloud — tap to play</span>
+            <span class="r-facade-title">intent</span>
+          </span>
+        </button>
+      </article>
     </div>
   </section>
 
   <footer>
-    <div>© normal · 2026</div>
-    <div><a href="https://instagram.com/normal.dj" target="_blank" rel="noopener">contact</a></div>
+    <address>
+      <span>© normal · 2026</span>
+      <span>Bangalore, India · DM <a href="https://instagram.com/normal.dj" target="_blank" rel="noopener">@normal.dj</a> for bookings</span>
+    </address>
   </footer>
 
 </div>
+
+
+<script>
+(() => {
+  const swap = (btn, autoplay) => {
+    const iframe = document.createElement('iframe');
+    iframe.className = 'r-player';
+    iframe.allow = 'autoplay';
+    iframe.loading = 'lazy';
+    iframe.title = btn.getAttribute('aria-label') || 'SoundCloud player';
+    iframe.src = autoplay
+      ? btn.dataset.scUrl.replace('auto_play=false', 'auto_play=true')
+      : btn.dataset.scUrl;
+    btn.replaceWith(iframe);
+  };
+
+  // Background preload: load each player when it's near the viewport.
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          swap(entry.target, false);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '300px 0px' });
+    const start = () => document.querySelectorAll('.r-facade').forEach((b) => io.observe(b));
+    // Defer until after first paint
+    if (document.readyState === 'complete') {
+      requestIdleCallback ? requestIdleCallback(start, { timeout: 1500 }) : setTimeout(start, 300);
+    } else {
+      addEventListener('load', () => {
+        requestIdleCallback ? requestIdleCallback(start, { timeout: 1500 }) : setTimeout(start, 300);
+      });
+    }
+  }
+
+  // Click fallback: if the user taps before the IO swap has happened, load with autoplay.
+  addEventListener('click', (e) => {
+    const btn = e.target.closest('.r-facade');
+    if (btn) swap(btn, true);
+  });
+})();
+</script>
 
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8b45bcdbcd6346018e847753bdbbb168"}'></script>
