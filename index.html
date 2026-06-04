@@ -83,28 +83,9 @@
   .hero-text{min-width:0}
   .hero-photo{
     aspect-ratio:1/1;
-    position:relative;            /* anchors the ::after mask */
     background:#222 center/cover no-repeat;
     border:1px solid var(--rule);
-    filter:saturate(.78) contrast(1.06) brightness(.78);
     overflow:hidden;
-  }
-  /* Dark mask: vignette + bottom fade so the photo blends into the ink ground.
-     mix-blend-mode multiply tints the photo with the ink color instead of just
-     sitting on top — gives a cohesive cinematic look. */
-  .hero-photo::after{
-    content:"";
-    position:absolute;inset:0;
-    background:
-      linear-gradient(180deg,
-        rgba(20,17,13,0)   30%,
-        rgba(20,17,13,.45) 80%,
-        rgba(20,17,13,.7)  100%),
-      radial-gradient(120% 90% at 50% 35%,
-        rgba(20,17,13,0)   55%,
-        rgba(20,17,13,.45) 100%);
-    mix-blend-mode:multiply;
-    pointer-events:none;
   }
   .eyebrow{
     font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
@@ -261,7 +242,7 @@
     <div class="hero-text">
       <div class="eyebrow">normal · house · dj &amp; producer</div>
       <h1 class="tagline">To dance is a <em>privilege;</em> to make you do, <em>is mine.</em></h1>
-      <p class="lede">House music for the floor — built off late-night sets and a love of warm bass that knows when to back off. Listen below.</p>
+      <p class="lede">normal is the floor-first project of <b>Yashwanth Maheshwaram</b>, based in Bangalore. House music built off late-night sets — warm, bright tones tuned to the floor.</p>
     </div>
     <div class="hero-photo" style="background-image:url('assets/profile.jpg')" role="img" aria-label="normal — portrait"></div>
   </section>
