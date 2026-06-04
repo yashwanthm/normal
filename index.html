@@ -135,42 +135,46 @@
   .icon-sm{width:13px;height:13px;fill:currentColor;flex-shrink:0;display:block}
 
   /* RELEASES */
-  .releases{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-  }
+  .releases{display:flex;flex-direction:column;gap:40px}
   .release{
-    display:flex;flex-direction:column;
-    background:var(--ink-2);
-    border:1px solid var(--rule);
-    transition:border-color .18s ease;
-  }
-  .release:hover{border-color:var(--paper-faint)}
-  .release .art{
-    aspect-ratio:1/1;
-    background:#222 center/cover no-repeat;
+    display:flex;flex-direction:column;gap:14px;
+    padding-bottom:36px;
     border-bottom:1px solid var(--rule);
   }
-  .release .body{padding:12px 14px 12px;display:flex;flex-direction:column;gap:10px;flex:1}
-  .release .title{
-    font-family:var(--display);font-weight:700;font-size:15px;
-    color:var(--paper);margin:0;letter-spacing:-0.005em;
+  .release:last-child{border-bottom:none;padding-bottom:0}
+  .r-title{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(26px, 3.4vw, 36px);
+    line-height:1.05;letter-spacing:-0.01em;
+    color:var(--paper);margin:0;
   }
-  .release-actions{display:flex;gap:6px;margin-top:auto}
-  .r-act{
-    flex:1;
-    display:flex;align-items:center;justify-content:center;gap:6px;
-    padding:8px 6px;
-    border:1px solid var(--rule);
-    background:transparent;
-    font-family:var(--mono);font-size:10px;
-    text-transform:uppercase;letter-spacing:.1em;
+  .r-desc{
+    font-family:var(--display);font-size:15px;
     color:var(--paper-dim);
-    transition:color .15s ease, border-color .15s ease;
+    margin:0;max-width:62ch;
   }
-  .r-act.sc:hover{color:var(--v-vermilion);border-color:var(--v-vermilion)}
-  .r-act.bc:hover{color:var(--v-cobalt);border-color:var(--v-cobalt)}
+  .r-buy{
+    align-self:flex-start;
+    display:inline-flex;align-items:center;gap:10px;
+    padding:12px 20px;
+    background:var(--v-cobalt);color:var(--paper);
+    border:1px solid var(--v-cobalt);
+    font-family:var(--display);font-weight:500;font-size:14px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .r-buy:hover{background:transparent;color:var(--v-cobalt)}
+  .r-buy svg{width:16px;height:16px;fill:currentColor;display:block}
+  .r-player{
+    width:100%;height:166px;
+    border:0;display:block;
+    background:var(--ink-2);
+  }
+  .r-no-sc{
+    font-family:var(--mono);font-size:11px;
+    color:var(--paper-faint);
+    text-transform:uppercase;letter-spacing:.12em;
+    padding:14px 0 0;
+  }
 
   /* LISTEN/FOLLOW */
   .links{
@@ -210,13 +214,9 @@
     .hero{margin:40px 0 56px;grid-template-columns:1fr;gap:28px}
     .hero-photo{width:60%;max-width:240px;justify-self:start}
     .sec{margin-top:64px}
-    .releases{grid-template-columns:repeat(2,1fr);gap:14px}
+    .releases{gap:32px}
+    .release{padding-bottom:28px;gap:12px}
     .masthead .meta{display:none}
-  }
-  @media (max-width:420px){
-    .releases{grid-template-columns:repeat(2,1fr)}
-    .release .body{padding:10px 12px 12px}
-    .release .title{font-size:14px}
   }
 </style>
 </head>
@@ -277,13 +277,54 @@
     </div>
     <div class="releases">
       <div class="release">
-        <div class="art" style="background-image:url('assets/covers/cognite.jpg')"></div>
-        <div class="body">
-          <div class="title">cognite</div>
-          <div class="release-actions">
-            <a class="r-act sc" href="https://soundcloud.com/normaldj/normal-cognite" target="_blank" rel="noopener" aria-label="cognite on SoundCloud"><svg class="icon-sm"><use href="#i-soundcloud"/></svg><span>SC</span></a>
-            <a class="r-act bc" href="https://normaldj.bandcamp.com/track/cognite" target="_blank" rel="noopener" aria-label="cognite on Bandcamp"><svg class="icon-sm"><use href="#i-bandcamp"/></svg><span>BC</span></a>
-          </div>
+        <h3 class="r-title">cognite</h3>
+        <p class="r-desc">A quiet, methodical house workout — one idea, trusted to carry the floor.</p>
+        <a class="r-buy" href="https://normaldj.bandcamp.com/track/cognite" target="_blank" rel="noopener" aria-label="Buy cognite on Bandcamp">
+          <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
+        </a>
+        <iframe class="r-player" loading="lazy" allow="autoplay" title="cognite — SoundCloud player" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Fnormal-cognite&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+      </div>
+      <div class="release">
+        <h3 class="r-title">gain it easy</h3>
+        <p class="r-desc">Ten minutes of unhurried deep house — the kind of record a DJ buys to use, not to show off.</p>
+        <a class="r-buy" href="https://normaldj.bandcamp.com/track/normal-gain-it-easy" target="_blank" rel="noopener" aria-label="Buy gain it easy on Bandcamp">
+          <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
+        </a>
+        <iframe class="r-player" loading="lazy" allow="autoplay" title="gain it easy — SoundCloud player" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Fnormal-gain-it-easy&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+      </div>
+      <div class="release">
+        <h3 class="r-title">break it down</h3>
+        <p class="r-desc">Stripped, percussive house — a cut that runs on energy and restraint.</p>
+        <a class="r-buy" href="https://normaldj.bandcamp.com/track/normal-break-it-down" target="_blank" rel="noopener" aria-label="Buy break it down on Bandcamp">
+          <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
+        </a>
+        <div class="r-no-sc">SoundCloud release pending — preview on Bandcamp above</div>
+      </div>
+      <div class="release">
+        <h3 class="r-title">motor city moves</h3>
+        <p class="r-desc">A driving Detroit house groove that flirts with techno without leaving the floor behind.</p>
+        <a class="r-buy" href="https://normaldj.bandcamp.com/track/motor-city-moves" target="_blank" rel="noopener" aria-label="Buy motor city moves on Bandcamp">
+          <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
+        </a>
+        <iframe class="r-player" loading="lazy" allow="autoplay" title="motor city moves — SoundCloud player" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Fmotor-city-moves&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+      </div>
+      <div class="release">
+        <h3 class="r-title">foster the floor</h3>
+        <p class="r-desc">This ain't for the background. This is floor music — and the floor don't owe you nothing.</p>
+        <a class="r-buy" href="https://normaldj.bandcamp.com/track/foster-the-floor" target="_blank" rel="noopener" aria-label="Buy foster the floor on Bandcamp">
+          <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
+        </a>
+        <iframe class="r-player" loading="lazy" allow="autoplay" title="foster the floor — SoundCloud player" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Ffoster-the-floor&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+      </div>
+      <div class="release">
+        <h3 class="r-title">intent</h3>
+        <p class="r-desc">A deliberate groove that takes its time on purpose — house with the lights low.</p>
+        <a class="r-buy" href="https://normaldj.bandcamp.com/track/intent" target="_blank" rel="noopener" aria-label="Buy intent on Bandcamp">
+          <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
+        </a>
+        <iframe class="r-player" loading="lazy" allow="autoplay" title="intent — SoundCloud player" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnormaldj%2Fintent&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+      </div>
+    </div>
         </div>
       </div>
       <div class="release">
