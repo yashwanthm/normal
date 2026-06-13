@@ -155,100 +155,80 @@
   .icon{width:18px;height:18px;fill:currentColor;flex-shrink:0;display:block}
   .icon-sm{width:13px;height:13px;fill:currentColor;flex-shrink:0;display:block}
 
-  /* RELEASES */
-  .releases{display:flex;flex-direction:column;gap:40px}
-  .release{
-    display:grid;
-    grid-template-columns: 1fr 2.3fr;
-    gap:32px;
-    align-items:center;
-    padding-bottom:36px;
-    border-bottom:1px solid var(--rule);
+  /* RELEASES — scrollable list (left) + player pane (right); floats bottom on mobile */
+  .releases-pane{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+  .tracklist{
+    list-style:none;margin:0;padding:0;
+    max-height:474px;overflow-y:auto;overscroll-behavior:contain;
+    border:1px solid var(--rule);border-radius:10px;scrollbar-width:thin;
   }
-  .release:last-child{border-bottom:none;padding-bottom:0}
-  .r-text{display:flex;flex-direction:column;gap:14px;min-width:0}
-  .r-title{
-    font-family:var(--serif);font-weight:500;
-    font-size:clamp(26px, 2.8vw, 34px);
-    line-height:1.05;letter-spacing:-0.01em;
-    color:var(--paper);margin:0;
+  .trk{
+    display:grid;grid-template-columns:48px 1fr auto;gap:14px;align-items:center;
+    padding:12px 14px;border-bottom:1px solid var(--rule);cursor:pointer;
+    transition:background .15s ease;
   }
-  .r-desc{
-    font-family:var(--display);font-size:14.5px;
-    color:var(--paper-dim);
-    margin:0;
+  .trk:last-child{border-bottom:none}
+  .trk:hover{background:var(--ink-2)}
+  .trk[aria-current="true"]{background:var(--ink-2)}
+  .trk[aria-current="true"] .trk-title{color:var(--v-vermilion)}
+  .trk-cover{width:48px;height:48px;border-radius:5px;object-fit:cover;display:block;background:var(--ink-2);border:1px solid var(--rule)}
+  .trk-cover.ph{background:repeating-linear-gradient(135deg,var(--ink-2),var(--ink-2) 6px,rgba(244,239,230,0.05) 6px,rgba(244,239,230,0.05) 12px)}
+  .trk-info{min-width:0;display:flex;flex-direction:column;gap:3px}
+  .trk-title{font-family:var(--serif);font-weight:500;font-size:18px;line-height:1.1;color:var(--paper);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .trk-title .trk-credit{font-family:var(--display);font-style:italic;font-size:11px;color:var(--v-yellow);margin-left:6px}
+  .trk-meta{font-family:var(--mono);font-size:9px;color:var(--paper-faint);text-transform:uppercase;letter-spacing:.1em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .trk-meta b{color:var(--paper-dim);font-weight:500}
+  .trk-play{
+    flex-shrink:0;width:36px;height:36px;border-radius:50%;border:0;
+    background:var(--v-vermilion);cursor:pointer;
+    display:inline-flex;align-items:center;justify-content:center;transition:transform .15s ease;
   }
-  .r-date{
-    font-family:var(--mono);font-size:10.5px;
-    color:var(--paper-faint);
-    text-transform:uppercase;letter-spacing:.16em;
-    margin:-6px 0 0;
-  }
-  .r-credit{
-    font-family:var(--display);font-style:italic;font-size:14px;
-    color:var(--v-yellow);
-    margin:-8px 0 0;
-  }
-  .r-isrc{
-    font-family:var(--mono);font-size:10px;
-    color:var(--paper-faint);
-    text-transform:uppercase;letter-spacing:.12em;
-    margin:-4px 0 0;
-  }
-  .r-isrc b{color:var(--paper-dim);font-weight:500}
-  .r-buy{
-    align-self:flex-start;
-    display:inline-flex;align-items:center;gap:10px;
-    padding:11px 18px;
-    background:var(--v-cobalt);color:var(--paper);
-    border:1px solid var(--v-cobalt);
-    font-family:var(--display);font-weight:500;font-size:14px;
-    transition:background .15s ease, color .15s ease;
-  }
-  .r-buy:hover{background:transparent;color:var(--v-cobalt)}
-  .r-buy svg{width:16px;height:16px;fill:currentColor;display:block}
-  .r-player{
-    width:100%;height:120px;
-    border:0;display:block;
-    background:var(--ink-2);
-  }
+  .trk-play:hover{transform:scale(1.08)}
+  .trk-play svg{width:13px;height:13px;fill:var(--paper);margin-left:2px;display:block}
+  .trk[aria-current="true"] .trk-play{background:var(--paper)}
+  .trk[aria-current="true"] .trk-play svg{fill:var(--ink)}
 
-  .r-facade{
-    width:100%;height:120px;
-    border:1px solid var(--rule);
-    background:var(--ink-2);
-    display:flex;align-items:center;
-    padding:0 18px;gap:16px;
-    cursor:pointer;
-    color:var(--paper);
-    text-align:left;
-    font:inherit;
-    transition:border-color .15s ease, background .15s ease;
+  .player-pane{position:sticky;top:18px;border:1px solid var(--rule);border-radius:10px;padding:18px}
+  .np-empty{font-family:var(--mono);font-size:11px;color:var(--paper-faint);text-transform:uppercase;letter-spacing:.14em;margin:0;text-align:center;padding:30px 0}
+  .np-close{display:none}
+  .np-headings{min-width:0}
+  .np-title{font-family:var(--serif);font-weight:500;font-size:23px;line-height:1.05;color:var(--paper);margin:0}
+  .np-title .trk-credit{font-family:var(--display);font-style:italic;font-size:12px;color:var(--v-yellow);margin-left:6px}
+  .np-meta{font-family:var(--mono);font-size:9.5px;color:var(--paper-faint);text-transform:uppercase;letter-spacing:.1em}
+  .np-meta b{color:var(--paper-dim);font-weight:500}
+  .np-desc{font-family:var(--display);font-size:12.5px;line-height:1.5;color:var(--paper-dim);margin:14px 0 0}
+  .np-player{margin-top:14px}
+  .np-player iframe{width:100%;height:120px;border:1px solid var(--rule);display:block;background:var(--ink-2)}
+  .np-player iframe.tall{height:166px}
+  .np-buy{
+    margin-top:14px;display:inline-flex;align-items:center;gap:8px;
+    padding:10px 16px;background:var(--v-cobalt);color:var(--paper);
+    border:1px solid var(--v-cobalt);font-family:var(--display);font-weight:500;font-size:13px;
+    transition:background .15s ease,color .15s ease;
   }
-  .r-facade[data-h="166"]{height:166px}
-  .r-facade:hover{border-color:var(--v-vermilion);background:var(--ink)}
-  .r-facade:focus-visible{outline:2px solid var(--v-vermilion);outline-offset:2px}
-  .r-facade-play{
-    flex-shrink:0;
-    width:54px;height:54px;border-radius:50%;
-    background:var(--v-vermilion);
-    display:inline-flex;align-items:center;justify-content:center;
-    transition:transform .15s ease;
-  }
-  .r-facade-play svg{width:20px;height:20px;fill:var(--paper);margin-left:3px;display:block}
-  .r-facade:hover .r-facade-play{transform:scale(1.06)}
-  .r-facade-meta{display:flex;flex-direction:column;gap:5px;min-width:0}
-  .r-facade-eyebrow{font-family:var(--mono);font-size:10px;color:var(--paper-dim);text-transform:uppercase;letter-spacing:.16em}
-  .r-facade-title{font-family:var(--display);font-size:16px;font-weight:500;color:var(--paper);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .r-no-sc{
-    display:flex;align-items:center;justify-content:center;
-    height:120px;
-    background:var(--ink-2);
-    border:1px solid var(--rule);
-    font-family:var(--mono);font-size:11px;
-    color:var(--paper-faint);
-    text-transform:uppercase;letter-spacing:.12em;
-    text-align:center;padding:0 20px;
+  .np-buy:hover{background:transparent;color:var(--v-cobalt)}
+  .np-buy svg{width:14px;height:14px;fill:currentColor;display:block}
+
+  @media (max-width:720px){
+    .releases-pane{grid-template-columns:1fr}
+    .tracklist{max-height:none}
+    .player-pane{
+      position:fixed;left:0;right:0;bottom:0;top:auto;z-index:60;
+      border:0;border-top:1px solid var(--rule);border-radius:0;
+      background:var(--ink);box-shadow:0 -8px 24px rgba(0,0,0,.45);
+      padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+      display:none;
+    }
+    .player-pane.is-playing{display:block}
+    .np-close{
+      display:inline-flex;position:absolute;top:6px;right:10px;z-index:2;
+      border:0;background:none;color:var(--paper-dim);font-size:24px;line-height:1;cursor:pointer;padding:4px 8px;
+    }
+    .np-headings{padding-right:34px}
+    .np-title{font-size:18px}
+    .np-meta{font-size:9px}
+    .np-desc{display:none}
+    body.playing{padding-bottom:230px}
   }
 
   /* LISTEN/FOLLOW */
@@ -273,6 +253,53 @@
   .lk.soundcloud:hover{color:var(--v-vermilion)}
   .lk.bandcamp:hover{color:var(--v-cobalt)}
   .lk.instagram:hover{color:var(--v-violet)}
+  .lk.youtube:hover{color:var(--v-vermilion)}
+  /* primary CTA — Bandcamp (buy / wavs) */
+  .lk.primary{background:var(--v-yellow);border-color:var(--v-yellow);color:var(--ink)}
+  .lk.primary:hover{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+  /* hero link row */
+  .hero-links{margin-top:24px;padding-top:22px;border-top:1px solid var(--rule)}
+
+  /* PRAISE CAROUSEL */
+  .carousel{position:relative}
+  .car-track{
+    display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;-webkit-overflow-scrolling:touch;align-items:center;
+    scrollbar-width:none;padding-bottom:2px;
+  }
+  .car-track::-webkit-scrollbar{display:none}
+  .car-slide{
+    flex:0 0 100%;scroll-snap-align:center;margin:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  }
+  .car-slide img{
+    width:100%;max-width:440px;height:340px;display:block;
+    object-fit:contain;object-position:center;
+    border:1px solid var(--rule);border-radius:10px;background:#fff;
+  }
+  @media (max-width:720px){ .car-slide img{height:260px} }
+  .car-slide figcaption{
+    font-family:var(--mono);font-size:12px;text-transform:uppercase;
+    letter-spacing:.1em;color:var(--paper-dim);text-align:center;
+  }
+  .car-slide figcaption b{color:var(--paper)}
+  .car-slide figcaption a{color:inherit;text-decoration:none;border-bottom:1px solid var(--paper-faint)}
+  .car-slide figcaption a:hover{color:var(--v-yellow);border-color:var(--v-yellow)}
+  .car-nav{
+    position:absolute;top:42%;transform:translateY(-50%);z-index:2;
+    width:40px;height:40px;border-radius:50%;
+    border:1px solid var(--rule);background:var(--ink-2);color:var(--paper);
+    font-size:22px;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .car-nav.prev{left:-8px}
+  .car-nav.next{right:-8px}
+  .car-nav:hover{border-color:var(--paper-dim)}
+  .car-nav[hidden]{display:none}
+  .car-dots{display:flex;gap:8px;justify-content:center;margin-top:16px}
+  .car-dots[hidden]{display:none}
+  .car-dots button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:var(--paper-faint);cursor:pointer}
+  .car-dots button[aria-current="true"]{background:var(--v-yellow)}
 
   /* FOOTER */
   footer{
@@ -292,8 +319,6 @@
     .hero{margin:40px 0 56px;grid-template-columns:1fr;gap:28px}
     .hero-photo{width:60%;max-width:240px;justify-self:start}
     .sec{margin-top:64px}
-    .releases{gap:32px}
-    .release{grid-template-columns:1fr;gap:16px;padding-bottom:28px}
     .masthead .meta{display:none}
   }
 </style>
@@ -432,6 +457,9 @@
   <symbol id="i-instagram" viewBox="0 0 24 24">
     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072C2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
   </symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24">
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+  </symbol>
 </svg>
 
 <div class="wrap">
@@ -443,25 +471,19 @@
 
   <section class="hero">
     <div class="hero-text">
-      <div class="eyebrow">normal · house · dj &amp; producer</div>
+      <div class="eyebrow">normal · dance music · dj &amp; producer</div>
       <p class="tagline">To dance is a <em>privilege;</em> to make you do, <em>is mine.</em></p>
-      <p class="lede">normal is the dance music moniker of <b>Yashwanth Maheshwaram</b>, based in Bangalore. House music built off late-night sets — warm, bright tones tuned to the floor.</p>
+      <p class="lede">normal is the house project of <b>Yashwanth Maheshwaram</b>, based in Bangalore. Bright, warm house with a Detroit lean — deep, raw and acid — built as DJ tools for the second hour of a good room.</p>
+      <div class="links hero-links">
+        <a class="lk bandcamp primary" href="https://normaldj.bandcamp.com" target="_blank" rel="noopener"><svg><use href="#i-bandcamp"/></svg><span>Bandcamp</span></a>
+        <a class="lk instagram" href="https://instagram.com/normal.dj" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg><span>Instagram</span></a>
+        <a class="lk soundcloud" href="https://soundcloud.com/normaldj" target="_blank" rel="noopener"><svg><use href="#i-soundcloud"/></svg><span>SoundCloud</span></a>
+        <a class="lk applemusic" href="https://music.apple.com/artist/normal/1804288244" target="_blank" rel="noopener"><svg><use href="#i-applemusic"/></svg><span>Apple Music</span></a>
+        <a class="lk spotify" href="https://open.spotify.com/artist/0ow5fWEBIvvrDVDai6No2a" target="_blank" rel="noopener"><svg><use href="#i-spotify"/></svg><span>Spotify</span></a>
+        <a class="lk youtube" href="https://www.youtube.com/@Normal-sh01" target="_blank" rel="noopener"><svg><use href="#i-youtube"/></svg><span>YouTube</span></a>
+      </div>
     </div>
     <img class="hero-photo" src="assets/profile.jpg" alt="normal — Yashwanth Maheshwaram" width="520" height="520" loading="eager" decoding="async" fetchpriority="high" />
-  </section>
-
-  <section class="sec" id="listen">
-    <div class="sec-head">
-      <h2>Listen &amp; Follow</h2>
-      
-    </div>
-    <div class="links">
-      <a class="lk spotify" href="https://open.spotify.com/artist/0ow5fWEBIvvrDVDai6No2a" target="_blank" rel="noopener"><svg><use href="#i-spotify"/></svg><span>Spotify</span></a>
-      <a class="lk applemusic" href="https://music.apple.com/artist/normal/1804288244" target="_blank" rel="noopener"><svg><use href="#i-applemusic"/></svg><span>Apple Music</span></a>
-      <a class="lk soundcloud" href="https://soundcloud.com/normaldj" target="_blank" rel="noopener"><svg><use href="#i-soundcloud"/></svg><span>SoundCloud</span></a>
-      <a class="lk bandcamp" href="https://normaldj.bandcamp.com" target="_blank" rel="noopener"><svg><use href="#i-bandcamp"/></svg><span>Bandcamp</span></a>
-      <a class="lk instagram" href="https://instagram.com/normal.dj" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg><span>Instagram</span></a>
-    </div>
   </section>
 
   <section class="sec" id="releases">
@@ -469,131 +491,102 @@
       <h2>Releases</h2>
       <div class="count">7 / 2026</div>
     </div>
-    <div class="releases">
-      <article class="release">
-        <div class="r-text">
-          <h3 class="r-title">cognite</h3>
-            <time class="r-date" datetime="2026-06-12">Releases 12 Jun 2026</time>
-            <p class="r-isrc"><b>ISRC</b> QZYB22562674</p>
-          <p class="r-desc">A 126 BPM acid-house meditation in the lineage of Roy Davis Jr. and Mike Dunn — the house side of acid, not the rave side. Long intro and outro for blends, a 303 line that slides instead of bites. Built for the second hour of a peak-time set.</p>
-          <a class="r-buy" href="https://normaldj.bandcamp.com/track/cognite" target="_blank" rel="noopener" aria-label="Buy cognite on Bandcamp">
-          <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
-        </a>
+                <div class="releases-pane">
+      <ol class="tracklist" id="tracklist">
+        <li class="trk" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=2308886165/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="cognite" data-credit="" data-meta="&lt;b&gt;12 Jun 2026&lt;/b&gt; · out now · 126 · acid house · ISRC QZYB22562674" data-desc="A 126 BPM acid-house meditation in the lineage of Roy Davis Jr. and Mike Dunn — the house side of acid, not the rave side. Long intro and outro for blends, a 303 line that slides instead of bites." data-buy="https://normaldj.bandcamp.com/track/cognite" data-cover="assets/covers/cognite.jpg">
+          <img class="trk-cover" src="assets/covers/cognite.jpg" alt="cognite cover" loading="lazy" decoding="async" width="48" height="48" />
+          <span class="trk-info"><span class="trk-title">cognite</span><span class="trk-meta"><b>12 Jun 2026</b> · out now · 126 · acid house · ISRC QZYB22562674</span></span>
+          <button class="trk-play" type="button" aria-label="Play cognite"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </li>
+        <li class="trk" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=980980094/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="gain it easy" data-credit="" data-meta="&lt;b&gt;19 Jun 2026&lt;/b&gt; · upcoming · 122 · deep house · ISRC QZNRS2580746" data-desc="A 122 BPM long-form deep house cut — patient drums, warm chords, ten minutes of unhurried groove. In the lineage of Theo Parrish and Rick Wilhite. A DJ tool for the second hour, not the first." data-buy="https://normaldj.bandcamp.com/track/normal-gain-it-easy" data-cover="assets/covers/gain-it-easy.jpg">
+          <img class="trk-cover" src="assets/covers/gain-it-easy.jpg" alt="gain it easy cover" loading="lazy" decoding="async" width="48" height="48" />
+          <span class="trk-info"><span class="trk-title">gain it easy</span><span class="trk-meta"><b>19 Jun 2026</b> · upcoming · 122 · deep house · ISRC QZNRS2580746</span></span>
+          <button class="trk-play" type="button" aria-label="Play gain it easy"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </li>
+        <li class="trk" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=1789546577/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="break it down" data-credit="" data-meta="&lt;b&gt;19 Jun 2026&lt;/b&gt; · upcoming · 124 · broken-beat house · ISRC QZT852577422" data-desc="A 124 BPM broken-beat house cut — swung percussion, dry drums, a round bass. House on a different grid, in the lineage of Sweely and DJ Sneak&#x27;s swung work. A tool for breaking up a long stretch of straight house." data-buy="https://normaldj.bandcamp.com/track/normal-break-it-down" data-cover="assets/covers/break-it-down.jpg">
+          <img class="trk-cover" src="assets/covers/break-it-down.jpg" alt="break it down cover" loading="lazy" decoding="async" width="48" height="48" />
+          <span class="trk-info"><span class="trk-title">break it down</span><span class="trk-meta"><b>19 Jun 2026</b> · upcoming · 124 · broken-beat house · ISRC QZT852577422</span></span>
+          <button class="trk-play" type="button" aria-label="Play break it down"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </li>
+        <li class="trk" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=3054544946/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="foster the floor" data-credit="" data-meta="&lt;b&gt;3 Jul 2026&lt;/b&gt; · upcoming · 126 · raw house · ISRC QT6XZ2521214" data-desc="A 126 BPM raw house cut — dry drums, a single bass line, a chord stack that arrives late. Mike Dunn and Cajmere: Chicago bones, Detroit weight. Built for a third-hour DJ holding the floor." data-buy="https://normaldj.bandcamp.com/track/foster-the-floor" data-cover="assets/covers/foster-the-floor.jpg">
+          <img class="trk-cover" src="assets/covers/foster-the-floor.jpg" alt="foster the floor cover" loading="lazy" decoding="async" width="48" height="48" />
+          <span class="trk-info"><span class="trk-title">foster the floor</span><span class="trk-meta"><b>3 Jul 2026</b> · upcoming · 126 · raw house · ISRC QT6XZ2521214</span></span>
+          <button class="trk-play" type="button" aria-label="Play foster the floor"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </li>
+        <li class="trk" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=3884799229/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="motor city moves" data-credit="" data-meta="&lt;b&gt;10 Jul 2026&lt;/b&gt; · upcoming · 124 · detroit house / techno · ISRC QM42K2511496" data-desc="A 124 BPM Detroit house / techno hybrid — driving percussion, hypnotic bass, atmospheric textures. In the lineage of Robert Hood, Theo Parrish and Mike Banks. Closes a house set or opens a techno one." data-buy="https://normaldj.bandcamp.com/track/motor-city-moves" data-cover="assets/covers/motor-city-moves.jpg">
+          <img class="trk-cover" src="assets/covers/motor-city-moves.jpg" alt="motor city moves cover" loading="lazy" decoding="async" width="48" height="48" />
+          <span class="trk-info"><span class="trk-title">motor city moves</span><span class="trk-meta"><b>10 Jul 2026</b> · upcoming · 124 · detroit house / techno · ISRC QM42K2511496</span></span>
+          <button class="trk-play" type="button" aria-label="Play motor city moves"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </li>
+        <li class="trk" data-embed="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2333695265%3Fsecret_token%3Ds-V75sIrXu0Ks&amp;color=%23EE3A24&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false" data-h="166" data-title="liberate" data-credit="with alldayallnight" data-meta="&lt;b&gt;7 Aug 2026&lt;/b&gt; · upcoming · 122 · house / synth-funk · private preview" data-desc="122 BPM house leaning synth-funk — 80s keys, a swung pocket, percussion sitting slightly behind the grid. Moodymann, Floating Points and Dam-Funk territory. A collab with alldayallnight, built for the back of the night." data-buy="" data-cover="">
+          <span class="trk-cover ph" aria-hidden="true"></span>
+          <span class="trk-info"><span class="trk-title">liberate <span class="trk-credit">with alldayallnight</span></span><span class="trk-meta"><b>7 Aug 2026</b> · upcoming · 122 · house / synth-funk · private preview</span></span>
+          <button class="trk-play" type="button" aria-label="Play liberate"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </li>
+        <li class="trk" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=2965371891/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="intent" data-credit="" data-meta="&lt;b&gt;29 May 2026&lt;/b&gt; · out now · 122 · house" data-desc="A 122 BPM slow-burn house cut — nine and a half minutes of patient, hypnotic loop work in the lineage of Mike Huckaby and the Workshop / Mathematics orbit. Built for the deep section of a long set." data-buy="https://normaldj.bandcamp.com/track/intent" data-cover="assets/covers/intent.jpg">
+          <img class="trk-cover" src="assets/covers/intent.jpg" alt="intent cover" loading="lazy" decoding="async" width="48" height="48" />
+          <span class="trk-info"><span class="trk-title">intent</span><span class="trk-meta"><b>29 May 2026</b> · out now · 122 · house</span></span>
+          <button class="trk-play" type="button" aria-label="Play intent"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </li>
+      </ol>
+      <aside class="player-pane" id="playerPane" aria-live="polite">
+        <p class="np-empty" id="npEmpty">Select a track to play.</p>
+        <div class="np" id="np" hidden>
+          <button class="np-close" id="npClose" type="button" aria-label="Close player">×</button>
+          <div class="np-headings">
+            <h3 class="np-title" id="npTitle"></h3>
+            <span class="np-meta" id="npMeta"></span>
+          </div>
+          <p class="np-desc" id="npDesc"></p>
+          <div class="np-player" id="npPlayer"></div>
+          <a class="np-buy" id="npBuy" target="_blank" rel="noopener" hidden><svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span></a>
         </div>
-        <button class="r-facade" type="button" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=2308886165/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" aria-label="Play cognite on SoundCloud">
-          <span class="r-facade-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
-          <span class="r-facade-meta">
-            <span class="r-facade-eyebrow">Bandcamp — tap to play</span>
-            <span class="r-facade-title">cognite</span>
-          </span>
-        </button>
-      </article>
-      <article class="release">
-        <div class="r-text">
-          <h3 class="r-title">gain it easy</h3>
-            <time class="r-date" datetime="2026-06-19">Releases 19 Jun 2026</time>
-            <p class="r-isrc"><b>ISRC</b> QZNRS2580746</p>
-          <p class="r-desc">A 122 BPM long-form deep house cut — patient drums, warm chords, ten minutes of unhurried groove. In the lineage of Theo Parrish, Rick Wilhite, and the Detroit-via-Chicago school. A DJ tool for the second hour, not the first.</p>
-          <a class="r-buy" href="https://normaldj.bandcamp.com/track/normal-gain-it-easy" target="_blank" rel="noopener" aria-label="Buy gain it easy on Bandcamp">
-          <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
-        </a>
-        </div>
-        <button class="r-facade" type="button" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=980980094/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" aria-label="Play gain it easy on SoundCloud">
-          <span class="r-facade-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
-          <span class="r-facade-meta">
-            <span class="r-facade-eyebrow">Bandcamp — tap to play</span>
-            <span class="r-facade-title">gain it easy</span>
-          </span>
-        </button>
-      </article>
-      <article class="release">
-        <div class="r-text">
-          <h3 class="r-title">foster the floor</h3>
-            <time class="r-date" datetime="2026-07-03">Releases 3 Jul 2026</time>
-            <p class="r-isrc"><b>ISRC</b> QT6XZ2521214</p>
-          <p class="r-desc">A 126 BPM raw house cut — dry drums, a single bass line, a chord stack that arrives late. In the lineage of Mike Dunn and Cajmere: Chicago bones, Detroit weight. Built for a third-hour DJ holding the floor.</p>
-          <a class="r-buy" href="https://normaldj.bandcamp.com/track/foster-the-floor" target="_blank" rel="noopener" aria-label="Buy foster the floor on Bandcamp">
-          <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
-        </a>
-        </div>
-        <button class="r-facade" type="button" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=3054544946/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" aria-label="Play foster the floor on SoundCloud">
-          <span class="r-facade-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
-          <span class="r-facade-meta">
-            <span class="r-facade-eyebrow">Bandcamp — tap to play</span>
-            <span class="r-facade-title">foster the floor</span>
-          </span>
-        </button>
-      </article>
-      <article class="release">
-        <div class="r-text">
-          <h3 class="r-title">motor city moves</h3>
-            <time class="r-date" datetime="2026-07-10">Releases 10 Jul 2026</time>
-            <p class="r-isrc"><b>ISRC</b> QM42K2511496</p>
-          <p class="r-desc">A 124 BPM Detroit house / techno hybrid — driving percussion, hypnotic bass, atmospheric textures. In the lineage of Robert Hood, Theo Parrish, and Mike Banks. Sits between house and techno; closes a house set or opens a techno set.</p>
-          <a class="r-buy" href="https://normaldj.bandcamp.com/track/motor-city-moves" target="_blank" rel="noopener" aria-label="Buy motor city moves on Bandcamp">
-          <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
-        </a>
-        </div>
-        <button class="r-facade" type="button" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=3884799229/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" aria-label="Play motor city moves on SoundCloud">
-          <span class="r-facade-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
-          <span class="r-facade-meta">
-            <span class="r-facade-eyebrow">Bandcamp — tap to play</span>
-            <span class="r-facade-title">motor city moves</span>
-          </span>
-        </button>
-      </article>
-      <article class="release">
-        <div class="r-text">
-          <h3 class="r-title">break it down</h3>
-            <time class="r-date" datetime="2026-06-19">Releases 19 Jun 2026</time>
-            <p class="r-isrc"><b>ISRC</b> QZT852577422</p>
-          <p class="r-desc">A 124 BPM broken-beat house cut — swung percussion, dry drums, a round bass. House music on a different grid. In the lineage of Sweely and DJ Sneak's swung work. A peak-time tool for breaking up a long stretch of straight house.</p>
-          <a class="r-buy" href="https://normaldj.bandcamp.com/track/normal-break-it-down" target="_blank" rel="noopener" aria-label="Buy break it down on Bandcamp">
-          <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
-        </a>
-        </div>
-        <button class="r-facade" type="button" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=1789546577/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" aria-label="Play break it down on SoundCloud">
-          <span class="r-facade-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
-          <span class="r-facade-meta">
-            <span class="r-facade-eyebrow">Bandcamp — tap to play</span>
-            <span class="r-facade-title">break it down</span>
-          </span>
-        </button>
-      </article>
-      <article class="release">
-        <div class="r-text">
-          <h3 class="r-title">intent</h3>
-            <time class="r-date" datetime="2026-05-29">Released 29 May 2026</time>
-          <p class="r-desc">A 122 BPM slow-burn house cut — nine and a half minutes of patient, hypnotic loop work in the lineage of Mike Huckaby and the Workshop / Mathematics orbit. Built for the deep section of a long set. House as a deliberate act.</p>
-          <a class="r-buy" href="https://normaldj.bandcamp.com/track/intent" target="_blank" rel="noopener" aria-label="Buy intent on Bandcamp">
-          <svg><use href="#i-bandcamp"/></svg><span>Buy on Bandcamp</span>
-        </a>
-        </div>
-        <button class="r-facade" type="button" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=2965371891/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" aria-label="Play intent on SoundCloud">
-          <span class="r-facade-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
-          <span class="r-facade-meta">
-            <span class="r-facade-eyebrow">Bandcamp — tap to play</span>
-            <span class="r-facade-title">intent</span>
-          </span>
-        </button>
-      </article>
-      <article class="release">
-        <div class="r-text">
-          <h3 class="r-title">liberate</h3>
-          <p class="r-credit">with alldayallnight</p>
-            <time class="r-date" datetime="2026-08-07">Releases 7 Aug 2026</time>
-            <p class="r-isrc"><b>ISRC</b> QZT852533217</p>
-          <p class="r-desc">122 BPM house leaning synth-funk — 80s keys, a swung pocket, percussion sitting slightly behind the grid. In the lineage of Moodymann, Theo Parrish, Floating Points, and Dam-Funk. Built for the back of the night. Collab with alldayallnight.</p>
-        </div>
-        <button class="r-facade" type="button" data-embed="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2333695265%3Fsecret_token%3Ds-V75sIrXu0Ks&color=%23EE3A24&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false" data-h="166" aria-label="Preview liberate on SoundCloud">
-          <span class="r-facade-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
-          <span class="r-facade-meta">
-            <span class="r-facade-eyebrow">SoundCloud — private preview</span>
-            <span class="r-facade-title">liberate</span>
-          </span>
-        </button>
-      </article>
+      </aside>
     </div>
+  </section>
+
+  <section class="sec" id="praise">
+    <div class="sec-head">
+      <h2>Support</h2>
+      <div class="count" id="praiseCount">1 / 1</div>
+    </div>
+    <div class="carousel">
+      <button class="car-nav prev" type="button" aria-label="Previous" hidden>‹</button>
+      <div class="car-track" id="praiseTrack">
+        <figure class="car-slide">
+          <img src="assets/kink.png" alt="KiNK (@kink303) on Instagram: ufff cognite is sick!!!" loading="lazy" decoding="async" />
+          <figcaption><a href="https://instagram.com/kink303" target="_blank" rel="noopener"><b>KiNK</b> · @kink303</a> · on cognite</figcaption>
+        </figure>
+        <figure class="car-slide">
+          <img src="assets/lumberjacksinhell.png" alt="Lumberjacks in Hell liked normal's cognite post on Instagram" loading="lazy" decoding="async" />
+          <figcaption><a href="https://instagram.com/lumberjacksinhell" target="_blank" rel="noopener"><b>Lumberjacks in Hell</b> · @lumberjacksinhell</a> · liked cognite</figcaption>
+        </figure>
+        <figure class="car-slide">
+          <img src="assets/ig-nakadia-stevemill.png" alt="Nakadia, Steve Mill and coastalgroovesss reacted to normal on Instagram" loading="lazy" decoding="async" />
+          <figcaption><a href="https://instagram.com/nakadia_music" target="_blank" rel="noopener"><b>Nakadia</b></a> · <a href="https://instagram.com/stevemillmusic" target="_blank" rel="noopener"><b>Steve Mill</b></a> · <a href="https://instagram.com/coastalgroovesss" target="_blank" rel="noopener">@coastalgroovesss</a></figcaption>
+        </figure>
+        <figure class="car-slide">
+          <img src="assets/ig-mosoo.png" alt="mosoo.music liked normal's reel, post and story on Instagram" loading="lazy" decoding="async" />
+          <figcaption><a href="https://instagram.com/mosoo.music" target="_blank" rel="noopener"><b>mosoo.music</b></a> · reel, post + story</figcaption>
+        </figure>
+        <figure class="car-slide">
+          <img src="assets/ig-pierofarhomusic.png" alt="pierofarhomusic liked a mantle story on Instagram" loading="lazy" decoding="async" />
+          <figcaption><a href="https://instagram.com/pierofarhomusic" target="_blank" rel="noopener"><b>pierofarhomusic</b></a> · on mantle</figcaption>
+        </figure>
+        <figure class="car-slide">
+          <img src="assets/ig-animaltrainerzh.png" alt="animaltrainerzh liked a mantle story on Instagram" loading="lazy" decoding="async" />
+          <figcaption><a href="https://instagram.com/animaltrainerzh" target="_blank" rel="noopener"><b>animaltrainerzh</b></a> · on mantle</figcaption>
+        </figure>
+        <!-- Add more slides below as support comes in:
+        <figure class="car-slide">
+          <img src="assets/NEW.png" alt="WHO on PLATFORM: WHAT" loading="lazy" decoding="async" />
+          <figcaption><b>NAME</b> · @handle · on TRACK</figcaption>
+        </figure>
+        -->
+      </div>
+      <button class="car-nav next" type="button" aria-label="Next" hidden>›</button>
+    </div>
+    <div class="car-dots" id="praiseDots" hidden></div>
   </section>
 
   <footer>
@@ -608,45 +601,117 @@
 
 <script>
 (() => {
-  const swap = (btn, autoplay) => {
-    const iframe = document.createElement('iframe');
-    iframe.className = 'r-player';
-    iframe.allow = 'autoplay';
-    iframe.loading = 'lazy';
-    iframe.title = btn.getAttribute('aria-label') || 'SoundCloud player';
-    let src = btn.dataset.embed;
-    if (autoplay) src = src.replace('auto_play=false', 'auto_play=true');
-    iframe.src = src;
-    iframe.style.height = (btn.dataset.h || '120') + 'px';
-    btn.replaceWith(iframe);
+  // Releases — scrollable list + one player pane (sticky right on desktop,
+  // floating bottom bar on mobile). Selecting a track recreates the single
+  // iframe, which stops whatever was playing before.
+  const rows = [...document.querySelectorAll('.trk')];
+  const pane = document.getElementById('playerPane');
+  const np = document.getElementById('np');
+  const empty = document.getElementById('npEmpty');
+  if (!rows.length || !pane) return;
+
+  const title = document.getElementById('npTitle');
+  const meta  = document.getElementById('npMeta');
+  const desc  = document.getElementById('npDesc');
+  const slot  = document.getElementById('npPlayer');
+  const buy   = document.getElementById('npBuy');
+  const close = document.getElementById('npClose');
+
+  const select = (row, autoplay = true) => {
+    const d = row.dataset;
+    title.innerHTML = d.title + (d.credit ? ` <span class="trk-credit">${d.credit}</span>` : '');
+    meta.innerHTML = d.meta;
+    desc.textContent = d.desc;
+    if (d.buy) { buy.href = d.buy; buy.hidden = false; } else { buy.hidden = true; }
+
+    const f = document.createElement('iframe');
+    f.src = autoplay ? d.embed.replace('auto_play=false', 'auto_play=true') : d.embed;
+    f.title = 'normal — ' + d.title;
+    f.allow = 'autoplay';
+    f.loading = 'lazy';
+    if (d.h === '166') f.classList.add('tall');
+    slot.replaceChildren(f);
+
+    if (empty) empty.hidden = true;
+    np.hidden = false;
+    pane.classList.add('is-playing');
+    document.body.classList.add('playing');
+    rows.forEach((r) => r.setAttribute('aria-current', r === row ? 'true' : 'false'));
   };
 
-  // Background preload: load each player when it's near the viewport.
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          swap(entry.target, false);
-          io.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: '300px 0px' });
-    const start = () => document.querySelectorAll('.r-facade').forEach((b) => io.observe(b));
-    // Defer until after first paint
-    if (document.readyState === 'complete') {
-      requestIdleCallback ? requestIdleCallback(start, { timeout: 1500 }) : setTimeout(start, 300);
-    } else {
-      addEventListener('load', () => {
-        requestIdleCallback ? requestIdleCallback(start, { timeout: 1500 }) : setTimeout(start, 300);
-      });
-    }
-  }
+  const dismiss = () => {
+    slot.replaceChildren();                 // stop audio
+    np.hidden = true;
+    if (empty) empty.hidden = false;
+    pane.classList.remove('is-playing');
+    document.body.classList.remove('playing');
+    rows.forEach((r) => r.setAttribute('aria-current', 'false'));
+  };
 
-  // Click fallback: if the user taps before the IO swap has happened, load with autoplay.
-  addEventListener('click', (e) => {
-    const btn = e.target.closest('.r-facade');
-    if (btn) swap(btn, true);
+  rows.forEach((row) => row.addEventListener('click', (e) => {
+    if (e.target.closest('a')) return;      // never on the row's own links
+    select(row);
+  }));
+  if (close) close.addEventListener('click', dismiss);
+
+  // Preselect the latest release (first row) — loaded, not autoplaying.
+  // Desktop only, so the mobile floating bar doesn't appear before a tap.
+  if (matchMedia('(min-width:721px)').matches) select(rows[0], false);
+})();
+</script>
+
+<!-- Praise carousel -->
+<script>
+(function(){
+  const track = document.getElementById('praiseTrack');
+  if (!track) return;
+  const slides = [...track.querySelectorAll('.car-slide')];
+  const prev = document.querySelector('#praise .car-nav.prev');
+  const next = document.querySelector('#praise .car-nav.next');
+  const dotsBox = document.getElementById('praiseDots');
+  const count = document.getElementById('praiseCount');
+  const n = slides.length;
+  if (n <= 1) { count.textContent = n + ' / ' + n; return; }
+
+  prev.hidden = next.hidden = dotsBox.hidden = false;
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    b.addEventListener('click', () => slides[i].scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'}));
+    dotsBox.appendChild(b);
   });
+  const dots = [...dotsBox.children];
+
+  const current = () => {
+    const c = track.scrollLeft + track.clientWidth / 2;
+    let best = 0, bd = Infinity;
+    slides.forEach((s, i) => { const d = Math.abs(s.offsetLeft + s.clientWidth/2 - c); if (d < bd){bd=d;best=i;} });
+    return best;
+  };
+  const render = () => {
+    const i = current();
+    count.textContent = (i + 1) + ' / ' + n;
+    dots.forEach((d, j) => d.setAttribute('aria-current', j === i ? 'true' : 'false'));
+  };
+  const go = (dir) => { const i = (current() + dir + n) % n; slides[i].scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'}); };
+  prev.addEventListener('click', () => { go(-1); bump(); });
+  next.addEventListener('click', () => { go(1); bump(); });
+  let raf; track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(render); });
+
+  // Autoplay loop — pauses on hover/touch/focus, respects reduced-motion
+  const slow = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timer = null, idle;
+  const tick = () => go(1);
+  const start = () => { if (!slow && !timer) timer = setInterval(tick, 4500); };
+  const stop = () => { clearInterval(timer); timer = null; };
+  const bump = () => { stop(); clearTimeout(idle); idle = setTimeout(start, 9000); };
+  ['mouseenter','touchstart','focusin'].forEach(e => track.addEventListener(e, stop, {passive:true}));
+  ['mouseleave','focusout'].forEach(e => track.addEventListener(e, () => { clearTimeout(idle); idle = setTimeout(start, 1500); }));
+  new IntersectionObserver(([en]) => en.isIntersecting ? start() : stop(), {threshold:0.4})
+    .observe(document.getElementById('praise'));
+
+  render();
 })();
 </script>
 
