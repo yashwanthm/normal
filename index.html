@@ -498,7 +498,7 @@
           <span class="trk-info"><span class="trk-title">cognite</span><span class="trk-meta"><b>12 Jun 2026</b> · out now · 126 · acid house · ISRC QZYB22562674</span></span>
           <button class="trk-play" type="button" aria-label="Play cognite"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </li>
-        <li class="trk" data-embed="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/normaldj/mantle&amp;color=%23EE3A24&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false" data-h="120" data-title="mantle" data-credit="" data-meta="&lt;b&gt;11 Jun 2026&lt;/b&gt; · follower exclusive · soundcloud" data-desc="A SoundCloud follower exclusive, shared straight to the people following normal rather than released. Raw and hypnotic, built for the deep stretch of a set." data-buy="" data-cover="assets/covers/mantle.jpg">
+        <li class="trk" data-embed="" data-title="mantle" data-credit="" data-meta="&lt;b&gt;11 Jun 2026&lt;/b&gt; · follower exclusive · soundcloud" data-desc="A SoundCloud follower exclusive, shared straight to the people following normal rather than released. Raw and hypnotic, built for the deep stretch of a set." data-buy="https://soundcloud.com/normaldj/mantle" data-buylabel="Listen on SoundCloud" data-buyicon="i-soundcloud" data-cover="assets/covers/mantle.jpg">
           <img class="trk-cover" src="assets/covers/mantle.jpg" alt="mantle cover" loading="lazy" decoding="async" width="48" height="48" />
           <span class="trk-info"><span class="trk-title">mantle</span><span class="trk-meta"><b>11 Jun 2026</b> · follower exclusive · soundcloud</span></span>
           <button class="trk-play" type="button" aria-label="Play mantle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
@@ -523,9 +523,9 @@
           <span class="trk-info"><span class="trk-title">motor city moves</span><span class="trk-meta"><b>10 Jul 2026</b> · upcoming · 124 · detroit house / techno · ISRC QM42K2511496</span></span>
           <button class="trk-play" type="button" aria-label="Play motor city moves"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </li>
-        <li class="trk" data-embed="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2333695265%3Fsecret_token%3Ds-V75sIrXu0Ks&amp;color=%23EE3A24&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false" data-h="166" data-title="liberate" data-credit="with alldayallnight" data-meta="&lt;b&gt;7 Aug 2026&lt;/b&gt; · upcoming · 122 · house / synth-funk · private preview" data-desc="122 BPM house leaning synth-funk — 80s keys, a swung pocket, percussion sitting slightly behind the grid. Moodymann, Floating Points and Dam-Funk territory. A collab with alldayallnight, built for the back of the night." data-buy="" data-cover="">
+        <li class="trk" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=1882710546/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="liberate" data-credit="with alldayallnight" data-meta="&lt;b&gt;7 Aug 2026&lt;/b&gt; · upcoming · 122 · house / synth-funk" data-desc="122 BPM house leaning synth-funk — 80s keys, a swung pocket, percussion sitting slightly behind the grid. Moodymann, Floating Points and Dam-Funk territory. A collab with alldayallnight, built for the back of the night." data-buy="https://normaldj.bandcamp.com/track/normal-x-alldayallnight-liberate" data-buylabel="Buy on Bandcamp" data-buyicon="i-bandcamp" data-cover="">
           <span class="trk-cover ph" aria-hidden="true"></span>
-          <span class="trk-info"><span class="trk-title">liberate <span class="trk-credit">with alldayallnight</span></span><span class="trk-meta"><b>7 Aug 2026</b> · upcoming · 122 · house / synth-funk · private preview</span></span>
+          <span class="trk-info"><span class="trk-title">liberate <span class="trk-credit">with alldayallnight</span></span><span class="trk-meta"><b>7 Aug 2026</b> · upcoming · 122 · house / synth-funk</span></span>
           <button class="trk-play" type="button" aria-label="Play liberate"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </li>
         <li class="trk" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=2965371891/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="intent" data-credit="" data-meta="&lt;b&gt;29 May 2026&lt;/b&gt; · out now · 122 · house" data-desc="A 122 BPM slow-burn house cut — nine and a half minutes of patient, hypnotic loop work in the lineage of Mike Huckaby and the Workshop / Mathematics orbit. Built for the deep section of a long set." data-buy="https://normaldj.bandcamp.com/track/intent" data-cover="assets/covers/intent.jpg">
@@ -627,15 +627,24 @@
     title.innerHTML = d.title + (d.credit ? ` <span class="trk-credit">${d.credit}</span>` : '');
     meta.innerHTML = d.meta;
     desc.textContent = d.desc;
-    if (d.buy) { buy.href = d.buy; buy.hidden = false; } else { buy.hidden = true; }
+    if (d.buy) {
+      buy.href = d.buy;
+      buy.querySelector('span').textContent = d.buylabel || 'Buy on Bandcamp';
+      buy.querySelector('use').setAttribute('href', '#' + (d.buyicon || 'i-bandcamp'));
+      buy.hidden = false;
+    } else { buy.hidden = true; }
 
-    const f = document.createElement('iframe');
-    f.src = autoplay ? d.embed.replace('auto_play=false', 'auto_play=true') : d.embed;
-    f.title = 'normal — ' + d.title;
-    f.allow = 'autoplay';
-    f.loading = 'lazy';
-    if (d.h === '166') f.classList.add('tall');
-    slot.replaceChildren(f);
+    if (d.embed) {
+      const f = document.createElement('iframe');
+      f.src = autoplay ? d.embed.replace('auto_play=false', 'auto_play=true') : d.embed;
+      f.title = 'normal — ' + d.title;
+      f.allow = 'autoplay';
+      f.loading = 'lazy';
+      if (d.h === '166') f.classList.add('tall');
+      slot.replaceChildren(f);
+    } else {
+      slot.replaceChildren();   // no embeddable player (e.g. follower-exclusive)
+    }
 
     if (empty) empty.hidden = true;
     np.hidden = false;
