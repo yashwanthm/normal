@@ -50,7 +50,13 @@
 <link rel="dns-prefetch" href="https://w.soundcloud.com" />
 <link rel="dns-prefetch" href="https://api-widget.soundcloud.com" />
 <link rel="preload" as="image" href="assets/profile.jpg" fetchpriority="high" />
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" rel="stylesheet" />
+<!-- 2026-06-16: async font load — print-media swap + JS toggle so the Google
+     Fonts CSS stops blocking first paint. font-display:swap inside the URL
+     still ensures FOIT-free text once the stylesheet resolves. <noscript>
+     fallback covers JS-disabled clients. -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" />
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" /></noscript>
 
 <style>
   :root{
@@ -301,6 +307,27 @@
   .car-dots button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:var(--paper-faint);cursor:pointer}
   .car-dots button[aria-current="true"]{background:var(--v-yellow)}
 
+  /* MAILING LIST */
+  .signup{display:flex;flex-direction:column;gap:14px;max-width:560px}
+  .signup p{color:var(--paper-dim);font-size:15px;line-height:1.55;margin:0}
+  .signup-form{display:flex;gap:10px;flex-wrap:wrap}
+  .signup-form input[type=email]{
+    flex:1 1 240px;padding:12px 16px;background:var(--ink-2);
+    border:1px solid var(--rule);color:var(--paper);
+    font-family:var(--display);font-size:14px;
+  }
+  .signup-form input[type=email]::placeholder{color:var(--paper-faint)}
+  .signup-form input[type=email]:focus{outline:none;border-color:var(--paper-dim)}
+  .signup-form button{
+    padding:12px 22px;background:var(--v-yellow);border:1px solid var(--v-yellow);
+    color:var(--ink);font-family:var(--display);font-weight:500;font-size:14px;cursor:pointer;
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .signup-form button:hover{background:var(--paper);border-color:var(--paper)}
+  .signup-note{font-family:var(--mono);font-size:11px;color:var(--paper-faint);letter-spacing:.04em}
+  .signup-note a{color:var(--paper-dim);text-decoration:none;border-bottom:1px solid var(--paper-faint)}
+  .signup-note a:hover{color:var(--v-yellow);border-color:var(--v-yellow)}
+
   /* FOOTER */
   footer{
     margin-top:96px;padding-top:18px;
@@ -523,8 +550,8 @@
           <span class="trk-info"><span class="trk-title">motor city moves</span><span class="trk-meta"><b>10 Jul 2026</b> · upcoming · 124 · detroit house / techno · ISRC QM42K2511496</span></span>
           <button class="trk-play" type="button" aria-label="Play motor city moves"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </li>
-        <li class="trk" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=1882710546/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="liberate" data-credit="with alldayallnight" data-meta="&lt;b&gt;7 Aug 2026&lt;/b&gt; · upcoming · 122 · house / synth-funk" data-desc="122 BPM house leaning synth-funk — 80s keys, a swung pocket, percussion sitting slightly behind the grid. Moodymann, Floating Points and Dam-Funk territory. A collab with alldayallnight, built for the back of the night." data-buy="https://normaldj.bandcamp.com/track/normal-x-alldayallnight-liberate" data-buylabel="Buy on Bandcamp" data-buyicon="i-bandcamp" data-cover="">
-          <span class="trk-cover ph" aria-hidden="true"></span>
+        <li class="trk" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=1882710546/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="liberate" data-credit="with alldayallnight" data-meta="&lt;b&gt;7 Aug 2026&lt;/b&gt; · upcoming · 122 · house / synth-funk" data-desc="122 BPM house leaning synth-funk — 80s keys, a swung pocket, percussion sitting slightly behind the grid. Moodymann, Floating Points and Dam-Funk territory. A collab with alldayallnight, built for the back of the night." data-buy="https://normaldj.bandcamp.com/track/normal-x-alldayallnight-liberate" data-buylabel="Buy on Bandcamp" data-buyicon="i-bandcamp" data-cover="assets/covers/liberate.jpg">
+          <img class="trk-cover" src="assets/covers/liberate.jpg" alt="liberate cover" loading="lazy" decoding="async" width="48" height="48" />
           <span class="trk-info"><span class="trk-title">liberate <span class="trk-credit">with alldayallnight</span></span><span class="trk-meta"><b>7 Aug 2026</b> · upcoming · 122 · house / synth-funk</span></span>
           <button class="trk-play" type="button" aria-label="Play liberate"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </li>
@@ -559,27 +586,27 @@
       <button class="car-nav prev" type="button" aria-label="Previous" hidden>‹</button>
       <div class="car-track" id="praiseTrack">
         <figure class="car-slide">
-          <img src="assets/kink.png" alt="KiNK (@kink303) on Instagram: ufff cognite is sick!!!" loading="lazy" decoding="async" />
+          <img src="assets/kink.jpg" alt="KiNK (@kink303) on Instagram: ufff cognite is sick!!!" loading="lazy" decoding="async" width="748" height="356" />
           <figcaption><a href="https://instagram.com/kink303" target="_blank" rel="noopener"><b>KiNK</b> · @kink303</a> · on cognite</figcaption>
         </figure>
         <figure class="car-slide">
-          <img src="assets/lumberjacksinhell.png" alt="Lumberjacks in Hell liked normal's cognite post on Instagram" loading="lazy" decoding="async" />
+          <img src="assets/lumberjacksinhell.jpg" alt="Lumberjacks in Hell liked normal's cognite post on Instagram" loading="lazy" decoding="async" width="748" height="238" />
           <figcaption><a href="https://instagram.com/lumberjacksinhell" target="_blank" rel="noopener"><b>Lumberjacks in Hell</b> · @lumberjacksinhell</a> · liked cognite</figcaption>
         </figure>
         <figure class="car-slide">
-          <img src="assets/ig-nakadia-stevemill.png" alt="Nakadia, Steve Mill and coastalgroovesss reacted to normal on Instagram" loading="lazy" decoding="async" />
+          <img src="assets/ig-nakadia-stevemill.jpg" alt="Nakadia, Steve Mill and coastalgroovesss reacted to normal on Instagram" loading="lazy" decoding="async" width="752" height="556" />
           <figcaption><a href="https://instagram.com/nakadia_music" target="_blank" rel="noopener"><b>Nakadia</b></a> · <a href="https://instagram.com/stevemillmusic" target="_blank" rel="noopener"><b>Steve Mill</b></a> · <a href="https://instagram.com/coastalgroovesss" target="_blank" rel="noopener">@coastalgroovesss</a></figcaption>
         </figure>
         <figure class="car-slide">
-          <img src="assets/ig-mosoo.png" alt="mosoo.music liked normal's reel, post and story on Instagram" loading="lazy" decoding="async" />
+          <img src="assets/ig-mosoo.jpg" alt="mosoo.music liked normal's reel, post and story on Instagram" loading="lazy" decoding="async" width="754" height="462" />
           <figcaption><a href="https://instagram.com/mosoo.music" target="_blank" rel="noopener"><b>mosoo.music</b></a> · reel, post + story</figcaption>
         </figure>
         <figure class="car-slide">
-          <img src="assets/ig-pierofarhomusic.png" alt="pierofarhomusic liked a mantle story on Instagram" loading="lazy" decoding="async" />
+          <img src="assets/ig-pierofarhomusic.jpg" alt="pierofarhomusic liked a mantle story on Instagram" loading="lazy" decoding="async" width="748" height="216" />
           <figcaption><a href="https://instagram.com/pierofarhomusic" target="_blank" rel="noopener"><b>pierofarhomusic</b></a> · on mantle</figcaption>
         </figure>
         <figure class="car-slide">
-          <img src="assets/ig-animaltrainerzh.png" alt="animaltrainerzh liked a mantle story on Instagram" loading="lazy" decoding="async" />
+          <img src="assets/ig-animaltrainerzh.jpg" alt="animaltrainerzh liked a mantle story on Instagram" loading="lazy" decoding="async" width="748" height="216" />
           <figcaption><a href="https://instagram.com/animaltrainerzh" target="_blank" rel="noopener"><b>animaltrainerzh</b></a> · on mantle</figcaption>
         </figure>
         <!-- Add more slides below as support comes in:
@@ -592,6 +619,25 @@
       <button class="car-nav next" type="button" aria-label="Next" hidden>›</button>
     </div>
     <div class="car-dots" id="praiseDots" hidden></div>
+  </section>
+
+  <section class="sec" id="mailing">
+    <div class="sec-head">
+      <h2>Mailing list</h2>
+    </div>
+    <div class="signup">
+      <p>New tracks, private bandcamp codes and the odd set, straight to your inbox. No spam, leave whenever.</p>
+      <!-- BUTTONDOWN: after you create the free account at buttondown.com, replace BUTTONDOWN_USERNAME in BOTH spots below with your handle. Until then the form is inert. -->
+      <form class="signup-form"
+            action="https://buttondown.com/api/emails/embed-subscribe/BUTTONDOWN_USERNAME"
+            method="post" target="popupwindow"
+            onsubmit="window.open('https://buttondown.com/BUTTONDOWN_USERNAME','popupwindow')">
+        <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address" />
+        <input type="hidden" value="1" name="embed" />
+        <button type="submit">subscribe</button>
+      </form>
+      <p class="signup-note">or follow <a href="https://instagram.com/normal.dj" target="_blank" rel="noopener">@normal.dj</a>, that's where everything lands first.</p>
+    </div>
   </section>
 
   <footer>
