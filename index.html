@@ -170,6 +170,13 @@
     max-height:474px;overflow-y:auto;overscroll-behavior:contain;
     border:1px solid var(--rule);border-radius:10px;scrollbar-width:thin;
   }
+  .track-group{
+    padding:9px 14px 8px;border-bottom:1px solid var(--rule);
+    background:rgba(244,239,230,0.035);color:var(--v-yellow);
+    font-family:var(--mono);font-size:9px;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;
+  }
+  .track-group:not(:first-child){border-top:1px solid var(--rule)}
   .trk{
     display:grid;grid-template-columns:48px 1fr auto;gap:14px;align-items:center;
     padding:12px 14px;border-bottom:1px solid var(--rule);cursor:pointer;
@@ -521,19 +528,31 @@
   <section class="sec" id="releases">
     <div class="sec-head">
       <h2>Releases</h2>
-      <div class="count">8 / 2026</div>
+      <div class="count">10 / 2026</div>
     </div>
                 <div class="releases-pane">
       <ol class="tracklist" id="tracklist">
+        <li class="track-group">Unreleased · follower exclusives</li>
+        <li class="trk" data-embed="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2367808445&amp;color=%23ee3a24&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false" data-h="166" data-title="we play" data-credit="" data-meta="&lt;b&gt;25 Jul 2026&lt;/b&gt; · unreleased · soundcloud · 120 · house" data-desc="Patient 120 BPM house built around a swung drum pocket, warm chords, and enough space for a long blend. Detroit in spirit, made for the blend rather than the drop." data-buy="https://soundcloud.com/normaldj/we-play-club" data-buylabel="Listen on SoundCloud" data-buyicon="i-soundcloud" data-cover="assets/covers/we-play.jpg">
+          <img class="trk-cover" src="assets/covers/we-play.jpg" alt="we play cover" loading="lazy" decoding="async" width="48" height="48" />
+          <span class="trk-info"><span class="trk-title">we play</span><span class="trk-meta"><b>25 Jul 2026</b> · unreleased · soundcloud · 120 · house</span></span>
+          <button class="trk-play" type="button" aria-label="Play we play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </li>
+        <li class="trk" data-embed="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2367808676&amp;color=%23ee3a24&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false" data-h="166" data-title="angel" data-credit="" data-meta="&lt;b&gt;25 Jul 2026&lt;/b&gt; · follower exclusive · soundcloud · 125 · raw house" data-desc="A voice fallen through the sky over a low-slung jack groove — bass-first, hand-swung raw house that prays with its hips. Shared first with the people following normal." data-buy="https://soundcloud.com/normaldj/angel" data-buylabel="Listen on SoundCloud" data-buyicon="i-soundcloud" data-cover="assets/covers/angel.jpg">
+          <img class="trk-cover" src="assets/covers/angel.jpg" alt="angel cover" loading="lazy" decoding="async" width="48" height="48" />
+          <span class="trk-info"><span class="trk-title">angel</span><span class="trk-meta"><b>25 Jul 2026</b> · follower exclusive · soundcloud · 125 · raw house</span></span>
+          <button class="trk-play" type="button" aria-label="Play angel"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </li>
+        <li class="trk" data-embed="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2337378068&amp;color=%23ee3a24&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false" data-h="166" data-title="mantle" data-credit="" data-meta="&lt;b&gt;11 Jun 2026&lt;/b&gt; · follower exclusive · soundcloud" data-desc="A SoundCloud follower exclusive, shared straight to the people following normal rather than released. Raw and hypnotic, built for the deep stretch of a set." data-buy="https://soundcloud.com/normaldj/mantle" data-buylabel="Listen on SoundCloud" data-buyicon="i-soundcloud" data-cover="assets/covers/mantle.jpg">
+          <img class="trk-cover" src="assets/covers/mantle.jpg" alt="mantle cover" loading="lazy" decoding="async" width="48" height="48" />
+          <span class="trk-info"><span class="trk-title">mantle</span><span class="trk-meta"><b>11 Jun 2026</b> · follower exclusive · soundcloud</span></span>
+          <button class="trk-play" type="button" aria-label="Play mantle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </li>
+        <li class="track-group">Released · upcoming</li>
         <li class="trk" data-release-date="2026-06-12" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=2308886165/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="cognite" data-credit="" data-meta="&lt;b&gt;12 Jun 2026&lt;/b&gt; · out now · 126 · acid house · ISRC QZYB22562674" data-desc="A 126 BPM acid-house meditation in the lineage of Roy Davis Jr. and Mike Dunn — the house side of acid, not the rave side. Long intro and outro for blends, a 303 line that slides instead of bites." data-buy="https://normaldj.bandcamp.com/track/cognite" data-cover="assets/covers/cognite.jpg">
           <img class="trk-cover" src="assets/covers/cognite.jpg" alt="cognite cover" loading="lazy" decoding="async" width="48" height="48" />
           <span class="trk-info"><span class="trk-title">cognite</span><span class="trk-meta"><b>12 Jun 2026</b> · out now · 126 · acid house · ISRC QZYB22562674</span></span>
           <button class="trk-play" type="button" aria-label="Play cognite"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-        </li>
-        <li class="trk" data-embed="" data-title="mantle" data-credit="" data-meta="&lt;b&gt;11 Jun 2026&lt;/b&gt; · follower exclusive · soundcloud" data-desc="A SoundCloud follower exclusive, shared straight to the people following normal rather than released. Raw and hypnotic, built for the deep stretch of a set." data-buy="https://soundcloud.com/normaldj/mantle" data-buylabel="Listen on SoundCloud" data-buyicon="i-soundcloud" data-cover="assets/covers/mantle.jpg">
-          <img class="trk-cover" src="assets/covers/mantle.jpg" alt="mantle cover" loading="lazy" decoding="async" width="48" height="48" />
-          <span class="trk-info"><span class="trk-title">mantle</span><span class="trk-meta"><b>11 Jun 2026</b> · follower exclusive · soundcloud</span></span>
-          <button class="trk-play" type="button" aria-label="Play mantle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </li>
         <li class="trk" data-release-date="2026-06-19" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=980980094/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="gain it easy" data-credit="" data-meta="&lt;b&gt;19 Jun 2026&lt;/b&gt; · out now · 122 · deep house · ISRC QZNRS2580746" data-desc="A 122 BPM long-form deep house cut — patient drums, warm chords, ten minutes of unhurried groove. In the lineage of Theo Parrish and Rick Wilhite. A DJ tool for the second hour, not the first." data-buy="https://normaldj.bandcamp.com/track/normal-gain-it-easy" data-cover="assets/covers/gain-it-easy.jpg">
           <img class="trk-cover" src="assets/covers/gain-it-easy.jpg" alt="gain it easy cover" loading="lazy" decoding="async" width="48" height="48" />
