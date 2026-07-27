@@ -168,7 +168,15 @@
   .tracklist{
     list-style:none;margin:0;padding:0;
     max-height:474px;overflow-y:auto;overscroll-behavior:contain;
-    border:1px solid var(--rule);border-radius:10px;scrollbar-width:thin;
+    border:1px solid var(--rule);border-radius:10px;
+    scrollbar-width:thin;scrollbar-color:rgba(244,239,230,.28) transparent;
+  }
+  .tracklist::-webkit-scrollbar{width:10px;background:transparent}
+  .tracklist::-webkit-scrollbar-track,
+  .tracklist::-webkit-scrollbar-corner{background:transparent}
+  .tracklist::-webkit-scrollbar-thumb{
+    background:rgba(244,239,230,.28);background-clip:content-box;
+    border:3px solid transparent;border-radius:999px;
   }
   .track-group{
     padding:9px 14px 8px;border-bottom:1px solid var(--rule);
@@ -213,6 +221,7 @@
   .np-meta b{color:var(--paper-dim);font-weight:500}
   .np-desc{font-family:var(--display);font-size:12.5px;line-height:1.5;color:var(--paper-dim);margin:14px 0 0}
   .np-player{margin-top:14px}
+  .np-player:empty{display:none}
   .np-player iframe{width:100%;height:120px;border:1px solid var(--rule);display:block;background:var(--ink-2)}
   .np-player iframe.tall{height:166px}
   .np-buy{
@@ -533,17 +542,17 @@
                 <div class="releases-pane">
       <ol class="tracklist" id="tracklist">
         <li class="track-group">Unreleased · follower exclusives</li>
-        <li class="trk" data-embed="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2367808445&amp;color=%23ee3a24&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false" data-h="166" data-title="we play" data-credit="" data-meta="unreleased · soundcloud · 120 · house" data-desc="Patient 120 BPM house built around a swung drum pocket, warm chords, and enough space for a long blend. Detroit in spirit, made for the blend rather than the drop." data-buy="https://soundcloud.com/normaldj/we-play" data-buylabel="Listen on SoundCloud" data-buyicon="i-soundcloud" data-cover="assets/covers/we-play.jpg">
+        <li class="trk" data-title="we play" data-credit="" data-meta="unreleased · soundcloud · 120 · house" data-desc="Patient 120 BPM house built around a swung drum pocket, warm chords, and enough space for a long blend. Detroit in spirit, made for the blend rather than the drop." data-buy="https://soundcloud.com/normaldj/we-play" data-buylabel="Listen on SoundCloud" data-buyicon="i-soundcloud" data-cover="assets/covers/we-play.jpg">
           <img class="trk-cover" src="assets/covers/we-play.jpg" alt="we play cover" loading="lazy" decoding="async" width="48" height="48" />
           <span class="trk-info"><span class="trk-title">we play</span><span class="trk-meta">unreleased · soundcloud · 120 · house</span></span>
           <button class="trk-play" type="button" aria-label="Play we play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </li>
-        <li class="trk" data-embed="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2367808676&amp;color=%23ee3a24&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false" data-h="166" data-title="angel" data-credit="" data-meta="follower exclusive · soundcloud · 125 · raw house" data-desc="A voice fallen through the sky over a low-slung jack groove — bass-first, hand-swung raw house that prays with its hips. Shared first with the people following normal." data-buy="https://soundcloud.com/normaldj/angel" data-buylabel="Listen on SoundCloud" data-buyicon="i-soundcloud" data-cover="assets/covers/angel.jpg">
+        <li class="trk" data-title="angel" data-credit="" data-meta="follower exclusive · soundcloud · 125 · raw house" data-desc="A voice fallen through the sky over a low-slung jack groove — bass-first, hand-swung raw house that prays with its hips. Shared first with the people following normal." data-buy="https://soundcloud.com/normaldj/angel" data-buylabel="Listen on SoundCloud" data-buyicon="i-soundcloud" data-cover="assets/covers/angel.jpg">
           <img class="trk-cover" src="assets/covers/angel.jpg" alt="angel cover" loading="lazy" decoding="async" width="48" height="48" />
           <span class="trk-info"><span class="trk-title">angel</span><span class="trk-meta">follower exclusive · soundcloud · 125 · raw house</span></span>
           <button class="trk-play" type="button" aria-label="Play angel"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </li>
-        <li class="trk" data-embed="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2337378068&amp;color=%23ee3a24&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false" data-h="166" data-title="mantle" data-credit="" data-meta="follower exclusive · soundcloud" data-desc="A SoundCloud follower exclusive, shared straight to the people following normal rather than released. Raw and hypnotic, built for the deep stretch of a set." data-buy="https://soundcloud.com/normaldj/mantle" data-buylabel="Listen on SoundCloud" data-buyicon="i-soundcloud" data-cover="assets/covers/mantle.jpg">
+        <li class="trk" data-title="mantle" data-credit="" data-meta="follower exclusive · soundcloud" data-desc="A SoundCloud follower exclusive, shared straight to the people following normal rather than released. Raw and hypnotic, built for the deep stretch of a set." data-buy="https://soundcloud.com/normaldj/mantle" data-buylabel="Listen on SoundCloud" data-buyicon="i-soundcloud" data-cover="assets/covers/mantle.jpg">
           <img class="trk-cover" src="assets/covers/mantle.jpg" alt="mantle cover" loading="lazy" decoding="async" width="48" height="48" />
           <span class="trk-info"><span class="trk-title">mantle</span><span class="trk-meta">follower exclusive · soundcloud</span></span>
           <button class="trk-play" type="button" aria-label="Play mantle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
