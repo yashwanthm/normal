@@ -143,8 +143,120 @@
     color:var(--paper-dim);
     max-width:54ch;margin:0;
   }
-  .bandcamp-follow{margin-top:18px;max-width:220px;line-height:0}
-  .bandcamp-follow iframe{display:block;border:0;width:100%;height:33px}
+
+  /* HOUSE OF NORMALCY — first vinyl */
+  .vinyl-sec{scroll-margin-top:24px}
+  .vinyl-intro{
+    display:grid;grid-template-columns:minmax(0,1.45fr) minmax(250px,.55fr);
+    gap:clamp(32px,6vw,72px);align-items:end;margin-bottom:30px;
+  }
+  .vinyl-kicker{
+    font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--v-vermilion);margin:0 0 12px;
+  }
+  .vinyl-title{
+    font-family:var(--serif);font-size:clamp(42px,7vw,72px);font-weight:500;
+    line-height:.96;letter-spacing:-.025em;margin:0;max-width:11ch;
+  }
+  .vinyl-deck{
+    font-family:var(--serif);font-size:clamp(19px,2.4vw,25px);line-height:1.35;
+    color:var(--paper-dim);max-width:31ch;margin:20px 0 0;
+  }
+  .vinyl-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:24px}
+  .vinyl-cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:11px 16px;background:var(--v-yellow);border:1px solid var(--v-yellow);
+    color:var(--ink);font-size:13px;font-weight:700;transition:background .15s ease,border-color .15s ease;
+  }
+  .vinyl-cta:hover{background:var(--paper);border-color:var(--paper)}
+  .vinyl-proof{
+    font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--paper-faint);
+  }
+  .vinyl-specs{margin:0;border-top:1px solid var(--rule)}
+  .vinyl-specs div{
+    display:grid;grid-template-columns:78px 1fr;gap:14px;padding:10px 0;
+    border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:10px;
+    letter-spacing:.08em;text-transform:uppercase;
+  }
+  .vinyl-specs dt{color:var(--paper-faint)}
+  .vinyl-specs dd{margin:0;color:var(--paper-dim)}
+
+  .vinyl-carousel{
+    position:relative;border:1px solid var(--rule);border-radius:12px;overflow:hidden;
+    background:#e9e1d4;box-shadow:0 18px 48px rgba(0,0,0,.18);
+  }
+  .vinyl-track{
+    display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+    overscroll-behavior-x:contain;scrollbar-width:none;background:#e9e1d4;
+  }
+  .vinyl-track::-webkit-scrollbar{display:none}
+  .vinyl-slide{
+    position:relative;flex:0 0 100%;height:clamp(360px,65vw,640px);margin:0;
+    scroll-snap-align:center;scroll-snap-stop:always;display:grid;place-items:center;
+    background:#e9e1d4;
+  }
+  .vinyl-slide img{width:100%;height:100%;object-fit:contain;display:block}
+  .vinyl-slide figcaption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .vinyl-nav{
+    position:absolute;top:calc(50% - 28px);z-index:3;width:44px;height:44px;
+    border-radius:50%;border:1px solid rgba(20,17,13,.18);background:rgba(244,239,230,.88);
+    color:var(--ink);font-size:23px;line-height:1;cursor:pointer;display:grid;place-items:center;
+    box-shadow:0 5px 18px rgba(20,17,13,.16);backdrop-filter:blur(8px);
+    transition:transform .15s ease,background .15s ease;
+  }
+  .vinyl-nav:hover{transform:scale(1.06);background:var(--paper)}
+  .vinyl-nav.prev{left:16px}.vinyl-nav.next{right:16px}
+  .vinyl-controls{
+    min-height:58px;display:grid;grid-template-columns:minmax(150px,1fr) auto minmax(150px,1fr);
+    gap:18px;align-items:center;padding:12px 16px;background:var(--ink-2);color:var(--paper);
+    border-top:1px solid var(--rule);
+  }
+  .vinyl-caption{
+    margin:0;font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--paper-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .vinyl-dots{display:flex;align-items:center;justify-content:center;gap:8px}
+  .vinyl-dots button{
+    width:7px;height:7px;padding:0;border:0;border-radius:50%;background:var(--paper-faint);cursor:pointer;
+    transition:width .2s ease,background .2s ease;
+  }
+  .vinyl-dots button[aria-current="true"]{width:22px;border-radius:99px;background:var(--v-yellow)}
+  .vinyl-toggle{
+    justify-self:end;border:1px solid var(--rule);background:transparent;color:var(--paper-dim);
+    padding:7px 10px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+    cursor:pointer;transition:color .15s ease,border-color .15s ease;
+  }
+  .vinyl-toggle:hover{color:var(--paper);border-color:var(--paper-faint)}
+  .vinyl-sides{display:grid;grid-template-columns:1.35fr .65fr;gap:16px;margin-top:16px}
+  .vinyl-side{
+    border:1px solid var(--rule);border-top:3px solid var(--side-color);border-radius:10px;
+    padding:18px;background:rgba(244,239,230,.025);
+  }
+  .vinyl-side-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:10px}
+  .vinyl-side h4{
+    margin:0;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  }
+  .vinyl-side-total{font-family:var(--mono);font-size:9px;color:var(--paper-faint);letter-spacing:.08em}
+  .vinyl-cut{display:grid;grid-template-columns:30px 1fr auto auto;gap:12px;align-items:baseline;padding:11px 0;border-top:1px solid var(--rule)}
+  .vinyl-cut-no,.vinyl-cut-meta{font-family:var(--mono);font-size:9px;color:var(--paper-faint);letter-spacing:.08em;text-transform:uppercase}
+  .vinyl-cut-title{font-family:var(--serif);font-size:20px;line-height:1.1;color:var(--paper)}
+  .vinyl-cut-bpm{font-family:var(--mono);font-size:9px;color:var(--paper-dim);letter-spacing:.08em;text-transform:uppercase}
+
+  @media (max-width:720px){
+    .vinyl-intro{grid-template-columns:1fr;gap:28px}
+    .vinyl-title{font-size:clamp(43px,14vw,60px)}
+    .vinyl-slide{height:clamp(320px,105vw,470px)}
+    .vinyl-nav{top:calc(50% - 26px);width:40px;height:40px}
+    .vinyl-nav.prev{left:10px}.vinyl-nav.next{right:10px}
+    .vinyl-controls{grid-template-columns:1fr auto;gap:10px}
+    .vinyl-dots{grid-column:1/-1;grid-row:1;order:-1}
+    .vinyl-caption{grid-column:1;grid-row:2}
+    .vinyl-toggle{grid-column:2;grid-row:2}
+    .vinyl-sides{grid-template-columns:1fr}
+    .vinyl-cut{grid-template-columns:28px minmax(0,1fr) auto}
+    .vinyl-cut-meta{display:none}
+  }
 
   /* SECTION HEAD */
   .sec{margin-top:80px}
@@ -416,6 +528,18 @@
       "inLanguage": "en"
     },
     {
+      "@type": "MusicAlbum",
+      "@id": "https://yashwanthm.github.io/normal/#house-of-normalcy",
+      "name": "House of Normalcy",
+      "url": "https://yashwanthm.github.io/normal/#vinyl",
+      "byArtist": { "@id": "https://yashwanthm.github.io/normal/#artist" },
+      "recordLabel": { "@type": "Organization", "name": "Normal Records" },
+      "albumProductionType": "https://schema.org/StudioAlbum",
+      "albumReleaseType": "https://schema.org/EPRelease",
+      "numTracks": 3,
+      "description": "normal's first 12-inch vinyl: three long-form house tools across two sides, made in Bengaluru and Detroit in spirit."
+    },
+    {
       "@type": "MusicRecording",
       "name": "cognite",
       "byArtist": { "@id": "https://yashwanthm.github.io/normal/#artist" },
@@ -527,11 +651,90 @@
         <a class="lk spotify" href="https://open.spotify.com/artist/0ow5fWEBIvvrDVDai6No2a" target="_blank" rel="noopener"><svg><use href="#i-spotify"/></svg><span>Spotify</span></a>
         <a class="lk youtube" href="https://www.youtube.com/@Normal-sh01" target="_blank" rel="noopener"><svg><use href="#i-youtube"/></svg><span>YouTube</span></a>
       </div>
-      <div class="bandcamp-follow">
-        <iframe scrolling="no" title="Follow normal on Bandcamp" loading="lazy" src="https://bandcamp.com/band_follow_button_classic/3065806644"></iframe>
-      </div>
     </div>
     <img class="hero-photo" src="assets/profile.jpg" alt="normal — Yashwanth Maheshwaram" width="520" height="520" loading="eager" decoding="async" fetchpriority="high" />
+  </section>
+
+  <section class="sec vinyl-sec" id="vinyl" aria-labelledby="vinylTitle">
+    <div class="sec-head">
+      <h2>Vinyl</h2>
+      <div class="count">NRML·V01</div>
+    </div>
+
+    <div class="vinyl-intro">
+      <div>
+        <p class="vinyl-kicker">Normal Records · first 12-inch</p>
+        <h3 class="vinyl-title" id="vinylTitle">House of Normalcy</h3>
+        <p class="vinyl-deck">Three records, one house. Acid and raw house at 126 on Side A; ten unhurried minutes of deep house at 122 on the flip. Bengaluru hands, Detroit in spirit.</p>
+        <div class="vinyl-actions">
+          <a class="vinyl-cta" href="#releases">Listen to the three tracks <span aria-hidden="true">↓</span></a>
+          <span class="vinyl-proof">One-of-one proof pressing</span>
+        </div>
+      </div>
+      <dl class="vinyl-specs">
+        <div><dt>Format</dt><dd>12″ · 33⅓ RPM</dd></div>
+        <div><dt>Label</dt><dd>Normal Records</dd></div>
+        <div><dt>Catalog</dt><dd>NRML·V01</dd></div>
+        <div><dt>Sides</dt><dd>Cobalt / vermilion</dd></div>
+        <div><dt>Made</dt><dd>Bengaluru · 2026</dd></div>
+      </dl>
+    </div>
+
+    <div class="vinyl-carousel" id="vinylCarousel" role="region" aria-roledescription="carousel" aria-label="House of Normalcy vinyl artwork">
+      <div class="vinyl-track" id="vinylTrack" tabindex="0" aria-live="off">
+        <figure class="vinyl-slide" data-caption="Front sleeve">
+          <img src="assets/vinyl/house-of-normalcy-front.jpg" alt="House of Normalcy front sleeve: cream record on a vermilion field with cobalt title" width="1570" height="1600" loading="lazy" decoding="async" />
+          <figcaption>Front sleeve</figcaption>
+        </figure>
+        <figure class="vinyl-slide" data-caption="Back sleeve">
+          <img src="assets/vinyl/house-of-normalcy-back.jpg" alt="House of Normalcy back sleeve with the two-side tracklist and catalog details" width="1600" height="1600" loading="lazy" decoding="async" />
+          <figcaption>Back sleeve</figcaption>
+        </figure>
+        <figure class="vinyl-slide" data-caption="Side A · cobalt label">
+          <img src="assets/vinyl/house-of-normalcy-label-a.jpg" alt="Cobalt Side A center label for cognite and foster the floor" width="1500" height="1500" loading="lazy" decoding="async" />
+          <figcaption>Side A · cobalt label</figcaption>
+        </figure>
+        <figure class="vinyl-slide" data-caption="Side B · vermilion label">
+          <img src="assets/vinyl/house-of-normalcy-label-b.jpg" alt="Vermilion Side B center label for gain it easy" width="1500" height="1500" loading="lazy" decoding="async" />
+          <figcaption>Side B · vermilion label</figcaption>
+        </figure>
+        <figure class="vinyl-slide" data-caption="Printed inner sleeve">
+          <img src="assets/vinyl/house-of-normalcy-inner-sleeve.jpg" alt="House of Normalcy printed inner sleeve artwork" width="1600" height="1559" loading="lazy" decoding="async" />
+          <figcaption>Printed inner sleeve</figcaption>
+        </figure>
+        <figure class="vinyl-slide" data-caption="Booklet · full spread">
+          <img src="assets/vinyl/house-of-normalcy-booklet-spread.jpg" alt="House of Normalcy booklet spread with liner notes and track notes" width="2200" height="1110" loading="lazy" decoding="async" />
+          <figcaption>Booklet · full spread</figcaption>
+        </figure>
+        <figure class="vinyl-slide" data-caption="Booklet · liner notes">
+          <img src="assets/vinyl/house-of-normalcy-booklet-left.jpg" alt="House of Normalcy booklet liner notes page" width="1584" height="1600" loading="lazy" decoding="async" />
+          <figcaption>Booklet · liner notes</figcaption>
+        </figure>
+        <figure class="vinyl-slide" data-caption="Booklet · track notes">
+          <img src="assets/vinyl/house-of-normalcy-booklet-right.jpg" alt="House of Normalcy booklet track notes page" width="1584" height="1600" loading="lazy" decoding="async" />
+          <figcaption>Booklet · track notes</figcaption>
+        </figure>
+      </div>
+      <button class="vinyl-nav prev" type="button" aria-label="Previous artwork">‹</button>
+      <button class="vinyl-nav next" type="button" aria-label="Next artwork">›</button>
+      <div class="vinyl-controls">
+        <p class="vinyl-caption" id="vinylCaption">01 / 08 · Front sleeve</p>
+        <div class="vinyl-dots" id="vinylDots" aria-label="Choose artwork"></div>
+        <button class="vinyl-toggle" id="vinylToggle" type="button" aria-pressed="false">Pause autoplay</button>
+      </div>
+    </div>
+
+    <div class="vinyl-sides" aria-label="House of Normalcy tracklist">
+      <article class="vinyl-side" style="--side-color:var(--v-cobalt)">
+        <div class="vinyl-side-head"><h4>Side A · cobalt</h4><span class="vinyl-side-total">13:42</span></div>
+        <div class="vinyl-cut"><span class="vinyl-cut-no">A1</span><span class="vinyl-cut-title">cognite</span><span class="vinyl-cut-bpm">126 BPM</span><span class="vinyl-cut-meta">6:43</span></div>
+        <div class="vinyl-cut"><span class="vinyl-cut-no">A2</span><span class="vinyl-cut-title">foster the floor</span><span class="vinyl-cut-bpm">126 BPM</span><span class="vinyl-cut-meta">6:59</span></div>
+      </article>
+      <article class="vinyl-side" style="--side-color:var(--v-vermilion)">
+        <div class="vinyl-side-head"><h4>Side B · vermilion</h4><span class="vinyl-side-total">9:58</span></div>
+        <div class="vinyl-cut"><span class="vinyl-cut-no">B1</span><span class="vinyl-cut-title">gain it easy</span><span class="vinyl-cut-bpm">122 BPM</span><span class="vinyl-cut-meta">9:58</span></div>
+      </article>
+    </div>
   </section>
 
   <section class="sec" id="releases">
@@ -682,6 +885,115 @@
 
 </div>
 
+
+<script>
+(() => {
+  const root = document.getElementById('vinylCarousel');
+  const track = document.getElementById('vinylTrack');
+  if (!root || !track) return;
+
+  const slides = [...track.querySelectorAll('.vinyl-slide')];
+  const prev = root.querySelector('.vinyl-nav.prev');
+  const next = root.querySelector('.vinyl-nav.next');
+  const dotsBox = document.getElementById('vinylDots');
+  const caption = document.getElementById('vinylCaption');
+  const toggle = document.getElementById('vinylToggle');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let active = 0;
+  let timer = null;
+  let restartTimer = null;
+  let scrollFrame = null;
+  let inView = false;
+  let userPaused = reducedMotion;
+
+  const pad = (value) => String(value).padStart(2, '0');
+  const render = () => {
+    caption.textContent = `${pad(active + 1)} / ${pad(slides.length)} · ${slides[active].dataset.caption}`;
+    [...dotsBox.children].forEach((dot, index) => dot.setAttribute('aria-current', index === active ? 'true' : 'false'));
+  };
+  const renderToggle = () => {
+    toggle.textContent = userPaused ? 'Play autoplay' : 'Pause autoplay';
+    toggle.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
+  };
+  const go = (index, behavior = 'smooth') => {
+    active = (index + slides.length) % slides.length;
+    track.scrollTo({left: slides[active].offsetLeft, behavior});
+    render();
+  };
+  const stop = () => {
+    clearInterval(timer);
+    timer = null;
+  };
+  const start = () => {
+    if (userPaused || !inView || document.hidden || timer || root.matches(':hover') || root.contains(document.activeElement)) return;
+    timer = setInterval(() => go(active + 1), 5000);
+  };
+  const restart = (delay = 8000) => {
+    stop();
+    clearTimeout(restartTimer);
+    restartTimer = setTimeout(start, delay);
+  };
+
+  slides.forEach((slide, index) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', `Show ${slide.dataset.caption}`);
+    dot.addEventListener('click', () => { go(index); restart(); });
+    dotsBox.appendChild(dot);
+  });
+
+  prev.addEventListener('click', () => { go(active - 1); restart(); });
+  next.addEventListener('click', () => { go(active + 1); restart(); });
+  toggle.addEventListener('click', () => {
+    userPaused = !userPaused;
+    renderToggle();
+    userPaused ? stop() : start();
+  });
+  track.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    go(active + (event.key === 'ArrowRight' ? 1 : -1));
+    restart();
+  });
+  track.addEventListener('scroll', () => {
+    cancelAnimationFrame(scrollFrame);
+    scrollFrame = requestAnimationFrame(() => {
+      const center = track.scrollLeft + track.clientWidth / 2;
+      let closest = 0;
+      let distance = Infinity;
+      slides.forEach((slide, index) => {
+        const nextDistance = Math.abs(slide.offsetLeft + slide.clientWidth / 2 - center);
+        if (nextDistance < distance) { closest = index; distance = nextDistance; }
+      });
+      if (closest !== active) { active = closest; render(); }
+    });
+  }, {passive:true});
+
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', () => restart(1500));
+  root.addEventListener('focusin', stop);
+  root.addEventListener('focusout', (event) => {
+    if (!root.contains(event.relatedTarget)) restart(1500);
+  });
+  track.addEventListener('pointerdown', stop, {passive:true});
+  track.addEventListener('pointerup', () => restart(3000), {passive:true});
+  track.addEventListener('wheel', () => restart(), {passive:true});
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      inView ? start() : stop();
+    }, {threshold:.35}).observe(root);
+  } else {
+    inView = true;
+    start();
+  }
+
+  render();
+  renderToggle();
+})();
+</script>
 
 <script>
 (() => {
