@@ -169,10 +169,13 @@
     color:var(--ink);font-size:13px;font-weight:700;transition:background .15s ease,border-color .15s ease;
   }
   .vinyl-cta:hover{background:var(--paper);border-color:var(--paper)}
-  .vinyl-proof{
-    font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--paper-faint);
+  .vinyl-cta svg{width:16px;height:16px;fill:currentColor;display:block}
+  .vinyl-listen{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:11px 15px;
+    border:1px solid var(--rule);color:var(--paper-dim);font-size:13px;font-weight:500;
+    transition:color .15s ease,border-color .15s ease;
   }
+  .vinyl-listen:hover{color:var(--paper);border-color:var(--paper-faint)}
   .vinyl-specs{margin:0;border-top:1px solid var(--rule)}
   .vinyl-specs div{
     display:grid;grid-template-columns:78px 1fr;gap:14px;padding:10px 0;
@@ -667,8 +670,8 @@
         <h3 class="vinyl-title" id="vinylTitle">House of Normalcy</h3>
         <p class="vinyl-deck">Three records, one house. Acid and raw house at 126 on Side A; ten unhurried minutes of deep house at 122 on the flip. Bengaluru hands, Detroit in spirit.</p>
         <div class="vinyl-actions">
-          <a class="vinyl-cta" href="#releases">Listen to the three tracks <span aria-hidden="true">↓</span></a>
-          <span class="vinyl-proof">One-of-one proof pressing</span>
+          <a class="vinyl-cta" href="https://instagram.com/normal.dj" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg><span>DM to order</span></a>
+          <a class="vinyl-listen" href="#releases">Listen to the three tracks <span aria-hidden="true">↓</span></a>
         </div>
       </div>
       <dl class="vinyl-specs">
