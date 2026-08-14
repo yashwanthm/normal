@@ -183,33 +183,36 @@
   .vinyl-specs dt{color:var(--paper-faint)}
   .vinyl-specs dd{margin:0;color:var(--paper-dim)}
 
-  .vinyl-media{
-    aspect-ratio:1/1;margin:0;border:1px solid var(--rule);border-radius:12px;overflow:hidden;
-    background:#e9e1d4;box-shadow:0 14px 36px rgba(0,0,0,.16);
-  }
-  .vinyl-media img{width:100%;height:100%;object-fit:contain;display:block}
-  .vinyl-media figcaption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-  .vinyl-sides{display:grid;grid-template-columns:1fr;gap:12px;margin-top:16px}
-  .vinyl-side{
-    border:1px solid var(--rule);border-top:3px solid var(--side-color);border-radius:10px;
-    padding:18px;background:rgba(244,239,230,.025);
-  }
-  .vinyl-side-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:10px}
-  .vinyl-side h4{
-    margin:0;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
-  }
-  .vinyl-side-total{font-family:var(--mono);font-size:9px;color:var(--paper-faint);letter-spacing:.08em}
-  .vinyl-cut{display:grid;grid-template-columns:30px 1fr auto auto;gap:12px;align-items:baseline;padding:11px 0;border-top:1px solid var(--rule)}
-  .vinyl-cut-no,.vinyl-cut-meta{font-family:var(--mono);font-size:9px;color:var(--paper-faint);letter-spacing:.08em;text-transform:uppercase}
-  .vinyl-cut-title{font-family:var(--serif);font-size:20px;line-height:1.1;color:var(--paper)}
-  .vinyl-cut-bpm{font-family:var(--mono);font-size:9px;color:var(--paper-dim);letter-spacing:.08em;text-transform:uppercase}
+  .vinyl-carousel{position:relative;border:1px solid var(--rule);border-radius:12px;overflow:hidden;background:#e9e1d4;box-shadow:0 14px 36px rgba(0,0,0,.16)}
+  .vinyl-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none}
+  .vinyl-track::-webkit-scrollbar{display:none}
+  .vinyl-slide{position:relative;flex:0 0 100%;aspect-ratio:1/1;margin:0;scroll-snap-align:center;scroll-snap-stop:always;background:#e9e1d4;display:grid;place-items:center}
+  .vinyl-slide img{width:100%;height:100%;object-fit:contain;display:block}
+  .vinyl-slide figcaption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .vinyl-side-slide{--side-color:var(--v-cobalt);background-color:var(--side-color);background-image:repeating-radial-gradient(circle at 50% 50%,rgba(20,17,13,.08) 0 1px,transparent 1px 8px);color:var(--paper)}
+  .vinyl-side-slide.side-b{--side-color:var(--v-vermilion)}
+  .vinyl-side-card{width:calc(100% - 64px);padding:26px;border:1px solid rgba(244,239,230,.24);background:rgba(20,17,13,.1);backdrop-filter:blur(2px)}
+  .vinyl-side-mark{display:flex;justify-content:space-between;gap:16px;margin-bottom:20px;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase}
+  .vinyl-slide-track{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:14px 0;border-top:1px solid rgba(244,239,230,.24)}
+  .vinyl-slide-track b{font-family:var(--serif);font-size:clamp(23px,3.2vw,34px);font-weight:500;line-height:1}
+  .vinyl-slide-track span{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase}
+  .vinyl-nav{position:absolute;top:calc(50% - 46px);z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid rgba(20,17,13,.18);background:rgba(244,239,230,.88);color:var(--ink);font-size:21px;line-height:1;cursor:pointer;display:grid;place-items:center;box-shadow:0 4px 14px rgba(20,17,13,.16)}
+  .vinyl-nav.prev{left:12px}.vinyl-nav.next{right:12px}
+  .vinyl-controls{min-height:48px;display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:8px 12px;background:var(--ink-2);border-top:1px solid var(--rule)}
+  .vinyl-caption{margin:0;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--paper-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .vinyl-dots{display:flex;align-items:center;gap:7px}
+  .vinyl-dots button{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:var(--paper-faint);cursor:pointer}
+  .vinyl-dots button[aria-current="true"]{background:var(--v-yellow)}
+  .vinyl-toggle{border:1px solid var(--rule);background:transparent;color:var(--paper-dim);padding:6px 8px;font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
 
   @media (max-width:720px){
     .vinyl-layout{grid-template-columns:1fr;gap:28px}
     .vinyl-content{padding-top:0}
     .vinyl-title{font-size:clamp(43px,14vw,60px)}
-    .vinyl-cut{grid-template-columns:28px minmax(0,1fr) auto}
-    .vinyl-cut-meta{display:none}
+    .vinyl-controls{grid-template-columns:minmax(0,1fr) auto auto;gap:8px;padding:8px 10px}
+    .vinyl-caption{font-size:8px}
+    .vinyl-side-card{width:calc(100% - 36px);padding:18px}
+    .vinyl-slide-track{grid-template-columns:26px minmax(0,1fr) auto;gap:8px}
   }
 
   /* SECTION HEAD */
@@ -616,15 +619,41 @@
     </div>
 
     <div class="vinyl-layout">
-    <figure class="vinyl-media">
-      <img src="assets/vinyl/house-of-normalcy-front.jpg" alt="House of Normalcy front sleeve: cream record on a vermilion field with cobalt title" width="1570" height="1600" loading="lazy" decoding="async" />
-      <figcaption>House of Normalcy front sleeve</figcaption>
-    </figure>
+    <div class="vinyl-carousel" id="vinylCarousel" role="region" aria-roledescription="carousel" aria-label="House of Normalcy vinyl">
+      <div class="vinyl-track" id="vinylTrack" tabindex="0" aria-live="off">
+        <figure class="vinyl-slide" data-caption="Front sleeve">
+          <img src="assets/vinyl/house-of-normalcy-front.jpg" alt="House of Normalcy front sleeve: cream record on a vermilion field with cobalt title" width="1570" height="1600" loading="lazy" decoding="async" />
+          <figcaption>Front sleeve</figcaption>
+        </figure>
+        <figure class="vinyl-slide vinyl-side-slide" data-caption="Side A · cobalt · 13:42">
+          <div class="vinyl-side-card">
+            <div class="vinyl-side-mark"><span>Side A · cobalt</span><span>13:42</span></div>
+            <div class="vinyl-slide-track"><span>A1</span><b>cognite</b><span>126 BPM · 6:43</span></div>
+            <div class="vinyl-slide-track"><span>A2</span><b>foster the floor</b><span>126 BPM · 6:59</span></div>
+          </div>
+          <figcaption>Side A · cognite and foster the floor · 126 BPM · 13:42</figcaption>
+        </figure>
+        <figure class="vinyl-slide vinyl-side-slide side-b" data-caption="Side B · vermilion · 9:58">
+          <div class="vinyl-side-card">
+            <div class="vinyl-side-mark"><span>Side B · vermilion</span><span>9:58</span></div>
+            <div class="vinyl-slide-track"><span>B1</span><b>gain it easy</b><span>122 BPM · 9:58</span></div>
+          </div>
+          <figcaption>Side B · gain it easy · 122 BPM · 9:58</figcaption>
+        </figure>
+      </div>
+      <button class="vinyl-nav prev" type="button" aria-label="Previous vinyl view">‹</button>
+      <button class="vinyl-nav next" type="button" aria-label="Next vinyl view">›</button>
+      <div class="vinyl-controls">
+        <p class="vinyl-caption" id="vinylCaption">Front sleeve</p>
+        <div class="vinyl-dots" id="vinylDots" aria-label="Choose vinyl view"></div>
+        <button class="vinyl-toggle" id="vinylToggle" type="button" aria-pressed="false">Pause</button>
+      </div>
+    </div>
 
     <div class="vinyl-content">
       <p class="vinyl-kicker">Normal Records · first 12-inch</p>
       <h3 class="vinyl-title" id="vinylTitle">House of Normalcy</h3>
-      <p class="vinyl-deck">Three records, one house. Acid and raw house at 126 on Side A; ten unhurried minutes of deep house at 122 on the flip. Bengaluru hands, Detroit in spirit.</p>
+      <p class="vinyl-deck">Three records, one house. normal's first pressing: three long-form DJ tools cut for the floor, not the feed. Bengaluru hands, Detroit in spirit.</p>
       <div class="vinyl-actions">
         <a class="vinyl-cta" href="https://instagram.com/normal.dj" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg><span>DM to order</span></a>
         <a class="vinyl-listen" href="#releases">Listen to the three tracks <span aria-hidden="true">↓</span></a>
@@ -633,21 +662,8 @@
         <div><dt>Format</dt><dd>12″ · 33⅓ RPM</dd></div>
         <div><dt>Label</dt><dd>Normal Records</dd></div>
         <div><dt>Catalog</dt><dd>NRML·V01</dd></div>
-        <div><dt>Sides</dt><dd>Cobalt / vermilion</dd></div>
         <div><dt>Made</dt><dd>Bengaluru · 2026</dd></div>
       </dl>
-
-      <div class="vinyl-sides" aria-label="House of Normalcy tracklist">
-      <article class="vinyl-side" style="--side-color:var(--v-cobalt)">
-        <div class="vinyl-side-head"><h4>Side A · cobalt</h4><span class="vinyl-side-total">13:42</span></div>
-        <div class="vinyl-cut"><span class="vinyl-cut-no">A1</span><span class="vinyl-cut-title">cognite</span><span class="vinyl-cut-bpm">126 BPM</span><span class="vinyl-cut-meta">6:43</span></div>
-        <div class="vinyl-cut"><span class="vinyl-cut-no">A2</span><span class="vinyl-cut-title">foster the floor</span><span class="vinyl-cut-bpm">126 BPM</span><span class="vinyl-cut-meta">6:59</span></div>
-      </article>
-      <article class="vinyl-side" style="--side-color:var(--v-vermilion)">
-        <div class="vinyl-side-head"><h4>Side B · vermilion</h4><span class="vinyl-side-total">9:58</span></div>
-        <div class="vinyl-cut"><span class="vinyl-cut-no">B1</span><span class="vinyl-cut-title">gain it easy</span><span class="vinyl-cut-bpm">122 BPM</span><span class="vinyl-cut-meta">9:58</span></div>
-      </article>
-      </div>
     </div>
     </div>
   </section>
@@ -800,6 +816,84 @@
 
 </div>
 
+
+<script>
+(() => {
+  const root = document.getElementById('vinylCarousel');
+  const track = document.getElementById('vinylTrack');
+  if (!root || !track) return;
+
+  const slides = [...track.querySelectorAll('.vinyl-slide')];
+  const caption = document.getElementById('vinylCaption');
+  const dotsBox = document.getElementById('vinylDots');
+  const toggle = document.getElementById('vinylToggle');
+  let active = 0;
+  let timer = null;
+  let restartTimer = null;
+  let scrollFrame = null;
+  let visible = false;
+  let paused = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const render = () => {
+    caption.textContent = slides[active].dataset.caption;
+    [...dotsBox.children].forEach((dot, index) => dot.setAttribute('aria-current', index === active ? 'true' : 'false'));
+    toggle.textContent = paused ? 'Play' : 'Pause';
+    toggle.setAttribute('aria-pressed', paused ? 'true' : 'false');
+  };
+  const go = (index) => {
+    active = (index + slides.length) % slides.length;
+    track.scrollTo({left: slides[active].offsetLeft, behavior:'smooth'});
+    render();
+  };
+  const stop = () => { clearInterval(timer); timer = null; };
+  const start = () => {
+    if (paused || !visible || document.hidden || timer || root.matches(':hover') || root.contains(document.activeElement)) return;
+    timer = setInterval(() => go(active + 1), 5000);
+  };
+  const restart = () => {
+    stop();
+    clearTimeout(restartTimer);
+    restartTimer = setTimeout(start, 7000);
+  };
+
+  slides.forEach((slide, index) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', `Show ${slide.dataset.caption}`);
+    dot.addEventListener('click', () => { go(index); restart(); });
+    dotsBox.appendChild(dot);
+  });
+  root.querySelector('.vinyl-nav.prev').addEventListener('click', () => { go(active - 1); restart(); });
+  root.querySelector('.vinyl-nav.next').addEventListener('click', () => { go(active + 1); restart(); });
+  toggle.addEventListener('click', () => { paused = !paused; render(); paused ? stop() : start(); });
+  track.addEventListener('scroll', () => {
+    cancelAnimationFrame(scrollFrame);
+    scrollFrame = requestAnimationFrame(() => {
+      const center = track.scrollLeft + track.clientWidth / 2;
+      let closest = 0;
+      let distance = Infinity;
+      slides.forEach((slide, index) => {
+        const nextDistance = Math.abs(slide.offsetLeft + slide.clientWidth / 2 - center);
+        if (nextDistance < distance) { closest = index; distance = nextDistance; }
+      });
+      if (closest !== active) { active = closest; render(); }
+    });
+  }, {passive:true});
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  root.addEventListener('focusin', stop);
+  root.addEventListener('focusout', (event) => { if (!root.contains(event.relatedTarget)) start(); });
+  track.addEventListener('pointerdown', stop, {passive:true});
+  track.addEventListener('pointerup', restart, {passive:true});
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+  new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    visible ? start() : stop();
+  }, {threshold:.35}).observe(root);
+
+  render();
+})();
+</script>
 
 <script>
 (() => {
