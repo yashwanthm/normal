@@ -146,10 +146,10 @@
 
   /* HOUSE OF NORMALCY — first vinyl */
   .vinyl-sec{scroll-margin-top:24px}
-  .vinyl-intro{
-    display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);
-    gap:clamp(28px,5vw,56px);align-items:end;margin-bottom:22px;
-  }
+  .vinyl-sec .sec-head{margin-bottom:18px}
+  .vinyl-sec + .sec{margin-top:56px}
+  .vinyl-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,312px);gap:clamp(28px,5vw,56px);align-items:center}
+  .vinyl-content{min-width:0}
   .vinyl-kicker{
     font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;
     text-transform:uppercase;color:var(--v-vermilion);margin:0 0 8px;
@@ -160,7 +160,7 @@
   }
   .vinyl-deck{
     font-family:var(--serif);font-size:clamp(17px,2vw,21px);line-height:1.35;
-    color:var(--paper-dim);max-width:34ch;margin:0;
+    color:var(--paper-dim);max-width:34ch;margin:14px 0 0;
   }
   .vinyl-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px}
   .vinyl-cta{
@@ -176,29 +176,43 @@
     transition:color .15s ease,border-color .15s ease;
   }
   .vinyl-listen:hover{color:var(--paper);border-color:var(--paper-faint)}
-  .vinyl-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-  .vinyl-art{min-width:0;margin:0}
-  .vinyl-art img{
-    width:100%;height:auto;aspect-ratio:1/1.02;object-fit:cover;display:block;
-    background:#e9e1d4;border:1px solid var(--rule);border-radius:9px;
-    box-shadow:0 12px 30px rgba(0,0,0,.16);
+  .vinyl-carousel{
+    position:relative;width:100%;justify-self:end;overflow:hidden;background:#e9e1d4;
+    border:1px solid var(--rule);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.16);
   }
-  .vinyl-art figcaption{
-    margin-top:7px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;
-    text-transform:uppercase;color:var(--paper-faint);
+  .vinyl-track{
+    display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+    overscroll-behavior-x:contain;scrollbar-width:none;background:#e9e1d4;
   }
+  .vinyl-track::-webkit-scrollbar{display:none}
+  .vinyl-slide{position:relative;flex:0 0 100%;aspect-ratio:1/1.02;margin:0;scroll-snap-align:center;scroll-snap-stop:always}
+  .vinyl-slide img{width:100%;height:100%;object-fit:cover;display:block}
+  .vinyl-slide figcaption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .vinyl-nav{
+    position:absolute;top:50%;z-index:2;width:34px;height:34px;transform:translateY(-50%);
+    display:grid;place-items:center;border:1px solid rgba(20,17,13,.18);border-radius:50%;
+    background:rgba(244,239,230,.9);color:var(--ink);font-size:20px;line-height:1;cursor:pointer;
+    box-shadow:0 4px 14px rgba(20,17,13,.14);backdrop-filter:blur(6px);
+  }
+  .vinyl-nav.prev{left:9px}.vinyl-nav.next{right:9px}
+  .vinyl-caption{
+    position:absolute;left:9px;top:9px;z-index:2;margin:0;padding:6px 8px;border-radius:99px;
+    background:rgba(20,17,13,.76);color:var(--paper);font-family:var(--mono);font-size:8px;
+    letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(6px);
+  }
+  .vinyl-dots{
+    position:absolute;left:50%;bottom:10px;z-index:2;transform:translateX(-50%);
+    display:flex;align-items:center;justify-content:center;gap:7px;padding:7px 9px;
+    border-radius:99px;background:rgba(20,17,13,.72);backdrop-filter:blur(6px);
+  }
+  .vinyl-dots button{width:6px;height:6px;padding:0;border:0;border-radius:50%;background:rgba(244,239,230,.5);cursor:pointer}
+  .vinyl-dots button[aria-current="true"]{width:18px;border-radius:99px;background:var(--v-yellow)}
 
   @media (max-width:720px){
-    .vinyl-intro{grid-template-columns:1fr;gap:14px;margin-bottom:18px}
+    .vinyl-layout{grid-template-columns:1fr;gap:18px}
     .vinyl-title{font-size:clamp(42px,13vw,56px)}
     .vinyl-deck{font-size:18px}
-    .vinyl-gallery{
-      display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
-      overscroll-behavior-x:contain;scrollbar-width:none;margin:0 -24px;padding:0 24px 10px;
-      scroll-padding:24px;
-    }
-    .vinyl-gallery::-webkit-scrollbar{display:none}
-    .vinyl-art{flex:0 0 82%;scroll-snap-align:start;scroll-snap-stop:always}
+    .vinyl-carousel{width:min(82vw,312px);justify-self:center}
   }
 
   /* SECTION HEAD */
@@ -603,33 +617,37 @@
       <h2>Vinyl</h2>
     </div>
 
-    <div class="vinyl-intro">
-      <div>
+    <div class="vinyl-layout">
+      <div class="vinyl-content">
         <p class="vinyl-kicker">First pressing</p>
         <h3 class="vinyl-title" id="vinylTitle">House of Normalcy</h3>
-      </div>
-      <div>
         <p class="vinyl-deck">Three tracks, one house. Acid, raw and deep house made for the second hour of the night.</p>
         <div class="vinyl-actions">
           <a class="vinyl-cta" href="https://instagram.com/normal.dj" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg><span>DM to order</span></a>
           <a class="vinyl-listen" href="#releases">Listen to the three tracks <span aria-hidden="true">↓</span></a>
         </div>
       </div>
-    </div>
 
-    <div class="vinyl-gallery" aria-label="House of Normalcy vinyl artwork">
-      <figure class="vinyl-art">
-        <img src="assets/vinyl/house-of-normalcy-cover-720.jpg" srcset="assets/vinyl/house-of-normalcy-cover-720.jpg 707w, assets/vinyl/house-of-normalcy-cover-1440.jpg 1413w" sizes="(max-width: 720px) 82vw, 30vw" alt="House of Normalcy cover artwork: a cream record on vermilion with cobalt lettering" width="1413" height="1440" loading="lazy" decoding="async" />
-        <figcaption>Cover artwork</figcaption>
-      </figure>
-      <figure class="vinyl-art">
-        <img src="assets/vinyl/house-of-normalcy-liner-notes-720.jpg" srcset="assets/vinyl/house-of-normalcy-liner-notes-720.jpg 713w, assets/vinyl/house-of-normalcy-liner-notes-1440.jpg 1426w" sizes="(max-width: 720px) 82vw, 30vw" alt="House of Normalcy booklet page with liner notes and release manifesto" width="1426" height="1440" loading="lazy" decoding="async" />
-        <figcaption>Liner notes</figcaption>
-      </figure>
-      <figure class="vinyl-art">
-        <img src="assets/vinyl/house-of-normalcy-track-notes-720.jpg" srcset="assets/vinyl/house-of-normalcy-track-notes-720.jpg 713w, assets/vinyl/house-of-normalcy-track-notes-1440.jpg 1426w" sizes="(max-width: 720px) 82vw, 30vw" alt="House of Normalcy booklet page with notes for cognite, foster the floor and gain it easy" width="1426" height="1440" loading="lazy" decoding="async" />
-        <figcaption>Track notes</figcaption>
-      </figure>
+      <div class="vinyl-carousel" id="vinylCarousel" role="region" aria-roledescription="carousel" aria-label="House of Normalcy vinyl artwork">
+        <div class="vinyl-track" id="vinylTrack" tabindex="0">
+          <figure class="vinyl-slide" data-caption="Cover artwork">
+            <img src="assets/vinyl/house-of-normalcy-cover-720.jpg" srcset="assets/vinyl/house-of-normalcy-cover-720.jpg 707w, assets/vinyl/house-of-normalcy-cover-1440.jpg 1413w" sizes="(max-width: 720px) 82vw, 312px" alt="House of Normalcy cover artwork: a cream record on vermilion with cobalt lettering" width="1413" height="1440" loading="lazy" decoding="async" />
+            <figcaption>Cover artwork</figcaption>
+          </figure>
+          <figure class="vinyl-slide" data-caption="Liner notes">
+            <img src="assets/vinyl/house-of-normalcy-liner-notes-720.jpg" srcset="assets/vinyl/house-of-normalcy-liner-notes-720.jpg 713w, assets/vinyl/house-of-normalcy-liner-notes-1440.jpg 1426w" sizes="(max-width: 720px) 82vw, 312px" alt="House of Normalcy booklet page with liner notes and release manifesto" width="1426" height="1440" loading="lazy" decoding="async" />
+            <figcaption>Liner notes</figcaption>
+          </figure>
+          <figure class="vinyl-slide" data-caption="Track notes">
+            <img src="assets/vinyl/house-of-normalcy-track-notes-720.jpg" srcset="assets/vinyl/house-of-normalcy-track-notes-720.jpg 713w, assets/vinyl/house-of-normalcy-track-notes-1440.jpg 1426w" sizes="(max-width: 720px) 82vw, 312px" alt="House of Normalcy booklet page with notes for cognite, foster the floor and gain it easy" width="1426" height="1440" loading="lazy" decoding="async" />
+            <figcaption>Track notes</figcaption>
+          </figure>
+        </div>
+        <button class="vinyl-nav prev" type="button" aria-label="Previous artwork">‹</button>
+        <button class="vinyl-nav next" type="button" aria-label="Next artwork">›</button>
+        <p class="vinyl-caption" id="vinylCaption" aria-live="polite">01 / 03 · Cover artwork</p>
+        <div class="vinyl-dots" id="vinylDots" aria-label="Choose artwork"></div>
+      </div>
     </div>
   </section>
 
@@ -786,6 +804,63 @@
 
 </div>
 
+
+<script>
+(() => {
+  const root = document.getElementById('vinylCarousel');
+  const track = document.getElementById('vinylTrack');
+  if (!root || !track) return;
+
+  const slides = [...track.querySelectorAll('.vinyl-slide')];
+  const caption = document.getElementById('vinylCaption');
+  const dotsBox = document.getElementById('vinylDots');
+  const prev = root.querySelector('.vinyl-nav.prev');
+  const next = root.querySelector('.vinyl-nav.next');
+  const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  let active = 0;
+  let scrollFrame = null;
+
+  const render = () => {
+    caption.textContent = `${String(active + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')} · ${slides[active].dataset.caption}`;
+    [...dotsBox.children].forEach((dot, index) => dot.setAttribute('aria-current', index === active ? 'true' : 'false'));
+  };
+  const go = (index) => {
+    active = (index + slides.length) % slides.length;
+    track.scrollTo({left: slides[active].offsetLeft, behavior});
+    render();
+  };
+
+  slides.forEach((slide, index) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', `Show ${slide.dataset.caption}`);
+    dot.addEventListener('click', () => go(index));
+    dotsBox.appendChild(dot);
+  });
+  prev.addEventListener('click', () => go(active - 1));
+  next.addEventListener('click', () => go(active + 1));
+  track.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    go(active + (event.key === 'ArrowRight' ? 1 : -1));
+  });
+  track.addEventListener('scroll', () => {
+    cancelAnimationFrame(scrollFrame);
+    scrollFrame = requestAnimationFrame(() => {
+      const center = track.scrollLeft + track.clientWidth / 2;
+      let closest = 0;
+      let distance = Infinity;
+      slides.forEach((slide, index) => {
+        const nextDistance = Math.abs(slide.offsetLeft + slide.clientWidth / 2 - center);
+        if (nextDistance < distance) { closest = index; distance = nextDistance; }
+      });
+      if (closest !== active) { active = closest; render(); }
+    });
+  }, {passive:true});
+
+  render();
+})();
+</script>
 
 <script>
 (() => {
