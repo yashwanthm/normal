@@ -171,6 +171,11 @@
     transition:color .15s ease,border-color .15s ease;
   }
   .vinyl-listen:hover{color:var(--paper);border-color:var(--paper-faint)}
+  .vinyl-access-note{
+    margin:12px 0 0;max-width:48ch;color:var(--paper-faint);
+    font-family:var(--mono);font-size:10px;line-height:1.55;letter-spacing:.05em;
+    text-transform:uppercase;
+  }
   .vinyl-carousel{
     position:relative;width:100%;justify-self:end;overflow:hidden;background:#e9e1d4;
     border:1px solid var(--rule);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.16);
@@ -629,7 +634,9 @@
         <div class="vinyl-actions">
           <a class="vinyl-cta" href="https://instagram.com/normal.dj" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-instagram"/></svg><span>request vinyl on instagram</span></a>
           <a class="vinyl-listen" href="#releases">stream the tracks below <span aria-hidden="true">↓</span></a>
+          <a class="vinyl-listen" href="https://drive.google.com/drive/folders/12rhY59mHPVahGk3pO9uKetbA4MBLn2E7?usp=drive_link" target="_blank" rel="noopener">request music + demos <span aria-hidden="true">↗</span></a>
         </div>
+        <p class="vinyl-access-note">For DJs, labels, radio and press. Request Drive access with the Google account you want approved.</p>
       </div>
 
       <div class="vinyl-carousel" id="vinylCarousel" role="region" aria-roledescription="carousel" aria-label="House of Normalcy vinyl artwork">
