@@ -146,7 +146,7 @@
     display:inline-flex;align-items:center;justify-content:center;gap:10px;
     padding:14px 20px;background:var(--v-yellow);border:1px solid var(--v-yellow);
     color:var(--ink);font-family:var(--display);font-size:15px;font-weight:700;
-    transition:background .15s ease,border-color .15s ease;
+    cursor:pointer;transition:background .15s ease,border-color .15s ease;
   }
   .hero-request-cta:hover{background:var(--paper);border-color:var(--paper)}
   .hero-request-note{
@@ -173,7 +173,8 @@
   .vinyl-cta{
     display:inline-flex;align-items:center;justify-content:center;gap:10px;
     padding:11px 16px;background:var(--v-yellow);border:1px solid var(--v-yellow);
-    color:var(--ink);font-size:13px;font-weight:700;transition:background .15s ease,border-color .15s ease;
+    color:var(--ink);font-family:var(--display);font-size:13px;font-weight:700;cursor:pointer;
+    transition:background .15s ease,border-color .15s ease;
   }
   .vinyl-cta:hover{background:var(--paper);border-color:var(--paper)}
   .vinyl-cta svg{width:16px;height:16px;fill:currentColor;display:block}
@@ -419,6 +420,50 @@
   .signup-note a{color:var(--paper-dim);text-decoration:none;border-bottom:1px solid var(--paper-faint)}
   .signup-note a:hover{color:var(--v-yellow);border-color:var(--v-yellow)}
 
+  /* ENQUIRY FORM */
+  .enquiry-dialog{
+    width:min(720px,calc(100vw - 32px));max-width:720px;max-height:min(860px,calc(100dvh - 32px));
+    margin:auto;padding:0;border:1px solid rgba(244,239,230,.22);border-radius:14px;
+    background:var(--ink-2);color:var(--paper);box-shadow:0 24px 80px rgba(0,0,0,.62);overflow:auto;
+  }
+  .enquiry-dialog::backdrop{background:rgba(8,7,6,.78);backdrop-filter:blur(5px)}
+  .enquiry-shell{padding:clamp(22px,4vw,38px)}
+  .enquiry-head{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:26px}
+  .enquiry-kicker{margin:0 0 8px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--v-yellow)}
+  .enquiry-title{margin:0;font-family:var(--serif);font-size:clamp(32px,6vw,48px);font-weight:500;line-height:1}
+  .enquiry-intro{max-width:52ch;margin:12px 0 0;color:var(--paper-dim);font-size:14px;line-height:1.55}
+  .enquiry-close{flex:0 0 auto;width:38px;height:38px;border:1px solid var(--rule);border-radius:50%;background:transparent;color:var(--paper);font-size:25px;line-height:1;cursor:pointer}
+  .enquiry-close:hover{border-color:var(--paper-faint)}
+  .enquiry-form{display:grid;gap:20px}
+  .enquiry-fieldset{margin:0;padding:0;border:0}
+  .enquiry-label,.enquiry-fieldset legend{display:block;margin:0 0 8px;font-family:var(--mono);font-size:10px;line-height:1.4;letter-spacing:.11em;text-transform:uppercase;color:var(--paper-dim)}
+  .enquiry-label span,.enquiry-fieldset legend span{color:var(--v-yellow)}
+  .enquiry-types{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .enquiry-type{position:relative;min-width:0}
+  .enquiry-type input{position:absolute;opacity:0;pointer-events:none}
+  .enquiry-type label{display:flex;min-height:56px;align-items:center;justify-content:center;padding:10px;border:1px solid var(--rule);border-radius:8px;text-align:center;font-size:13px;font-weight:700;cursor:pointer}
+  .enquiry-type input:checked + label{border-color:var(--v-yellow);background:var(--v-yellow);color:var(--ink)}
+  .enquiry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .enquiry-control{min-width:0}
+  .enquiry-control.full{grid-column:1/-1}
+  .enquiry-control input,.enquiry-control select,.enquiry-control textarea{
+    width:100%;min-width:0;padding:12px 13px;border:1px solid var(--rule);border-radius:7px;
+    background:var(--ink);color:var(--paper);font:inherit;font-size:14px;line-height:1.45;
+  }
+  .enquiry-control textarea{min-height:116px;resize:vertical}
+  .enquiry-control input::placeholder,.enquiry-control textarea::placeholder{color:var(--paper-faint)}
+  .enquiry-control input:focus,.enquiry-control select:focus,.enquiry-control textarea:focus{outline:2px solid transparent;border-color:var(--v-yellow)}
+  .enquiry-context{margin:-4px 0 0;padding:12px 14px;border-left:3px solid var(--v-cobalt);background:rgba(27,73,199,.13);color:var(--paper-dim);font-size:13px;line-height:1.5}
+  .enquiry-pane{display:grid;gap:20px}
+  .enquiry-pane[hidden]{display:none}
+  .enquiry-actions{display:block;padding-top:2px}
+  .enquiry-submit{width:100%;padding:14px 20px;border:1px solid var(--v-yellow);background:var(--v-yellow);color:var(--ink);font:700 14px var(--display);cursor:pointer}
+  .enquiry-submit:hover{background:var(--paper);border-color:var(--paper)}
+  .enquiry-submit:disabled{cursor:wait;opacity:.75}
+  .enquiry-status{margin:10px 0 0;color:var(--paper-faint);font-family:var(--mono);font-size:9px;line-height:1.5;letter-spacing:.07em;text-align:center;text-transform:uppercase}
+  .footer-enquiry{padding:0;border:0;border-bottom:1px solid var(--paper-faint);background:none;color:var(--paper-dim);font:inherit;text-transform:inherit;letter-spacing:inherit;cursor:pointer}
+  .footer-enquiry:hover{color:var(--v-yellow);border-color:var(--v-yellow)}
+
   /* FOOTER */
   footer{
     margin-top:96px;padding-top:18px;
@@ -438,6 +483,11 @@
     .hero-photo{width:60%;max-width:240px;justify-self:start}
     .sec{margin-top:64px}
     .masthead .meta{display:none}
+    .enquiry-dialog{width:calc(100vw - 20px);max-width:calc(100vw - 20px);max-height:calc(100dvh - 20px)}
+    .enquiry-shell{padding:22px 18px}
+    .enquiry-head{gap:12px}
+    .enquiry-types,.enquiry-grid{grid-template-columns:1fr}
+    .enquiry-type label{min-height:48px}
   }
 </style>
 <script type="application/ld+json">
@@ -614,8 +664,8 @@
       <p class="tagline">To dance is a <em>privilege;</em> to make you do, <em>is mine.</em></p>
       <p class="lede">normal is the house project of <b>Yashwanth Maheshwaram</b>, based in Bangalore. Bright, warm house with a Detroit lean — deep, raw and acid — built as DJ tools for the second hour of a good room.</p>
       <div class="hero-request">
-        <a class="hero-request-cta" href="https://drive.google.com/drive/folders/12rhY59mHPVahGk3pO9uKetbA4MBLn2E7?usp=drive_link" target="_blank" rel="noopener">Request music + demos <span aria-hidden="true">↗</span></a>
-        <span class="hero-request-note">Private Drive access for DJs, labels, radio + press.</span>
+        <button class="hero-request-cta enquiry-trigger" type="button" data-enquiry="music">Request music + demos <span aria-hidden="true">→</span></button>
+        <span class="hero-request-note">Tell me who you are and what you need. Requests are reviewed personally.</span>
       </div>
       <div class="links hero-links">
         <a class="lk bandcamp" href="https://normaldj.bandcamp.com" target="_blank" rel="noopener"><svg><use href="#i-bandcamp"/></svg><span>Bandcamp</span></a>
@@ -638,10 +688,10 @@
       <div class="vinyl-content">
         <h3 class="vinyl-title" id="vinylTitle">House of Normalcy</h3>
         <p class="vinyl-deck">Three tracks, one house. Acid, raw and deep house made for the second hour of the night.</p>
-        <p class="vinyl-request">vinyl releases are available on request only. DM @normal.dj on instagram to request yours.</p>
+        <p class="vinyl-request">Vinyl releases are available by request. Delivery cost and timing are confirmed by email.</p>
         <div class="vinyl-actions">
-          <a class="vinyl-cta" href="https://instagram.com/normal.dj" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-instagram"/></svg><span>request vinyl on instagram</span></a>
-          <a class="vinyl-listen" href="#releases">stream the tracks below <span aria-hidden="true">↓</span></a>
+          <button class="vinyl-cta enquiry-trigger" type="button" data-enquiry="vinyl"><span>Request vinyl</span><span aria-hidden="true">→</span></button>
+          <a class="vinyl-listen" href="#releases">Stream the tracks below <span aria-hidden="true">↓</span></a>
         </div>
       </div>
 
@@ -825,11 +875,265 @@
   <footer>
     <address>
       <span>© normal · 2026</span>
-      <span>Bangalore, India · DM <a href="https://instagram.com/normal.dj" target="_blank" rel="noopener">@normal.dj</a> for bookings</span>
+      <span>Bangalore, India · <button class="footer-enquiry enquiry-trigger" type="button" data-enquiry="booking">Booking enquiry</button></span>
     </address>
   </footer>
 
 </div>
+
+<dialog class="enquiry-dialog" id="enquiryDialog" aria-labelledby="enquiryTitle">
+  <div class="enquiry-shell">
+    <div class="enquiry-head">
+      <div>
+        <p class="enquiry-kicker">Contact normal</p>
+        <h2 class="enquiry-title" id="enquiryTitle">Start an enquiry</h2>
+        <p class="enquiry-intro">For music and demo access, House of Normalcy vinyl, and booking enquiries. Share enough context for a useful reply.</p>
+      </div>
+      <button class="enquiry-close" type="button" aria-label="Close enquiry form">×</button>
+    </div>
+
+    <form class="enquiry-form" id="enquiryForm" action="https://docs.google.com/forms/d/e/1FAIpQLScrlIH11OBzhhfa3vs8zX-Ynr1VeSj1v9N4pFVJ0fKv2NI0YQ/formResponse" method="post" target="enquiryResponse">
+      <fieldset class="enquiry-fieldset">
+        <legend>What are you contacting normal about? <span>*</span></legend>
+        <div class="enquiry-types">
+          <div class="enquiry-type">
+            <input type="radio" name="request_type" value="music" id="requestMusic" required />
+            <label for="requestMusic">Music + demos</label>
+          </div>
+          <div class="enquiry-type">
+            <input type="radio" name="request_type" value="vinyl" id="requestVinyl" required />
+            <label for="requestVinyl">Vinyl request</label>
+          </div>
+          <div class="enquiry-type">
+            <input type="radio" name="request_type" value="booking" id="requestBooking" required />
+            <label for="requestBooking">Booking</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <section class="enquiry-pane" data-enquiry-pane="music">
+        <p class="enquiry-context">Music access is intended for DJs, labels, radio, press and collaborators. Tell me where the music may fit so I can share the right material.</p>
+        <div class="enquiry-grid">
+          <label class="enquiry-control">
+            <span class="enquiry-label">Name <span>*</span></span>
+            <input type="text" name="music_name" autocomplete="name" required />
+          </label>
+          <label class="enquiry-control">
+            <span class="enquiry-label">Email <span>*</span></span>
+            <input type="email" name="music_email" autocomplete="email" required />
+          </label>
+          <label class="enquiry-control">
+            <span class="enquiry-label">You are requesting as <span>*</span></span>
+            <select name="music_role" required>
+              <option value="" selected disabled>Select your role</option>
+              <option>DJ</option>
+              <option>Record label / A&amp;R</option>
+              <option>Radio / podcast</option>
+              <option>Press / media</option>
+              <option>Promoter / venue</option>
+              <option>Artist / collaborator</option>
+              <option>Music supervisor / licensing</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label class="enquiry-control">
+            <span class="enquiry-label">Artist, label or outlet</span>
+            <input type="text" name="music_organisation" autocomplete="organization" />
+          </label>
+          <label class="enquiry-control full">
+            <span class="enquiry-label">Relevant profile, show or label link <span>*</span></span>
+            <input type="url" name="music_link" inputmode="url" required placeholder="SoundCloud, Instagram, radio show or label URL" />
+          </label>
+          <label class="enquiry-control full">
+            <span class="enquiry-label">Message <span>*</span></span>
+            <textarea name="music_message" required placeholder="Add any context that will help me respond."></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="enquiry-pane" data-enquiry-pane="vinyl" hidden>
+        <p class="enquiry-context">House of Normalcy is available by request. Delivery cost and timing will be confirmed by email before any payment.</p>
+        <div class="enquiry-grid">
+          <label class="enquiry-control">
+            <span class="enquiry-label">Name <span>*</span></span>
+            <input type="text" name="vinyl_name" autocomplete="name" required />
+          </label>
+          <label class="enquiry-control">
+            <span class="enquiry-label">Email <span>*</span></span>
+            <input type="email" name="vinyl_email" autocomplete="email" required />
+          </label>
+          <label class="enquiry-control">
+            <span class="enquiry-label">Delivery city + country <span>*</span></span>
+            <input type="text" name="vinyl_location" autocomplete="country-name" required placeholder="Bangalore, India" />
+          </label>
+          <label class="enquiry-control">
+            <span class="enquiry-label">Number of copies <span>*</span></span>
+            <input type="number" name="vinyl_quantity" min="1" max="10" value="1" required />
+          </label>
+          <label class="enquiry-control full">
+            <span class="enquiry-label">Profile or website</span>
+            <input type="url" name="vinyl_link" inputmode="url" placeholder="Optional" />
+          </label>
+          <label class="enquiry-control full">
+            <span class="enquiry-label">Anything I should know?</span>
+            <textarea name="vinyl_message" placeholder="Delivery question, gift note, record-store enquiry…"></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="enquiry-pane" data-enquiry-pane="booking" hidden>
+        <p class="enquiry-context">For a useful first reply, include the event, venue, date, set format and budget. Holds are confirmed only after direct follow-up.</p>
+        <div class="enquiry-grid">
+          <label class="enquiry-control">
+            <span class="enquiry-label">Your name <span>*</span></span>
+            <input type="text" name="booking_name" autocomplete="name" required />
+          </label>
+          <label class="enquiry-control">
+            <span class="enquiry-label">Work email <span>*</span></span>
+            <input type="email" name="booking_email" autocomplete="email" required />
+          </label>
+          <label class="enquiry-control">
+            <span class="enquiry-label">Promoter or organisation <span>*</span></span>
+            <input type="text" name="booking_organisation" autocomplete="organization" required />
+          </label>
+          <label class="enquiry-control">
+            <span class="enquiry-label">Event + venue <span>*</span></span>
+            <input type="text" name="booking_event" required />
+          </label>
+          <label class="enquiry-control">
+            <span class="enquiry-label">City + country <span>*</span></span>
+            <input type="text" name="booking_location" required />
+          </label>
+          <label class="enquiry-control">
+            <span class="enquiry-label">Proposed date <span>*</span></span>
+            <input type="date" name="booking_date" required />
+          </label>
+          <label class="enquiry-control">
+            <span class="enquiry-label">Set format + duration</span>
+            <input type="text" name="booking_format" placeholder="DJ set, live, support; 90 minutes…" />
+          </label>
+          <label class="enquiry-control">
+            <span class="enquiry-label">Budget range <span>*</span></span>
+            <input type="text" name="booking_budget" required placeholder="Fee + travel terms" />
+          </label>
+          <label class="enquiry-control full">
+            <span class="enquiry-label">Event or promoter link</span>
+            <input type="url" name="booking_link" inputmode="url" placeholder="Website, listing or profile URL" />
+          </label>
+          <label class="enquiry-control full">
+            <span class="enquiry-label">Additional details</span>
+            <textarea name="booking_message" placeholder="Line-up, room capacity, billing, travel or production details…"></textarea>
+          </label>
+        </div>
+      </section>
+
+      <div class="enquiry-actions">
+        <button class="enquiry-submit" type="submit">Send enquiry</button>
+        <p class="enquiry-status" id="enquiryStatus" aria-live="polite">Your enquiry will be sent privately. I’ll reply by email.</p>
+      </div>
+
+      <input type="hidden" name="entry.568076761" data-response-field="type" />
+      <input type="hidden" name="entry.9515167" data-response-field="name" />
+      <input type="hidden" name="entry.261316487" data-response-field="email" />
+      <input type="hidden" name="entry.1637908919" data-response-field="role" />
+      <input type="hidden" name="entry.1913149993" data-response-field="location" />
+      <input type="hidden" name="entry.187259663" data-response-field="link" />
+      <input type="hidden" name="entry.1543308247" data-response-field="timing" />
+      <input type="hidden" name="entry.121603860" data-response-field="commercial" />
+      <input type="hidden" name="entry.333665231" data-response-field="message" />
+    </form>
+  </div>
+</dialog>
+<iframe name="enquiryResponse" id="enquiryResponse" title="Enquiry submission response" hidden></iframe>
+
+
+<script>
+(() => {
+  const dialog = document.getElementById('enquiryDialog');
+  const form = document.getElementById('enquiryForm');
+  const status = document.getElementById('enquiryStatus');
+  const responseFrame = document.getElementById('enquiryResponse');
+  const submit = form?.querySelector('.enquiry-submit');
+  if (!dialog || !form) return;
+  let submitting = false;
+  let submittedType = 'music';
+
+  const selectType = (type) => {
+    const option = form.querySelector(`[name="request_type"][value="${type}"]`);
+    if (option) option.checked = true;
+    form.querySelectorAll('[data-enquiry-pane]').forEach((pane) => {
+      const active = pane.dataset.enquiryPane === type;
+      pane.hidden = !active;
+      pane.querySelectorAll('input, textarea, select').forEach((control) => { control.disabled = !active; });
+    });
+    status.textContent = 'Your enquiry will be sent privately. I’ll reply by email.';
+    submit.disabled = false;
+    submit.textContent = 'Send enquiry';
+  };
+
+  document.querySelectorAll('.enquiry-trigger').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      selectType(trigger.dataset.enquiry || 'music');
+      dialog.showModal();
+    });
+  });
+  form.querySelectorAll('[name="request_type"]').forEach((option) => {
+    option.addEventListener('change', () => selectType(option.value));
+  });
+  dialog.querySelector('.enquiry-close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  form.addEventListener('submit', (event) => {
+    if (!form.reportValidity()) {
+      event.preventDefault();
+      status.textContent = 'Please complete the required fields.';
+      return;
+    }
+
+    const type = form.querySelector('[name="request_type"]:checked')?.value || 'music';
+    submittedType = type;
+    const value = (name) => form.elements[name]?.value?.trim() || '';
+    const response = {
+      type: {music:'Music + demos',vinyl:'Vinyl request',booking:'Booking'}[type],
+      name: value(`${type}_name`),
+      email: value(`${type}_email`),
+      role: type === 'music'
+        ? [value('music_role'), value('music_organisation')].filter(Boolean).join(' · ')
+        : type === 'booking'
+          ? [value('booking_organisation'), value('booking_event')].filter(Boolean).join(' · ')
+          : '',
+      location: type === 'vinyl' ? value('vinyl_location') : type === 'booking' ? value('booking_location') : '',
+      link: value(`${type}_link`),
+      timing: type === 'booking' ? value('booking_date') : '',
+      commercial: type === 'vinyl'
+        ? `Quantity: ${value('vinyl_quantity')}`
+        : type === 'booking'
+          ? [`Set: ${value('booking_format') || 'not specified'}`, `Budget: ${value('booking_budget')}`].join(' · ')
+          : '',
+      message: value(`${type}_message`)
+    };
+    Object.entries(response).forEach(([key, nextValue]) => {
+      form.querySelector(`[data-response-field="${key}"]`).value = nextValue;
+    });
+
+    submitting = true;
+    submit.disabled = true;
+    submit.textContent = 'Sending…';
+    status.textContent = 'Sending your enquiry securely…';
+  });
+
+  responseFrame.addEventListener('load', () => {
+    if (!submitting) return;
+    submitting = false;
+    form.reset();
+    selectType(submittedType);
+    submit.disabled = true;
+    submit.textContent = 'Enquiry sent';
+    status.textContent = 'Thanks — your enquiry has been sent. I’ll reply by email.';
+  });
+})();
+</script>
 
 
 <script>
