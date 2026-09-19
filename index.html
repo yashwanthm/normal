@@ -141,6 +141,18 @@
     color:var(--paper-dim);
     max-width:54ch;margin:0;
   }
+  .hero-request{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:24px}
+  .hero-request-cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:14px 20px;background:var(--v-yellow);border:1px solid var(--v-yellow);
+    color:var(--ink);font-family:var(--display);font-size:15px;font-weight:700;
+    transition:background .15s ease,border-color .15s ease;
+  }
+  .hero-request-cta:hover{background:var(--paper);border-color:var(--paper)}
+  .hero-request-note{
+    max-width:31ch;color:var(--paper-faint);font-family:var(--mono);
+    font-size:9px;line-height:1.5;letter-spacing:.08em;text-transform:uppercase;
+  }
 
   /* HOUSE OF NORMALCY — first vinyl */
   .vinyl-sec{scroll-margin-top:24px}
@@ -171,11 +183,6 @@
     transition:color .15s ease,border-color .15s ease;
   }
   .vinyl-listen:hover{color:var(--paper);border-color:var(--paper-faint)}
-  .vinyl-access-note{
-    margin:12px 0 0;max-width:48ch;color:var(--paper-faint);
-    font-family:var(--mono);font-size:10px;line-height:1.55;letter-spacing:.05em;
-    text-transform:uppercase;
-  }
   .vinyl-carousel{
     position:relative;width:100%;justify-self:end;overflow:hidden;background:#e9e1d4;
     border:1px solid var(--rule);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.16);
@@ -347,11 +354,8 @@
   .lk.bandcamp:hover{color:var(--v-cobalt)}
   .lk.instagram:hover{color:var(--v-violet)}
   .lk.youtube:hover{color:var(--v-vermilion)}
-  /* primary CTA — Bandcamp (buy / wavs) */
-  .lk.primary{background:var(--v-yellow);border-color:var(--v-yellow);color:var(--ink)}
-  .lk.primary:hover{background:var(--paper);border-color:var(--paper);color:var(--ink)}
   /* hero link row */
-  .hero-links{margin-top:24px;padding-top:22px;border-top:1px solid var(--rule)}
+  .hero-links{margin-top:20px;padding-top:20px;border-top:1px solid var(--rule)}
 
   /* PRAISE CAROUSEL */
   .carousel{position:relative}
@@ -609,8 +613,12 @@
       <div class="eyebrow">normal · dance music · dj &amp; producer</div>
       <p class="tagline">To dance is a <em>privilege;</em> to make you do, <em>is mine.</em></p>
       <p class="lede">normal is the house project of <b>Yashwanth Maheshwaram</b>, based in Bangalore. Bright, warm house with a Detroit lean — deep, raw and acid — built as DJ tools for the second hour of a good room.</p>
+      <div class="hero-request">
+        <a class="hero-request-cta" href="https://drive.google.com/drive/folders/12rhY59mHPVahGk3pO9uKetbA4MBLn2E7?usp=drive_link" target="_blank" rel="noopener">Request music + demos <span aria-hidden="true">↗</span></a>
+        <span class="hero-request-note">Private Drive access for DJs, labels, radio + press.</span>
+      </div>
       <div class="links hero-links">
-        <a class="lk bandcamp primary" href="https://normaldj.bandcamp.com" target="_blank" rel="noopener"><svg><use href="#i-bandcamp"/></svg><span>Bandcamp</span></a>
+        <a class="lk bandcamp" href="https://normaldj.bandcamp.com" target="_blank" rel="noopener"><svg><use href="#i-bandcamp"/></svg><span>Bandcamp</span></a>
         <a class="lk instagram" href="https://instagram.com/normal.dj" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg><span>Instagram</span></a>
         <a class="lk soundcloud" href="https://soundcloud.com/normaldj" target="_blank" rel="noopener"><svg><use href="#i-soundcloud"/></svg><span>SoundCloud</span></a>
         <a class="lk applemusic" href="https://music.apple.com/artist/normal/1804288244" target="_blank" rel="noopener"><svg><use href="#i-applemusic"/></svg><span>Apple Music</span></a>
@@ -634,9 +642,7 @@
         <div class="vinyl-actions">
           <a class="vinyl-cta" href="https://instagram.com/normal.dj" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-instagram"/></svg><span>request vinyl on instagram</span></a>
           <a class="vinyl-listen" href="#releases">stream the tracks below <span aria-hidden="true">↓</span></a>
-          <a class="vinyl-listen" href="https://drive.google.com/drive/folders/12rhY59mHPVahGk3pO9uKetbA4MBLn2E7?usp=drive_link" target="_blank" rel="noopener">request music + demos <span aria-hidden="true">↗</span></a>
         </div>
-        <p class="vinyl-access-note">For DJs, labels, radio and press. Request Drive access with the Google account you want approved.</p>
       </div>
 
       <div class="vinyl-carousel" id="vinylCarousel" role="region" aria-roledescription="carousel" aria-label="House of Normalcy vinyl artwork">
