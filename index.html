@@ -687,10 +687,10 @@
     <div class="vinyl-layout">
       <div class="vinyl-content">
         <h3 class="vinyl-title" id="vinylTitle">House of Normalcy</h3>
-        <p class="vinyl-deck">Three tracks, one house. Acid, raw and deep house made for the second hour of the night.</p>
-        <p class="vinyl-request">Vinyl releases are available by request. Delivery cost and timing are confirmed by email.</p>
+        <p class="vinyl-deck">Choose any two or more normal tracks for a vinyl request. House of Normalcy is the first edition.</p>
+        <p class="vinyl-request">Name the tracks you want in the form. Delivery cost and timing are confirmed by email.</p>
         <div class="vinyl-actions">
-          <button class="vinyl-cta enquiry-trigger" type="button" data-enquiry="vinyl"><span>Request vinyl</span><span aria-hidden="true">→</span></button>
+          <button class="vinyl-cta enquiry-trigger" type="button" data-enquiry="vinyl"><span>Request tracks on vinyl</span><span aria-hidden="true">→</span></button>
           <a class="vinyl-listen" href="#releases">Stream the tracks below <span aria-hidden="true">↓</span></a>
         </div>
       </div>
@@ -887,7 +887,7 @@
       <div>
         <p class="enquiry-kicker">Contact normal</p>
         <h2 class="enquiry-title" id="enquiryTitle">Start an enquiry</h2>
-        <p class="enquiry-intro">For music and demo access, House of Normalcy vinyl, and booking enquiries. Share enough context for a useful reply.</p>
+        <p class="enquiry-intro">For music and demo access, custom vinyl requests, and booking enquiries. Share enough context for a useful reply.</p>
       </div>
       <button class="enquiry-close" type="button" aria-label="Close enquiry form">×</button>
     </div>
@@ -952,7 +952,7 @@
       </section>
 
       <section class="enquiry-pane" data-enquiry-pane="vinyl" hidden>
-        <p class="enquiry-context">House of Normalcy is available by request. Delivery cost and timing will be confirmed by email before any payment.</p>
+        <p class="enquiry-context">Choose any normal tracks for your vinyl request. Name at least two tracks, separated by commas or new lines. Delivery cost and timing will be confirmed by email before any payment.</p>
         <div class="enquiry-grid">
           <label class="enquiry-control">
             <span class="enquiry-label">Name <span>*</span></span>
@@ -975,8 +975,8 @@
             <input type="url" name="vinyl_link" inputmode="url" placeholder="Optional" />
           </label>
           <label class="enquiry-control full">
-            <span class="enquiry-label">Anything I should know?</span>
-            <textarea name="vinyl_message" placeholder="Delivery question, gift note, record-store enquiry…"></textarea>
+            <span class="enquiry-label">Tracks + message <span>*</span></span>
+            <textarea name="vinyl_tracks" required placeholder="Name at least two tracks, separated by commas or new lines. Add any delivery question or note after them."></textarea>
           </label>
         </div>
       </section>
@@ -1080,6 +1080,7 @@
   form.querySelectorAll('[name="request_type"]').forEach((option) => {
     option.addEventListener('change', () => selectType(option.value));
   });
+  form.elements.vinyl_tracks.addEventListener('input', () => form.elements.vinyl_tracks.setCustomValidity(''));
   dialog.querySelector('.enquiry-close').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', (event) => {
     if (event.target === dialog) dialog.close();
@@ -1094,6 +1095,17 @@
     const type = form.querySelector('[name="request_type"]:checked')?.value || 'music';
     submittedType = type;
     const value = (name) => form.elements[name]?.value?.trim() || '';
+    if (type === 'vinyl') {
+      const tracks = value('vinyl_tracks').split(/\n|,|;/).map((track) => track.trim()).filter(Boolean);
+      if (tracks.length < 2) {
+        event.preventDefault();
+        form.elements.vinyl_tracks.setCustomValidity('Please name at least two tracks, separated by commas or new lines.');
+        form.elements.vinyl_tracks.reportValidity();
+        status.textContent = 'Please name at least two tracks for the vinyl request.';
+        return;
+      }
+      form.elements.vinyl_tracks.setCustomValidity('');
+    }
     const response = {
       type: {music:'Music + demos',vinyl:'Vinyl request',booking:'Booking'}[type],
       name: value(`${type}_name`),
@@ -1111,7 +1123,7 @@
         : type === 'booking'
           ? [`Set: ${value('booking_format') || 'not specified'}`, `Budget: ${value('booking_budget')}`].join(' · ')
           : '',
-      message: value(`${type}_message`)
+      message: type === 'vinyl' ? value('vinyl_tracks') : value(`${type}_message`)
     };
     Object.entries(response).forEach(([key, nextValue]) => {
       form.querySelector(`[data-response-field="${key}"]`).value = nextValue;
