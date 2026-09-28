@@ -17,4 +17,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://yashwanthm.github.io/normal/sitemap.xml
+Sitemap: https://normalshouse.com/sitemap.xml
