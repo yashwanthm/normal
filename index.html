@@ -95,14 +95,22 @@
 
   /* MASTHEAD */
   .masthead{
-    display:flex;align-items:baseline;justify-content:space-between;
+    position:sticky;top:0;z-index:50;background:var(--ink);
+    display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:16px;
     border-bottom:1px solid var(--rule);
-    padding-bottom:14px;margin-bottom:48px;
+    min-height:64px;padding:12px 16px;margin-bottom:48px;
     font-family:var(--mono);font-size:12px;
     color:var(--paper-dim);text-transform:uppercase;letter-spacing:.08em;
   }
   .masthead .mark{margin:0;font-family:var(--display);font-weight:700;font-size:14px;color:var(--paper);letter-spacing:.02em;text-transform:none;display:inline}
   .masthead .meta b{color:var(--paper)}
+  .masthead .mark{grid-column:1;grid-row:1}
+  .masthead .meta{grid-column:3;grid-row:1;justify-self:end;text-align:right;white-space:nowrap;font-size:10px;letter-spacing:.05em}
+  .masthead .music-nav{grid-column:2;grid-row:1;margin:0;gap:4px 16px;font-size:10px;letter-spacing:.03em;justify-content:center}
+  .masthead .music-nav a{min-height:36px;white-space:nowrap}
+  .music-nav.nav-placeholder{visibility:hidden;pointer-events:none}
+  .mobile-menu-toggle{display:none}
+  .sec[id]{scroll-margin-top:var(--header-offset,90px)}
 
   /* HERO */
   .hero{
@@ -146,7 +154,7 @@
     display:inline-flex;align-items:center;justify-content:center;gap:10px;
     padding:14px 20px;background:var(--v-yellow);border:1px solid var(--v-yellow);
     color:var(--ink);font-family:var(--display);font-size:15px;font-weight:700;
-    cursor:pointer;transition:background .15s ease,border-color .15s ease;
+    transition:background .15s ease,border-color .15s ease;
   }
   .hero-request-cta:hover{background:var(--paper);border-color:var(--paper)}
   .hero-request-note{
@@ -168,13 +176,11 @@
     font-family:var(--serif);font-size:clamp(17px,2vw,21px);line-height:1.35;
     color:var(--paper-dim);max-width:34ch;margin:14px 0 0;
   }
-  .vinyl-request{font-size:14px;line-height:1.6;color:var(--paper-dim);max-width:44ch;margin:16px 0 0}
   .vinyl-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px}
   .vinyl-cta{
     display:inline-flex;align-items:center;justify-content:center;gap:10px;
     padding:11px 16px;background:var(--v-yellow);border:1px solid var(--v-yellow);
-    color:var(--ink);font-family:var(--display);font-size:13px;font-weight:700;cursor:pointer;
-    transition:background .15s ease,border-color .15s ease;
+    color:var(--ink);font-size:13px;font-weight:700;transition:background .15s ease,border-color .15s ease;
   }
   .vinyl-cta:hover{background:var(--paper);border-color:var(--paper)}
   .vinyl-cta svg{width:16px;height:16px;fill:currentColor;display:block}
@@ -217,6 +223,13 @@
   .vinyl-dots button[aria-current="true"]{width:18px;border-radius:99px;background:var(--v-yellow)}
 
   @media (max-width:720px){
+    .masthead{grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;margin-inline:-20px;padding:10px 32px}
+    .masthead .meta{grid-column:1;grid-row:2;justify-self:start;text-align:left;font-size:8px;letter-spacing:.03em}
+    .mobile-menu-toggle{display:block;grid-column:2;grid-row:1 / 3;min-width:64px;min-height:44px;background:transparent;border:1px solid var(--rule);color:var(--paper);font:12px var(--mono);text-transform:none;cursor:pointer}
+    .masthead .music-nav{grid-column:1 / -1;grid-row:3;display:none;flex-direction:column;align-items:stretch;margin-top:10px;gap:0;font-size:13px;letter-spacing:0}
+    .masthead.menu-open .music-nav{display:flex}
+    .masthead .music-nav a{min-height:48px;border-top:1px solid var(--rule);text-decoration:none}
+    .wrap > .music-nav{display:none}
     .vinyl-layout{grid-template-columns:1fr;gap:18px}
     .vinyl-title{font-size:clamp(42px,13vw,56px)}
     .vinyl-deck{font-size:18px}
@@ -235,12 +248,39 @@
     text-transform:uppercase;letter-spacing:.18em;color:var(--paper);font-weight:500;
   }
   .sec-head .count{font-family:var(--mono);font-size:11px;color:var(--paper-faint)}
+  #releases .sec-head{align-items:center;gap:12px;flex-wrap:wrap}
+  #releases .sec-head .count{margin-right:auto}
+  #releases .sec-head .np-buy{margin:0 0 0 auto;min-height:44px;box-sizing:border-box}
 
   /* ICONS */
   .icon{width:18px;height:18px;fill:currentColor;flex-shrink:0;display:block}
   .icon-sm{width:13px;height:13px;fill:currentColor;flex-shrink:0;display:block}
 
   /* RELEASES — scrollable list (left) + player pane (right); floats bottom on mobile */
+  /* Music paths: buyable catalogue and website listening room. */
+  .music-nav,.music-actions{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center}
+  .music-nav{margin:-32px 0 40px;font-family:var(--mono);font-size:12px;text-transform:none}
+  .music-nav a,.music-actions>a{display:inline-flex;align-items:center;min-height:44px}
+  .music-nav a,.music-actions>a:not(.hero-request-cta),.music-note a{text-decoration:underline;text-underline-offset:4px}
+  .music-intro{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;margin-bottom:20px}
+  .music-intro p{margin:0;color:var(--paper-dim)}
+  .music-intro .np-buy{margin:0;min-height:44px;box-sizing:border-box}
+  .music-copy{font-family:var(--serif);font-size:clamp(24px,4vw,34px);margin:0 0 12px}
+  .music-note{font-size:13px;line-height:1.6;color:var(--paper-dim);max-width:70ch;margin:12px 0 22px}
+  .unreleased-player{width:100%;max-width:100%;height:450px;display:block;border:1px solid var(--rule);box-sizing:border-box;background:var(--ink-2)}
+  .music-actions{margin-top:20px;font-size:14px}
+  [hidden]{display:none!important}
+  .music-project{padding:20px;border:1px solid var(--rule);margin:20px 0;min-width:0}
+  .music-project h3{margin:0 0 10px;font-family:var(--display)}
+  .music-project p,.music-project li{font-size:14px;line-height:1.6;color:var(--paper-dim)}
+  .music-project summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
+  .enquiry-form{display:grid;gap:16px;max-width:640px}
+  .enquiry-form label{display:grid;gap:8px;font-size:14px}
+  .enquiry-form input,.enquiry-form select,.enquiry-form textarea{width:100%;min-width:0;box-sizing:border-box;padding:12px;background:var(--ink-2);color:var(--paper);border:1px solid var(--rule);font:inherit}
+  .enquiry-form button{width:100%;padding:14px;background:var(--v-yellow);color:var(--ink);border:0;font:inherit;cursor:pointer}
+  .trk-buy{font-family:var(--display);font-size:12px;color:var(--v-yellow);min-width:44px;min-height:44px;display:flex;align-items:center;gap:5px;text-decoration:underline;text-underline-offset:3px}
+  .music-nav a:focus-visible,.music-actions>a:focus-visible,.trk-buy:focus-visible,.trk-play:focus-visible{outline:2px solid var(--v-yellow);outline-offset:4px}
+  .releases-pane>*{min-width:0}
   .releases-pane{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
   .tracklist{
     list-style:none;margin:0;padding:0;
@@ -263,7 +303,7 @@
   }
   .track-group:not(:first-child){border-top:1px solid var(--rule)}
   .trk{
-    display:grid;grid-template-columns:48px 1fr auto;gap:14px;align-items:center;
+    display:grid;grid-template-columns:48px minmax(0,1fr) auto auto;gap:12px;align-items:center;
     padding:12px 14px;border-bottom:1px solid var(--rule);cursor:pointer;
     transition:background .15s ease;
   }
@@ -279,7 +319,7 @@
   .trk-meta{font-family:var(--mono);font-size:9px;color:var(--paper-faint);text-transform:uppercase;letter-spacing:.1em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .trk-meta b{color:var(--paper-dim);font-weight:500}
   .trk-play{
-    flex-shrink:0;width:36px;height:36px;border-radius:50%;border:0;
+    flex-shrink:0;width:44px;height:44px;border-radius:50%;border:0;
     background:var(--v-vermilion);cursor:pointer;
     display:inline-flex;align-items:center;justify-content:center;transition:transform .15s ease;
   }
@@ -420,50 +460,6 @@
   .signup-note a{color:var(--paper-dim);text-decoration:none;border-bottom:1px solid var(--paper-faint)}
   .signup-note a:hover{color:var(--v-yellow);border-color:var(--v-yellow)}
 
-  /* ENQUIRY FORM */
-  .enquiry-dialog{
-    width:min(720px,calc(100vw - 32px));max-width:720px;max-height:min(860px,calc(100dvh - 32px));
-    margin:auto;padding:0;border:1px solid rgba(244,239,230,.22);border-radius:14px;
-    background:var(--ink-2);color:var(--paper);box-shadow:0 24px 80px rgba(0,0,0,.62);overflow:auto;
-  }
-  .enquiry-dialog::backdrop{background:rgba(8,7,6,.78);backdrop-filter:blur(5px)}
-  .enquiry-shell{padding:clamp(22px,4vw,38px)}
-  .enquiry-head{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:26px}
-  .enquiry-kicker{margin:0 0 8px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--v-yellow)}
-  .enquiry-title{margin:0;font-family:var(--serif);font-size:clamp(32px,6vw,48px);font-weight:500;line-height:1}
-  .enquiry-intro{max-width:52ch;margin:12px 0 0;color:var(--paper-dim);font-size:14px;line-height:1.55}
-  .enquiry-close{flex:0 0 auto;width:38px;height:38px;border:1px solid var(--rule);border-radius:50%;background:transparent;color:var(--paper);font-size:25px;line-height:1;cursor:pointer}
-  .enquiry-close:hover{border-color:var(--paper-faint)}
-  .enquiry-form{display:grid;gap:20px}
-  .enquiry-fieldset{margin:0;padding:0;border:0}
-  .enquiry-label,.enquiry-fieldset legend{display:block;margin:0 0 8px;font-family:var(--mono);font-size:10px;line-height:1.4;letter-spacing:.11em;text-transform:uppercase;color:var(--paper-dim)}
-  .enquiry-label span,.enquiry-fieldset legend span{color:var(--v-yellow)}
-  .enquiry-types{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-  .enquiry-type{position:relative;min-width:0}
-  .enquiry-type input{position:absolute;opacity:0;pointer-events:none}
-  .enquiry-type label{display:flex;min-height:56px;align-items:center;justify-content:center;padding:10px;border:1px solid var(--rule);border-radius:8px;text-align:center;font-size:13px;font-weight:700;cursor:pointer}
-  .enquiry-type input:checked + label{border-color:var(--v-yellow);background:var(--v-yellow);color:var(--ink)}
-  .enquiry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-  .enquiry-control{min-width:0}
-  .enquiry-control.full{grid-column:1/-1}
-  .enquiry-control input,.enquiry-control select,.enquiry-control textarea{
-    width:100%;min-width:0;padding:12px 13px;border:1px solid var(--rule);border-radius:7px;
-    background:var(--ink);color:var(--paper);font:inherit;font-size:14px;line-height:1.45;
-  }
-  .enquiry-control textarea{min-height:116px;resize:vertical}
-  .enquiry-control input::placeholder,.enquiry-control textarea::placeholder{color:var(--paper-faint)}
-  .enquiry-control input:focus,.enquiry-control select:focus,.enquiry-control textarea:focus{outline:2px solid transparent;border-color:var(--v-yellow)}
-  .enquiry-context{margin:-4px 0 0;padding:12px 14px;border-left:3px solid var(--v-cobalt);background:rgba(27,73,199,.13);color:var(--paper-dim);font-size:13px;line-height:1.5}
-  .enquiry-pane{display:grid;gap:20px}
-  .enquiry-pane[hidden]{display:none}
-  .enquiry-actions{display:block;padding-top:2px}
-  .enquiry-submit{width:100%;padding:14px 20px;border:1px solid var(--v-yellow);background:var(--v-yellow);color:var(--ink);font:700 14px var(--display);cursor:pointer}
-  .enquiry-submit:hover{background:var(--paper);border-color:var(--paper)}
-  .enquiry-submit:disabled{cursor:wait;opacity:.75}
-  .enquiry-status{margin:10px 0 0;color:var(--paper-faint);font-family:var(--mono);font-size:9px;line-height:1.5;letter-spacing:.07em;text-align:center;text-transform:uppercase}
-  .footer-enquiry{padding:0;border:0;border-bottom:1px solid var(--paper-faint);background:none;color:var(--paper-dim);font:inherit;text-transform:inherit;letter-spacing:inherit;cursor:pointer}
-  .footer-enquiry:hover{color:var(--v-yellow);border-color:var(--v-yellow)}
-
   /* FOOTER */
   footer{
     margin-top:96px;padding-top:18px;
@@ -482,12 +478,7 @@
     .hero{margin:40px 0 56px;grid-template-columns:1fr;gap:28px}
     .hero-photo{width:60%;max-width:240px;justify-self:start}
     .sec{margin-top:64px}
-    .masthead .meta{display:none}
-    .enquiry-dialog{width:calc(100vw - 20px);max-width:calc(100vw - 20px);max-height:calc(100dvh - 20px)}
-    .enquiry-shell{padding:22px 18px}
-    .enquiry-head{gap:12px}
-    .enquiry-types,.enquiry-grid{grid-template-columns:1fr}
-    .enquiry-type label{min-height:48px}
+    .masthead .meta{display:block}
   }
 </style>
 <script type="application/ld+json">
@@ -539,6 +530,15 @@
       "inLanguage": "en"
     },
     {
+      "@type": "MusicRecording",
+      "name": "chin-shi-lyn",
+      "byArtist": { "@id": "https://normalshouse.com/#artist" },
+      "genre": "House",
+      "duration": "PT10M",
+      "description": "Available in normal's website listening room. Release availability is confirmed track by track.",
+      "url": "https://normalshouse.com/#unreleased"
+    },
+    {
       "@type": "MusicAlbum",
       "@id": "https://normalshouse.com/#house-of-normalcy",
       "name": "House of Normalcy",
@@ -555,8 +555,8 @@
       "name": "tractor beam",
       "byArtist": { "@id": "https://normalshouse.com/#artist" },
       "genre": ["House", "Detroit House"],
-      "datePublished": "2026-09-07",
-      "description": "A SoundCloud follower exclusive from normal.",
+      "duration": "PT5M52S",
+      "description": "A pulsing generator, strange signals overhead, and a groove with its own gravitational pull. An unreleased preview from normal.",
       "url": "https://soundcloud.com/normaldj/tractor-beam"
     },
     {
@@ -575,10 +575,10 @@
       "name": "gain it easy",
       "byArtist": { "@id": "https://normalshouse.com/#artist" },
       "genre": "Deep House",
-      "duration": "PT9M58S",
+      "duration": "PT9M39S",
       "datePublished": "2026-06-19",
       "isrcCode": "QZNRS2580746",
-      "url": "https://normaldj.bandcamp.com/track/normal-gain-it-easy",
+      "url": "https://normaldj.bandcamp.com/track/gain-it-easy",
       "sameAs": "https://soundcloud.com/normaldj/normal-gain-it-easy"
     },
     {
@@ -589,7 +589,7 @@
       "duration": "PT7M13S",
       "datePublished": "2026-06-19",
       "isrcCode": "QZT852577422",
-      "url": "https://normaldj.bandcamp.com/track/normal-break-it-down",
+      "url": "https://normaldj.bandcamp.com/track/break-it-down",
       "sameAs": "https://soundcloud.com/normaldj/break-it-down"
     },
     {
@@ -656,16 +656,17 @@
   <header class="masthead">
     <h1 class="mark">normal</h1>
     <div class="meta">house · <b>made for the floor</b></div>
+    <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="pinnedMusicNav">menu</button>
   </header>
 
   <section class="hero">
     <div class="hero-text">
-      <div class="eyebrow">normal · dance music · dj &amp; producer</div>
+      <div class="eyebrow">normal · dance music · performer &amp; producer</div>
       <p class="tagline">To dance is a <em>privilege;</em> to make you do, <em>is mine.</em></p>
-      <p class="lede">normal is the house project of <b>Yashwanth Maheshwaram</b>, based in Bangalore. Bright, warm house with a Detroit lean — deep, raw and acid — built as DJ tools for the second hour of a good room.</p>
+      <p class="lede">normal is the house project of <b>Yashwanth Maheshwaram</b>, based in Bangalore. Bright, warm house with a Detroit lean, deep, raw and acid, built as DJ tools.</p>
       <div class="hero-request">
-        <button class="hero-request-cta enquiry-trigger" type="button" data-enquiry="music">Request music + demos <span aria-hidden="true">→</span></button>
-        <span class="hero-request-note">Tell me who you are and what you need. Requests are reviewed personally.</span>
+        <a class="hero-request-cta" href="#contact" data-enquiry="music">Request music + demos <span aria-hidden="true">↓</span></a>
+        <span class="hero-request-note">WAVs and demos for DJs, labels, radio + press.</span>
       </div>
       <div class="links hero-links">
         <a class="lk bandcamp" href="https://normaldj.bandcamp.com" target="_blank" rel="noopener"><svg><use href="#i-bandcamp"/></svg><span>Bandcamp</span></a>
@@ -679,6 +680,13 @@
     <img class="hero-photo" src="assets/profile.jpg" alt="normal — Yashwanth Maheshwaram" width="520" height="520" loading="eager" decoding="async" fetchpriority="high" />
   </section>
 
+  <nav class="music-nav" aria-label="Music sections">
+    <a href="#releases">released music</a>
+    <a href="#unreleased">unreleased listening room</a>
+    <a href="#vinyl">vinyl</a>
+    <a href="#contact">contact</a>
+  </nav>
+
   <section class="sec vinyl-sec" id="vinyl" aria-labelledby="vinylTitle">
     <div class="sec-head">
       <h2>Vinyl</h2>
@@ -687,11 +695,10 @@
     <div class="vinyl-layout">
       <div class="vinyl-content">
         <h3 class="vinyl-title" id="vinylTitle">House of Normalcy</h3>
-        <p class="vinyl-deck">Choose any two or more normal tracks for a vinyl request. House of Normalcy is the first edition.</p>
-        <p class="vinyl-request">Name the tracks you want in the form. Delivery cost and timing are confirmed by email.</p>
+        <p class="vinyl-deck">Three tracks, one house. Acid, raw and deep house on vinyl. You can also request your own selection.</p>
         <div class="vinyl-actions">
-          <button class="vinyl-cta enquiry-trigger" type="button" data-enquiry="vinyl"><span>Request tracks on vinyl</span><span aria-hidden="true">→</span></button>
-          <a class="vinyl-listen" href="#releases">Stream the tracks below <span aria-hidden="true">↓</span></a>
+          <a class="vinyl-cta" href="#contact" data-enquiry="vinyl"><span>Request vinyl</span></a>
+          <a class="vinyl-listen" href="#releases">Listen to the three tracks <span aria-hidden="true">↓</span></a>
         </div>
       </div>
 
@@ -720,73 +727,53 @@
 
   <section class="sec" id="releases">
     <div class="sec-head">
-      <h2>Releases</h2>
-      <div class="count">12 / 2026</div>
+      <h2>Music</h2>
+      <div class="count" id="releaseCount">7 tracks</div>
+      <a class="np-buy" href="https://normaldj.bandcamp.com/" target="_blank" rel="noopener">shop the catalogue <span aria-hidden="true">↗</span></a>
     </div>
-                <div class="releases-pane">
+    <div class="releases-pane">
       <ol class="tracklist" id="tracklist">
-        <li class="track-group">New on Bandcamp</li>
-        <li class="trk" data-release-date="2026-09-08" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=2533670774/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="tractor beam" data-credit="" data-meta="&lt;b&gt;8 Sep 2026&lt;/b&gt; · out now · house · 5:52" data-desc="A Detroit-leaning house cut built for the club." data-buy="https://normaldj.bandcamp.com/track/tractor-beam" data-cover="assets/covers/tractor-beam.jpg">
-          <img class="trk-cover" src="assets/covers/tractor-beam.jpg" alt="tractor beam cover" loading="lazy" decoding="async" width="48" height="48" />
-          <span class="trk-info"><span class="trk-title">tractor beam</span><span class="trk-meta"><b>8 Sep 2026</b> · out now · house · 5:52</span></span>
-          <button class="trk-play" type="button" aria-label="Play tractor beam"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-        </li>
-        <li class="trk" data-release-date="2026-09-08" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=3902015911/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="hands up" data-credit="" data-meta="&lt;b&gt;8 Sep 2026&lt;/b&gt; · out now · house · 6:07" data-desc="A six-minute house cut shared first with the people following normal." data-buy="https://normaldj.bandcamp.com/track/hands-up" data-cover="assets/covers/hands-up.jpg">
-          <img class="trk-cover" src="assets/covers/hands-up.jpg" alt="hands up cover" loading="lazy" decoding="async" width="48" height="48" />
-          <span class="trk-info"><span class="trk-title">hands up</span><span class="trk-meta"><b>8 Sep 2026</b> · out now · house · 6:07</span></span>
-          <button class="trk-play" type="button" aria-label="Play hands up"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-        </li>
-        <li class="trk" data-release-date="2026-09-08" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=1479908790/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="we play" data-credit="" data-meta="&lt;b&gt;8 Sep 2026&lt;/b&gt; · out now · 120 · house · 6:56" data-desc="Patient 120 BPM house built around a swung drum pocket, warm chords, and enough space for a long blend. Detroit in spirit, made for the blend rather than the drop." data-buy="https://normaldj.bandcamp.com/track/we-play" data-cover="assets/covers/we-play.jpg">
-          <img class="trk-cover" src="assets/covers/we-play.jpg" alt="we play cover" loading="lazy" decoding="async" width="48" height="48" />
-          <span class="trk-info"><span class="trk-title">we play</span><span class="trk-meta"><b>8 Sep 2026</b> · out now · 120 · house · 6:56</span></span>
-          <button class="trk-play" type="button" aria-label="Play we play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-        </li>
-        <li class="trk" data-release-date="2026-09-08" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=1018231074/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="angel" data-credit="" data-meta="&lt;b&gt;8 Sep 2026&lt;/b&gt; · out now · 125 · raw house · 5:37" data-desc="A voice fallen through the sky over a low-slung jack groove — bass-first, hand-swung raw house that prays with its hips." data-buy="https://normaldj.bandcamp.com/track/angel" data-cover="assets/covers/angel.jpg">
-          <img class="trk-cover" src="assets/covers/angel.jpg" alt="angel cover" loading="lazy" decoding="async" width="48" height="48" />
-          <span class="trk-info"><span class="trk-title">angel</span><span class="trk-meta"><b>8 Sep 2026</b> · out now · 125 · raw house · 5:37</span></span>
-          <button class="trk-play" type="button" aria-label="Play angel"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-        </li>
-        <li class="track-group">SoundCloud follower exclusive</li>
-        <li class="trk" data-title="mantle" data-credit="" data-meta="follower exclusive · soundcloud" data-desc="A SoundCloud follower exclusive, shared straight to the people following normal rather than released. Raw and hypnotic, built for the deep stretch of a set." data-buy="https://soundcloud.com/normaldj/mantle" data-buylabel="Listen on SoundCloud" data-buyicon="i-soundcloud" data-cover="assets/covers/mantle.jpg">
-          <img class="trk-cover" src="assets/covers/mantle.jpg" alt="mantle cover" loading="lazy" decoding="async" width="48" height="48" />
-          <span class="trk-info"><span class="trk-title">mantle</span><span class="trk-meta">follower exclusive · soundcloud</span></span>
-          <button class="trk-play" type="button" aria-label="Play mantle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-        </li>
-        <li class="track-group">Earlier releases</li>
-        <li class="trk" data-release-date="2026-06-12" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=2308886165/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="cognite" data-credit="" data-meta="&lt;b&gt;12 Jun 2026&lt;/b&gt; · out now · 126 · acid house · ISRC QZYB22562674" data-desc="A 126 BPM acid-house meditation in the lineage of Roy Davis Jr. and Mike Dunn — the house side of acid, not the rave side. Long intro and outro for blends, a 303 line that slides instead of bites." data-buy="https://normaldj.bandcamp.com/track/cognite" data-cover="assets/covers/cognite.jpg">
+        <li class="trk" data-release-date="2026-06-12" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=2308886165/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="cognite" data-credit="" data-meta="&lt;b&gt;12 Jun 2026&lt;/b&gt; · out now · 126 · acid house" data-desc="303 bass and lead lines give cognite its acid character, with sampled voices threaded through the rhythm. Claps, percussion and a later ride pattern change the weight of the groove across an arrangement that leaves room to pull back and build again." data-buy="https://normaldj.bandcamp.com/track/cognite" data-cover="assets/covers/cognite.jpg">
           <img class="trk-cover" src="assets/covers/cognite.jpg" alt="cognite cover" loading="lazy" decoding="async" width="48" height="48" />
-          <span class="trk-info"><span class="trk-title">cognite</span><span class="trk-meta"><b>12 Jun 2026</b> · out now · 126 · acid house · ISRC QZYB22562674</span></span>
+          <span class="trk-info"><span class="trk-title">cognite</span><span class="trk-meta"><b>12 Jun 2026</b> · out now · 126 · acid house</span></span>
+          <a class="trk-buy" href="https://normaldj.bandcamp.com/track/cognite" target="_blank" rel="noopener" aria-label="Buy cognite on Bandcamp">buy <span aria-hidden="true">↗</span></a>
           <button class="trk-play" type="button" aria-label="Play cognite"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </li>
-        <li class="trk" data-release-date="2026-06-19" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=980980094/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="gain it easy" data-credit="" data-meta="&lt;b&gt;19 Jun 2026&lt;/b&gt; · out now · 128 · deep house · 9:30 · ISRC QZNRS2580746" data-desc="A 128 BPM long-form deep house cut — patient drums, warm chords, nine and a half minutes of unhurried groove. In the lineage of Theo Parrish and Rick Wilhite. A DJ tool for the second hour, not the first." data-buy="https://normaldj.bandcamp.com/track/gain-it-easy" data-cover="assets/covers/gain-it-easy.jpg">
+        <li class="trk" data-release-date="2026-06-19" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=980980094/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="gain it easy" data-credit="" data-meta="&lt;b&gt;19 Jun 2026&lt;/b&gt; · out now · 128 · deep house · 9:30" data-desc="Ten minutes of unhurried deep house. the kind of record a DJ buys to use, not to show off." data-buy="https://normaldj.bandcamp.com/track/gain-it-easy" data-cover="assets/covers/gain-it-easy.jpg">
           <img class="trk-cover" src="assets/covers/gain-it-easy.jpg" alt="gain it easy cover" loading="lazy" decoding="async" width="48" height="48" />
-          <span class="trk-info"><span class="trk-title">gain it easy</span><span class="trk-meta"><b>19 Jun 2026</b> · out now · 128 · deep house · 9:30 · ISRC QZNRS2580746</span></span>
+          <span class="trk-info"><span class="trk-title">gain it easy</span><span class="trk-meta"><b>19 Jun 2026</b> · out now · 128 · deep house · 9:30</span></span>
+          <a class="trk-buy" href="https://normaldj.bandcamp.com/track/gain-it-easy" target="_blank" rel="noopener" aria-label="Buy gain it easy on Bandcamp">buy <span aria-hidden="true">↗</span></a>
           <button class="trk-play" type="button" aria-label="Play gain it easy"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </li>
-        <li class="trk" data-release-date="2026-06-19" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=1789546577/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="break it down" data-credit="" data-meta="&lt;b&gt;19 Jun 2026&lt;/b&gt; · out now · 124 · broken-beat house · ISRC QZT852577422" data-desc="A 124 BPM broken-beat house cut — swung percussion, dry drums, a round bass. House on a different grid, in the lineage of Sweely and DJ Sneak&#x27;s swung work. A tool for breaking up a long stretch of straight house." data-buy="https://normaldj.bandcamp.com/track/normal-break-it-down" data-cover="assets/covers/break-it-down.jpg">
-          <img class="trk-cover" src="assets/covers/break-it-down.jpg" alt="break it down cover" loading="lazy" decoding="async" width="48" height="48" />
-          <span class="trk-info"><span class="trk-title">break it down</span><span class="trk-meta"><b>19 Jun 2026</b> · out now · 124 · broken-beat house · ISRC QZT852577422</span></span>
-          <button class="trk-play" type="button" aria-label="Play break it down"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-        </li>
-        <li class="trk" data-release-date="2026-07-03" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=3054544946/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="foster the floor" data-credit="" data-meta="&lt;b&gt;3 Jul 2026&lt;/b&gt; · out now · 126 · raw house · ISRC QT6XZ2521214" data-desc="A 126 BPM raw house cut — dry drums, a single bass line, a chord stack that arrives late. Mike Dunn and Cajmere: Chicago bones, Detroit weight. Built for a third-hour DJ holding the floor." data-buy="https://normaldj.bandcamp.com/track/foster-the-floor" data-cover="assets/covers/foster-the-floor.jpg">
+        <li class="trk" data-release-date="2026-07-03" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=3054544946/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="foster the floor" data-credit="" data-meta="&lt;b&gt;3 Jul 2026&lt;/b&gt; · out now · 126 · raw house" data-desc="This ain&#x27;t for the background. This is floor music. and the floor don&#x27;t owe you nothing." data-buy="https://normaldj.bandcamp.com/track/foster-the-floor" data-cover="assets/covers/foster-the-floor.jpg">
           <img class="trk-cover" src="assets/covers/foster-the-floor.jpg" alt="foster the floor cover" loading="lazy" decoding="async" width="48" height="48" />
-          <span class="trk-info"><span class="trk-title">foster the floor</span><span class="trk-meta"><b>3 Jul 2026</b> · out now · 126 · raw house · ISRC QT6XZ2521214</span></span>
+          <span class="trk-info"><span class="trk-title">foster the floor</span><span class="trk-meta"><b>3 Jul 2026</b> · out now · 126 · raw house</span></span>
+          <a class="trk-buy" href="https://normaldj.bandcamp.com/track/foster-the-floor" target="_blank" rel="noopener" aria-label="Buy foster the floor on Bandcamp">buy <span aria-hidden="true">↗</span></a>
           <button class="trk-play" type="button" aria-label="Play foster the floor"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </li>
-        <li class="trk" data-release-date="2026-07-10" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=3884799229/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="motor city moves" data-credit="" data-meta="&lt;b&gt;10 Jul 2026&lt;/b&gt; · out now · 124 · detroit house / techno · ISRC QM42K2511496" data-desc="A 124 BPM Detroit house / techno hybrid — driving percussion, hypnotic bass, atmospheric textures. In the lineage of Robert Hood, Theo Parrish and Mike Banks. Closes a house set or opens a techno one." data-buy="https://normaldj.bandcamp.com/track/motor-city-moves" data-cover="assets/covers/motor-city-moves.jpg">
-          <img class="trk-cover" src="assets/covers/motor-city-moves.jpg" alt="motor city moves cover" loading="lazy" decoding="async" width="48" height="48" />
-          <span class="trk-info"><span class="trk-title">motor city moves</span><span class="trk-meta"><b>10 Jul 2026</b> · out now · 124 · detroit house / techno · ISRC QM42K2511496</span></span>
-          <button class="trk-play" type="button" aria-label="Play motor city moves"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-        </li>
-        <li class="trk" data-release-date="2026-08-07" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=1882710546/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="liberate" data-credit="with alldayallnight" data-meta="&lt;b&gt;7 Aug 2026&lt;/b&gt; · upcoming · 122 · house / synth-funk" data-desc="122 BPM house leaning synth-funk — 80s keys, a swung pocket, percussion sitting slightly behind the grid. Moodymann, Floating Points and Dam-Funk territory. A collab with alldayallnight, built for the back of the night." data-buy="https://normaldj.bandcamp.com/track/normal-x-alldayallnight-liberate" data-buylabel="Buy on Bandcamp" data-buyicon="i-bandcamp" data-cover="assets/covers/liberate.jpg">
-          <img class="trk-cover" src="assets/covers/liberate.jpg" alt="liberate cover" loading="lazy" decoding="async" width="48" height="48" />
-          <span class="trk-info"><span class="trk-title">liberate <span class="trk-credit">with alldayallnight</span></span><span class="trk-meta"><b>7 Aug 2026</b> · upcoming · 122 · house / synth-funk</span></span>
-          <button class="trk-play" type="button" aria-label="Play liberate"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-        </li>
-        <li class="trk" data-release-date="2026-05-29" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=2965371891/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="intent" data-credit="" data-meta="&lt;b&gt;29 May 2026&lt;/b&gt; · out now · 122 · house" data-desc="A 122 BPM slow-burn house cut — nine and a half minutes of patient, hypnotic loop work in the lineage of Mike Huckaby and the Workshop / Mathematics orbit. Built for the deep section of a long set." data-buy="https://normaldj.bandcamp.com/track/intent" data-cover="assets/covers/intent.jpg">
+        <li class="trk" data-release-date="2026-05-29" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=2965371891/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="intent" data-credit="" data-meta="&lt;b&gt;29 May 2026&lt;/b&gt; · out now · 122 · house" data-desc="A deliberate groove that takes its time on purpose. house with the lights low." data-buy="https://normaldj.bandcamp.com/track/intent" data-cover="assets/covers/intent.jpg">
           <img class="trk-cover" src="assets/covers/intent.jpg" alt="intent cover" loading="lazy" decoding="async" width="48" height="48" />
           <span class="trk-info"><span class="trk-title">intent</span><span class="trk-meta"><b>29 May 2026</b> · out now · 122 · house</span></span>
+          <a class="trk-buy" href="https://normaldj.bandcamp.com/track/intent" target="_blank" rel="noopener" aria-label="Buy intent on Bandcamp">buy <span aria-hidden="true">↗</span></a>
           <button class="trk-play" type="button" aria-label="Play intent"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </li>
+        <li class="trk" data-release-date="2026-06-19" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=1789546577/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="break it down" data-credit="" data-meta="&lt;b&gt;19 Jun 2026&lt;/b&gt; · out now · 124 · broken-beat house" data-desc="A broken-beat house cut that swings instead of stomps. 124 BPM, no apologies." data-buy="https://normaldj.bandcamp.com/track/break-it-down" data-cover="assets/covers/break-it-down.jpg">
+          <img class="trk-cover" src="assets/covers/break-it-down.jpg" alt="break it down cover" loading="lazy" decoding="async" width="48" height="48" />
+          <span class="trk-info"><span class="trk-title">break it down</span><span class="trk-meta"><b>19 Jun 2026</b> · out now · 124 · broken-beat house</span></span>
+          <a class="trk-buy" href="https://normaldj.bandcamp.com/track/break-it-down" target="_blank" rel="noopener" aria-label="Buy break it down on Bandcamp">buy <span aria-hidden="true">↗</span></a>
+          <button class="trk-play" type="button" aria-label="Play break it down"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </li>
+        <li class="trk" data-release-date="2026-07-10" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=3884799229/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="motor city moves" data-credit="" data-meta="&lt;b&gt;10 Jul 2026&lt;/b&gt; · out now · 124 · detroit house / techno" data-desc="A driving Detroit house groove that flirts with techno without leaving the floor behind." data-buy="https://normaldj.bandcamp.com/track/motor-city-moves" data-cover="assets/covers/motor-city-moves.jpg">
+          <img class="trk-cover" src="assets/covers/motor-city-moves.jpg" alt="motor city moves cover" loading="lazy" decoding="async" width="48" height="48" />
+          <span class="trk-info"><span class="trk-title">motor city moves</span><span class="trk-meta"><b>10 Jul 2026</b> · out now · 124 · detroit house / techno</span></span>
+          <a class="trk-buy" href="https://normaldj.bandcamp.com/track/motor-city-moves" target="_blank" rel="noopener" aria-label="Buy motor city moves on Bandcamp">buy <span aria-hidden="true">↗</span></a>
+          <button class="trk-play" type="button" aria-label="Play motor city moves"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </li>
+        <li class="trk" data-release-date="2026-08-07" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=1882710546/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="liberate" data-credit="with alldayallnight" data-meta="&lt;b&gt;7 Aug 2026&lt;/b&gt; · out now · 122 · house / synth-funk" data-desc="80s keys, a swung pocket, and a groove that twists the rhythm without breaking it." data-buy="https://normaldj.bandcamp.com/track/normal-x-alldayallnight-liberate" data-buylabel="Buy on Bandcamp" data-buyicon="i-bandcamp" data-cover="assets/covers/liberate.jpg">
+          <img class="trk-cover" src="assets/covers/liberate.jpg" alt="liberate cover" loading="lazy" decoding="async" width="48" height="48" />
+          <span class="trk-info"><span class="trk-title">liberate <span class="trk-credit">with alldayallnight</span></span><span class="trk-meta"><b>7 Aug 2026</b> · out now · 122 · house / synth-funk</span></span>
+          <a class="trk-buy" href="https://normaldj.bandcamp.com/track/normal-x-alldayallnight-liberate" target="_blank" rel="noopener" aria-label="Buy liberate on Bandcamp">buy <span aria-hidden="true">↗</span></a>
+          <button class="trk-play" type="button" aria-label="Play liberate"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </li>
       </ol>
       <aside class="player-pane" id="playerPane" aria-live="polite">
@@ -803,6 +790,21 @@
         </div>
       </aside>
     </div>
+  </section>
+
+  <section class="sec unreleased-sec" id="unreleased" aria-labelledby="unreleasedTitle">
+    <div class="sec-head">
+      <h2 id="unreleasedTitle">Unreleased / previews</h2>
+      <div class="count">the listening room</div>
+    </div>
+    <p class="music-copy">you made it here. hear what’s next.</p>
+    <iframe class="unreleased-player" title="normal’s unreleased music listening room" width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" loading="lazy" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2306424099%3Fsecret_token%3Ds-4WuGUGal28e&amp;color=%23e74927&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false"></iframe>
+    <div class="music-actions">
+      <a class="hero-request-cta" href="#contact" data-enquiry="music">request music + WAVs <span aria-hidden="true">↓</span></a>
+      <a href="#releases">find something to take home <span aria-hidden="true">↑</span></a>
+    </div>
+    <p class="music-note">for labels: some recordings have previous public or commercial release history. availability is confirmed track by track. listening does not grant release rights or exclusivity.</p>
+    <p class="music-note">the player is hosted by SoundCloud and uses <a href="https://soundcloud.com/pages/cookies" target="_blank" rel="noopener">cookies</a>.</p>
   </section>
 
   <section class="sec" id="praise">
@@ -872,283 +874,98 @@
     </div>
   </section>
 
+  <section class="sec" id="contact" aria-labelledby="contactTitle">
+    <div class="sec-head"><h2 id="contactTitle">Contact</h2></div>
+    <p class="music-note">request music, discuss a release or booking, or choose tracks for vinyl.</p>
+    <form class="enquiry-form" id="enquiryForm">
+      <label>Enquiry type<select name="type" id="enquiryType"><option value="music">Music / WAVs</option><option value="label">Label enquiry</option><option value="booking">Booking</option><option value="vinyl">Vinyl</option></select></label>
+      <label>Your name<input name="name" autocomplete="name" required /></label>
+      <label>Your email<input name="email" type="email" autocomplete="email" required /></label>
+      <label>You are requesting as<select name="role" required><option value="">Select a role</option><option>DJ / artist</option><option>Label / A&amp;R</option><option>Promoter / venue</option><option>Radio / press</option><option>Listener / collector</option><option>Other</option></select></label>
+      <label>Message<textarea name="message" id="enquiryMessage" rows="5" required></textarea></label>
+      <p class="music-note" id="enquiryHint">Name any tracks you want WAVs for, or leave a message.</p>
+      <button type="submit">Open enquiry in email</button>
+      <p class="music-note">This opens your email app with the enquiry filled in. Send it there to reach normal. If your email app doesn’t open, email <a href="mailto:hello@normalshouse.com">hello@normalshouse.com</a>.</p>
+    </form>
+  </section>
+
   <footer>
     <address>
       <span>© normal · 2026</span>
-      <span>Bangalore, India · <button class="footer-enquiry enquiry-trigger" type="button" data-enquiry="booking">Booking enquiry</button></span>
+      <span>Bangalore, India · <a href="#contact" data-enquiry="booking">Booking enquiries</a></span>
     </address>
   </footer>
 
 </div>
 
-<dialog class="enquiry-dialog" id="enquiryDialog" aria-labelledby="enquiryTitle">
-  <div class="enquiry-shell">
-    <div class="enquiry-head">
-      <div>
-        <p class="enquiry-kicker">Contact normal</p>
-        <h2 class="enquiry-title" id="enquiryTitle">Start an enquiry</h2>
-        <p class="enquiry-intro">For music and demo access, custom vinyl requests, and booking enquiries. Share enough context for a useful reply.</p>
-      </div>
-      <button class="enquiry-close" type="button" aria-label="Close enquiry form">×</button>
-    </div>
-
-    <form class="enquiry-form" id="enquiryForm" action="https://docs.google.com/forms/d/e/1FAIpQLScrlIH11OBzhhfa3vs8zX-Ynr1VeSj1v9N4pFVJ0fKv2NI0YQ/formResponse" method="post" target="enquiryResponse">
-      <fieldset class="enquiry-fieldset">
-        <legend>What are you contacting normal about? <span>*</span></legend>
-        <div class="enquiry-types">
-          <div class="enquiry-type">
-            <input type="radio" name="request_type" value="music" id="requestMusic" required />
-            <label for="requestMusic">Music + demos</label>
-          </div>
-          <div class="enquiry-type">
-            <input type="radio" name="request_type" value="vinyl" id="requestVinyl" required />
-            <label for="requestVinyl">Vinyl request</label>
-          </div>
-          <div class="enquiry-type">
-            <input type="radio" name="request_type" value="booking" id="requestBooking" required />
-            <label for="requestBooking">Booking</label>
-          </div>
-        </div>
-      </fieldset>
-
-      <section class="enquiry-pane" data-enquiry-pane="music">
-        <p class="enquiry-context">Music access is intended for DJs, labels, radio, press and collaborators. Tell me where the music may fit so I can share the right material.</p>
-        <div class="enquiry-grid">
-          <label class="enquiry-control">
-            <span class="enquiry-label">Name <span>*</span></span>
-            <input type="text" name="music_name" autocomplete="name" required />
-          </label>
-          <label class="enquiry-control">
-            <span class="enquiry-label">Email <span>*</span></span>
-            <input type="email" name="music_email" autocomplete="email" required />
-          </label>
-          <label class="enquiry-control">
-            <span class="enquiry-label">You are requesting as <span>*</span></span>
-            <select name="music_role" required>
-              <option value="" selected disabled>Select your role</option>
-              <option>DJ</option>
-              <option>Record label / A&amp;R</option>
-              <option>Radio / podcast</option>
-              <option>Press / media</option>
-              <option>Promoter / venue</option>
-              <option>Artist / collaborator</option>
-              <option>Music supervisor / licensing</option>
-              <option>Other</option>
-            </select>
-          </label>
-          <label class="enquiry-control">
-            <span class="enquiry-label">Artist, label or outlet</span>
-            <input type="text" name="music_organisation" autocomplete="organization" />
-          </label>
-          <label class="enquiry-control full">
-            <span class="enquiry-label">Relevant profile, show or label link <span>*</span></span>
-            <input type="text" name="music_link" inputmode="url" required placeholder="SoundCloud, Instagram, radio show or label URL" />
-          </label>
-          <label class="enquiry-control full">
-            <span class="enquiry-label">Message <span>*</span></span>
-            <textarea name="music_message" required placeholder="Add any context that will help me respond."></textarea>
-          </label>
-        </div>
-      </section>
-
-      <section class="enquiry-pane" data-enquiry-pane="vinyl" hidden>
-        <p class="enquiry-context">Choose any normal tracks for your vinyl request. Name at least two tracks, separated by commas or new lines. Delivery cost and timing will be confirmed by email before any payment.</p>
-        <div class="enquiry-grid">
-          <label class="enquiry-control">
-            <span class="enquiry-label">Name <span>*</span></span>
-            <input type="text" name="vinyl_name" autocomplete="name" required />
-          </label>
-          <label class="enquiry-control">
-            <span class="enquiry-label">Email <span>*</span></span>
-            <input type="email" name="vinyl_email" autocomplete="email" required />
-          </label>
-          <label class="enquiry-control">
-            <span class="enquiry-label">Delivery city + country <span>*</span></span>
-            <input type="text" name="vinyl_location" autocomplete="country-name" required placeholder="Bangalore, India" />
-          </label>
-          <label class="enquiry-control">
-            <span class="enquiry-label">Number of copies <span>*</span></span>
-            <input type="number" name="vinyl_quantity" min="1" max="10" value="1" required />
-          </label>
-          <label class="enquiry-control full">
-            <span class="enquiry-label">Profile or website</span>
-            <input type="text" name="vinyl_link" inputmode="url" placeholder="Optional" />
-          </label>
-          <label class="enquiry-control full">
-            <span class="enquiry-label">Tracks + message <span>*</span></span>
-            <textarea name="vinyl_tracks" required placeholder="Name at least two tracks, separated by commas or new lines. Add any delivery question or note after them."></textarea>
-          </label>
-        </div>
-      </section>
-
-      <section class="enquiry-pane" data-enquiry-pane="booking" hidden>
-        <p class="enquiry-context">For a useful first reply, include the event, venue, date, set format and budget. Holds are confirmed only after direct follow-up.</p>
-        <div class="enquiry-grid">
-          <label class="enquiry-control">
-            <span class="enquiry-label">Your name <span>*</span></span>
-            <input type="text" name="booking_name" autocomplete="name" required />
-          </label>
-          <label class="enquiry-control">
-            <span class="enquiry-label">Work email <span>*</span></span>
-            <input type="email" name="booking_email" autocomplete="email" required />
-          </label>
-          <label class="enquiry-control">
-            <span class="enquiry-label">Promoter or organisation <span>*</span></span>
-            <input type="text" name="booking_organisation" autocomplete="organization" required />
-          </label>
-          <label class="enquiry-control">
-            <span class="enquiry-label">Event + venue <span>*</span></span>
-            <input type="text" name="booking_event" required />
-          </label>
-          <label class="enquiry-control">
-            <span class="enquiry-label">City + country <span>*</span></span>
-            <input type="text" name="booking_location" required />
-          </label>
-          <label class="enquiry-control">
-            <span class="enquiry-label">Proposed date <span>*</span></span>
-            <input type="date" name="booking_date" required />
-          </label>
-          <label class="enquiry-control">
-            <span class="enquiry-label">Set format + duration</span>
-            <input type="text" name="booking_format" placeholder="DJ set, live, support; 90 minutes…" />
-          </label>
-          <label class="enquiry-control">
-            <span class="enquiry-label">Budget range <span>*</span></span>
-            <input type="text" name="booking_budget" required placeholder="Fee + travel terms" />
-          </label>
-          <label class="enquiry-control full">
-            <span class="enquiry-label">Event or promoter link</span>
-            <input type="text" name="booking_link" inputmode="url" placeholder="Website, listing or profile URL" />
-          </label>
-          <label class="enquiry-control full">
-            <span class="enquiry-label">Additional details</span>
-            <textarea name="booking_message" placeholder="Line-up, room capacity, billing, travel or production details…"></textarea>
-          </label>
-        </div>
-      </section>
-
-      <div class="enquiry-actions">
-        <button class="enquiry-submit" type="submit">Send enquiry</button>
-        <p class="enquiry-status" id="enquiryStatus" aria-live="polite">Your enquiry will be sent privately. I’ll reply by email.</p>
-      </div>
-
-      <input type="hidden" name="entry.568076761" data-response-field="type" />
-      <input type="hidden" name="entry.9515167" data-response-field="name" />
-      <input type="hidden" name="entry.261316487" data-response-field="email" />
-      <input type="hidden" name="entry.1637908919" data-response-field="role" />
-      <input type="hidden" name="entry.1913149993" data-response-field="location" />
-      <input type="hidden" name="entry.187259663" data-response-field="link" />
-      <input type="hidden" name="entry.1543308247" data-response-field="timing" />
-      <input type="hidden" name="entry.121603860" data-response-field="commercial" />
-      <input type="hidden" name="entry.333665231" data-response-field="message" />
-    </form>
-  </div>
-</dialog>
-<iframe name="enquiryResponse" id="enquiryResponse" title="Enquiry submission response" hidden></iframe>
-
 
 <script>
 (() => {
-  const dialog = document.getElementById('enquiryDialog');
-  const form = document.getElementById('enquiryForm');
-  const status = document.getElementById('enquiryStatus');
-  const responseFrame = document.getElementById('enquiryResponse');
-  const submit = form?.querySelector('.enquiry-submit');
-  if (!dialog || !form) return;
-  let submitting = false;
-  let submittedType = 'music';
-
-  const selectType = (type) => {
-    const option = form.querySelector(`[name="request_type"][value="${type}"]`);
-    if (option) option.checked = true;
-    form.querySelectorAll('[data-enquiry-pane]').forEach((pane) => {
-      const active = pane.dataset.enquiryPane === type;
-      pane.hidden = !active;
-      pane.querySelectorAll('input, textarea, select').forEach((control) => { control.disabled = !active; });
-    });
-    status.textContent = 'Your enquiry will be sent privately. I’ll reply by email.';
-    submit.disabled = false;
-    submit.textContent = 'Send enquiry';
+  const header = document.querySelector('.masthead');
+  const original = document.querySelector('.wrap > .music-nav');
+  if (!header || !original) return;
+  const floating = original.cloneNode(true);
+  floating.id = 'pinnedMusicNav';
+  floating.setAttribute('aria-label', 'Pinned music sections');
+  floating.hidden = true;
+  header.appendChild(floating);
+  const toggle = header.querySelector('.mobile-menu-toggle');
+  const closeMenu = () => { header.classList.remove('menu-open'); toggle.setAttribute('aria-expanded', 'false'); };
+  toggle.addEventListener('click', () => { const open = header.classList.toggle('menu-open'); toggle.setAttribute('aria-expanded', String(open)); });
+  floating.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && header.classList.contains('menu-open')) { closeMenu(); toggle.focus(); } });
+  let pending = false;
+  const update = () => {
+    pending = false;
+    const mobile = matchMedia('(max-width:720px)').matches;
+    const lifted = mobile || original.getBoundingClientRect().bottom <= header.getBoundingClientRect().bottom;
+    header.classList.toggle('nav-lifted', lifted);
+    floating.hidden = !lifted;
+    original.classList.toggle('nav-placeholder', lifted);
+    original.setAttribute('aria-hidden', String(lifted));
+    original.querySelectorAll('a').forEach(link => { link.tabIndex = lifted ? -1 : 0; });
+    document.documentElement.style.setProperty('--header-offset', `${header.offsetHeight + 20}px`);
   };
-
-  document.querySelectorAll('.enquiry-trigger').forEach((trigger) => {
-    trigger.addEventListener('click', () => {
-      selectType(trigger.dataset.enquiry || 'music');
-      dialog.showModal();
-    });
-  });
-  form.querySelectorAll('[name="request_type"]').forEach((option) => {
-    option.addEventListener('change', () => selectType(option.value));
-  });
-  form.elements.vinyl_tracks.addEventListener('input', () => form.elements.vinyl_tracks.setCustomValidity(''));
-  dialog.querySelector('.enquiry-close').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', (event) => {
-    if (event.target === dialog) dialog.close();
-  });
-  form.addEventListener('submit', (event) => {
-    if (!form.reportValidity()) {
+  const schedule = () => { if (!pending) { pending = true; requestAnimationFrame(update); } };
+  window.addEventListener('scroll', schedule, {passive:true});
+  window.addEventListener('resize', schedule);
+  update();
+})();
+(() => {
+  // Preserve existing sections and assets while putting music before vinyl.
+  const vinyl = document.getElementById('vinyl');
+  document.getElementById('unreleased')?.after(vinyl);
+  for (const id of ['featured', 'features', 'dj-mixes', 'mixes']) {
+    const section = document.getElementById(id);
+    if (section) section.hidden = true;
+  }
+  const form = document.getElementById('enquiryForm');
+  const type = document.getElementById('enquiryType');
+  const message = document.getElementById('enquiryMessage');
+  const hints = {
+    music: 'Name any tracks you want WAVs for, or leave a message.',
+    label: 'Tell me about your label and the tracks you’re interested in.',
+    booking: 'Include the event, venue, city and proposed date, if known.',
+    vinyl: 'Name at least two tracks you would like on vinyl.'
+  };
+  const update = () => { document.getElementById('enquiryHint').textContent = hints[type.value]; };
+  type.addEventListener('change', update);
+  document.querySelectorAll('[data-enquiry]').forEach(link => link.addEventListener('click', () => { type.value = link.dataset.enquiry; update(); }));
+  message.addEventListener('input', () => message.setCustomValidity(''));
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const data = new FormData(form);
+    if (type.value === 'vinyl' && message.value.split(/[,;\n]+/).filter(part => part.trim()).length < 2) {
       event.preventDefault();
-      status.textContent = 'Please complete the required fields.';
+      message.setCustomValidity('Name at least two tracks, separated by a comma or a new line.');
+      message.reportValidity();
       return;
     }
-
-    const type = form.querySelector('[name="request_type"]:checked')?.value || 'music';
-    submittedType = type;
-    const value = (name) => form.elements[name]?.value?.trim() || '';
-    if (type === 'vinyl') {
-      const tracks = value('vinyl_tracks').split(/\n|,|;/).map((track) => track.trim()).filter(Boolean);
-      if (tracks.length < 2) {
-        event.preventDefault();
-        form.elements.vinyl_tracks.setCustomValidity('Please name at least two tracks, separated by commas or new lines.');
-        form.elements.vinyl_tracks.reportValidity();
-        status.textContent = 'Please name at least two tracks for the vinyl request.';
-        return;
-      }
-      form.elements.vinyl_tracks.setCustomValidity('');
-    }
-    const response = {
-      type: {music:'Music + demos',vinyl:'Vinyl request',booking:'Booking'}[type],
-      name: value(`${type}_name`),
-      email: value(`${type}_email`),
-      role: type === 'music'
-        ? [value('music_role'), value('music_organisation')].filter(Boolean).join(' · ')
-        : type === 'booking'
-          ? [value('booking_organisation'), value('booking_event')].filter(Boolean).join(' · ')
-          : '',
-      location: type === 'vinyl' ? value('vinyl_location') : type === 'booking' ? value('booking_location') : '',
-      link: value(`${type}_link`),
-      timing: type === 'booking' ? value('booking_date') : '',
-      commercial: type === 'vinyl'
-        ? `Quantity: ${value('vinyl_quantity')}`
-        : type === 'booking'
-          ? [`Set: ${value('booking_format') || 'not specified'}`, `Budget: ${value('booking_budget')}`].join(' · ')
-          : '',
-      message: type === 'vinyl' ? value('vinyl_tracks') : value(`${type}_message`)
-    };
-    Object.entries(response).forEach(([key, nextValue]) => {
-      form.querySelector(`[data-response-field="${key}"]`).value = nextValue;
-    });
-
-    submitting = true;
-    submit.disabled = true;
-    submit.textContent = 'Sending…';
-    status.textContent = 'Sending your enquiry securely…';
-  });
-
-  responseFrame.addEventListener('load', () => {
-    if (!submitting) return;
-    submitting = false;
-    form.reset();
-    selectType(submittedType);
-    submit.disabled = true;
-    submit.textContent = 'Enquiry sent';
-    status.textContent = 'Thanks — your enquiry has been sent. I’ll reply by email.';
+    const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nRole: ${data.get('role')}\n\n${data.get('message')}`;
+    if (typeof window.gtag === 'function') window.gtag('event', 'enquiry_submit_attempt', {send_to:'G-YZG9CEZ5F5', enquiry_type:type.value, submission_method:'mailto'});
+    window.location.href = `mailto:hello@normalshouse.com?subject=${encodeURIComponent('normal / ' + type.options[type.selectedIndex].text)}&body=${encodeURIComponent(body)}`;
   });
 })();
-</script>
-
-
-<script>
 (() => {
   const root = document.getElementById('vinylCarousel');
   const track = document.getElementById('vinylTrack');
@@ -1211,6 +1028,8 @@
   // floating bottom bar on mobile). Selecting a track recreates the single
   // iframe, which stops whatever was playing before.
   const rows = [...document.querySelectorAll('.trk')];
+  const count = document.getElementById('releaseCount');
+  if (count) count.textContent = `${rows.length} tracks`;
   const pane = document.getElementById('playerPane');
   const np = document.getElementById('np');
   const empty = document.getElementById('npEmpty');
@@ -1229,7 +1048,7 @@
   const now = new Date();
   const today = [now.getFullYear(), String(now.getMonth() + 1).padStart(2, '0'), String(now.getDate()).padStart(2, '0')].join('-');
   rows.forEach((row) => {
-    if (!row.dataset.releaseDate) return; // e.g. follower-exclusive tracks
+    if (!row.dataset.releaseDate || row.dataset.releaseState === 'preview') return;
     const status = row.dataset.releaseDate <= today ? 'out now' : 'upcoming';
     const replaceStatus = (value) => value.replace(/ · (?:out now|upcoming) · /, ` · ${status} · `);
     row.dataset.meta = replaceStatus(row.dataset.meta);
@@ -1289,8 +1108,6 @@
 })();
 </script>
 
-<script defer src="assets/analytics.js"></script>
-
 <!-- Praise carousel -->
 <script>
 (function(){
@@ -1347,6 +1164,7 @@
 </script>
 
 <!-- Cloudflare Web Analytics -->
+<script defer src="assets/analytics.js"></script>
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8b45bcdbcd6346018e847753bdbbb168"}'></script>
 <!-- End Cloudflare Web Analytics -->
 
