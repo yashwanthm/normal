@@ -400,44 +400,35 @@
 
   /* PRAISE CAROUSEL */
   .carousel{position:relative}
-  .car-track{
-    display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;
-    scroll-behavior:smooth;-webkit-overflow-scrolling:touch;align-items:center;
-    scrollbar-width:none;padding-bottom:2px;
-  }
+  .car-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;align-items:stretch;scrollbar-width:none;padding:4px 1px 12px}
   .car-track::-webkit-scrollbar{display:none}
-  .car-slide{
-    flex:0 0 100%;scroll-snap-align:center;margin:0;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
-  }
-  .car-slide img{
-    width:100%;max-width:440px;height:340px;display:block;
-    object-fit:contain;object-position:center;
-    border:1px solid var(--rule);border-radius:10px;background:#fff;
-  }
-  @media (max-width:720px){ .car-slide img{height:260px} }
-  .car-slide figcaption{
-    font-family:var(--mono);font-size:12px;text-transform:uppercase;
-    letter-spacing:.1em;color:var(--paper-dim);text-align:center;
-  }
-  .car-slide figcaption b{color:var(--paper)}
-  .car-slide figcaption a{color:inherit;text-decoration:none;border-bottom:1px solid var(--paper-faint)}
-  .car-slide figcaption a:hover{color:var(--v-yellow);border-color:var(--v-yellow)}
-  .car-nav{
-    position:absolute;top:42%;transform:translateY(-50%);z-index:2;
-    width:40px;height:40px;border-radius:50%;
-    border:1px solid var(--rule);background:var(--ink-2);color:var(--paper);
-    font-size:22px;line-height:1;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-  }
-  .car-nav.prev{left:-8px}
-  .car-nav.next{right:-8px}
-  .car-nav:hover{border-color:var(--paper-dim)}
-  .car-nav[hidden]{display:none}
-  .car-dots{display:flex;gap:8px;justify-content:center;margin-top:16px}
-  .car-dots[hidden]{display:none}
-  .car-dots button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:var(--paper-faint);cursor:pointer}
-  .car-dots button[aria-current="true"]{background:var(--v-yellow)}
+  .car-slide{flex:0 0 calc((100% - 40px)/3);scroll-snap-align:start;margin:0;display:flex;flex-direction:column;gap:16px;min-width:0;padding:20px;background:var(--ink-2);border:1px solid var(--rule);border-radius:12px}
+  .car-slide img{width:100%;height:240px;display:block;object-fit:contain;object-position:center;border-radius:8px;background:#0b1016}
+  .car-slide figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.035em;color:var(--paper-dim);line-height:1.7}
+  .car-slide figcaption b{color:var(--paper);font-family:var(--display);font-size:16px;font-weight:500;display:block;letter-spacing:0}
+  .car-slide figcaption a{color:inherit;text-decoration:none}
+  .car-slide figcaption a:hover{color:var(--v-yellow)}
+  .support-context{display:block;margin-top:5px;color:var(--paper-dim)}
+  .message-slide figcaption{min-height:88px}
+  .support-image{padding:0;border:0;background:transparent;border-radius:8px;cursor:zoom-in;display:block;width:100%;flex-shrink:0}
+  .car-slide blockquote{margin:0;color:var(--paper);font-family:var(--serif);font-size:20px;line-height:1.35}
+  .support-controls{display:flex;align-items:center;justify-content:flex-end;gap:16px;margin-top:12px}
+  .car-nav{width:40px;height:40px;flex-shrink:0;border-radius:50%;border:1px solid var(--rule);background:var(--ink-2);color:var(--paper);font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .car-nav:hover:not(:disabled){border-color:var(--paper-dim)}
+  .car-nav:disabled{opacity:.3;cursor:default}
+  .car-nav[hidden],.car-dots[hidden]{display:none}
+  .car-dots{display:flex;gap:2px;flex-wrap:wrap;justify-content:center}
+  .car-dots button{width:28px;height:28px;padding:0;border:0;background:transparent;cursor:pointer;display:grid;place-items:center}
+  .car-dots button::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--paper-faint)}
+  .car-dots button[aria-current="true"]::after{background:var(--v-yellow)}
+  .support-image:focus-visible,.car-nav:focus-visible,.car-dots button:focus-visible,.car-track:focus-visible,.support-close:focus-visible{outline:2px solid var(--v-yellow);outline-offset:4px}
+  .support-dialog{width:min(960px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:52px 16px 16px;border:1px solid var(--rule);border-radius:12px;background:#0b1016;color:var(--paper)}
+  .support-dialog::backdrop{background:rgba(0,0,0,.82)}
+  .support-dialog img{display:block;width:100%;height:auto;max-height:calc(100dvh - 110px);object-fit:contain}
+  .support-close{position:absolute;right:12px;top:8px;width:36px;height:36px;border:0;background:transparent;color:var(--paper);font-size:28px;cursor:pointer}
+  @media(max-width:1000px){.car-slide{flex-basis:calc((100% - 20px)/2)}}
+  @media(max-width:600px){.car-slide{flex-basis:100%;padding:16px}.car-slide img{height:260px}.support-controls{justify-content:center;gap:8px}.car-dots{gap:0}.car-dots button{width:24px}}
+  @media(prefers-reduced-motion:reduce){.car-track{scroll-behavior:auto}}
 
   /* MAILING LIST */
   .signup{display:flex;flex-direction:column;gap:14px;max-width:560px}
@@ -807,53 +798,35 @@
     <p class="music-note">the player is hosted by SoundCloud and uses <a href="https://soundcloud.com/pages/cookies" target="_blank" rel="noopener">cookies</a>.</p>
   </section>
 
-  <section class="sec" id="praise">
-    <div class="sec-head">
-      <h2>Support</h2>
-      <div class="count" id="praiseCount">1 / 1</div>
-    </div>
-    <div class="carousel">
-      <button class="car-nav prev" type="button" aria-label="Previous" hidden>‹</button>
-      <div class="car-track" id="praiseTrack">
-        <figure class="car-slide">
-          <img src="assets/ig-moodymann-follow.jpg" alt="Moodymann (@moodymann313) started following normal.dj on Instagram" loading="lazy" decoding="async" width="1179" height="712" />
-          <figcaption><a href="https://instagram.com/moodymann313" target="_blank" rel="noopener"><b>Moodymann</b> · @moodymann313</a> · followed normal.dj</figcaption>
-        </figure>
-        <figure class="car-slide">
-          <img src="assets/kink.jpg" alt="KiNK (@kink303) on Instagram: ufff cognite is sick!!!" loading="lazy" decoding="async" width="748" height="356" />
-          <figcaption><a href="https://instagram.com/kink303" target="_blank" rel="noopener"><b>KiNK</b> · @kink303</a> · on cognite</figcaption>
-        </figure>
-        <figure class="car-slide">
-          <img src="assets/lumberjacksinhell.jpg" alt="Lumberjacks in Hell liked normal's cognite post on Instagram" loading="lazy" decoding="async" width="748" height="238" />
-          <figcaption><a href="https://instagram.com/lumberjacksinhell" target="_blank" rel="noopener"><b>Lumberjacks in Hell</b> · @lumberjacksinhell</a> · liked cognite</figcaption>
-        </figure>
-        <figure class="car-slide">
-          <img src="assets/ig-nakadia-stevemill.jpg" alt="Nakadia, Steve Mill and coastalgroovesss reacted to normal on Instagram" loading="lazy" decoding="async" width="752" height="556" />
-          <figcaption><a href="https://instagram.com/nakadia_music" target="_blank" rel="noopener"><b>Nakadia</b></a> · <a href="https://instagram.com/stevemillmusic" target="_blank" rel="noopener"><b>Steve Mill</b></a> · <a href="https://instagram.com/coastalgroovesss" target="_blank" rel="noopener">@coastalgroovesss</a></figcaption>
-        </figure>
-        <figure class="car-slide">
-          <img src="assets/ig-mosoo.jpg" alt="mosoo.music liked normal's reel, post and story on Instagram" loading="lazy" decoding="async" width="754" height="462" />
-          <figcaption><a href="https://instagram.com/mosoo.music" target="_blank" rel="noopener"><b>mosoo.music</b></a> · reel, post + story</figcaption>
-        </figure>
-        <figure class="car-slide">
-          <img src="assets/ig-pierofarhomusic.jpg" alt="pierofarhomusic liked a mantle story on Instagram" loading="lazy" decoding="async" width="748" height="216" />
-          <figcaption><a href="https://instagram.com/pierofarhomusic" target="_blank" rel="noopener"><b>pierofarhomusic</b></a> · on mantle</figcaption>
-        </figure>
-        <figure class="car-slide">
-          <img src="assets/ig-animaltrainerzh.jpg" alt="animaltrainerzh liked a mantle story on Instagram" loading="lazy" decoding="async" width="748" height="216" />
-          <figcaption><a href="https://instagram.com/animaltrainerzh" target="_blank" rel="noopener"><b>animaltrainerzh</b></a> · on mantle</figcaption>
-        </figure>
-        <!-- Add more slides below as support comes in:
-        <figure class="car-slide">
-          <img src="assets/NEW.png" alt="WHO on PLATFORM: WHAT" loading="lazy" decoding="async" />
-          <figcaption><b>NAME</b> · @handle · on TRACK</figcaption>
-        </figure>
-        -->
+  <section class="sec" id="praise" aria-labelledby="supportTitle">
+    <div class="sec-head"><h2 id="supportTitle">Support</h2><div class="count" id="praiseCount" role="status" aria-live="polite"></div></div>
+    <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Artist feedback and reactions">
+      <div class="car-track" id="praiseTrack" tabindex="0" aria-label="Artist feedback; use left and right arrow keys to browse">
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/kink303/" target="_blank" rel="noopener"><b>KiNK</b></a><span class="support-context">chin-shi-lyn on acid · cognite</span></figcaption><button class="support-image" type="button" aria-label="View reaction from KiNK"><img src="assets/kink-chin-feedback.jpg" alt="KiNK: Uffff that’s hot!!!!! … this one sounds fresh!!!" loading="lazy" decoding="async" /></button><blockquote>Uffff that’s hot!!!!! … this one sounds fresh!!!</blockquote><blockquote>ufff cognite is sick!!!</blockquote><button class="support-image" type="button" aria-label="View KiNK cognite feedback"><img src="assets/kink.jpg" alt="KiNK: ufff cognite is sick!!!" loading="lazy" decoding="async" /></button></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/nakadia_music/" target="_blank" rel="noopener"><b>Nakadia</b></a><span class="support-context">Instagram reaction</span></figcaption><button class="support-image" type="button" aria-label="View reaction from Nakadia"><img src="assets/ig-nakadia-stevemill.jpg" alt="Nakadia: Instagram reaction" loading="lazy" decoding="async" /></button></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/prunk.dj/" target="_blank" rel="noopener"><b>Prunk</b></a><span class="support-context">Instagram story like</span></figcaption></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/animaltrainerzh/" target="_blank" rel="noopener"><b>Animal Trainer</b></a><span class="support-context">liked a mantle story</span></figcaption><button class="support-image" type="button" aria-label="View reaction from Animal Trainer"><img src="assets/ig-animaltrainerzh.jpg" alt="Animal Trainer: liked a mantle story" loading="lazy" decoding="async" /></button></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/lumberjacksinhell/" target="_blank" rel="noopener"><b>Lumberjacks in Hell</b></a><span class="support-context">liked the cognite post</span></figcaption><button class="support-image" type="button" aria-label="View reaction from Lumberjacks in Hell"><img src="assets/lumberjacksinhell.jpg" alt="Lumberjacks in Hell: liked the cognite post" loading="lazy" decoding="async" /></button></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/frivolous_dj/" target="_blank" rel="noopener"><b>Frivolous</b></a><span class="support-context">EP feedback · planned Golden Gate set</span></figcaption><button class="support-image" type="button" aria-label="View reaction from Frivolous"><img src="assets/frivolous-feedback.png" alt="Frivolous: Hey man, I love this whole EP! Well done!" loading="lazy" decoding="async" /></button><blockquote>Hey man, I love this whole EP! Well done!</blockquote><p class="support-context">Public comment: “This record! Would love to get a promo”</p></figure>
+<figure class="car-slide message-slide"><figcaption><b>Igor Gonya</b><span class="support-context">liberate feedback · Mole Music</span></figcaption><blockquote>Actually I like your track and it fits better to my Mole Music label</blockquote></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/stevemillmusic/" target="_blank" rel="noopener"><b>Steve Mill</b></a><span class="support-context">Instagram reaction</span></figcaption><button class="support-image" type="button" aria-label="View reaction from Steve Mill"><img src="assets/ig-nakadia-stevemill.jpg" alt="Steve Mill: Instagram reaction" loading="lazy" decoding="async" /></button></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://soundcloud.com/zamzam-sounds" target="_blank" rel="noopener"><b>ZamZam Sounds</b></a><span class="support-context">mantle feedback</span></figcaption><blockquote>No problem, nice track! listening now.</blockquote></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/p/DbgoRjfk6pO/" target="_blank" rel="noopener"><b>Unnayanaa</b></a><span class="support-context">played gain it easy on vinyl</span></figcaption></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/takesuuuu/" target="_blank" rel="noopener"><b>TAKESU</b></a><span class="support-context">music feedback</span></figcaption><blockquote>I really love your music. It resonates with me in so many ways.</blockquote></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/julian.garnett/" target="_blank" rel="noopener"><b>Julian Garnett</b></a><span class="support-context">JuJu Muzik · Point Blank Radio</span></figcaption><button class="support-image" type="button" aria-label="View reaction from Julian Garnett"><img src="assets/julian-radio-feedback.png" alt="Julian Garnett: I just played 3 of your tracks on the show. All sounded good." loading="lazy" decoding="async" /></button><blockquote>I just played 3 of your tracks on the show. All sounded good.</blockquote></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/pierofarhomusic/" target="_blank" rel="noopener"><b>Pierofarho</b></a><span class="support-context">liked a mantle story</span></figcaption><button class="support-image" type="button" aria-label="View reaction from Pierofarho"><img src="assets/ig-pierofarhomusic.jpg" alt="Pierofarho: liked a mantle story" loading="lazy" decoding="async" /></button></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/mosoo.music/" target="_blank" rel="noopener"><b>Mosoo</b></a><span class="support-context">reel, post + story reactions</span></figcaption><button class="support-image" type="button" aria-label="View reaction from Mosoo"><img src="assets/ig-mosoo.jpg" alt="Mosoo: reel, post + story reactions" loading="lazy" decoding="async" /></button></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/coastalgroovesss/" target="_blank" rel="noopener"><b>Coastal Grooves</b></a><span class="support-context">Instagram reaction</span></figcaption><button class="support-image" type="button" aria-label="View reaction from Coastal Grooves"><img src="assets/ig-nakadia-stevemill.jpg" alt="Coastal Grooves: Instagram reaction" loading="lazy" decoding="async" /></button></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/vibesmerchant/" target="_blank" rel="noopener"><b>Rohit Menon</b></a><span class="support-context">club feedback</span></figcaption><button class="support-image" type="button" aria-label="View reaction from Rohit Menon"><img src="assets/rohit-feedback.png" alt="Rohit Menon: Your track scorched it up. Had a few people ask me for ID" loading="lazy" decoding="async" /></button><blockquote>Your track scorched it up. Had a few people ask me for ID</blockquote></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://soundcloud.com/directdrive95" target="_blank" rel="noopener"><b>Direct Drive</b></a><span class="support-context">liked cognite on SoundCloud</span></figcaption></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/p/Dd3cIa4sczR/" target="_blank" rel="noopener"><b>Music4stars</b></a><span class="support-context">EP comment</span></figcaption><blockquote>I love this Ep! ❤️🔥</blockquote></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/p/Dd3cIa4sczR/" target="_blank" rel="noopener"><b>Lorenzochi44</b></a><span class="support-context">public comment</span></figcaption><blockquote>Much support from Chicago</blockquote></figure>
+<figure class="car-slide message-slide"><figcaption><a href="https://www.instagram.com/p/Dd3cIa4sczR/" target="_blank" rel="noopener"><b>DJ Jaeydee</b></a><span class="support-context">public comment</span></figcaption><blockquote>Dope music</blockquote></figure>
       </div>
-      <button class="car-nav next" type="button" aria-label="Next" hidden>›</button>
+      <div class="support-controls"><button class="car-nav prev" type="button" aria-label="Previous feedback" hidden>‹</button><div class="car-dots" id="praiseDots" hidden></div><button class="car-nav next" type="button" aria-label="Next feedback" hidden>›</button></div>
     </div>
-    <div class="car-dots" id="praiseDots" hidden></div>
   </section>
+  <dialog class="support-dialog" id="supportDialog" aria-label="Message screenshot"><button type="button" class="support-close" aria-label="Close screenshot">×</button><img alt="" /></dialog>
 
   <section class="sec" id="mailing" hidden>
     <div class="sec-head">
@@ -1111,54 +1084,29 @@
 <!-- Praise carousel -->
 <script>
 (function(){
-  const track = document.getElementById('praiseTrack');
-  if (!track) return;
-  const slides = [...track.querySelectorAll('.car-slide')];
-  const prev = document.querySelector('#praise .car-nav.prev');
-  const next = document.querySelector('#praise .car-nav.next');
-  const dotsBox = document.getElementById('praiseDots');
-  const count = document.getElementById('praiseCount');
-  const n = slides.length;
-  if (n <= 1) { count.textContent = n + ' / ' + n; return; }
-
-  prev.hidden = next.hidden = dotsBox.hidden = false;
-  slides.forEach((_, i) => {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-    b.addEventListener('click', () => slides[i].scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'}));
-    dotsBox.appendChild(b);
-  });
-  const dots = [...dotsBox.children];
-
-  const current = () => {
-    const c = track.scrollLeft + track.clientWidth / 2;
-    let best = 0, bd = Infinity;
-    slides.forEach((s, i) => { const d = Math.abs(s.offsetLeft + s.clientWidth/2 - c); if (d < bd){bd=d;best=i;} });
-    return best;
+  const track=document.getElementById('praiseTrack'); if(!track)return;
+  const slides=[...track.querySelectorAll('.car-slide')],count=document.getElementById('praiseCount');
+  const prev=document.querySelector('#praise .prev'),next=document.querySelector('#praise .next'),dotsBox=document.getElementById('praiseDots');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)'),dialog=document.getElementById('supportDialog');
+  const positions=()=>slides.map(s=>s.getBoundingClientRect().left-track.getBoundingClientRect().left+track.scrollLeft);
+  const go=i=>track.scrollTo({left:Math.max(0,Math.min(positions()[i],track.scrollWidth-track.clientWidth)),behavior:reduced.matches?'instant':'smooth'});
+  slides.forEach((slide,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Go to feedback '+(i+1));b.addEventListener('click',()=>go(i));dotsBox.appendChild(b)});
+  const render=()=>{
+    const bounds=track.getBoundingClientRect(),visible=slides.map((s,i)=>({i,r:s.getBoundingClientRect()})).filter(({r})=>r.left>=bounds.left-2&&r.right<=bounds.right+2);
+    const pos=positions(),first=pos.findIndex(x=>x>=track.scrollLeft-2),start=visible[0]?.i??Math.max(0,first),end=visible.at(-1)?.i??start;
+    count.textContent=(start+1)+(end>start?'–'+(end+1):'')+' / '+slides.length;
+    prev.disabled=track.scrollLeft<=2;next.disabled=track.scrollLeft>=track.scrollWidth-track.clientWidth-2;
+    prev.hidden=next.hidden=dotsBox.hidden=track.scrollWidth<=track.clientWidth+2;
+    [...dotsBox.children].forEach((b,i)=>b.setAttribute('aria-current',i===start?'true':'false'));
   };
-  const render = () => {
-    const i = current();
-    count.textContent = (i + 1) + ' / ' + n;
-    dots.forEach((d, j) => d.setAttribute('aria-current', j === i ? 'true' : 'false'));
-  };
-  const go = (dir) => { const i = (current() + dir + n) % n; slides[i].scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'}); };
-  prev.addEventListener('click', () => { go(-1); bump(); });
-  next.addEventListener('click', () => { go(1); bump(); });
-  let raf; track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(render); });
-
-  // Autoplay loop — pauses on hover/touch/focus, respects reduced-motion
-  const slow = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let timer = null, idle;
-  const tick = () => go(1);
-  const start = () => { if (!slow && !timer) timer = setInterval(tick, 4500); };
-  const stop = () => { clearInterval(timer); timer = null; };
-  const bump = () => { stop(); clearTimeout(idle); idle = setTimeout(start, 9000); };
-  ['mouseenter','touchstart','focusin'].forEach(e => track.addEventListener(e, stop, {passive:true}));
-  ['mouseleave','focusout'].forEach(e => track.addEventListener(e, () => { clearTimeout(idle); idle = setTimeout(start, 1500); }));
-  new IntersectionObserver(([en]) => en.isIntersecting ? start() : stop(), {threshold:0.4})
-    .observe(document.getElementById('praise'));
-
+  const step=dir=>{const pos=positions();let i;if(dir>0){i=pos.findIndex(x=>x>track.scrollLeft+2);if(i<0)i=slides.length-1}else{i=pos.findLastIndex(x=>x<track.scrollLeft-2);if(i<0)i=0}go(i)};
+  prev.addEventListener('click',()=>step(-1));next.addEventListener('click',()=>step(1));
+  track.addEventListener('keydown',e=>{if(e.target!==track)return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();step(e.key==='ArrowRight'?1:-1)}});
+  let frame;track.addEventListener('scroll',()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(render)});
+  new ResizeObserver(render).observe(track);
+  track.querySelectorAll('.support-image').forEach(button=>button.addEventListener('click',()=>{const img=button.querySelector('img'),full=dialog.querySelector('img');full.src=img.src;full.alt=img.alt;dialog.showModal()}));
+  dialog.querySelector('button').addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
   render();
 })();
 </script>
