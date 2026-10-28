@@ -47,7 +47,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="dns-prefetch" href="https://bandcamp.com" />
 <link rel="dns-prefetch" href="https://bcbits.com" />
-<script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="NPPUX2R6TWH3Q"></script>
 <link rel="preload" as="image" href="assets/profile.jpg" fetchpriority="high" />
 <!-- 2026-06-16: async font load — print-media swap + JS toggle so the Google
      Fonts CSS stops blocking first paint. font-display:swap inside the URL
@@ -163,7 +162,7 @@
     font-size:9px;line-height:1.5;letter-spacing:.08em;text-transform:uppercase;
   }
 
-  /* HOUSE OF NORMALCY — two records, one PayPal cart */
+  /* HOUSE OF NORMALCY — two records */
   .vinyl-sec{scroll-margin-top:24px}
   .vinyl-sec .sec-head{margin-bottom:24px;align-items:center;gap:20px}
   .vinyl-sec + .sec{margin-top:56px}
@@ -179,20 +178,12 @@
   .vinyl-tracks{list-style:none;padding:0;margin:0 0 22px;font-size:13px;line-height:1.55;color:var(--paper-dim)}
   .vinyl-tracks b{font:500 10px var(--mono);color:var(--paper-faint);margin-right:7px}
   .vinyl-buy{margin-top:auto;width:100%}
-  .vinyl-buy paypal-add-to-cart-button{display:block;width:100%}
-  .vinyl-buy paypal-add-to-cart-button > div{margin:0!important}
-  .vinyl-buy paypal-add-to-cart-button [id^="carousel-container-"],
-  .vinyl-buy paypal-add-to-cart-button .item-title,
-  .vinyl-buy paypal-add-to-cart-button .item-description{display:none!important}
-  .vinyl-buy paypal-add-to-cart-button .item-header{display:block!important;margin:0 0 10px!important;color:var(--paper)!important}
-  .vinyl-buy paypal-add-to-cart-button .price-container{max-width:none!important;text-align:left!important}
-  .vinyl-buy paypal-add-to-cart-button #price-label{justify-content:flex-start!important}
-  .vinyl-buy paypal-add-to-cart-button #price-text{font:500 13px var(--mono)!important}
+  .vinyl-buy a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 18px;background:var(--v-yellow);color:var(--ink);font:700 14px var(--display)}
+  .vinyl-buy a:hover{background:var(--paper)}
   .vinyl-footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:22px;color:var(--paper-faint);font:11px/1.5 var(--mono)}
   .vinyl-footer a{color:var(--paper-dim);text-underline-offset:3px}
   .vinyl-cart{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
   .vinyl-cart > span{font:11px var(--mono);color:var(--paper-dim)}
-  .vinyl-cart paypal-cart-button{display:block;min-width:150px}
   @media (max-width:720px){
     .masthead{grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;margin-inline:-20px;padding:10px 32px}
     .masthead .meta{grid-column:1;grid-row:2;justify-self:start;text-align:left;font-size:8px;letter-spacing:.03em}
@@ -671,9 +662,9 @@
   <section class="sec vinyl-sec" id="vinyl" aria-labelledby="vinylTitle">
     <div class="sec-head">
       <h2 id="vinylTitle">Vinyl</h2>
-      <div class="vinyl-cart"><span>View cart</span><paypal-cart-button data-id="pp-view-cart"></paypal-cart-button></div>
+      <div class="vinyl-cart"><span>Checkout temporarily paused</span></div>
     </div>
-    <p class="vinyl-intro">House of Normalcy on 12-inch vinyl. Long-form tools, cut for the floor and made in Bengaluru, Detroit in spirit. Add one or both to the same cart.</p>
+    <p class="vinyl-intro">House of Normalcy on 12-inch vinyl. Long-form tools, cut for the floor and made in Bengaluru, Detroit in spirit.</p>
     <div class="vinyl-grid">
       <article class="vinyl-card vol-one" aria-labelledby="volOneTitle">
         <img src="assets/vinyl/house-of-normalcy-vol-1-shop.jpg" alt="House of Normalcy vinyl cover: cream record, cobalt lettering and vermilion background" width="1800" height="1800" loading="lazy" decoding="async" />
@@ -686,7 +677,7 @@
             <li><b>B1</b> cognite</li>
             <li><b>B2</b> foster the floor</li>
           </ul>
-          <div class="vinyl-buy"><paypal-add-to-cart-button data-id="8FH4WJJZUAZKS"></paypal-add-to-cart-button></div>
+          <div class="vinyl-buy"><a href="#contact" data-enquiry="vinyl">Ask about this record ↗</a></div>
         </div>
       </article>
       <article class="vinyl-card vol-two" aria-labelledby="volTwoTitle">
@@ -701,11 +692,11 @@
             <li><b>B1</b> cognite</li>
             <li><b>B2</b> motor city moves</li>
           </ul>
-          <div class="vinyl-buy"><paypal-add-to-cart-button data-id="PDZ6626W22FQS"></paypal-add-to-cart-button></div>
+          <div class="vinyl-buy"><a href="#contact" data-enquiry="vinyl">Ask about this record ↗</a></div>
         </div>
       </article>
     </div>
-    <div class="vinyl-footer"><span>Shipping address collected at checkout. Customs duties and local taxes may be charged on arrival.</span><a href="#contact" data-enquiry="vinyl">Request a custom vinyl selection ↗</a></div>
+    <div class="vinyl-footer"><span>Checkout is paused while we verify shipping address collection. Customs duties and local taxes may be charged on arrival.</span><a href="#contact" data-enquiry="vinyl">Request a custom vinyl selection ↗</a></div>
   </section>
 
   <section class="sec" id="releases">
@@ -917,9 +908,6 @@
     window.location.href = `mailto:hello@normalshouse.com?subject=${encodeURIComponent('normal / ' + type.options[type.selectedIndex].text)}&body=${encodeURIComponent(body)}`;
   });
 })();
-cartPaypal.Cart({ id: "pp-view-cart" });
-cartPaypal.AddToCart({ id: "8FH4WJJZUAZKS" });
-cartPaypal.AddToCart({ id: "PDZ6626W22FQS" });
 </script>
 
 <script>
