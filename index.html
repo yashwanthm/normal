@@ -47,6 +47,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="dns-prefetch" href="https://bandcamp.com" />
 <link rel="dns-prefetch" href="https://bcbits.com" />
+<script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="NPPUX2R6TWH3Q"></script>
 <link rel="preload" as="image" href="assets/profile.jpg" fetchpriority="high" />
 <!-- 2026-06-16: async font load — print-media swap + JS toggle so the Google
      Fonts CSS stops blocking first paint. font-display:swap inside the URL
@@ -162,66 +163,36 @@
     font-size:9px;line-height:1.5;letter-spacing:.08em;text-transform:uppercase;
   }
 
-  /* HOUSE OF NORMALCY — first vinyl */
+  /* HOUSE OF NORMALCY — two records, one PayPal cart */
   .vinyl-sec{scroll-margin-top:24px}
-  .vinyl-sec .sec-head{margin-bottom:18px}
+  .vinyl-sec .sec-head{margin-bottom:24px;align-items:center;gap:20px}
   .vinyl-sec + .sec{margin-top:56px}
-  .vinyl-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,312px);gap:clamp(28px,5vw,56px);align-items:center}
-  .vinyl-content{min-width:0}
-  .vinyl-title{
-    font-family:var(--serif);font-size:clamp(40px,6vw,62px);font-weight:500;
-    line-height:.98;letter-spacing:-.025em;margin:0;max-width:11ch;
-  }
-  .vinyl-deck{
-    font-family:var(--serif);font-size:clamp(17px,2vw,21px);line-height:1.35;
-    color:var(--paper-dim);max-width:34ch;margin:14px 0 0;
-  }
-  .vinyl-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px}
-  .vinyl-cta{
-    display:inline-flex;align-items:center;justify-content:center;gap:10px;
-    padding:11px 16px;background:var(--v-yellow);border:1px solid var(--v-yellow);
-    color:var(--ink);font-size:13px;font-weight:700;transition:background .15s ease,border-color .15s ease;
-  }
-  .vinyl-cta:hover{background:var(--paper);border-color:var(--paper)}
-  .vinyl-cta svg{width:16px;height:16px;fill:currentColor;display:block}
-  .vinyl-listen{
-    display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:11px 15px;
-    border:1px solid var(--rule);color:var(--paper-dim);font-size:13px;font-weight:500;
-    transition:color .15s ease,border-color .15s ease;
-  }
-  .vinyl-listen:hover{color:var(--paper);border-color:var(--paper-faint)}
-  .vinyl-carousel{
-    position:relative;width:100%;justify-self:end;overflow:hidden;background:#e9e1d4;
-    border:1px solid var(--rule);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.16);
-  }
-  .vinyl-track{
-    display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
-    overscroll-behavior-x:contain;scrollbar-width:none;background:#e9e1d4;
-  }
-  .vinyl-track::-webkit-scrollbar{display:none}
-  .vinyl-slide{position:relative;flex:0 0 100%;aspect-ratio:1/1.02;margin:0;scroll-snap-align:center;scroll-snap-stop:always}
-  .vinyl-slide img{width:100%;height:100%;object-fit:cover;display:block}
-  .vinyl-slide figcaption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-  .vinyl-nav{
-    position:absolute;top:50%;z-index:2;width:34px;height:34px;transform:translateY(-50%);
-    display:grid;place-items:center;border:1px solid rgba(20,17,13,.18);border-radius:50%;
-    background:rgba(244,239,230,.9);color:var(--ink);font-size:20px;line-height:1;cursor:pointer;
-    box-shadow:0 4px 14px rgba(20,17,13,.14);backdrop-filter:blur(6px);
-  }
-  .vinyl-nav.prev{left:9px}.vinyl-nav.next{right:9px}
-  .vinyl-caption{
-    position:absolute;left:9px;top:9px;z-index:2;margin:0;padding:6px 8px;border-radius:99px;
-    background:rgba(20,17,13,.76);color:var(--paper);font-family:var(--mono);font-size:8px;
-    letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(6px);
-  }
-  .vinyl-dots{
-    position:absolute;left:50%;bottom:10px;z-index:2;transform:translateX(-50%);
-    display:flex;align-items:center;justify-content:center;gap:7px;padding:7px 9px;
-    border-radius:99px;background:rgba(20,17,13,.72);backdrop-filter:blur(6px);
-  }
-  .vinyl-dots button{width:6px;height:6px;padding:0;border:0;border-radius:50%;background:rgba(244,239,230,.5);cursor:pointer}
-  .vinyl-dots button[aria-current="true"]{width:18px;border-radius:99px;background:var(--v-yellow)}
-
+  .vinyl-intro{max-width:58ch;margin:0 0 26px;color:var(--paper-dim);font-family:var(--serif);font-size:clamp(19px,2.4vw,25px);line-height:1.3}
+  .vinyl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+  .vinyl-card{min-width:0;border:1px solid var(--rule);background:var(--ink-2);display:flex;flex-direction:column;overflow:hidden}
+  .vinyl-card > img{width:100%;height:auto;object-fit:contain;display:block;aspect-ratio:1/1}
+  .vinyl-card-body{padding:clamp(18px,2.5vw,30px);display:flex;flex:1;flex-direction:column;align-items:flex-start;min-width:0}
+  .vinyl-edition{font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--v-vermilion);margin:0 0 10px}
+  .vinyl-card.vol-two .vinyl-edition{color:var(--v-yellow)}
+  .vinyl-card h3{font-family:var(--serif);font-size:clamp(26px,3vw,39px);font-weight:500;letter-spacing:-.025em;line-height:1;margin:0 0 12px}
+  .vinyl-detail{font:11px/1.5 var(--mono);color:var(--paper-faint);margin:0 0 18px}
+  .vinyl-tracks{list-style:none;padding:0;margin:0 0 22px;font-size:13px;line-height:1.55;color:var(--paper-dim)}
+  .vinyl-tracks b{font:500 10px var(--mono);color:var(--paper-faint);margin-right:7px}
+  .vinyl-buy{margin-top:auto;width:100%}
+  .vinyl-buy paypal-add-to-cart-button{display:block;width:100%}
+  .vinyl-buy paypal-add-to-cart-button > div{margin:0!important}
+  .vinyl-buy paypal-add-to-cart-button [id^="carousel-container-"],
+  .vinyl-buy paypal-add-to-cart-button .item-title,
+  .vinyl-buy paypal-add-to-cart-button .item-description{display:none!important}
+  .vinyl-buy paypal-add-to-cart-button .item-header{display:block!important;margin:0 0 10px!important;color:var(--paper)!important}
+  .vinyl-buy paypal-add-to-cart-button .price-container{max-width:none!important;text-align:left!important}
+  .vinyl-buy paypal-add-to-cart-button #price-label{justify-content:flex-start!important}
+  .vinyl-buy paypal-add-to-cart-button #price-text{font:500 13px var(--mono)!important}
+  .vinyl-footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:22px;color:var(--paper-faint);font:11px/1.5 var(--mono)}
+  .vinyl-footer a{color:var(--paper-dim);text-underline-offset:3px}
+  .vinyl-cart{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .vinyl-cart span{font:11px var(--mono);color:var(--paper-dim)}
+  .vinyl-cart paypal-cart-button{display:block;min-width:150px}
   @media (max-width:720px){
     .masthead{grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;margin-inline:-20px;padding:10px 32px}
     .masthead .meta{grid-column:1;grid-row:2;justify-self:start;text-align:left;font-size:8px;letter-spacing:.03em}
@@ -230,10 +201,8 @@
     .masthead.menu-open .music-nav{display:flex}
     .masthead .music-nav a{min-height:48px;border-top:1px solid var(--rule);text-decoration:none}
     .wrap > .music-nav{display:none}
-    .vinyl-layout{grid-template-columns:1fr;gap:18px}
-    .vinyl-title{font-size:clamp(42px,13vw,56px)}
-    .vinyl-deck{font-size:18px}
-    .vinyl-carousel{width:min(82vw,312px);justify-self:center}
+    .vinyl-grid{grid-template-columns:1fr}
+    .vinyl-card h3{font-size:clamp(24px,5vw,34px)}
   }
 
   /* SECTION HEAD */
@@ -548,7 +517,19 @@
       "albumProductionType": "https://schema.org/StudioAlbum",
       "albumReleaseType": "https://schema.org/EPRelease",
       "numTracks": 3,
-      "description": "normal's first 12-inch vinyl: three long-form house tools across two sides, made in Bengaluru and Detroit in spirit."
+      "description": "12-inch vinyl with gain it easy on Side A, and cognite and foster the floor on Side B."
+    },
+    {
+      "@type": "MusicAlbum",
+      "@id": "https://normalshouse.com/#house-of-normalcy-vol-2",
+      "name": "House of Normalcy Vol. 2",
+      "url": "https://normalshouse.com/#vinyl",
+      "byArtist": { "@id": "https://normalshouse.com/#artist" },
+      "recordLabel": { "@type": "Organization", "name": "Normal Records" },
+      "albumProductionType": "https://schema.org/StudioAlbum",
+      "albumReleaseType": "https://schema.org/EPRelease",
+      "numTracks": 4,
+      "description": "12-inch vinyl with liberate and maniac on Side A, and cognite and motor city moves on Side B."
     },
     {
       "@type": "MusicRecording",
@@ -681,48 +662,50 @@
   </section>
 
   <nav class="music-nav" aria-label="Music sections">
+    <a href="#vinyl">vinyl</a>
     <a href="#releases">released music</a>
     <a href="#unreleased">unreleased listening room</a>
-    <a href="#vinyl">vinyl</a>
     <a href="#contact">contact</a>
   </nav>
 
   <section class="sec vinyl-sec" id="vinyl" aria-labelledby="vinylTitle">
     <div class="sec-head">
-      <h2>Vinyl</h2>
+      <h2 id="vinylTitle">Vinyl</h2>
+      <div class="vinyl-cart"><span>View cart</span><paypal-cart-button data-id="pp-view-cart"></paypal-cart-button></div>
     </div>
-
-    <div class="vinyl-layout">
-      <div class="vinyl-content">
-        <h3 class="vinyl-title" id="vinylTitle">House of Normalcy</h3>
-        <p class="vinyl-deck">Three tracks, one house. Acid, raw and deep house on vinyl. You can also request your own selection.</p>
-        <div class="vinyl-actions">
-          <a class="vinyl-cta" href="#contact" data-enquiry="vinyl"><span>Request vinyl</span></a>
-          <a class="vinyl-listen" href="#releases">Listen to the three tracks <span aria-hidden="true">↓</span></a>
+    <p class="vinyl-intro">House of Normalcy on 12-inch vinyl. Long-form tools, cut for the floor and made in Bengaluru, Detroit in spirit. Add one or both to the same cart.</p>
+    <div class="vinyl-grid">
+      <article class="vinyl-card vol-one" aria-labelledby="volOneTitle">
+        <img src="assets/vinyl/house-of-normalcy-vol-1-shop.jpg" alt="House of Normalcy vinyl cover: cream record, cobalt lettering and vermilion background" width="1800" height="1800" loading="lazy" decoding="async" />
+        <div class="vinyl-card-body">
+          <p class="vinyl-edition">NRML·V01 / Volume 1</p>
+          <h3 id="volOneTitle">House of Normalcy</h3>
+          <p class="vinyl-detail">12-inch · 33⅓ RPM · printed inner sleeve</p>
+          <ul class="vinyl-tracks">
+            <li><b>A1</b> gain it easy</li>
+            <li><b>B1</b> cognite</li>
+            <li><b>B2</b> foster the floor</li>
+          </ul>
+          <div class="vinyl-buy"><paypal-add-to-cart-button data-id="8FH4WJJZUAZKS"></paypal-add-to-cart-button></div>
         </div>
-      </div>
-
-      <div class="vinyl-carousel" id="vinylCarousel" role="region" aria-roledescription="carousel" aria-label="House of Normalcy vinyl artwork">
-        <div class="vinyl-track" id="vinylTrack" tabindex="0">
-          <figure class="vinyl-slide" data-caption="Cover artwork">
-            <img src="assets/vinyl/house-of-normalcy-cover-720.jpg" srcset="assets/vinyl/house-of-normalcy-cover-720.jpg 707w, assets/vinyl/house-of-normalcy-cover-1440.jpg 1413w" sizes="(max-width: 720px) 82vw, 312px" alt="House of Normalcy cover artwork: a cream record on vermilion with cobalt lettering" width="1413" height="1440" loading="lazy" decoding="async" />
-            <figcaption>Cover artwork</figcaption>
-          </figure>
-          <figure class="vinyl-slide" data-caption="Liner notes">
-            <img src="assets/vinyl/house-of-normalcy-liner-notes-720.jpg" srcset="assets/vinyl/house-of-normalcy-liner-notes-720.jpg 713w, assets/vinyl/house-of-normalcy-liner-notes-1440.jpg 1426w" sizes="(max-width: 720px) 82vw, 312px" alt="House of Normalcy booklet page with liner notes and release manifesto" width="1426" height="1440" loading="lazy" decoding="async" />
-            <figcaption>Liner notes</figcaption>
-          </figure>
-          <figure class="vinyl-slide" data-caption="Track notes">
-            <img src="assets/vinyl/house-of-normalcy-track-notes-720.jpg" srcset="assets/vinyl/house-of-normalcy-track-notes-720.jpg 713w, assets/vinyl/house-of-normalcy-track-notes-1440.jpg 1426w" sizes="(max-width: 720px) 82vw, 312px" alt="House of Normalcy booklet page with notes for cognite, foster the floor and gain it easy" width="1426" height="1440" loading="lazy" decoding="async" />
-            <figcaption>Track notes</figcaption>
-          </figure>
+      </article>
+      <article class="vinyl-card vol-two" aria-labelledby="volTwoTitle">
+        <img src="assets/vinyl/house-of-normalcy-vol-2-shop.jpg" alt="House of Normalcy Vol. 2 vinyl cover in cobalt, vermilion and cream" width="1800" height="1800" loading="lazy" decoding="async" />
+        <div class="vinyl-card-body">
+          <p class="vinyl-edition">NRML·V02 / Volume 2</p>
+          <h3 id="volTwoTitle">House of Normalcy <em>Vol. 2</em></h3>
+          <p class="vinyl-detail">12-inch · 33⅓ RPM · printed inner sleeve</p>
+          <ul class="vinyl-tracks">
+            <li><b>A1</b> liberate <small>× alldayallnight</small></li>
+            <li><b>A2</b> maniac</li>
+            <li><b>B1</b> cognite</li>
+            <li><b>B2</b> motor city moves</li>
+          </ul>
+          <div class="vinyl-buy"><paypal-add-to-cart-button data-id="PDZ6626W22FQS"></paypal-add-to-cart-button></div>
         </div>
-        <button class="vinyl-nav prev" type="button" aria-label="Previous artwork">‹</button>
-        <button class="vinyl-nav next" type="button" aria-label="Next artwork">›</button>
-        <p class="vinyl-caption" id="vinylCaption" aria-live="polite">01 / 03 · Cover artwork</p>
-        <div class="vinyl-dots" id="vinylDots" aria-label="Choose artwork"></div>
-      </div>
+      </article>
     </div>
+    <div class="vinyl-footer"><span>Shipping address collected at checkout. Customs duties and local taxes may be charged on arrival.</span><a href="#contact" data-enquiry="vinyl">Request a custom vinyl selection ↗</a></div>
   </section>
 
   <section class="sec" id="releases">
@@ -903,9 +886,6 @@
   update();
 })();
 (() => {
-  // Preserve existing sections and assets while putting music before vinyl.
-  const vinyl = document.getElementById('vinyl');
-  document.getElementById('unreleased')?.after(vinyl);
   for (const id of ['featured', 'features', 'dj-mixes', 'mixes']) {
     const section = document.getElementById(id);
     if (section) section.hidden = true;
@@ -937,60 +917,9 @@
     window.location.href = `mailto:hello@normalshouse.com?subject=${encodeURIComponent('normal / ' + type.options[type.selectedIndex].text)}&body=${encodeURIComponent(body)}`;
   });
 })();
-(() => {
-  const root = document.getElementById('vinylCarousel');
-  const track = document.getElementById('vinylTrack');
-  if (!root || !track) return;
-
-  const slides = [...track.querySelectorAll('.vinyl-slide')];
-  const caption = document.getElementById('vinylCaption');
-  const dotsBox = document.getElementById('vinylDots');
-  const prev = root.querySelector('.vinyl-nav.prev');
-  const next = root.querySelector('.vinyl-nav.next');
-  const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
-  let active = 0;
-  let scrollFrame = null;
-
-  const render = () => {
-    caption.textContent = `${String(active + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')} · ${slides[active].dataset.caption}`;
-    [...dotsBox.children].forEach((dot, index) => dot.setAttribute('aria-current', index === active ? 'true' : 'false'));
-  };
-  const go = (index) => {
-    active = (index + slides.length) % slides.length;
-    track.scrollTo({left: slides[active].offsetLeft, behavior});
-    render();
-  };
-
-  slides.forEach((slide, index) => {
-    const dot = document.createElement('button');
-    dot.type = 'button';
-    dot.setAttribute('aria-label', `Show ${slide.dataset.caption}`);
-    dot.addEventListener('click', () => go(index));
-    dotsBox.appendChild(dot);
-  });
-  prev.addEventListener('click', () => go(active - 1));
-  next.addEventListener('click', () => go(active + 1));
-  track.addEventListener('keydown', (event) => {
-    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-    event.preventDefault();
-    go(active + (event.key === 'ArrowRight' ? 1 : -1));
-  });
-  track.addEventListener('scroll', () => {
-    cancelAnimationFrame(scrollFrame);
-    scrollFrame = requestAnimationFrame(() => {
-      const center = track.scrollLeft + track.clientWidth / 2;
-      let closest = 0;
-      let distance = Infinity;
-      slides.forEach((slide, index) => {
-        const nextDistance = Math.abs(slide.offsetLeft + slide.clientWidth / 2 - center);
-        if (nextDistance < distance) { closest = index; distance = nextDistance; }
-      });
-      if (closest !== active) { active = closest; render(); }
-    });
-  }, {passive:true});
-
-  render();
-})();
+cartPaypal.Cart({ id: "pp-view-cart" });
+cartPaypal.AddToCart({ id: "8FH4WJJZUAZKS" });
+cartPaypal.AddToCart({ id: "PDZ6626W22FQS" });
 </script>
 
 <script>
