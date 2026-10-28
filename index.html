@@ -162,7 +162,7 @@
     font-size:9px;line-height:1.5;letter-spacing:.08em;text-transform:uppercase;
   }
 
-  /* HOUSE OF NORMALCY — two records */
+  /* HOUSE OF NORMALCY — two records, Bandcamp storefront */
   .vinyl-sec{scroll-margin-top:24px}
   .vinyl-sec .sec-head{margin-bottom:24px;align-items:center;gap:20px}
   .vinyl-sec + .sec{margin-top:56px}
@@ -178,12 +178,11 @@
   .vinyl-tracks{list-style:none;padding:0;margin:0 0 22px;font-size:13px;line-height:1.55;color:var(--paper-dim)}
   .vinyl-tracks b{font:500 10px var(--mono);color:var(--paper-faint);margin-right:7px}
   .vinyl-buy{margin-top:auto;width:100%}
-  .vinyl-buy a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 18px;background:var(--v-yellow);color:var(--ink);font:700 14px var(--display)}
+  .vinyl-buy a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 18px;background:var(--v-yellow);color:var(--ink);font:700 14px var(--display);text-decoration:none}
   .vinyl-buy a:hover{background:var(--paper)}
   .vinyl-footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:22px;color:var(--paper-faint);font:11px/1.5 var(--mono)}
   .vinyl-footer a{color:var(--paper-dim);text-underline-offset:3px}
-  .vinyl-cart{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-  .vinyl-cart > span{font:11px var(--mono);color:var(--paper-dim)}
+  .vinyl-shop-link{color:var(--paper-dim);font:12px var(--mono);text-underline-offset:3px}
   @media (max-width:720px){
     .masthead{grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;margin-inline:-20px;padding:10px 32px}
     .masthead .meta{grid-column:1;grid-row:2;justify-self:start;text-align:left;font-size:8px;letter-spacing:.03em}
@@ -662,9 +661,9 @@
   <section class="sec vinyl-sec" id="vinyl" aria-labelledby="vinylTitle">
     <div class="sec-head">
       <h2 id="vinylTitle">Vinyl</h2>
-      <div class="vinyl-cart"><span>Checkout temporarily paused</span></div>
+      <a class="vinyl-shop-link" href="https://normaldj.bandcamp.com/" target="_blank" rel="noopener">normal on Bandcamp ↗</a>
     </div>
-    <p class="vinyl-intro">house of normalcy on 12-inch vinyl. Long-form tools, cut for the floor and made in Bengaluru, Detroit in spirit.</p>
+    <p class="vinyl-intro">A record you can hold, sleeve art you can live with, and warm grooves to play all the way through. Each side gives a DJ room to work by ear.</p>
     <div class="vinyl-grid">
       <article class="vinyl-card vol-one" aria-labelledby="volOneTitle">
         <img src="assets/vinyl/house-of-normalcy-vol-1-shop.jpg" alt="house of normalcy vinyl cover: cream record, cobalt lettering and vermilion background" width="1800" height="1800" loading="lazy" decoding="async" />
@@ -677,7 +676,7 @@
             <li><b>B1</b> cognite</li>
             <li><b>B2</b> foster the floor</li>
           </ul>
-          <div class="vinyl-buy"><a href="#contact" data-enquiry="vinyl">Ask about this record ↗</a></div>
+          <div class="vinyl-buy"><a href="https://normaldj.bandcamp.com/" target="_blank" rel="noopener" aria-label="Follow normal on Bandcamp for house of normalcy vol. 1">Follow for release ↗</a></div>
         </div>
       </article>
       <article class="vinyl-card vol-two" aria-labelledby="volTwoTitle">
@@ -692,11 +691,11 @@
             <li><b>B1</b> cognite</li>
             <li><b>B2</b> motor city moves</li>
           </ul>
-          <div class="vinyl-buy"><a href="#contact" data-enquiry="vinyl">Ask about this record ↗</a></div>
+          <div class="vinyl-buy"><a href="https://normaldj.bandcamp.com/" target="_blank" rel="noopener" aria-label="Follow normal on Bandcamp for house of normalcy vol. 2">Follow for release ↗</a></div>
         </div>
       </article>
     </div>
-    <div class="vinyl-footer"><span>Checkout is paused while we verify shipping address collection. Customs duties and local taxes may be charged on arrival.</span><a href="#contact" data-enquiry="vinyl">Request a custom vinyl selection ↗</a></div>
+    <div class="vinyl-footer"><span>Vinyl ordering opens on Bandcamp soon. For deliveries outside the UK, customs duties or local taxes may be charged on arrival.</span><a href="#contact" data-enquiry="vinyl">Request a custom vinyl selection ↗</a></div>
   </section>
 
   <section class="sec" id="releases">
