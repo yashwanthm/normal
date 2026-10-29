@@ -532,6 +532,18 @@
     },
     {
       "@type": "MusicRecording",
+      "name": "maniac",
+      "byArtist": {
+        "@id": "https://normalshouse.com/#artist"
+      },
+      "genre": "House",
+      "duration": "PT4M",
+      "datePublished": "2026-10-30",
+      "description": "maniac builds a persistent house pulse from plucked FM bass, distorted percussion and repeating electronic rhythms. Two bass patterns trade places as the layers thin out and return, while a voice keeps repeating the same word: maniac. The arrangement keeps changing around that fixation, finding its pressure in repetition.",
+      "url": "https://normaldj.bandcamp.com/track/normal-maniac"
+    },
+    {
+      "@type": "MusicRecording",
       "name": "cognite",
       "byArtist": { "@id": "https://normalshouse.com/#artist" },
       "genre": "Acid House",
@@ -701,11 +713,17 @@
   <section class="sec" id="releases">
     <div class="sec-head">
       <h2>Music</h2>
-      <div class="count" id="releaseCount">7 tracks</div>
+      <div class="count" id="releaseCount">8 tracks</div>
       <a class="np-buy" href="https://normaldj.bandcamp.com/" target="_blank" rel="noopener">shop the catalogue <span aria-hidden="true">↗</span></a>
     </div>
     <div class="releases-pane">
       <ol class="tracklist" id="tracklist">
+        <li class="trk" data-release-date="2026-10-30" data-release-state="live" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=689673678/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="maniac" data-credit="" data-meta="&lt;b&gt;30 Oct 2026&lt;/b&gt; · out now · 128 · house · 4:00" data-desc="maniac builds a persistent house pulse from plucked FM bass, distorted percussion and repeating electronic rhythms. Two bass patterns trade places as the layers thin out and return, while a voice keeps repeating the same word: maniac. The arrangement keeps changing around that fixation, finding its pressure in repetition." data-buy="https://normaldj.bandcamp.com/track/normal-maniac" data-cover="assets/covers/maniac.jpg">
+          <img class="trk-cover" src="assets/covers/maniac.jpg" alt="maniac cover" loading="lazy" decoding="async" width="48" height="48" />
+          <span class="trk-info"><span class="trk-title">maniac</span><span class="trk-meta"><b>30 Oct 2026</b> · out now · 128 · house · 4:00</span></span>
+          <a class="trk-buy" href="https://normaldj.bandcamp.com/track/normal-maniac" target="_blank" rel="noopener" aria-label="Buy maniac on Bandcamp">buy <span aria-hidden="true">↗</span></a>
+          <button class="trk-play" type="button" aria-label="Play maniac"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </li>
         <li class="trk" data-release-date="2026-06-12" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=2308886165/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="cognite" data-credit="" data-meta="&lt;b&gt;12 Jun 2026&lt;/b&gt; · out now · 126 · acid house" data-desc="303 bass and lead lines give cognite its acid character, with sampled voices threaded through the rhythm. Claps, percussion and a later ride pattern change the weight of the groove across an arrangement that leaves room to pull back and build again." data-buy="https://normaldj.bandcamp.com/track/cognite" data-cover="assets/covers/cognite.jpg">
           <img class="trk-cover" src="assets/covers/cognite.jpg" alt="cognite cover" loading="lazy" decoding="async" width="48" height="48" />
           <span class="trk-info"><span class="trk-title">cognite</span><span class="trk-meta"><b>12 Jun 2026</b> · out now · 126 · acid house</span></span>
@@ -936,7 +954,7 @@
   const today = [now.getFullYear(), String(now.getMonth() + 1).padStart(2, '0'), String(now.getDate()).padStart(2, '0')].join('-');
   rows.forEach((row) => {
     if (!row.dataset.releaseDate || row.dataset.releaseState === 'preview') return;
-    const status = row.dataset.releaseDate <= today ? 'out now' : 'upcoming';
+    const status = row.dataset.releaseState === 'live' || row.dataset.releaseDate <= today ? 'out now' : 'upcoming';
     const replaceStatus = (value) => value.replace(/ · (?:out now|upcoming) · /, ` · ${status} · `);
     row.dataset.meta = replaceStatus(row.dataset.meta);
     const visibleMeta = row.querySelector('.trk-meta');
