@@ -162,7 +162,7 @@
     font-size:9px;line-height:1.5;letter-spacing:.08em;text-transform:uppercase;
   }
 
-  /* HOUSE OF NORMALCY — two records, Bandcamp storefront */
+  /* HOUSE OF NORMALCY — two records, enquiry only */
   .vinyl-sec{scroll-margin-top:24px}
   .vinyl-sec .sec-head{margin-bottom:24px;align-items:center;gap:20px}
   .vinyl-sec + .sec{margin-top:56px}
@@ -182,7 +182,7 @@
   .vinyl-buy a:hover{background:var(--paper)}
   .vinyl-footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:22px;color:var(--paper-faint);font:11px/1.5 var(--mono)}
   .vinyl-footer a{color:var(--paper-dim);text-underline-offset:3px}
-  .vinyl-shop-link{color:var(--paper-dim);font:12px var(--mono);text-underline-offset:3px}
+  .vinyl-status{color:var(--paper-dim);font:12px var(--mono)}
   @media (max-width:720px){
     .masthead{grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;margin-inline:-20px;padding:10px 32px}
     .masthead .meta{grid-column:1;grid-row:2;justify-self:start;text-align:left;font-size:8px;letter-spacing:.03em}
@@ -507,7 +507,7 @@
       "albumProductionType": "https://schema.org/StudioAlbum",
       "albumReleaseType": "https://schema.org/EPRelease",
       "numTracks": 3,
-      "description": "12-inch vinyl with gain it easy on Side A, and cognite and foster the floor on Side B."
+      "description": "12-inch vinyl with gain it easy on Side A, and cognite and foster the floor on Side B. Vinyl is enquiry only via normalshouse.com."
     },
     {
       "@type": "MusicAlbum",
@@ -519,7 +519,7 @@
       "albumProductionType": "https://schema.org/StudioAlbum",
       "albumReleaseType": "https://schema.org/EPRelease",
       "numTracks": 4,
-      "description": "12-inch vinyl with liberate and maniac on Side A, and cognite and motor city moves on Side B."
+      "description": "12-inch vinyl with liberate and maniac on Side A, and cognite and motor city moves on Side B. Vinyl is enquiry only via normalshouse.com."
     },
     {
       "@type": "MusicRecording",
@@ -673,7 +673,7 @@
   <section class="sec vinyl-sec" id="vinyl" aria-labelledby="vinylTitle">
     <div class="sec-head">
       <h2 id="vinylTitle">Vinyl</h2>
-      <a class="vinyl-shop-link" href="https://normaldj.bandcamp.com/" target="_blank" rel="noopener">normal on Bandcamp ↗</a>
+      <span class="vinyl-status">enquiry only</span>
     </div>
     <p class="vinyl-intro">records that you can hold, art you can live with, and warm grooves built for the dance floor. each side, on your side to work the room.</p>
     <div class="vinyl-grid">
@@ -688,7 +688,7 @@
             <li><b>B1</b> cognite</li>
             <li><b>B2</b> foster the floor</li>
           </ul>
-          <div class="vinyl-buy"><a href="https://normaldj.bandcamp.com/album/house-of-normalcy-vol-1" target="_blank" rel="noopener" aria-label="Buy house of normalcy vol. 1 on vinyl from Bandcamp">Buy vinyl ↗</a></div>
+          <div class="vinyl-buy"><a href="#contact" data-enquiry="vinyl" data-vinyl-release="house of normalcy" aria-label="Enquire about house of normalcy on vinyl">enquire about vinyl ↓</a></div>
         </div>
       </article>
       <article class="vinyl-card vol-two" aria-labelledby="volTwoTitle">
@@ -703,11 +703,11 @@
             <li><b>B1</b> cognite</li>
             <li><b>B2</b> motor city moves</li>
           </ul>
-          <div class="vinyl-buy"><a href="https://normaldj.bandcamp.com/album/house-of-normalcy-vol-2" target="_blank" rel="noopener" aria-label="Buy house of normalcy vol. 2 on vinyl from Bandcamp">Buy vinyl ↗</a></div>
+          <div class="vinyl-buy"><a href="#contact" data-enquiry="vinyl" data-vinyl-release="house of normalcy vol. 2" aria-label="Enquire about house of normalcy vol. 2 on vinyl">enquire about vinyl ↓</a></div>
         </div>
       </article>
     </div>
-    <div class="vinyl-footer"><span>Both records are available on Bandcamp. For deliveries outside the UK, customs duties or local taxes may be charged on arrival.</span><a href="#contact" data-enquiry="vinyl">Request a custom vinyl selection ↗</a></div>
+    <div class="vinyl-footer"><span>vinyl is enquiry only. get in touch about either record for availability, pricing and delivery.</span><a href="#contact" data-enquiry="vinyl">enquire about a custom selection ↓</a></div>
   </section>
 
   <section class="sec" id="releases">
@@ -838,9 +838,9 @@
 
   <section class="sec" id="contact" aria-labelledby="contactTitle">
     <div class="sec-head"><h2 id="contactTitle">Contact</h2></div>
-    <p class="music-note">request music, discuss a release or booking, or choose tracks for vinyl.</p>
+    <p class="music-note">request music, discuss a release or booking, or enquire about vinyl.</p>
     <form class="enquiry-form" id="enquiryForm">
-      <label>Enquiry type<select name="type" id="enquiryType"><option value="music">Music / WAVs</option><option value="label">Label enquiry</option><option value="booking">Booking</option><option value="vinyl">Vinyl</option></select></label>
+      <label>Enquiry type<select name="type" id="enquiryType"><option value="music">Music / WAVs</option><option value="label">Label enquiry</option><option value="booking">Booking</option><option value="vinyl">Vinyl enquiry</option></select></label>
       <label>Your name<input name="name" autocomplete="name" required /></label>
       <label>Your email<input name="email" type="email" autocomplete="email" required /></label>
       <label>You are requesting as<select name="role" required><option value="">Select a role</option><option>DJ / artist</option><option>Label / A&amp;R</option><option>Promoter / venue</option><option>Radio / press</option><option>Listener / collector</option><option>Other</option></select></label>
@@ -901,25 +901,28 @@
   const form = document.getElementById('enquiryForm');
   const type = document.getElementById('enquiryType');
   const message = document.getElementById('enquiryMessage');
+  let vinylPrefill = '';
   const hints = {
     music: 'Name any tracks you want WAVs for, or leave a message.',
     label: 'Tell me about your label and the tracks you’re interested in.',
     booking: 'Include the event, venue, city and proposed date, if known.',
-    vinyl: 'Name at least two tracks you would like on vinyl.'
+    vinyl: 'Tell me which record you’re interested in, plus your delivery city, country and quantity. For a custom selection, name at least two tracks.'
   };
   const update = () => { document.getElementById('enquiryHint').textContent = hints[type.value]; };
   type.addEventListener('change', update);
-  document.querySelectorAll('[data-enquiry]').forEach(link => link.addEventListener('click', () => { type.value = link.dataset.enquiry; update(); }));
+  document.querySelectorAll('[data-enquiry]').forEach(link => link.addEventListener('click', () => {
+    type.value = link.dataset.enquiry;
+    update();
+    if (link.dataset.vinylRelease && (!message.value.trim() || message.value === vinylPrefill)) {
+      vinylPrefill = `i’m interested in ${link.dataset.vinylRelease} on vinyl.\n\nDelivery city and country: \nQuantity: `;
+      message.value = vinylPrefill;
+    }
+    message.setCustomValidity('');
+  }));
   message.addEventListener('input', () => message.setCustomValidity(''));
   form.addEventListener('submit', event => {
     event.preventDefault();
     const data = new FormData(form);
-    if (type.value === 'vinyl' && message.value.split(/[,;\n]+/).filter(part => part.trim()).length < 2) {
-      event.preventDefault();
-      message.setCustomValidity('Name at least two tracks, separated by a comma or a new line.');
-      message.reportValidity();
-      return;
-    }
     const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nRole: ${data.get('role')}\n\n${data.get('message')}`;
     if (typeof window.gtag === 'function') window.gtag('event', 'enquiry_submit_attempt', {send_to:'G-YZG9CEZ5F5', enquiry_type:type.value, submission_method:'mailto'});
     window.location.href = `mailto:hello@normalshouse.com?subject=${encodeURIComponent('normal / ' + type.options[type.selectedIndex].text)}&body=${encodeURIComponent(body)}`;
