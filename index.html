@@ -112,6 +112,14 @@
   .mobile-menu-toggle{display:none}
   .sec[id]{scroll-margin-top:var(--header-offset,90px)}
 
+  /* DJ SET VIDEO */
+  .set-player{aspect-ratio:16/9;background:#000;border:1px solid var(--rule)}
+  .set-player iframe{display:block;width:100%;height:100%;border:0}
+  .set-caption{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin:16px 0 0}
+  .set-caption p{margin:0;color:var(--paper-dim);font-family:var(--mono);font-size:12px}
+  .set-caption a{font-size:13px;text-decoration:underline;text-underline-offset:4px}
+  .set-caption a:hover{color:var(--v-yellow)}
+
   /* HERO */
   .hero{
     margin:56px 0 72px;
@@ -664,11 +672,26 @@
   </section>
 
   <nav class="music-nav" aria-label="Music sections">
+    <a href="#sets">DJ sets</a>
     <a href="#releases">released music</a>
     <a href="#unreleased">unreleased listening room</a>
     <a href="#vinyl">vinyl</a>
     <a href="#contact">contact</a>
   </nav>
+
+  <section class="sec set-sec" id="sets" aria-labelledby="setsTitle">
+    <div class="sec-head">
+      <h2 id="setsTitle">DJ sets</h2>
+      <div class="count">watch the full set</div>
+    </div>
+    <div class="set-player">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/-qdqNh4SNrI?si=SOh_GvGAzKEyEEqU" title="normal — full DJ set" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="set-caption">
+      <p>normal · recorded 2 November 2026</p>
+      <a href="https://www.youtube.com/watch?v=-qdqNh4SNrI" target="_blank" rel="noopener">Watch on YouTube <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
 
   <section class="sec" id="releases">
     <div class="sec-head">
