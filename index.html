@@ -119,6 +119,9 @@
   .set-caption p{margin:0;color:var(--paper-dim);font-family:var(--mono);font-size:12px}
   .set-caption a{font-size:13px;text-decoration:underline;text-underline-offset:4px}
   .set-caption a:hover{color:var(--v-yellow)}
+  .set-links{display:flex;align-items:center;flex-wrap:wrap;gap:8px 24px}
+  .set-links a{display:inline-flex;align-items:center;min-height:44px}
+  .set-links a:focus-visible{outline:2px solid var(--v-yellow);outline-offset:4px}
 
   /* HERO */
   .hero{
@@ -689,7 +692,11 @@
     </div>
     <div class="set-caption">
       <p>normal · recorded 2 November 2026</p>
-      <a href="https://www.youtube.com/watch?v=-qdqNh4SNrI" target="_blank" rel="noopener">Watch on YouTube <span aria-hidden="true">↗</span></a>
+      <nav class="set-links" aria-label="Listen to or watch this DJ set">
+        <a href="https://www.youtube.com/watch?v=-qdqNh4SNrI" target="_blank" rel="noopener">Watch on YouTube <span aria-hidden="true">↗</span></a>
+        <a href="https://www.mixcloud.com/normaldj/depth-grit-detroit-dj-set-by-normal-juan-atkins-forever/" target="_blank" rel="noopener">Listen on Mixcloud <span aria-hidden="true">↗</span></a>
+        <a href="https://soundcloud.com/normaldj/normal-2026-11-02-full-set" target="_blank" rel="noopener">Listen on SoundCloud <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
   </section>
 
@@ -1077,3 +1084,4 @@
 
 </body>
 </html>
+
