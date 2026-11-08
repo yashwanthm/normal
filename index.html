@@ -361,18 +361,20 @@
     font-family:var(--display);font-weight:500;font-size:14px;
     transition:color .15s ease, border-color .15s ease, background .15s ease;
   }
-  .lk:hover{border-color:currentColor;background:var(--ink)}
+  /* Platform colors: simple-icons/simple-icons data; RA brand red is #FF4848. */
+  .lk.bandcamp{--platform-color:#408294}
+  .lk.residentadvisor{--platform-color:#FF4848}
+  .lk.soundcloud{--platform-color:#FF5500}
+  .lk.instagram{--platform-color:#FF0069}
+  .lk.applemusic{--platform-color:#FA243C}
+  .lk.spotify{--platform-color:#1ED760}
+  .lk.youtube{--platform-color:#FF0000}
+  .lk:is(:hover,:focus-visible,:active){border-color:var(--platform-color);background:color-mix(in srgb,var(--platform-color) 8%,var(--ink));color:var(--paper)}
+  .lk:is(:hover,:focus-visible,:active) svg{color:var(--platform-color)}
+  .lk:focus-visible{outline:2px solid var(--platform-color);outline-offset:4px}
+  .lk:active{transform:translateY(1px)}
   .lk svg{width:18px;height:18px;fill:currentColor;display:block;flex-shrink:0}
   .lk.residentadvisor svg{width:32px}
-  .lk.spotify:hover{color:var(--v-lime)}
-  .lk.applemusic:hover{color:var(--v-hotpink)}
-  .lk.soundcloud:hover{color:var(--v-vermilion)}
-  .lk.bandcamp:hover{color:var(--accent-text)}
-  .lk.instagram:hover{color:var(--v-violet)}
-  .lk.residentadvisor:is(:hover,:focus-visible,:active){color:var(--accent-text);border-color:currentColor;background:rgba(27,73,199,.16)}
-  .lk.youtube:is(:hover,:focus-visible,:active){color:var(--v-vermilion);border-color:currentColor;background:rgba(238,58,36,.05)}
-  .lk.residentadvisor:focus-visible,.lk.youtube:focus-visible{outline:2px solid currentColor;outline-offset:4px}
-  .lk.residentadvisor:active,.lk.youtube:active{transform:translateY(1px)}
   /* hero link row */
   .hero-links{margin-top:20px;padding-top:20px;border-top:1px solid var(--rule)}
 
