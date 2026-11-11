@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>normal — house music from Bangalore by Yashwanth Maheshwaram</title>
+<title>normal — dance music from Bangalore by Yashwanth Maheshwaram</title>
 <meta name="description" content="normal is the house music project of Yashwanth Maheshwaram, based in Bangalore. Warm, groove-led house and Detroit-leaning dance music — built for the floor." />
 <meta name="author" content="Yashwanth Maheshwaram" />
 <meta name="keywords" content="normal, normal dj, Yashwanth Maheshwaram, Bangalore house music, deep house, Detroit house, Indian house producer, house music India, Normal Records" />
@@ -27,7 +27,7 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 
-<meta property="og:title" content="normal — house music from Bangalore" />
+<meta property="og:title" content="normal — dance music from Bangalore" />
 <meta property="og:description" content="The house music project of Yashwanth Maheshwaram. Warm, groove-led house and Detroit-leaning dance music — built for the floor." />
 <meta property="og:type" content="music.musician" />
 <meta property="og:site_name" content="normal" />
@@ -38,7 +38,7 @@
 <meta property="og:image:height" content="520" />
 <meta property="og:image:alt" content="normal — portrait of Yashwanth Maheshwaram" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="normal — house music from Bangalore" />
+<meta name="twitter:title" content="normal — dance music from Bangalore" />
 <meta name="twitter:description" content="The house music project of Yashwanth Maheshwaram. Warm, groove-led house and Detroit-leaning dance music." />
 <meta name="twitter:image" content="https://normalshouse.com/assets/profile.jpg" />
 <meta name="twitter:image:alt" content="normal — portrait of Yashwanth Maheshwaram" />
@@ -47,136 +47,403 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="dns-prefetch" href="https://bandcamp.com" />
 <link rel="dns-prefetch" href="https://bcbits.com" />
-<link rel="preload" as="image" href="assets/profile.jpg" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/hero-portrait.jpg" fetchpriority="high" />
 <!-- 2026-06-16: async font load — print-media swap + JS toggle so the Google
      Fonts CSS stops blocking first paint. font-display:swap inside the URL
      still ensures FOIT-free text once the stylesheet resolves. <noscript>
      fallback covers JS-disabled clients. -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" />
-<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" />
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" /></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..900&family=JetBrains+Mono:wght@100..800&display=swap" />
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..900&family=JetBrains+Mono:wght@100..800&display=swap" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..900&family=JetBrains+Mono:wght@100..800&display=swap" /></noscript>
 
+<script>
+  if (new URLSearchParams(location.search).get('theme') === 'system') {
+    document.documentElement.dataset.theme = 'system';
+  }
+</script>
 <style>
-  :root{
-    --paper:#F4EFE6;
-    --paper-dim:rgba(244,239,230,0.65);
-    --paper-faint:rgba(244,239,230,0.35);
-    --ink:#14110D;
-    --ink-2:#1c1814;
-    --rule:rgba(244,239,230,0.15);
-    --v-vermilion:#EE3A24;
-    --v-cobalt:#1B49C7;
-    --v-yellow:#F5C932;
-    --v-lime:#7DD837;
-    --v-violet:#6F40C9;
-    --v-hotpink:#FF4F8B;
-    /* Website primary: brand cobalt, with a paper-tinted variant for dark surfaces. */
-    --accent:var(--v-cobalt);
-    --accent-text:#728BD3;
-    --accent-foreground:var(--paper);
-    --display:"DM Sans",system-ui,sans-serif;
-    --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
-    --serif:"Newsreader",Georgia,serif;
+  :root {
+    --paper: #F4EFE6;
+    --ink: #14110D;
+    --muted: #595046;
+    --yellow: #F5C932;
+    --vermilion: #EE3A24;
+    --line: #b1a497;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    --serif: Georgia, serif;
   }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{
-    background:var(--ink);
-    color:var(--paper);
-    font-family:var(--display);
-    font-size:16px;
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-    background-image:
-      radial-gradient(rgba(244,239,230,0.04) 1px, transparent 1px),
-      radial-gradient(rgba(244,239,230,0.025) 1px, transparent 1px);
-    background-size:3px 3px, 7px 7px;
-    background-position:0 0, 1px 2px;
-  }
-  a{color:inherit;text-decoration:none}
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.45 var(--sans); }
+  a { color: inherit; text-underline-offset: 4px; }
+  a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+  img { display: block; max-width: 100%; }
+  .wrap { width: min(1220px, calc(100% - 96px)); margin-inline: auto; }
+  .masthead { min-height: 94px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .identity { display: inline-flex; align-items: center; gap: 9px; font-size: 34px; font-weight: 850; line-height: 1; letter-spacing: -.07em; text-decoration: none; }
+  .identity svg { width: 32px; height: 32px; }
+  .masthead nav { display: flex; gap: clamp(10px, 2vw, 30px); flex-wrap: wrap; }
+  .masthead nav a { padding-block: 12px; font-size: 13px; font-weight: 650; text-decoration: none; }
+  .masthead nav a:hover { text-decoration: underline; }
 
-  .wrap{max-width:980px;margin:0 auto;padding:32px 24px 80px}
+  .hero { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); border: 1px solid var(--ink); }
+  .hero-copy { background: var(--yellow); padding: clamp(28px, 4.4vw, 63px); }
+  .kicker { margin: 0; font: 600 11px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .085em; }
+  .headline { margin: 27px 0 24px; font: 400 clamp(42px, 5.8vw, 84px)/.99 var(--serif); letter-spacing: -.074em; }
+  .headline em { font-weight: 400; }
+  .lede { margin: 0; max-width: 39ch; font-size: 15px; line-height: 1.55; }
+  .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 22px; margin-top: 28px; }
+  .button { display: inline-flex; align-items: center; gap: 15px; min-height: 46px; background: var(--ink); color: var(--paper); padding: 0 14px; text-decoration: none; font-size: 13px; font-weight: 700; }
+  .button:hover { box-shadow: inset 0 0 0 2px var(--paper); }
+  .hero-actions > a:last-child { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; font-weight: 700; }
+  .hero-visual { margin: 0; position: relative; isolation: isolate; overflow: hidden; background: var(--vermilion); border-left: 1px solid var(--ink); min-height: 100%; }
+  .hero-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 28%; mix-blend-mode: multiply; }
+  .hero-visual::after { content: ''; position: absolute; inset: 0; z-index: 1; background-image: radial-gradient(var(--ink) .45px, transparent .65px); background-size: 3px 3px; opacity: .23; pointer-events: none; }
+  .hero-visual .spiral { position: absolute; z-index: 2; right: 21px; top: 22px; width: 64px; height: 64px; color: var(--paper); }
 
-  /* MASTHEAD */
-  .masthead{
-    position:sticky;top:0;z-index:50;background:var(--ink);
-    display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:16px;
-    border-bottom:1px solid var(--rule);
-    min-height:64px;padding:12px 16px;margin-bottom:48px;
-    font-family:var(--mono);font-size:12px;
-    color:var(--paper-dim);text-transform:uppercase;letter-spacing:.08em;
-  }
-  .masthead .mark{margin:0;font-family:var(--display);font-weight:700;font-size:14px;color:var(--paper);letter-spacing:.02em;text-transform:none;display:inline}
-  .masthead .meta b{color:var(--paper)}
-  .masthead .mark{grid-column:1;grid-row:1}
-  .masthead .meta{grid-column:3;grid-row:1;justify-self:end;text-align:right;white-space:nowrap;font-size:10px;letter-spacing:.05em}
-  .masthead .music-nav{grid-column:2;grid-row:1;margin:0;gap:4px 16px;font-size:10px;letter-spacing:.03em;justify-content:center}
-  .masthead .music-nav a{min-height:36px;white-space:nowrap}
-  .music-nav.nav-placeholder{visibility:hidden;pointer-events:none}
-  .mobile-menu-toggle{display:none}
-  .sec[id]{scroll-margin-top:var(--header-offset,90px)}
+  .catalogue { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 42px; margin-top: 48px; padding-bottom: 48px; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px 16px; padding-bottom: 11px; border-bottom: 2px solid var(--ink); }
+  .section-head h2 { margin: 0; font: 400 clamp(27px, 3.1vw, 44px)/1.02 var(--serif); letter-spacing: -.055em; }
+  .section-head a { font-size: 12px; font-weight: 700; flex-shrink: 0; padding-block: 8px; }
+  .tracks { list-style: none; margin: 0; padding: 0; }
+  .track { display: grid; grid-template-columns: 57px minmax(0, 1fr) auto; align-items: center; gap: 15px; padding-block: 10px; border-bottom: 1px solid var(--line); }
+  .track img { width: 57px; height: 57px; object-fit: cover; }
+  .track h3 { font-size: 20px; font-weight: 750; letter-spacing: -.045em; margin: 0; }
+  .track .kicker { color: var(--muted); font-weight: 500; font-size: 10px; margin-top: 2px; }
+  .track > a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 5px; font-size: 12px; font-weight: 700; }
+  .vinyl { border-top: 2px solid var(--ink); align-self: end; }
+  .vinyl-feature { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1fr); gap: 17px; align-items: center; padding-block: 11px; border-bottom: 1px solid var(--line); }
+  .vinyl-feature img { width: 100%; aspect-ratio: 1; }
+  .vinyl-feature h2 { margin: 8px 0 11px; font: 400 clamp(24px, 2.65vw, 39px)/1 var(--serif); letter-spacing: -.065em; }
+  .vinyl-feature a { display: inline-flex; align-items: center; min-height: 44px; font-size: 12px; font-weight: 700; }
+  .footer { border-top: 1px solid var(--ink); min-height: 68px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; color: var(--muted); }
+  .footer div { display: flex; flex-wrap: wrap; gap: 5px 20px; }
+  .footer a { display: inline-flex; align-items: center; min-height: 44px; font-size: 12px; font-weight: 650; }
 
-  /* DJ SET VIDEO */
-  .set-player{aspect-ratio:16/9;background:#000;border:1px solid var(--rule)}
-  .set-player iframe{display:block;width:100%;height:100%;border:0}
-  .set-caption{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin:16px 0 0}
-  .set-caption p{margin:0;color:var(--paper-dim);font-family:var(--mono);font-size:12px}
-  .set-caption a{font-size:13px;text-decoration:underline;text-underline-offset:4px}
-  .set-caption a:hover{color:var(--accent-text)}
-  .set-links{display:flex;align-items:center;flex-wrap:wrap;gap:8px 24px}
-  .set-links a{display:inline-flex;align-items:center;min-height:44px}
-  .set-links a:focus-visible{outline:2px solid var(--accent-text);outline-offset:4px}
-
-  /* HERO */
-  .hero{
-    margin:56px 0 72px;
-    display:grid;
-    grid-template-columns:1.4fr 1fr;
-    gap:48px;
-    align-items:center;
+  @media (max-width: 920px) {
+    .wrap { width: calc(100% - 48px); }
+    .catalogue { gap: 26px; }
+    .vinyl { align-self: start; }
+    .vinyl-feature { grid-template-columns: 1fr; }
   }
-  .hero-text{min-width:0}
-  .hero-photo{
-    width:100%;height:auto;
-    aspect-ratio:1/1;
-    object-fit:cover;
-    background:var(--ink-2);
-    border:1px solid var(--rule);
-    display:block;
+  @media (max-width: 700px) {
+    .wrap { width: calc(100% - 32px); }
+    .masthead { align-items: start; justify-content: center; flex-direction: column; gap: 4px; padding: 16px 0 6px; }
+    .masthead nav { gap: 4px 16px; }
+    .masthead nav a { min-height: 44px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-copy { padding: 26px 21px 20px; }
+    .headline { font-size: clamp(38px, 9.5vw, 62px); margin-block: 20px; }
+    .hero-actions { margin-top: 17px; }
+    .hero-visual { border-left: 0; border-top: 1px solid var(--ink); min-height: 0; aspect-ratio: 1.3; }
+    .hero-visual .spiral { width: 50px; height: 50px; }
+    .catalogue { grid-template-columns: 1fr; margin-top: 28px; padding-bottom: 24px; }
+    .vinyl-feature { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); }
   }
-  .eyebrow{
-    font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--accent-text);margin-bottom:18px;
+  @media (max-width: 370px) {
+    .section-head { flex-wrap: wrap; }
+    .track { gap: 9px; }
   }
-  .tagline{
-    font-family:var(--serif);
-    font-weight:500;
-    font-size:clamp(34px, 5.4vw, 60px);
-    line-height:1.05;
-    letter-spacing:-0.01em;
-    margin:0 0 24px;
-    max-width:18ch;
+  :root {
+    color-scheme: dark;
+    --lime: #7DD837;
+    --page-background: var(--ink);
+    --page-text: var(--paper);
+    --secondary-text: color-mix(in srgb, var(--paper) 72%, var(--ink));
+    --strong-rule: color-mix(in srgb, var(--paper) 38%, var(--ink));
+    --subtle-rule: color-mix(in srgb, var(--paper) 22%, var(--ink));
   }
-  .tagline em{font-style:italic;color:var(--accent-text)}
-  .hero p.lede{
-    font-family:var(--display);
-    font-size:clamp(15px,1.6vw,18px);
-    color:var(--paper-dim);
-    max-width:54ch;margin:0;
+  @media (prefers-color-scheme: light) {
+    :root[data-theme='system'] {
+      color-scheme: light;
+      --page-background: var(--paper);
+      --page-text: var(--ink);
+      --secondary-text: var(--muted);
+      --strong-rule: var(--ink);
+      --subtle-rule: var(--line);
+    }
   }
-  .hero-request{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:24px}
-  .hero-request-cta{
-    display:inline-flex;align-items:center;justify-content:center;gap:10px;
-    padding:14px 20px;background:var(--accent);border:1px solid var(--accent);
-    color:var(--accent-foreground);font-family:var(--display);font-size:15px;font-weight:700;
-    transition:background .15s ease,border-color .15s ease;
+  body { background: var(--page-background); color: var(--page-text); }
+  .hero, .hero-visual { border: 0; }
+  .section-head, .vinyl, .footer { border-color: var(--strong-rule); }
+  .track, .vinyl-feature { border-color: var(--subtle-rule); }
+  .track .kicker, .footer { color: var(--secondary-text); }
+  .identity { font-size: clamp(34px, 3.4vw, 48px); }
+  .hero-copy { position: relative; isolation: isolate; background: var(--paper); color: var(--ink); }
+  .hero-background { position: absolute; z-index: -1; inset: 0; pointer-events: none; }
+  .hero-background canvas { display: block; width: 100%; height: 100%; }
+  .hero-background canvas[hidden] { display: none; }
+  .headline {
+    font-family: var(--sans);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -.05em;
   }
-  .hero-request-cta:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-  .hero-request-note{
-    max-width:31ch;color:var(--paper-faint);font-family:var(--mono);
-    font-size:9px;line-height:1.5;letter-spacing:.08em;text-transform:uppercase;
+  .headline em {
+    font-weight: inherit;
+    color: var(--yellow);
+    -webkit-text-stroke: .052em var(--ink);
+    paint-order: stroke fill;
   }
-
+  .headline em:first-child { margin-inline-end: .14em; }
+  .headline em:last-child { color: var(--lime); }
+  .hero-visual { background: var(--ink); }
+  .hero-visual img {
+    mix-blend-mode: normal;
+    object-position: 56% 50%;
+    transform: scale(1.16);
+    transform-origin: 57% 58%;
+    filter: grayscale(1) sepia(.16) contrast(1.11) brightness(.95);
+    mask-image: linear-gradient(to right, transparent, #000 15%);
+  }
+  .hero-visual::after {
+    background: linear-gradient(110deg, rgb(125 216 55 / 24%), transparent 41%),
+      linear-gradient(to bottom, rgb(20 17 13 / 34%), transparent 43%),
+      linear-gradient(to top, rgb(20 17 13 / 40%), transparent 45%);
+    opacity: 1;
+  }
+  .button:focus-visible { outline-color: var(--ink); }
+  .hero-controls { display: flex; justify-content: end; }
+  #motion-toggle {
+    background: transparent; color: var(--secondary-text); padding: 0; min-height: 44px;
+    border: 0; cursor: pointer; font: 650 12px/1.2 var(--sans);
+    text-decoration: underline; text-underline-offset: 4px;
+  }
+  #motion-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+  .catalogue { margin-top: 10px; }
+  @media (max-width: 700px) {
+    .hero-visual img {
+      object-position: center 48%;
+      transform: scale(1.08);
+      mask-image: linear-gradient(to bottom, transparent, #000 15%);
+    }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MusicGroup",
+      "@id": "https://normalshouse.com/#artist",
+      "name": "normal",
+      "alternateName": [
+        "normal.dj",
+        "normaldj"
+      ],
+      "url": "https://normalshouse.com/",
+      "image": "https://normalshouse.com/assets/profile.jpg",
+      "description": "normal is the house music project of Yashwanth Maheshwaram, based in Bangalore. Warm, groove-led house and Detroit-leaning dance music — built for the floor.",
+      "genre": [
+        "House",
+        "Deep House",
+        "Detroit House",
+        "Acid House"
+      ],
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Bangalore",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bangalore",
+          "addressCountry": "IN"
+        }
+      },
+      "member": {
+        "@id": "https://normalshouse.com/#person"
+      },
+      "recordLabel": {
+        "@type": "Organization",
+        "name": "Normal Records"
+      },
+      "sameAs": [
+        "https://soundcloud.com/normaldj",
+        "https://normaldj.bandcamp.com",
+        "https://music.apple.com/artist/normal/1804288244",
+        "https://open.spotify.com/artist/0ow5fWEBIvvrDVDai6No2a",
+        "https://instagram.com/normal.dj",
+        "https://ra.co/dj/normal-in"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://normalshouse.com/#person",
+      "name": "Yashwanth Maheshwaram",
+      "alternateName": "normal",
+      "jobTitle": "Music Producer, DJ",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bangalore",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://soundcloud.com/normaldj",
+        "https://instagram.com/normal.dj",
+        "https://ra.co/dj/normal-in"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://normalshouse.com/#website",
+      "url": "https://normalshouse.com/",
+      "name": "normal",
+      "publisher": {
+        "@id": "https://normalshouse.com/#artist"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "MusicRecording",
+      "name": "chin-shi-lyn",
+      "byArtist": {
+        "@id": "https://normalshouse.com/#artist"
+      },
+      "genre": "House",
+      "duration": "PT10M",
+      "description": "Available in normal's website listening room. Release availability is confirmed track by track.",
+      "url": "https://normalshouse.com/#unreleased"
+    },
+    {
+      "@type": "MusicAlbum",
+      "@id": "https://normalshouse.com/#house-of-normalcy",
+      "name": "house of normalcy",
+      "url": "https://normalshouse.com/#vinyl",
+      "byArtist": {
+        "@id": "https://normalshouse.com/#artist"
+      },
+      "recordLabel": {
+        "@type": "Organization",
+        "name": "Normal Records"
+      },
+      "albumProductionType": "https://schema.org/StudioAlbum",
+      "albumReleaseType": "https://schema.org/EPRelease",
+      "numTracks": 3,
+      "description": "12-inch vinyl with gain it easy on Side A, and cognite and foster the floor on Side B. Vinyl is enquiry only via normalshouse.com."
+    },
+    {
+      "@type": "MusicAlbum",
+      "@id": "https://normalshouse.com/#house-of-normalcy-vol-2",
+      "name": "house of normalcy vol. 2",
+      "url": "https://normalshouse.com/#vinyl",
+      "byArtist": {
+        "@id": "https://normalshouse.com/#artist"
+      },
+      "recordLabel": {
+        "@type": "Organization",
+        "name": "Normal Records"
+      },
+      "albumProductionType": "https://schema.org/StudioAlbum",
+      "albumReleaseType": "https://schema.org/EPRelease",
+      "numTracks": 3,
+      "description": "12-inch vinyl with maniac on Side A, and cognite and motor city moves on Side B. Vinyl is enquiry only via normalshouse.com."
+    },
+    {
+      "@type": "MusicRecording",
+      "name": "tractor beam",
+      "byArtist": {
+        "@id": "https://normalshouse.com/#artist"
+      },
+      "genre": [
+        "House",
+        "Detroit House"
+      ],
+      "duration": "PT5M52S",
+      "description": "A pulsing generator, strange signals overhead, and a groove with its own gravitational pull. An unreleased preview from normal.",
+      "url": "https://soundcloud.com/normaldj/tractor-beam"
+    },
+    {
+      "@type": "MusicRecording",
+      "name": "maniac",
+      "byArtist": {
+        "@id": "https://normalshouse.com/#artist"
+      },
+      "genre": "House",
+      "duration": "PT4M",
+      "datePublished": "2026-10-30",
+      "description": "maniac builds a persistent house pulse from plucked FM bass, distorted percussion and repeating electronic rhythms. Two bass patterns trade places as the layers thin out and return, while a voice keeps repeating the same word: maniac. The arrangement keeps changing around that fixation, finding its pressure in repetition.",
+      "url": "https://normaldj.bandcamp.com/track/normal-maniac"
+    },
+    {
+      "@type": "MusicRecording",
+      "name": "cognite",
+      "byArtist": {
+        "@id": "https://normalshouse.com/#artist"
+      },
+      "genre": "Acid House",
+      "duration": "PT6M43S",
+      "datePublished": "2026-06-12",
+      "isrcCode": "QZYB22562674",
+      "url": "https://normaldj.bandcamp.com/track/cognite",
+      "sameAs": "https://soundcloud.com/normaldj/cognite"
+    },
+    {
+      "@type": "MusicRecording",
+      "name": "gain it easy",
+      "byArtist": {
+        "@id": "https://normalshouse.com/#artist"
+      },
+      "genre": "Deep House",
+      "duration": "PT9M39S",
+      "datePublished": "2026-06-19",
+      "isrcCode": "QZNRS2580746",
+      "url": "https://normaldj.bandcamp.com/track/gain-it-easy",
+      "sameAs": "https://soundcloud.com/normaldj/normal-gain-it-easy"
+    },
+    {
+      "@type": "MusicRecording",
+      "name": "break it down",
+      "byArtist": {
+        "@id": "https://normalshouse.com/#artist"
+      },
+      "genre": "House",
+      "duration": "PT7M13S",
+      "datePublished": "2026-06-19",
+      "isrcCode": "QZT852577422",
+      "url": "https://normaldj.bandcamp.com/track/break-it-down",
+      "sameAs": "https://soundcloud.com/normaldj/break-it-down"
+    },
+    {
+      "@type": "MusicRecording",
+      "name": "motor city moves",
+      "byArtist": {
+        "@id": "https://normalshouse.com/#artist"
+      },
+      "genre": "Detroit House",
+      "duration": "PT6M58S",
+      "datePublished": "2026-07-10",
+      "isrcCode": "QM42K2511496",
+      "url": "https://normaldj.bandcamp.com/track/motor-city-moves",
+      "sameAs": "https://soundcloud.com/normaldj/motor-city-moves"
+    },
+    {
+      "@type": "MusicRecording",
+      "name": "foster the floor",
+      "byArtist": {
+        "@id": "https://normalshouse.com/#artist"
+      },
+      "genre": "House",
+      "duration": "PT6M59S",
+      "datePublished": "2026-07-03",
+      "isrcCode": "QT6XZ2521214",
+      "url": "https://normaldj.bandcamp.com/track/foster-the-floor",
+      "sameAs": "https://soundcloud.com/normaldj/foster-the-floor"
+    },
+    {
+      "@type": "MusicRecording",
+      "name": "intent",
+      "byArtist": {
+        "@id": "https://normalshouse.com/#artist"
+      },
+      "genre": "Deep House",
+      "duration": "PT9M42S",
+      "datePublished": "2026-05-29",
+      "url": "https://normaldj.bandcamp.com/track/intent",
+      "sameAs": "https://soundcloud.com/normaldj/intent"
+    }
+  ]
+}
+</script>
+<style>
   /* HOUSE OF NORMALCY — two records, enquiry only */
   .vinyl-sec{scroll-margin-top:24px}
   .vinyl-sec .sec-head{margin-bottom:24px;align-items:center;gap:20px}
@@ -199,13 +466,6 @@
   .vinyl-footer a{color:var(--paper-dim);text-underline-offset:3px}
   .vinyl-status{color:var(--paper-dim);font:12px var(--mono)}
   @media (max-width:720px){
-    .masthead{grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;margin-inline:-20px;padding:10px 32px}
-    .masthead .meta{grid-column:1;grid-row:2;justify-self:start;text-align:left;font-size:8px;letter-spacing:.03em}
-    .mobile-menu-toggle{display:block;grid-column:2;grid-row:1 / 3;min-width:64px;min-height:44px;background:transparent;border:1px solid var(--rule);color:var(--paper);font:12px var(--mono);text-transform:none;cursor:pointer}
-    .masthead .music-nav{grid-column:1 / -1;grid-row:3;display:none;flex-direction:column;align-items:stretch;margin-top:10px;gap:0;font-size:13px;letter-spacing:0}
-    .masthead.menu-open .music-nav{display:flex}
-    .masthead .music-nav a{min-height:48px;border-top:1px solid var(--rule);text-decoration:none}
-    .wrap > .music-nav{display:none}
     .vinyl-grid{grid-template-columns:1fr}
     .vinyl-card h3{font-size:clamp(24px,5vw,34px)}
   }
@@ -419,223 +679,249 @@
   @media(max-width:600px){.car-slide{flex-basis:100%;padding:16px}.support-controls{justify-content:center;gap:8px}.car-dots{gap:0}.car-dots button{width:20px}}
   @media(prefers-reduced-motion:reduce){.car-track{scroll-behavior:auto}}
 
-  /* MAILING LIST */
-  .signup{display:flex;flex-direction:column;gap:14px;max-width:560px}
-  .signup p{color:var(--paper-dim);font-size:15px;line-height:1.55;margin:0}
-  .signup-form{display:flex;gap:10px;flex-wrap:wrap}
-  .signup-form input[type=email]{
-    flex:1 1 240px;padding:12px 16px;background:var(--ink-2);
-    border:1px solid var(--rule);color:var(--paper);
-    font-family:var(--display);font-size:14px;
+  :root {
+    --surface: #1F1A14;
+    --accent: var(--yellow);
+    --accent-foreground: var(--ink);
+    --accent-text: var(--yellow);
   }
-  .signup-form input[type=email]::placeholder{color:var(--paper-faint)}
-  .signup-form input[type=email]:focus{outline:none;border-color:var(--paper-dim)}
-  .signup-form button{
-    padding:12px 22px;background:var(--accent);border:1px solid var(--accent);
-    color:var(--accent-foreground);font-family:var(--display);font-weight:500;font-size:14px;cursor:pointer;
-    transition:background .15s ease, border-color .15s ease;
+  @media (prefers-color-scheme: light) {
+    :root[data-theme='system'] { --surface: #ECE5D6; --accent-text: var(--ink); }
   }
-  .signup-form button:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-  .signup-note{font-family:var(--mono);font-size:11px;color:var(--paper-faint);letter-spacing:.04em}
-  .signup-note a{color:var(--paper-dim);text-decoration:none;border-bottom:1px solid var(--paper-faint)}
-  .signup-note a:hover{color:var(--accent-text);border-color:var(--accent-text)}
-
-  /* FOOTER */
-  footer{
-    margin-top:96px;padding-top:18px;
-    border-top:1px solid var(--rule);
-    font-family:var(--mono);font-size:11px;color:var(--paper-faint);
-    text-transform:uppercase;letter-spacing:.12em;
+  [hidden] { display: none !important; }
+  .mobile-menu-toggle { display: none; }
+  .headline { font-size: min(clamp(42px, 5.8vw, 84px), 13cqi); white-space: nowrap; }
+  .headline em:first-of-type { margin-inline-end: .11em; }
+  .hero {
+    --hero-inset: max(8vw, calc((100% - 1072px) / 2));
+    position: relative; isolation: isolate; overflow: hidden;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: center;
+    column-gap: clamp(16px, 3vw, 40px); padding-inline: var(--hero-inset);
+    background:
+      radial-gradient(ellipse at 96% 18%, var(--lime), transparent 63%),
+      radial-gradient(ellipse at 50% 110%, var(--paper), transparent 70%),
+      conic-gradient(from 215deg at 60% 59%, var(--yellow), var(--lime), var(--paper), var(--yellow));
   }
-  footer address{
-    font-style:normal;
-    display:flex;justify-content:space-between;align-items:baseline;gap:18px;flex-wrap:wrap;
+  .hero-copy {
+    container-type: inline-size; z-index: 1; text-align: start; background: transparent;
+    padding: clamp(52px, 6vw, 86px) 0 4px;
   }
-  footer a:hover{color:var(--paper-dim)}
-
-  @media (max-width:720px){
-    .wrap{padding:24px 20px 64px}
-    .hero{margin:40px 0 56px;grid-template-columns:1fr;gap:28px}
-    .hero-photo{width:60%;max-width:240px;justify-self:start}
-    .sec{margin-top:64px}
-    .masthead .meta{display:block}
+  .hero-platforms {
+    grid-column: 1 / -1; z-index: 2; color: var(--ink); padding-bottom: clamp(44px, 5vw, 70px);
   }
-</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "MusicGroup",
-      "@id": "https://normalshouse.com/#artist",
-      "name": "normal",
-      "alternateName": ["normal.dj", "normaldj"],
-      "url": "https://normalshouse.com/",
-      "image": "https://normalshouse.com/assets/profile.jpg",
-      "description": "normal is the house music project of Yashwanth Maheshwaram, based in Bangalore. Warm, groove-led house and Detroit-leaning dance music — built for the floor.",
-      "genre": ["House", "Deep House", "Detroit House", "Acid House"],
-      "foundingLocation": {
-        "@type": "Place",
-        "name": "Bangalore",
-        "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressCountry": "IN" }
-      },
-      "member": { "@id": "https://normalshouse.com/#person" },
-      "recordLabel": { "@type": "Organization", "name": "Normal Records" },
-      "sameAs": [
-        "https://soundcloud.com/normaldj",
-        "https://normaldj.bandcamp.com",
-        "https://music.apple.com/artist/normal/1804288244",
-        "https://open.spotify.com/artist/0ow5fWEBIvvrDVDai6No2a",
-        "https://instagram.com/normal.dj",
-        "https://ra.co/dj/normal-in"
-      ]
-    },
-    {
-      "@type": "Person",
-      "@id": "https://normalshouse.com/#person",
-      "name": "Yashwanth Maheshwaram",
-      "alternateName": "normal",
-      "jobTitle": "Music Producer, DJ",
-      "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressCountry": "IN" },
-      "sameAs": [
-        "https://soundcloud.com/normaldj",
-        "https://instagram.com/normal.dj",
-        "https://ra.co/dj/normal-in"
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://normalshouse.com/#website",
-      "url": "https://normalshouse.com/",
-      "name": "normal",
-      "publisher": { "@id": "https://normalshouse.com/#artist" },
-      "inLanguage": "en"
-    },
-    {
-      "@type": "MusicRecording",
-      "name": "chin-shi-lyn",
-      "byArtist": { "@id": "https://normalshouse.com/#artist" },
-      "genre": "House",
-      "duration": "PT10M",
-      "description": "Available in normal's website listening room. Release availability is confirmed track by track.",
-      "url": "https://normalshouse.com/#unreleased"
-    },
-    {
-      "@type": "MusicAlbum",
-      "@id": "https://normalshouse.com/#house-of-normalcy",
-      "name": "house of normalcy",
-      "url": "https://normalshouse.com/#vinyl",
-      "byArtist": { "@id": "https://normalshouse.com/#artist" },
-      "recordLabel": { "@type": "Organization", "name": "Normal Records" },
-      "albumProductionType": "https://schema.org/StudioAlbum",
-      "albumReleaseType": "https://schema.org/EPRelease",
-      "numTracks": 3,
-      "description": "12-inch vinyl with gain it easy on Side A, and cognite and foster the floor on Side B. Vinyl is enquiry only via normalshouse.com."
-    },
-    {
-      "@type": "MusicAlbum",
-      "@id": "https://normalshouse.com/#house-of-normalcy-vol-2",
-      "name": "house of normalcy vol. 2",
-      "url": "https://normalshouse.com/#vinyl",
-      "byArtist": { "@id": "https://normalshouse.com/#artist" },
-      "recordLabel": { "@type": "Organization", "name": "Normal Records" },
-      "albumProductionType": "https://schema.org/StudioAlbum",
-      "albumReleaseType": "https://schema.org/EPRelease",
-      "numTracks": 4,
-      "description": "12-inch vinyl with liberate and maniac on Side A, and cognite and motor city moves on Side B. Vinyl is enquiry only via normalshouse.com."
-    },
-    {
-      "@type": "MusicRecording",
-      "name": "tractor beam",
-      "byArtist": { "@id": "https://normalshouse.com/#artist" },
-      "genre": ["House", "Detroit House"],
-      "duration": "PT5M52S",
-      "description": "A pulsing generator, strange signals overhead, and a groove with its own gravitational pull. An unreleased preview from normal.",
-      "url": "https://soundcloud.com/normaldj/tractor-beam"
-    },
-    {
-      "@type": "MusicRecording",
-      "name": "maniac",
-      "byArtist": {
-        "@id": "https://normalshouse.com/#artist"
-      },
-      "genre": "House",
-      "duration": "PT4M",
-      "datePublished": "2026-10-30",
-      "description": "maniac builds a persistent house pulse from plucked FM bass, distorted percussion and repeating electronic rhythms. Two bass patterns trade places as the layers thin out and return, while a voice keeps repeating the same word: maniac. The arrangement keeps changing around that fixation, finding its pressure in repetition.",
-      "url": "https://normaldj.bandcamp.com/track/normal-maniac"
-    },
-    {
-      "@type": "MusicRecording",
-      "name": "cognite",
-      "byArtist": { "@id": "https://normalshouse.com/#artist" },
-      "genre": "Acid House",
-      "duration": "PT6M43S",
-      "datePublished": "2026-06-12",
-      "isrcCode": "QZYB22562674",
-      "url": "https://normaldj.bandcamp.com/track/cognite",
-      "sameAs": "https://soundcloud.com/normaldj/cognite"
-    },
-    {
-      "@type": "MusicRecording",
-      "name": "gain it easy",
-      "byArtist": { "@id": "https://normalshouse.com/#artist" },
-      "genre": "Deep House",
-      "duration": "PT9M39S",
-      "datePublished": "2026-06-19",
-      "isrcCode": "QZNRS2580746",
-      "url": "https://normaldj.bandcamp.com/track/gain-it-easy",
-      "sameAs": "https://soundcloud.com/normaldj/normal-gain-it-easy"
-    },
-    {
-      "@type": "MusicRecording",
-      "name": "break it down",
-      "byArtist": { "@id": "https://normalshouse.com/#artist" },
-      "genre": "House",
-      "duration": "PT7M13S",
-      "datePublished": "2026-06-19",
-      "isrcCode": "QZT852577422",
-      "url": "https://normaldj.bandcamp.com/track/break-it-down",
-      "sameAs": "https://soundcloud.com/normaldj/break-it-down"
-    },
-    {
-      "@type": "MusicRecording",
-      "name": "motor city moves",
-      "byArtist": { "@id": "https://normalshouse.com/#artist" },
-      "genre": "Detroit House",
-      "duration": "PT6M58S",
-      "datePublished": "2026-07-10",
-      "isrcCode": "QM42K2511496",
-      "url": "https://normaldj.bandcamp.com/track/motor-city-moves",
-      "sameAs": "https://soundcloud.com/normaldj/motor-city-moves"
-    },
-    {
-      "@type": "MusicRecording",
-      "name": "foster the floor",
-      "byArtist": { "@id": "https://normalshouse.com/#artist" },
-      "genre": "House",
-      "duration": "PT6M59S",
-      "datePublished": "2026-07-03",
-      "isrcCode": "QT6XZ2521214",
-      "url": "https://normaldj.bandcamp.com/track/foster-the-floor",
-      "sameAs": "https://soundcloud.com/normaldj/foster-the-floor"
-    },
-    {
-      "@type": "MusicRecording",
-      "name": "intent",
-      "byArtist": { "@id": "https://normalshouse.com/#artist" },
-      "genre": "Deep House",
-      "duration": "PT9M42S",
-      "datePublished": "2026-05-29",
-      "url": "https://normaldj.bandcamp.com/track/intent",
-      "sameAs": "https://soundcloud.com/normaldj/intent"
+  .hero-platforms .hero-profiles { flex-wrap: nowrap; justify-content: space-between; gap: 0; }
+  .hero-request-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; font-weight: 700; }
+  .hero-profiles .lk {
+    min-height: 44px; padding: 0; gap: 5px;
+    font: 650 12px/1.25 var(--sans); text-decoration: none; white-space: nowrap; transition: none;
+  }
+  .hero-profiles .lk, .hero-profiles .lk:is(:hover, :focus-visible, :active) {
+    border: 0; background: transparent; color: inherit;
+  }
+  .hero-profiles .lk:is(:hover, :focus-visible, :active) svg { color: inherit; }
+  .hero-profiles .lk svg { width: 16px; height: 16px; }
+  .hero-profiles .lk.residentadvisor svg { width: 26px; }
+  .hero-profiles .lk:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .hero-profiles .lk:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+  .hero-visual {
+    position: relative; justify-self: center; width: 100%; max-width: 470px;
+    min-height: 0; aspect-ratio: 1;
+    background: transparent; pointer-events: none;
+  }
+  .hero-visual::after { content: none; }
+  .portrait-frame {
+    position: absolute; inset: 0;
+    mask-image: linear-gradient(#000 65%, rgb(0 0 0 / .88) 73%, rgb(0 0 0 / .38) 88%, transparent);
+  }
+  .portrait-layer {
+    position: absolute; inset: 0;
+    mask-image: url('assets/hero-portrait-mask.png'); mask-size: 100% 100%;
+    transform: translate(2%, -3%) scale(1.95);
+    transform-origin: 45% 72%;
+  }
+  .hero-visual .portrait-layer img {
+    inset: auto; top: -16.67%; left: 0; width: 100%; height: auto;
+    object-fit: fill; filter: none; transform: none; mask-image: none;
+  }
+  .full-content {
+    --ink: var(--page-background);
+    --paper: var(--page-text);
+    --ink-2: var(--surface);
+    --paper-dim: var(--secondary-text);
+    --paper-faint: var(--secondary-text);
+    --rule: var(--subtle-rule);
+    --display: var(--sans);
+    --v-vermilion: #EE3A24;
+  }
+  .full-content .sec { margin: clamp(62px, 8vw, 112px) 0 0; scroll-margin-top: 22px; }
+  .full-content > .sec:first-child { margin-top: 20px; }
+  .full-content .sec-head {
+    display: flex; align-items: baseline; justify-content: flex-start;
+    gap: 8px 18px; flex-wrap: wrap; margin-bottom: 24px; padding-bottom: 16px;
+    border-bottom: 1px solid var(--strong-rule);
+  }
+  .full-content .sec-head h2 {
+    margin: 0; font: 800 clamp(31px, 5vw, 64px)/1 var(--sans);
+    letter-spacing: -.056em; word-spacing: .055em; text-transform: none;
+  }
+  .full-content .sec-head .count { margin-left: auto; font-size: 11px; }
+  #releases .sec-head .count { margin: 0; }
+  #releases .sec-head .np-buy { margin-left: auto; }
+  .full-content .music-note { max-width: 73ch; font-size: 14px; }
+  .studio-intro, .vinyl-intro { font: 15px/1.45 var(--sans); }
+  .studio-intro { max-width: 54ch; }
+  .studio-intro a { text-decoration: underline; text-underline-offset: 3px; }
+  .set-browser {
+    display: grid; grid-template-columns: minmax(180px, .72fr) minmax(0, 1.8fr);
+    align-items: start; gap: clamp(16px, 3vw, 30px);
+  }
+  .set-selector { display: grid; border-bottom: 1px solid var(--subtle-rule); }
+  .set-selector button {
+    padding: 13px 14px; min-height: 48px; text-align: left;
+    border: 0; border-top: 1px solid var(--subtle-rule); border-inline-start: 3px solid transparent;
+    background: transparent; color: var(--page-text); font: 650 15px/1.4 var(--sans); cursor: pointer;
+  }
+  .set-selector button:hover, .set-selector button[aria-pressed='true'] { background: var(--surface); }
+  .set-selector button[aria-pressed='true'] { border-inline-start-color: var(--accent); color: var(--accent-text); }
+  .set-panel { padding: clamp(16px, 3vw, 32px); background: var(--surface); }
+  .set-panel-header { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
+  .set-panel h3 { margin: 0; font: 800 clamp(23px, 4vw, 50px)/1.05 var(--sans); letter-spacing: -.05em; }
+  .set-art { width: clamp(52px, 8vw, 94px); aspect-ratio: 1; height: auto; }
+  .set-description { color: var(--secondary-text); font-size: 14px; margin: 8px 0 0; }
+  .set-formats { display: flex; gap: 8px; margin-top: 15px; }
+  .set-formats button {
+    min-height: 44px; padding: 8px 14px; border: 1px solid var(--subtle-rule);
+    color: var(--page-text); background: transparent; font: 750 14px var(--sans); cursor: pointer;
+  }
+  .set-formats button[aria-pressed='true'] { border-color: var(--accent); background: var(--accent); color: var(--accent-foreground); }
+  .set-selector button:focus-visible, .set-formats button:focus-visible { outline: 2px solid var(--accent-text); outline-offset: -2px; }
+  .set-links { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+  .set-links a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
+  .set-media { margin-top: 14px; }
+  .set-player { width: 100%; min-width: 0; min-height: 200px; aspect-ratio: 16 / 9; background: var(--ink); }
+  .set-player iframe { display: block; width: 100%; height: 100%; min-height: 200px; border: 0; }
+  .set-audio { display: block; width: 100%; border: 0; background: var(--ink); }
+  .releases-pane { grid-template-columns: minmax(0, 1.36fr) minmax(0, 1fr); gap: 28px; }
+  .tracklist { max-height: none; }
+  .trk { min-height: 72px; }
+  .trk-title { font: 750 19px/1.15 var(--sans); letter-spacing: -.027em; }
+  .trk-meta { font-size: 10px; }
+  .trk-cover, .player-pane, .support-evidence, .car-slide img, .support-image { border-radius: 0; }
+  .trk[aria-current='true'] .trk-title { color: var(--accent-text); }
+  .trk-play { background: var(--accent); }
+  .trk-play svg, .trk[aria-current='true'] .trk-play svg { fill: var(--accent-foreground); }
+  .trk[aria-current='true'] .trk-play { background: #F4EFE6; }
+  .player-pane { padding: 20px; background: var(--surface); }
+  .np-title { font: 800 29px/1 var(--sans); letter-spacing: -.05em; }
+  .np-buy { text-decoration: none; font-weight: 700; }
+  .music-actions a { text-decoration: underline; text-underline-offset: 4px; }
+  .music-actions a.hero-request-cta {
+    background: var(--accent); color: var(--accent-foreground); padding: 0 14px;
+    font-weight: 750; text-decoration: none;
+  }
+  .full-content .vinyl-sec .sec-head { margin-bottom: 16px; padding-bottom: 12px; }
+  .vinyl-intro { max-width: 72ch; margin-bottom: 16px; }
+  .vinyl-grid { gap: 16px; }
+  .vinyl-card {
+    container-type: inline-size;
+    display: grid; grid-template-columns: clamp(70px, 28%, 152px) minmax(0, 1fr);
+    align-items: start; gap: 10px clamp(12px, 2vw, 24px); padding: clamp(12px, 1.6vw, 20px);
+    background: var(--surface);
+  }
+  .vinyl-card-body { align-self: stretch; padding: 0; }
+  .vinyl-card h3 {
+    margin-bottom: 8px; font: 800 clamp(21px, 2.5vw, 32px)/1.1 var(--sans); letter-spacing: -.055em;
+  }
+  .vinyl-edition, .vinyl-card.vol-two .vinyl-edition { margin-bottom: 6px; color: var(--accent-text); }
+  .vinyl-detail { margin-bottom: 10px; }
+  .vinyl-tracks { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-bottom: 14px; }
+  .vinyl-tracks li { white-space: nowrap; }
+  .vinyl-tracks li + li { border-inline-start: 1px solid var(--rule); padding-inline-start: 6px; }
+  .vinyl-tracks b { margin-inline-end: 3px; }
+  .vinyl-buy a { text-decoration: none; }
+  .vinyl-footer { gap: 8px 16px; margin-top: 14px; }
+  .car-track { padding-bottom: 6px; }
+  .car-slide { padding: 16px; background: var(--surface); border-top: 2px solid var(--rule); }
+  .car-slide figcaption a { text-decoration: underline; text-underline-offset: 3px; }
+  .car-slide blockquote { font-size: 19px; }
+  .enquiry-form { padding: clamp(18px, 3vw, 34px); background: var(--surface); max-width: 680px; }
+  .enquiry-form.booking-highlight {
+    outline: 3px solid var(--accent-text); outline-offset: 3px;
+    background: color-mix(in srgb, var(--surface) 92%, var(--accent));
+  }
+  .enquiry-form label { font-weight: 650; }
+  .enquiry-form input, .enquiry-form select, .enquiry-form textarea { min-height: 44px; }
+  .enquiry-form button { font-weight: 800; }
+  .enquiry-form .music-note { margin: 0; }
+  .site-footer { margin-top: clamp(54px, 7vw, 90px); border-top: 1px solid var(--strong-rule); padding: 24px 0 38px; }
+  .site-footer .links { gap: 7px 18px; }
+  .site-footer .lk {
+    border: 0; background: transparent; min-height: 44px; padding: 0;
+    font-size: 13px; text-decoration: none;
+  }
+  .site-footer .lk:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .footer-meta { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 18px; color: var(--secondary-text); font-size: 12px; }
+  @container (max-width: 435px) {
+    .vinyl-card-body { display: contents; }
+    .vinyl-card-heading, .vinyl-buy { grid-column: 2; }
+    .vinyl-detail, .vinyl-tracks { margin-bottom: 0; }
+    .vinyl-tracks { grid-column: 1 / -1; }
+  }
+  @media (max-width: 720px) {
+    .releases-pane, .set-browser { grid-template-columns: minmax(0, 1fr); }
+    .player-pane { padding: 12px 16px max(12px, env(safe-area-inset-bottom)); }
+    .np-title { font-size: 19px; }
+  }
+  @media (max-width: 900px) {
+    .hero-platforms .hero-profiles { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+    .hero-profiles .lk { position: relative; justify-content: center; }
+    .hero-profiles .lk span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .hero-profiles .lk svg { width: 20px; height: 20px; }
+    .hero-profiles .lk.residentadvisor svg { width: 29px; }
+  }
+  @media (max-width: 700px) {
+    .masthead.wrap {
+      position: relative; z-index: 3; width: 100%; min-height: 68px; padding: 8px 16px;
+      flex-flow: row wrap; align-items: center; justify-content: space-between;
     }
-  ]
-}
-</script>
-</head>
-<body>
+    .mobile-menu-toggle {
+      display: grid; place-items: center; width: 44px; height: 44px; padding: 0;
+      color: var(--page-text); border: 1px solid var(--subtle-rule); background: transparent; cursor: pointer;
+    }
+    .mobile-menu-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+    .menu-icon { display: grid; gap: 4px; width: 20px; }
+    .menu-icon span { height: 2px; background: currentColor; }
+    .mobile-menu-toggle[aria-expanded='true'] .menu-icon span:first-child { transform: translateY(6px) rotate(45deg); }
+    .mobile-menu-toggle[aria-expanded='true'] .menu-icon span:nth-child(2) { visibility: hidden; }
+    .mobile-menu-toggle[aria-expanded='true'] .menu-icon span:last-child { transform: translateY(-6px) rotate(-45deg); }
+    .mobile-menu-toggle:not([hidden]) + #site-nav {
+      position: absolute; inset: 100% 0 auto; display: grid; gap: 0; padding: 0 16px 8px;
+      max-height: calc(100dvh - 68px); overflow: auto;
+      background: var(--page-background); border-bottom: 1px solid var(--subtle-rule);
+    }
+    .mobile-menu-toggle[aria-expanded='false']:not([hidden]) + #site-nav { display: none; }
+    #site-nav a { display: flex; align-items: center; min-height: 44px; border-top: 1px solid var(--subtle-rule); }
+    #site-nav a:focus-visible { outline-offset: -2px; }
+    .hero { grid-template-columns: minmax(0, 1fr); padding-inline: 0; }
+    .hero-copy { grid-area: 1 / 1; padding: 30px 21px 76px; }
+    .headline { font-size: min(clamp(38px, 9.5vw, 62px), 13cqi); }
+    .hero-platforms { padding-bottom: 16px; }
+    .hero-request-link { margin-inline-start: 21px; }
+    .hero-visual {
+      grid-area: 1 / 1; justify-self: end; align-self: end;
+      width: clamp(128px, 42vw, 190px); margin-inline-end: clamp(4px, 2vw, 16px);
+    }
+  }
+  @media (max-width: 370px) {
+    .vinyl-tracks { column-gap: 4px; font-size: 12px; }
+    .vinyl-tracks li + li { padding-inline-start: 4px; }
+    .vinyl-tracks b { margin-inline-end: 2px; }
+    .vinyl-buy a { padding-inline: 12px; }
+  }
 
+</style>
+</head>
+<body id="top">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-spotify" viewBox="0 0 24 24">
     <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12C24 5.4 18.66 0 12 0m5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02m1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2M19.32 10.86C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3"/>
@@ -659,67 +945,57 @@
     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
   </symbol>
 </svg>
-
-<div class="wrap">
-
-  <header class="masthead">
-    <h1 class="mark">normal</h1>
-    <div class="meta">house · <b>made for the floor</b></div>
-    <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="pinnedMusicNav">menu</button>
-  </header>
-
-  <section class="hero">
-    <div class="hero-text">
-      <div class="eyebrow">normal · dance music · jockey &amp; producer</div>
-      <p class="tagline">To dance is a <em>privilege;</em> to make you do, <em>is mine.</em></p>
-      <p class="lede">normal is the house project of <b>Yashwanth Maheshwaram</b>, based in Bangalore. Bright, warm house with a Detroit lean, deep, raw and acid, built as DJ tools.</p>
-      <div class="hero-request">
-        <a class="hero-request-cta" href="#contact" data-enquiry="music">Request music + demos <span aria-hidden="true">↓</span></a>
-        <span class="hero-request-note">WAVs and demos for DJs, labels, radio + press.</span>
-      </div>
-      <div class="links hero-links">
-        <a class="lk bandcamp" href="https://normaldj.bandcamp.com" target="_blank" rel="noopener"><svg><use href="#i-bandcamp"/></svg><span>Bandcamp</span></a>
-        <a class="lk residentadvisor" href="https://ra.co/dj/normal-in" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false"><use href="#i-residentadvisor"/></svg><span>Resident Advisor</span></a>
-        <a class="lk soundcloud" href="https://soundcloud.com/normaldj" target="_blank" rel="noopener"><svg><use href="#i-soundcloud"/></svg><span>SoundCloud</span></a>
-        <a class="lk instagram" href="https://instagram.com/normal.dj" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg><span>Instagram</span></a>
-        <a class="lk applemusic" href="https://music.apple.com/artist/normal/1804288244" target="_blank" rel="noopener"><svg><use href="#i-applemusic"/></svg><span>Apple Music</span></a>
-        <a class="lk spotify" href="https://open.spotify.com/artist/0ow5fWEBIvvrDVDai6No2a" target="_blank" rel="noopener"><svg><use href="#i-spotify"/></svg><span>Spotify</span></a>
-        <a class="lk youtube" href="https://www.youtube.com/@normal080" target="_blank" rel="noopener"><svg><use href="#i-youtube"/></svg><span>YouTube</span></a>
-      </div>
-    </div>
-    <img class="hero-photo" src="assets/profile.jpg" alt="normal — Yashwanth Maheshwaram" width="520" height="520" loading="eager" decoding="async" fetchpriority="high" />
-  </section>
-
-  <nav class="music-nav" aria-label="Music sections">
+<header class="wrap masthead">
+  <a class="identity" href="#top">normal</a>
+  <button class="mobile-menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav" hidden>
+    <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <nav id="site-nav" aria-label="Music and contact">
+    <a href="#releases">Released music</a>
+    <a href="#unreleased">From the studio</a>
     <a href="#sets">DJ sets</a>
-    <a href="#releases">released music</a>
-    <a href="#unreleased">unreleased listening room</a>
-    <a href="#vinyl">vinyl</a>
-    <a href="#contact">contact</a>
+    <a href="#vinyl">Vinyl</a>
+    <a href="#praise">Support</a>
+    <a href="#contact">Contact</a>
   </nav>
+</header>
 
-  <section class="sec set-sec" id="sets" aria-labelledby="setsTitle">
-    <div class="sec-head">
-      <h2 id="setsTitle">DJ sets</h2>
-      <div class="count">watch the full set</div>
+<main>
+  <section class="hero" aria-labelledby="headline">
+    <div class="hero-background" aria-hidden="true"><canvas hidden></canvas></div>
+    <div class="hero-copy">
+      <p class="kicker">Dance music from Bangalore</p>
+      <h1 class="headline" id="headline">To dance is a<br><em>privilege;</em> to make<br>you do, <em>is mine.</em></h1>
+      <p class="lede">normal is the house project of <strong>Yashwanth Maheshwaram</strong>, based in Bangalore. Bright, warm house with a Detroit lean, deep, raw and acid, built as DJ tools.</p>
+      <div class="hero-actions">
+        <a class="button" href="#releases">Listen to the music <span aria-hidden="true">↓</span></a>
+      </div>
     </div>
-    <div class="set-player">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/-qdqNh4SNrI?si=SOh_GvGAzKEyEEqU" title="normal — full DJ set" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-    <div class="set-caption">
-      <p>normal · recorded 2 November 2026</p>
-      <nav class="set-links" aria-label="Listen to or watch this DJ set">
-        <a href="https://www.youtube.com/watch?v=-qdqNh4SNrI" target="_blank" rel="noopener">Watch on YouTube <span aria-hidden="true">↗</span></a>
-        <a href="https://www.mixcloud.com/normaldj/depth-grit-detroit-dj-set-by-normal-juan-atkins-forever/" target="_blank" rel="noopener">Listen on Mixcloud <span aria-hidden="true">↗</span></a>
-        <a href="https://soundcloud.com/normaldj/normal-2026-11-02-full-set" target="_blank" rel="noopener">Listen on SoundCloud <span aria-hidden="true">↗</span></a>
+    <figure class="hero-visual">
+      <div class="portrait-frame">
+        <div class="portrait-layer"><img src="assets/hero-portrait.jpg" alt="Yashwanth Maheshwaram (normal)" width="1600" height="2133"></div>
+      </div>
+    </figure>
+    <div class="hero-platforms">
+      <nav class="links hero-profiles" aria-label="normal’s profiles">
+        <a class="lk bandcamp" href="https://normaldj.bandcamp.com" target="_blank" rel="noopener" title="Bandcamp"><svg><use href="#i-bandcamp"/></svg><span>Bandcamp</span></a>
+        <a class="lk residentadvisor" href="https://ra.co/dj/normal-in" target="_blank" rel="noopener" title="Resident Advisor"><svg aria-hidden="true" focusable="false"><use href="#i-residentadvisor"/></svg><span>Resident Advisor</span></a>
+        <a class="lk soundcloud" href="https://soundcloud.com/normaldj" target="_blank" rel="noopener" title="SoundCloud"><svg><use href="#i-soundcloud"/></svg><span>SoundCloud</span></a>
+        <a class="lk instagram" href="https://instagram.com/normal.dj" target="_blank" rel="noopener" title="Instagram"><svg><use href="#i-instagram"/></svg><span>Instagram</span></a>
+        <a class="lk applemusic" href="https://music.apple.com/artist/normal/1804288244" target="_blank" rel="noopener" title="Apple Music"><svg><use href="#i-applemusic"/></svg><span>Apple Music</span></a>
+        <a class="lk spotify" href="https://open.spotify.com/artist/0ow5fWEBIvvrDVDai6No2a" target="_blank" rel="noopener" title="Spotify"><svg><use href="#i-spotify"/></svg><span>Spotify</span></a>
+        <a class="lk youtube" href="https://www.youtube.com/@normal080" target="_blank" rel="noopener" title="YouTube"><svg><use href="#i-youtube"/></svg><span>YouTube</span></a>
       </nav>
+      <a class="hero-request-link" href="#contact" data-enquiry="music">Request music + demos</a>
     </div>
   </section>
 
-  <section class="sec" id="releases">
+
+  <div class="full-content wrap">
+      <section class="sec" id="releases">
     <div class="sec-head">
-      <h2>Music</h2>
-      <div class="count" id="releaseCount">8 tracks</div>
+      <h2>Released music</h2>
+      <div class="count" id="releaseCount">7 tracks</div>
       <a class="np-buy" href="https://normaldj.bandcamp.com/" target="_blank" rel="noopener">shop the catalogue <span aria-hidden="true">↗</span></a>
     </div>
     <div class="releases-pane">
@@ -766,12 +1042,6 @@
           <a class="trk-buy" href="https://normaldj.bandcamp.com/track/motor-city-moves" target="_blank" rel="noopener" aria-label="Buy motor city moves on Bandcamp">buy <span aria-hidden="true">↗</span></a>
           <button class="trk-play" type="button" aria-label="Play motor city moves"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </li>
-        <li class="trk" data-release-date="2026-08-07" data-embed="https://bandcamp.com/EmbeddedPlayer/v=2/track=1882710546/size=medium/tracklist=false/artwork=small/bgcol=1c1814/linkcol=1B49C7/" data-h="120" data-title="liberate" data-credit="with alldayallnight" data-meta="&lt;b&gt;7 Aug 2026&lt;/b&gt; · out now · 122 · house / synth-funk" data-desc="80s keys, a swung pocket, and a groove that twists the rhythm without breaking it." data-buy="https://normaldj.bandcamp.com/track/normal-x-alldayallnight-liberate" data-buylabel="Buy on Bandcamp" data-buyicon="i-bandcamp" data-cover="assets/covers/liberate.jpg">
-          <img class="trk-cover" src="assets/covers/liberate.jpg" alt="liberate cover" loading="lazy" decoding="async" width="48" height="48" />
-          <span class="trk-info"><span class="trk-title">liberate <span class="trk-credit">with alldayallnight</span></span><span class="trk-meta"><b>7 Aug 2026</b> · out now · 122 · house / synth-funk</span></span>
-          <a class="trk-buy" href="https://normaldj.bandcamp.com/track/normal-x-alldayallnight-liberate" target="_blank" rel="noopener" aria-label="Buy liberate on Bandcamp">buy <span aria-hidden="true">↗</span></a>
-          <button class="trk-play" type="button" aria-label="Play liberate"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-        </li>
       </ol>
       <aside class="player-pane" id="playerPane" aria-live="polite">
         <p class="np-empty" id="npEmpty">Select a track to play.</p>
@@ -791,20 +1061,72 @@
 
   <section class="sec unreleased-sec" id="unreleased" aria-labelledby="unreleasedTitle">
     <div class="sec-head">
-      <h2 id="unreleasedTitle">Unreleased / previews</h2>
-      <div class="count">the listening room</div>
+      <h2 id="unreleasedTitle">from the studio</h2>
     </div>
-    <p class="music-note">for listening and evaluation only. release, redistribution or other use requires separate written permission from the relevant rights holders, except where permitted by law. for licensing or a release partnership, <a href="#contact" data-enquiry="label">get in touch</a> or <a href="mailto:hello@normalshouse.com">email me</a> with the track, version and proposed use.</p>
-    <iframe class="unreleased-player" title="normal’s unreleased music listening room" width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" loading="lazy" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2306424099%3Fsecret_token%3Ds-4WuGUGal28e&amp;color=%23e74927&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false"></iframe>
+    <p class="studio-intro">hear what I tinker with, DJ selections are welcome and you can reach me via the <a href="#contact">contact form</a>.</p>
+    <iframe class="unreleased-player" title="music from normal’s studio on SoundCloud" width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" loading="lazy" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2306424099%3Fsecret_token%3Ds-4WuGUGal28e&amp;color=%23e74927&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false"></iframe>
     <div class="music-actions">
-      <a class="hero-request-cta" href="#contact" data-enquiry="music">request music + WAVs <span aria-hidden="true">↓</span></a>
+      <a class="hero-request-cta" href="#contact" data-enquiry="music">request a WAV <span aria-hidden="true">↓</span></a>
       <a href="#releases">find something to take home <span aria-hidden="true">↑</span></a>
     </div>
-    <p class="music-note">some recordings have previous public or commercial release history. availability and any exclusivity are confirmed track by track.</p>
-    <p class="music-note">the player is hosted by SoundCloud and uses <a href="https://soundcloud.com/pages/cookies" target="_blank" rel="noopener">cookies</a>.</p>
   </section>
 
-  <section class="sec vinyl-sec" id="vinyl" aria-labelledby="vinylTitle">
+
+    <section class="sec set-sec" id="sets" aria-labelledby="setsTitle">
+  <div class="sec-head"><h2 id="setsTitle">DJ sets</h2></div>
+  <div class="set-browser">
+    <div class="set-selector" role="group" aria-label="Select a DJ set"><button type="button" aria-pressed="true" aria-controls="set-0">Depth &amp; Grit</button>
+<button type="button" aria-pressed="false" aria-controls="set-1">freestyle/breakbeat - normal recordings set</button>
+<button type="button" aria-pressed="false" aria-controls="set-2">Normal Mixtapes Vol 003 - nomuse - house was dead</button>
+<button type="button" aria-pressed="false" aria-controls="set-3">Normal Mix Tapes - Vol 002</button></div>
+    <div class="set-panels">
+      <section class="set-panel" id="set-0" aria-labelledby="set-title-0">
+        <header class="set-panel-header">
+          <div>
+            <h3 id="set-title-0">Depth &amp; Grit</h3>
+            <p class="set-description">Detroit DJ set · recorded 2 November 2026</p>
+          </div>
+          <img class="set-art" src="assets/depth-and-grit.jpg" alt="Depth &amp; Grit cover" width="800" height="800" loading="lazy">
+        </header>
+        <div class="set-formats" role="group" aria-label="Choose a player">
+          <button type="button" aria-pressed="true" aria-controls="set-video">Video</button>
+          <button type="button" aria-pressed="false" aria-controls="set-soundcloud">SoundCloud</button>
+        </div>
+        <div class="set-player set-media" id="set-video" data-set-media><iframe width="560" height="315" data-player-src="https://www.youtube.com/embed/-qdqNh4SNrI?si=szlFZsSarE-Z-zDU" title="normal — full DJ set" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="set-media" id="set-soundcloud" data-set-media hidden>
+          <iframe class="set-audio" data-player-src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2431266696&amp;color=%23F5C932&amp;auto_play=false&amp;show_comments=false" title="Depth &amp; Grit on SoundCloud" height="166" loading="lazy" allow="autoplay"></iframe>
+        </div>
+        <nav class="set-links" aria-label="Listen to or watch this DJ set">
+        <a href="https://www.youtube.com/watch?v=-qdqNh4SNrI" target="_blank" rel="noopener">Watch on YouTube <span aria-hidden="true">↗</span></a>
+        <a href="https://www.mixcloud.com/normaldj/depth-grit-detroit-dj-set-by-normal-juan-atkins-forever/" target="_blank" rel="noopener">Listen on Mixcloud <span aria-hidden="true">↗</span></a>
+        <a href="https://soundcloud.com/normaldj/normal-2026-11-02-full-set" target="_blank" rel="noopener">Listen on SoundCloud <span aria-hidden="true">↗</span></a>
+      </nav>
+      </section>
+      <section class="set-panel" id="set-1" aria-labelledby="set-title-1" hidden>
+      <h3 id="set-title-1">freestyle/breakbeat - normal recordings set</h3>
+      <div class="set-media" data-set-media>
+        <iframe class="set-audio" data-player-src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F1945703171&amp;color=%23F5C932&amp;auto_play=false&amp;show_comments=false" title="freestyle/breakbeat - normal recordings set on SoundCloud" height="166" loading="lazy" allow="autoplay; encrypted-media"></iframe>
+      </div>
+      <nav class="set-links" aria-label="External set links"><a href="https://soundcloud.com/normaldj/freed-by-grit" target="_blank" rel="noopener">Open on SoundCloud ↗</a></nav>
+    </section>
+<section class="set-panel" id="set-2" aria-labelledby="set-title-2" hidden>
+      <h3 id="set-title-2">Normal Mixtapes Vol 003 - nomuse - house was dead</h3>
+      <div class="set-media" data-set-media>
+        <iframe class="set-audio" data-player-src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F1814396730&amp;color=%23F5C932&amp;auto_play=false&amp;show_comments=false" title="Normal Mixtapes Vol 003 - nomuse - house was dead on SoundCloud" height="166" loading="lazy" allow="autoplay; encrypted-media"></iframe>
+      </div>
+      <nav class="set-links" aria-label="External set links"><a href="https://soundcloud.com/normaldj/nomuse" target="_blank" rel="noopener">Open on SoundCloud ↗</a></nav>
+    </section>
+<section class="set-panel" id="set-3" aria-labelledby="set-title-3" hidden>
+      <h3 id="set-title-3">Normal Mix Tapes - Vol 002</h3>
+      <div class="set-media" data-set-media>
+        <iframe class="set-audio" data-player-src="https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2Fnormaldj%2Fnormal-mix-tapes-vol-002%2F&amp;hide_cover=1" title="Normal Mix Tapes - Vol 002 on Mixcloud" height="120" loading="lazy" allow="autoplay; encrypted-media"></iframe>
+      </div>
+      <nav class="set-links" aria-label="External set links"><a href="https://www.mixcloud.com/normaldj/normal-mix-tapes-vol-002/" target="_blank" rel="noopener">Open on Mixcloud ↗</a></nav>
+    </section>
+    </div>
+  </div>
+</section>
+      <section class="sec vinyl-sec" id="vinyl" aria-labelledby="vinylTitle">
     <div class="sec-head">
       <h2 id="vinylTitle">Vinyl</h2>
       <span class="vinyl-status">enquiry only</span>
@@ -814,9 +1136,11 @@
       <article class="vinyl-card vol-one" aria-labelledby="volOneTitle">
         <img src="assets/vinyl/house-of-normalcy-vol-1-shop.jpg" alt="house of normalcy vinyl cover: cream record, cobalt lettering and vermilion background" width="1800" height="1800" loading="lazy" decoding="async" />
         <div class="vinyl-card-body">
-          <p class="vinyl-edition">NRML·V01 / Volume 1</p>
-          <h3 id="volOneTitle">house of normalcy</h3>
-          <p class="vinyl-detail">12-inch · 33⅓ RPM · printed inner sleeve</p>
+          <div class="vinyl-card-heading">
+            <p class="vinyl-edition">NRML·V01 / Volume 1</p>
+            <h3 id="volOneTitle">house of normalcy</h3>
+            <p class="vinyl-detail">12-inch · 33⅓ RPM · printed inner sleeve</p>
+          </div>
           <ul class="vinyl-tracks">
             <li><b>A1</b> gain it easy</li>
             <li><b>B1</b> cognite</li>
@@ -828,12 +1152,13 @@
       <article class="vinyl-card vol-two" aria-labelledby="volTwoTitle">
         <img src="assets/vinyl/house-of-normalcy-vol-2-shop.jpg" alt="house of normalcy vol. 2 vinyl cover in cobalt, vermilion and cream" width="1800" height="1800" loading="lazy" decoding="async" />
         <div class="vinyl-card-body">
-          <p class="vinyl-edition">NRML·V02 / Volume 2</p>
-          <h3 id="volTwoTitle">house of normalcy <em>vol. 2</em></h3>
-          <p class="vinyl-detail">12-inch · 33⅓ RPM · printed inner sleeve</p>
+          <div class="vinyl-card-heading">
+            <p class="vinyl-edition">NRML·V02 / Volume 2</p>
+            <h3 id="volTwoTitle">house of normalcy <em>vol. 2</em></h3>
+            <p class="vinyl-detail">12-inch · 33⅓ RPM · printed inner sleeve</p>
+          </div>
           <ul class="vinyl-tracks">
-            <li><b>A1</b> liberate <small>× alldayallnight</small></li>
-            <li><b>A2</b> maniac</li>
+            <li><b>A1</b> maniac</li>
             <li><b>B1</b> cognite</li>
             <li><b>B2</b> motor city moves</li>
           </ul>
@@ -863,26 +1188,8 @@
   </section>
   <dialog class="support-dialog" id="supportDialog" aria-label="Message screenshot"><button type="button" class="support-close" aria-label="Close screenshot">×</button><img alt="" /></dialog>
 
-  <section class="sec" id="mailing" hidden>
-    <div class="sec-head">
-      <h2>Mailing list</h2>
-    </div>
-    <div class="signup">
-      <p>New tracks, private bandcamp codes and the odd set, straight to your inbox. No spam, leave whenever.</p>
-      <!-- BUTTONDOWN: after you create the free account at buttondown.com, replace BUTTONDOWN_USERNAME in BOTH spots below with your handle. Until then the form is inert. -->
-      <form class="signup-form"
-            action="https://buttondown.com/api/emails/embed-subscribe/BUTTONDOWN_USERNAME"
-            method="post" target="popupwindow"
-            onsubmit="window.open('https://buttondown.com/BUTTONDOWN_USERNAME','popupwindow')">
-        <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address" />
-        <input type="hidden" value="1" name="embed" />
-        <button type="submit">subscribe</button>
-      </form>
-      <p class="signup-note">or follow <a href="https://instagram.com/normal.dj" target="_blank" rel="noopener">@normal.dj</a>, that's where everything lands first.</p>
-    </div>
-  </section>
 
-  <section class="sec" id="contact" aria-labelledby="contactTitle">
+      <section class="sec" id="contact" aria-labelledby="contactTitle">
     <div class="sec-head"><h2 id="contactTitle">Contact</h2></div>
     <p class="music-note">request music, discuss a release or booking, or enquire about vinyl.</p>
     <form class="enquiry-form" id="enquiryForm">
@@ -897,48 +1204,26 @@
     </form>
   </section>
 
-  <footer>
-    <address>
-      <span>© normal · 2026</span>
-      <span>Bangalore, India · <a href="#contact" data-enquiry="booking">Booking enquiries</a></span>
-    </address>
-  </footer>
 
-</div>
-
-
+    <footer class="site-footer">
+  <nav class="links" aria-label="normal on music platforms and social media">
+        <a class="lk bandcamp" href="https://normaldj.bandcamp.com" target="_blank" rel="noopener"><svg><use href="#i-bandcamp"/></svg><span>Bandcamp</span></a>
+        <a class="lk residentadvisor" href="https://ra.co/dj/normal-in" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false"><use href="#i-residentadvisor"/></svg><span>Resident Advisor</span></a>
+        <a class="lk soundcloud" href="https://soundcloud.com/normaldj" target="_blank" rel="noopener"><svg><use href="#i-soundcloud"/></svg><span>SoundCloud</span></a>
+        <a class="lk instagram" href="https://instagram.com/normal.dj" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg><span>Instagram</span></a>
+        <a class="lk applemusic" href="https://music.apple.com/artist/normal/1804288244" target="_blank" rel="noopener"><svg><use href="#i-applemusic"/></svg><span>Apple Music</span></a>
+        <a class="lk spotify" href="https://open.spotify.com/artist/0ow5fWEBIvvrDVDai6No2a" target="_blank" rel="noopener"><svg><use href="#i-spotify"/></svg><span>Spotify</span></a>
+        <a class="lk youtube" href="https://www.youtube.com/@normal080" target="_blank" rel="noopener"><svg><use href="#i-youtube"/></svg><span>YouTube</span></a>
+      </nav>
+  <div class="footer-meta">
+    <span>© normal · 2026</span>
+    <span>Bangalore, India</span>
+    <a href="#contact" data-enquiry="booking">Booking enquiries</a>
+  </div>
+</footer>
+  </div>
+</main>
 <script>
-(() => {
-  const header = document.querySelector('.masthead');
-  const original = document.querySelector('.wrap > .music-nav');
-  if (!header || !original) return;
-  const floating = original.cloneNode(true);
-  floating.id = 'pinnedMusicNav';
-  floating.setAttribute('aria-label', 'Pinned music sections');
-  floating.hidden = true;
-  header.appendChild(floating);
-  const toggle = header.querySelector('.mobile-menu-toggle');
-  const closeMenu = () => { header.classList.remove('menu-open'); toggle.setAttribute('aria-expanded', 'false'); };
-  toggle.addEventListener('click', () => { const open = header.classList.toggle('menu-open'); toggle.setAttribute('aria-expanded', String(open)); });
-  floating.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-  document.addEventListener('keydown', event => { if (event.key === 'Escape' && header.classList.contains('menu-open')) { closeMenu(); toggle.focus(); } });
-  let pending = false;
-  const update = () => {
-    pending = false;
-    const mobile = matchMedia('(max-width:720px)').matches;
-    const lifted = mobile || original.getBoundingClientRect().bottom <= header.getBoundingClientRect().bottom;
-    header.classList.toggle('nav-lifted', lifted);
-    floating.hidden = !lifted;
-    original.classList.toggle('nav-placeholder', lifted);
-    original.setAttribute('aria-hidden', String(lifted));
-    original.querySelectorAll('a').forEach(link => { link.tabIndex = lifted ? -1 : 0; });
-    document.documentElement.style.setProperty('--header-offset', `${header.offsetHeight + 20}px`);
-  };
-  const schedule = () => { if (!pending) { pending = true; requestAnimationFrame(update); } };
-  window.addEventListener('scroll', schedule, {passive:true});
-  window.addEventListener('resize', schedule);
-  update();
-})();
 (() => {
   for (const id of ['featured', 'features', 'dj-mixes', 'mixes']) {
     const section = document.getElementById(id);
@@ -1070,17 +1355,37 @@
   const prev=document.querySelector('#praise .prev'),next=document.querySelector('#praise .next'),dotsBox=document.getElementById('praiseDots');
   const reduced=matchMedia('(prefers-reduced-motion: reduce)'),dialog=document.getElementById('supportDialog');
   const positions=()=>slides.map(s=>s.getBoundingClientRect().left-track.getBoundingClientRect().left+track.scrollLeft);
-  const go=i=>track.scrollTo({left:Math.max(0,Math.min(positions()[i],track.scrollWidth-track.clientWidth)),behavior:reduced.matches?'instant':'smooth'});
+  const scrollEnd = () => Math.max(0, track.scrollWidth - track.clientWidth);
+  const go = (index, wrapping = false) => track.scrollTo({
+    left: Math.max(0, Math.min(positions()[index], scrollEnd())),
+    behavior: wrapping || reduced.matches ? 'instant' : 'smooth',
+  });
   slides.forEach((slide,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Go to feedback '+(i+1));b.addEventListener('click',()=>go(i));dotsBox.appendChild(b)});
   const render=()=>{
     const bounds=track.getBoundingClientRect(),visible=slides.map((s,i)=>({i,r:s.getBoundingClientRect()})).filter(({r})=>r.left>=bounds.left-2&&r.right<=bounds.right+2);
     const pos=positions(),first=pos.findIndex(x=>x>=track.scrollLeft-2),start=visible[0]?.i??Math.max(0,first),end=visible.at(-1)?.i??start;
     count.textContent=(start+1)+(end>start?'–'+(end+1):'')+' / '+slides.length;
-    prev.disabled=track.scrollLeft<=2;next.disabled=track.scrollLeft>=track.scrollWidth-track.clientWidth-2;
     prev.hidden=next.hidden=dotsBox.hidden=track.scrollWidth<=track.clientWidth+2;
     [...dotsBox.children].forEach((b,i)=>b.setAttribute('aria-current',i===start?'true':'false'));
   };
-  const step=dir=>{const pos=positions();let i;if(dir>0){i=pos.findIndex(x=>x>track.scrollLeft+2);if(i<0)i=slides.length-1}else{i=pos.findLastIndex(x=>x<track.scrollLeft-2);if(i<0)i=0}go(i)};
+  const step = direction => {
+    const end = scrollEnd();
+    if (end <= 2) return;
+    const offset = track.scrollLeft;
+    if (direction > 0 && offset >= end - 2) {
+      go(0, true);
+      return;
+    }
+    if (direction < 0 && offset <= 2) {
+      go(slides.length - 1, true);
+      return;
+    }
+    const pos = positions();
+    const index = direction > 0
+      ? pos.findIndex(left => left > offset + 2)
+      : pos.findLastIndex(left => left < offset - 2);
+    go(index < 0 ? (direction > 0 ? slides.length - 1 : 0) : index);
+  };
   prev.addEventListener('click',()=>step(-1));next.addEventListener('click',()=>step(1));
   track.addEventListener('keydown',e=>{if(e.target!==track)return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();step(e.key==='ArrowRight'?1:-1)}});
   let frame;track.addEventListener('scroll',()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(render)});
@@ -1093,11 +1398,310 @@
 })();
 </script>
 
+
+<script>
+const setBrowser = document.querySelector('.set-browser');
+const setButtons = [...setBrowser.querySelectorAll('.set-selector button')];
+const panelFor = button => document.getElementById(button.getAttribute('aria-controls'));
+
+function showSetMedia(panel, activeMedia) {
+  for (const media of panel.querySelectorAll('[data-set-media]')) {
+    const player = media.querySelector('iframe');
+    media.hidden = media !== activeMedia;
+    if (media.hidden) player.removeAttribute('src');
+    else if (!player.hasAttribute('src')) player.src = player.dataset.playerSrc;
+  }
+}
+
+function selectSet(selected) {
+  for (const button of setButtons) {
+    const active = button === selected;
+    const panel = panelFor(button);
+    button.setAttribute('aria-pressed', String(active));
+    panel.hidden = !active;
+    if (active) {
+      const format = panel.querySelector('.set-formats button[aria-pressed="true"]');
+      showSetMedia(panel, format ? panelFor(format) : panel.querySelector('[data-set-media]'));
+    } else {
+      showSetMedia(panel, null);
+    }
+  }
+}
+
+for (const button of setButtons) {
+  button.addEventListener('click', () => selectSet(button));
+}
+
+for (const formats of setBrowser.querySelectorAll('.set-formats')) {
+  const buttons = [...formats.querySelectorAll('button')];
+  for (const button of buttons) {
+    button.addEventListener('click', () => {
+      for (const option of buttons) option.setAttribute('aria-pressed', String(option === button));
+      showSetMedia(formats.closest('.set-panel'), panelFor(button));
+    });
+  }
+}
+
+selectSet(setButtons[0]);
+
+</script>
+<script>
+(() => {
+  const toggle = document.querySelector('.mobile-menu-toggle');
+  const nav = document.getElementById(toggle.getAttribute('aria-controls'));
+  const mobile = matchMedia('(max-width: 700px)');
+  const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
+  const setOpen = open => toggle.setAttribute('aria-expanded', String(open));
+
+  toggle.addEventListener('click', () => setOpen(!isOpen()));
+  nav.addEventListener('click', event => {
+    if (event.target.closest('a')) setOpen(false);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && isOpen()) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+  document.addEventListener('pointerdown', event => {
+    if (isOpen() && !toggle.contains(event.target) && !nav.contains(event.target)) setOpen(false);
+  });
+  mobile.addEventListener('change', () => setOpen(false));
+  toggle.hidden = false;
+})();
+
+</script>
+<script>
+const vertexSource = `#version 300 es
+void main() {
+  vec2 corner = vec2(float((gl_VertexID << 1) & 2), float(gl_VertexID & 2));
+  gl_Position = vec4(corner * 2.0 - 1.0, 0.0, 1.0);
+}`;
+
+// The original liquid field, evaluated at the actual canvas pixel positions.
+const fragmentSource = `#version 300 es
+precision highp float;
+uniform vec2 size;
+uniform float time;
+uniform vec3 low;
+uniform vec3 middle;
+uniform vec3 high;
+uniform vec3 ridgeColour;
+uniform bool twoColours;
+uniform bool dark;
+out vec4 pixel;
+
+void main() {
+  float aspect = clamp(size.x / size.y, .45, 2.2);
+  vec2 point = vec2(gl_FragCoord.x / size.x, 1.0 - gl_FragCoord.y / size.y) - .5;
+  float x = point.x * aspect;
+  float y = point.y;
+  float phase = time * 6.2831853 / 18.0;
+  float sway = sin(phase);
+  float drift = cos(phase);
+  float angle = .72 + .16 * sway;
+  float u = x * cos(angle) + y * sin(angle);
+  float v = y * cos(angle) - x * sin(angle);
+  float flowX = u + .21 * sin(v * 5.3 + sway * .75) + .06 * sin(v * 10.5 + u * 3.0 + drift);
+  float flowY = v + .13 * sin(u * 5.4 + drift * .95) + .06 * cos(u * 10.7 - sway);
+  float curl = sin(flowX * 4.9 + flowY * 3.2 + .5 + sway * .8);
+  float fold = flowY * 5.3 + curl * 1.9 + drift * .83;
+  float strength = clamp(.5 + sin(fold) * .39 + sin(flowX * 6.5 - flowY * 5.9 + drift) * .11 + .10 * (.3 - x), 0.0, 1.0);
+  vec3 colour = strength < .53
+    ? mix(low, middle, smoothstep(0.0, .53, strength))
+    : mix(middle, high, smoothstep(.53, 1.0, strength));
+  if (twoColours) {
+    colour = mix(low, high, dark ? smoothstep(.38, .67, strength) : smoothstep(.05, .95, strength));
+  }
+
+  float crest = cos(fold * 7.0 + flowX * 2.3);
+  float edge = max(fwidth(crest), .002);
+  float ridge = smoothstep(.83 - edge, 1.0, crest);
+  colour = mix(colour, ridgeColour, ridge * ridge * .31);
+  float dither = (fract(52.9829189 * fract(dot(gl_FragCoord.xy, vec2(.06711056, .00583715)))) - .5) / 255.0;
+  pixel = vec4(colour + dither, 1.0);
+}`;
+
+function createHeroRenderer(canvas, background) {
+  const gl = canvas.getContext('webgl2', { alpha: false, antialias: false });
+  if (!gl) return null;
+
+  function compile(type, source) {
+    const shader = gl.createShader(type);
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+    if (gl.getShaderParameter(shader, gl.COMPILE_STATUS)) return shader;
+    gl.deleteShader(shader);
+    return null;
+  }
+
+  const vertex = compile(gl.VERTEX_SHADER, vertexSource);
+  const fragment = compile(gl.FRAGMENT_SHADER, fragmentSource);
+  if (!vertex || !fragment) {
+    if (vertex) gl.deleteShader(vertex);
+    if (fragment) gl.deleteShader(fragment);
+    return null;
+  }
+
+  const program = gl.createProgram();
+  gl.attachShader(program, vertex);
+  gl.attachShader(program, fragment);
+  gl.linkProgram(program);
+  gl.deleteShader(vertex);
+  gl.deleteShader(fragment);
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    gl.deleteProgram(program);
+    return null;
+  }
+
+  gl.useProgram(program);
+  gl.bindVertexArray(gl.createVertexArray());
+  const uniforms = Object.fromEntries(['size', 'time', 'low', 'middle', 'high', 'ridgeColour', 'twoColours', 'dark']
+    .map(name => [name, gl.getUniformLocation(program, name)]));
+  const viewportLimit = gl.getParameter(gl.MAX_VIEWPORT_DIMS);
+
+  function toRGB(hex) {
+    return hex.slice(1).match(/../g).map(channel => Number.parseInt(channel, 16) / 255);
+  }
+
+  function setPalette({ stops, ridge, dark }) {
+    const [low, middle, high = middle] = stops;
+    gl.uniform3fv(uniforms.low, toRGB(low));
+    gl.uniform3fv(uniforms.middle, toRGB(middle));
+    gl.uniform3fv(uniforms.high, toRGB(high));
+    gl.uniform3fv(uniforms.ridgeColour, toRGB(ridge));
+    gl.uniform1i(uniforms.twoColours, Number(stops.length === 2));
+    gl.uniform1i(uniforms.dark, Number(dark));
+  }
+
+  function draw(time) {
+    gl.uniform1f(uniforms.time, time);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+
+  function resize(time) {
+    const { clientWidth: width, clientHeight: height } = background;
+    if (!width || !height || gl.isContextLost()) return;
+    const scale = Math.min(devicePixelRatio || 1, 2, Math.sqrt(3_200_000 / (width * height)),
+      viewportLimit[0] / width, viewportLimit[1] / height);
+    const targetWidth = Math.max(1, Math.floor(width * scale));
+    const targetHeight = Math.max(1, Math.floor(height * scale));
+    if (canvas.width !== targetWidth) canvas.width = targetWidth;
+    if (canvas.height !== targetHeight) canvas.height = targetHeight;
+    gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+    gl.uniform2f(uniforms.size, gl.drawingBufferWidth, gl.drawingBufferHeight);
+    draw(time);
+    canvas.hidden = false;
+  }
+
+  canvas.addEventListener('webglcontextlost', () => { canvas.hidden = true; });
+  return { setPalette, draw, resize };
+}
+
+const background = document.querySelector('.hero-background');
+const canvas = background.querySelector('canvas');
+let renderer = createHeroRenderer(canvas, background);
+const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+const staticOnly = navigator.connection?.saveData
+  || (navigator.deviceMemory ?? Infinity) <= 2
+  || (navigator.hardwareConcurrency ?? Infinity) <= 2;
+// Animation frame timestamps are measured from the start of page navigation.
+const motionDeadline = 45_000;
+const startingFrame = 1.4;
+let time = startingFrame;
+let animationId = 0;
+let startedAt = null;
+let previousFrame = null;
+let lastDraw = -Infinity;
+let slowFrames = 0;
+let finished = false;
+
+function renderFrame(time) {
+  renderer?.draw(time);
+}
+
+function stopAnimation() {
+  finished = true;
+  cancelAnimationFrame(animationId);
+  animationId = 0;
+}
+
+function tick(now) {
+  startedAt ??= now;
+  const slowFrame = previousFrame !== null && now - previousFrame > 42;
+  slowFrames = slowFrame ? slowFrames + 1 : Math.max(0, slowFrames - 1);
+  previousFrame = now;
+
+  if (now >= motionDeadline || slowFrames >= 5) {
+    stopAnimation();
+    return;
+  }
+  if (now - lastDraw >= 1000 / 25) {
+    time = startingFrame + (now - startedAt) / 1000;
+    lastDraw = now;
+    renderFrame(time);
+  }
+  animationId = requestAnimationFrame(tick);
+}
+
+if (renderer) {
+  const style = getComputedStyle(background);
+  const stops = ['--lime', '--yellow', '--paper'].map(name => style.getPropertyValue(name).trim());
+  renderer.setPalette({ stops, ridge: stops[0], dark: false });
+  renderer.resize(time);
+  new ResizeObserver(() => renderer?.resize(time)).observe(background);
+  canvas.addEventListener('webglcontextlost', () => {
+    renderer = null;
+    stopAnimation();
+  });
+
+  if (!staticOnly && !motionPreference.matches) {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !document.hidden && !finished && !animationId && performance.now() < motionDeadline) {
+        animationId = requestAnimationFrame(tick);
+      } else if (!entry.isIntersecting && animationId) {
+        stopAnimation();
+      }
+    });
+    observer.observe(background);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && animationId) stopAnimation();
+    });
+    motionPreference.addEventListener('change', event => {
+      if (event.matches) stopAnimation();
+    });
+  }
+}
+
+const bookingLink = document.querySelector('.site-footer [data-enquiry="booking"]');
+const enquiryForm = document.getElementById('enquiryForm');
+let bookingShake;
+let bookingHighlightTimer;
+
+bookingLink.addEventListener('click', () => {
+  enquiryForm.classList.add('booking-highlight');
+  clearTimeout(bookingHighlightTimer);
+  bookingHighlightTimer = setTimeout(() => enquiryForm.classList.remove('booking-highlight'), 2600);
+
+  bookingShake?.cancel();
+  if (!staticOnly && !motionPreference.matches) {
+    bookingShake = enquiryForm.animate([
+      { transform: 'translateX(0)' },
+      { transform: 'translateX(-6px)' },
+      { transform: 'translateX(5px)' },
+      { transform: 'translateX(-3px)' },
+      { transform: 'translateX(2px)' },
+      { transform: 'translateX(0)' },
+    ], { duration: 340, easing: 'ease-out' });
+  }
+});
+
+</script>
 <!-- Cloudflare Web Analytics -->
 <script defer src="assets/analytics.js"></script>
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8b45bcdbcd6346018e847753bdbbb168"}'></script>
 <!-- End Cloudflare Web Analytics -->
 
+
 </body>
 </html>
-
