@@ -871,6 +871,21 @@
   .enquiry-form label { font-weight: 650; }
   .enquiry-form input, .enquiry-form select, .enquiry-form textarea { min-height: 44px; }
   .enquiry-form button { font-weight: 800; }
+
+  @media screen and (forced-colors: none) {
+    /* Keep dark labels and icons legible on the bright hero and accent buttons. */
+    .hero-copy :is(.kicker, .lede),
+    .hero-profiles .lk,
+    .hero-request-link,
+    .np-buy:not(:hover) > :is(span, svg),
+    .hero-request-cta > span,
+    .set-formats button[aria-pressed='true'] > span,
+    .vinyl-buy a:not(:hover) > span,
+    .enquiry-form button > span,
+    .trk:not([aria-current='true']) .trk-play svg {
+      filter: brightness(0) invert(7%);
+    }
+  }
   .enquiry-form .music-note { margin: 0; }
   .site-footer { margin-top: clamp(54px, 7vw, 90px); border-top: 1px solid var(--strong-rule); padding: 24px 0 38px; }
   .site-footer .links { gap: 7px 18px; }
@@ -1015,7 +1030,7 @@
     <div class="sec-head">
       <h2>Released music</h2>
       <div class="count" id="releaseCount">7 tracks</div>
-      <a class="np-buy" href="https://normaldj.bandcamp.com/" target="_blank" rel="noopener">shop the catalogue <span aria-hidden="true">↗</span></a>
+      <a class="np-buy" href="https://normaldj.bandcamp.com/" target="_blank" rel="noopener"><span>shop the catalogue</span> <span aria-hidden="true">↗</span></a>
     </div>
     <div class="releases-pane">
       <ol class="tracklist" id="tracklist">
@@ -1091,7 +1106,7 @@
       <a href="https://soundcloud.com/normaldj/sets/from-the-studio/s-4WuGUGal28e" title="normal - from the studio" target="_blank" rel="noopener" style="color: #cccccc; text-decoration: none;">normal - from the studio</a>
     </div>
     <div class="music-actions">
-      <a class="hero-request-cta" href="#contact" data-enquiry="music">request a WAV <span aria-hidden="true">↓</span></a>
+      <a class="hero-request-cta" href="#contact" data-enquiry="music"><span>request a WAV</span> <span aria-hidden="true">↓</span></a>
       <a href="#releases">find something to take home <span aria-hidden="true">↑</span></a>
     </div>
   </section>
@@ -1114,8 +1129,8 @@
           <img class="set-art" src="assets/depth-and-grit.jpg" alt="Depth &amp; Grit cover" width="800" height="800" loading="lazy">
         </header>
         <div class="set-formats" role="group" aria-label="Choose a player">
-          <button type="button" aria-pressed="true" aria-controls="set-video">Video</button>
-          <button type="button" aria-pressed="false" aria-controls="set-soundcloud">SoundCloud</button>
+          <button type="button" aria-pressed="true" aria-controls="set-video"><span>Video</span></button>
+          <button type="button" aria-pressed="false" aria-controls="set-soundcloud"><span>SoundCloud</span></button>
         </div>
         <div class="set-player set-media" id="set-video" data-set-media><iframe width="560" height="315" data-player-src="https://www.youtube.com/embed/-qdqNh4SNrI?si=szlFZsSarE-Z-zDU" title="normal — full DJ set" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
         <div class="set-media" id="set-soundcloud" data-set-media hidden>
@@ -1171,7 +1186,7 @@
             <li><b>B1</b> cognite</li>
             <li><b>B2</b> foster the floor</li>
           </ul>
-          <div class="vinyl-buy"><a href="#contact" data-enquiry="vinyl" data-vinyl-release="house of normalcy" aria-label="Enquire about house of normalcy on vinyl">enquire about vinyl ↓</a></div>
+          <div class="vinyl-buy"><a href="#contact" data-enquiry="vinyl" data-vinyl-release="house of normalcy" aria-label="Enquire about house of normalcy on vinyl"><span>enquire about vinyl ↓</span></a></div>
         </div>
       </article>
       <article class="vinyl-card vol-two" aria-labelledby="volTwoTitle">
@@ -1187,7 +1202,7 @@
             <li><b>B1</b> cognite</li>
             <li><b>B2</b> motor city moves</li>
           </ul>
-          <div class="vinyl-buy"><a href="#contact" data-enquiry="vinyl" data-vinyl-release="house of normalcy vol. 2" aria-label="Enquire about house of normalcy vol. 2 on vinyl">enquire about vinyl ↓</a></div>
+          <div class="vinyl-buy"><a href="#contact" data-enquiry="vinyl" data-vinyl-release="house of normalcy vol. 2" aria-label="Enquire about house of normalcy vol. 2 on vinyl"><span>enquire about vinyl ↓</span></a></div>
         </div>
       </article>
     </div>
@@ -1224,7 +1239,7 @@
       <label>You are requesting as<select name="role" required><option value="">Select a role</option><option>DJ / artist</option><option>Label / A&amp;R</option><option>Promoter / venue</option><option>Radio / press</option><option>Listener / collector</option><option>Other</option></select></label>
       <label>Message<textarea name="message" id="enquiryMessage" rows="5" required></textarea></label>
       <p class="music-note" id="enquiryHint">Name any tracks you want WAVs for, or leave a message.</p>
-      <button type="submit">Open enquiry in email</button>
+      <button type="submit"><span>Open enquiry in email</span></button>
       <p class="music-note">This opens your email app with the enquiry filled in. Send it there to reach normal. If your email app doesn’t open, email <a href="mailto:hello@normalshouse.com">hello@normalshouse.com</a>.</p>
     </form>
   </section>
