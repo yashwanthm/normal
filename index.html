@@ -187,6 +187,25 @@
   }
   .headline em:first-child { margin-inline-end: .14em; }
   .headline em:last-child { color: var(--lime); }
+  @supports (background-clip: text) {
+    @media screen and (forced-colors: none) {
+      /* Keep Chrome's automatic dark mode from whitening text on the bright hero. */
+      .headline {
+        background-image: linear-gradient(var(--ink), var(--ink));
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .headline em {
+        -webkit-text-fill-color: currentColor;
+        -webkit-text-stroke: 0;
+        text-shadow:
+          .026em 0 var(--ink), -.026em 0 var(--ink),
+          0 .026em var(--ink), 0 -.026em var(--ink),
+          .018em .018em var(--ink), -.018em .018em var(--ink),
+          .018em -.018em var(--ink), -.018em -.018em var(--ink);
+      }
+    }
+  }
   .hero-visual { background: var(--ink); }
   .hero-visual img {
     mix-blend-mode: normal;
