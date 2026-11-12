@@ -925,6 +925,12 @@
     .mobile-menu-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
     .menu-icon { display: grid; gap: 4px; width: 20px; }
     .menu-icon span { height: 2px; background: currentColor; }
+    @media screen and (forced-colors: none) {
+      .menu-icon span { filter: brightness(0) invert(94%); }
+      @media (prefers-color-scheme: light) {
+        :root[data-theme='system'] .menu-icon span { filter: brightness(0) invert(7%); }
+      }
+    }
     .mobile-menu-toggle[aria-expanded='true'] .menu-icon span:first-child { transform: translateY(6px) rotate(45deg); }
     .mobile-menu-toggle[aria-expanded='true'] .menu-icon span:nth-child(2) { visibility: hidden; }
     .mobile-menu-toggle[aria-expanded='true'] .menu-icon span:last-child { transform: translateY(-6px) rotate(-45deg); }
